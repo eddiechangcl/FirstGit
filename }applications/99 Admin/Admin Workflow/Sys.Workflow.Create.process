@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=Sys.Workflow.Create
+ENTRYTYPE=process
+ENTRYREFERENCE=TM1:///PROCESS/PUBLIC/Sys.Workflow.Create

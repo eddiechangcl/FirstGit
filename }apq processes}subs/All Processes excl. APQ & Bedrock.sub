@@ -1,0 +1,91 @@
+﻿283,100
+284,"All Processes excl. APQ & Bedrock"
+11,20230515004943
+274,
+18,0
+275,
+278,0
+281,0
+270,82
+_New_Process_Template
+APQ.Process.Execute
+Cub.EDU Training Plan.Copy Task From Other Employee
+Cub.Employee Training Plan.Date Infor Update
+Dennis_Cub.Sales Analysis.Copy to Next Cycle
+Dennis_Dimension Clone
+Dennis_Dimension Clone with attr
+Dennis_Dimension Clone with attr Caller
+Dennis_Step 1
+Dennis_Step 2.1 Bedrock
+Dennis_Step 2 Bedrock
+Dennis_Step 3.1 Modular_caller
+Dennis_Step 3 Modular
+Dim.Employee.Add New Employee
+Sys.Archive.Clear Source Data.Hustle
+Sys.Archive.Clear Source Data by Sys Archive ID
+Sys.Archive.Create Archived Objects by Sys Archive ID
+Sys.Archive.Create New Sys Archive ID
+Sys.Archive.Cube by Sys Archive ID
+Sys.Archive.Cubes.Hustle
+Sys.Archive.Destroy Archived Objects.Hustle
+Sys.Archive.Destroy Archived Objects by Sys Archive ID
+Sys.Archive.Export Cube Rules by Sys Archive ID
+Sys.Archive.Initialization.Caller
+Sys.Archive.Initialization.Create Attributes
+Sys.Archive.Restore Data.Hustle
+Sys.Archive.Restore Data by Sys Archive ID
+Sys.Archive.View.Clone
+Sys.Archive.View.Clone All
+Sys.Archive.View.Update.After Clone
+Sys.Archive.}Cubes.Update Attributes
+Sys.Cube.Annotation.Create
+Sys.Dim.Attribute.Copy.From Another Dimension
+Sys.Dim.Element.Rename
+Sys.Dim.Hierarchies.Copy.From Another Dimension
+Sys.Dim.Hierarchies.Sort.From Another Dimension Order
+Sys.Dim.Hierarchy.Unwind.Consolidation.Until Level 1
+Sys.Dim.UDC.Unwind
+Sys.Dim.UDC.Update
+Sys.Dim.UDC.Update.Caller
+Sys.Dim.UDC.Update.Caller.Update All UDC
+Sys.Localization.CaptionAsAlias
+Sys.Menu.Cube.Sys Menu.Page.Copy
+Sys.Menu.Cube.Sys Menu.Profile.Copy
+Sys.Menu.Cube.Sys Menu Application Entry.Reference.Update
+Sys.Menu.Cube.Sys Menu Application Entry.Reference.Update.Caller
+Sys.Menu.Cube.Sys Menu Application Entry.Reset.Entry.DisplayName
+Sys.Menu.Dim.Sys Menu Application Entry.Clean Empty C Elements
+Sys.Menu.Dim.Sys Menu Application Entry.Update from }ApplicationEntries
+Sys.Menu.Dim.Sys Menu Local Template.List.Caller
+Sys.Menu.Dim.Sys Menu Local Template.List.Update
+Sys.Menu.Dim.Sys Menu Profile.}Client Update
+Sys.Module.CleanUp
+Sys.Module.Uninstaller
+Sys.Server.Directory.List
+Sys.Server.ODBC.Test
+Sys.Server.Restart Windows Services.Task Scheduler
+Sys.Server.Sys Parameter.Update from tm1s.cfg
+Sys.Server.Temp Object.Housekeeping
+Sys.Server.}CubeProperties.Data.Load.MEASURE_DIMENSION
+Sys.Server.}CubeProperties.Data.Load.TIME_DIMENSION
+Sys.Sync.Cube.Data.Export.Caller
+Sys.Sync.Cube.Data.Import.Caller
+Sys.Sync.Cube.Data.ImportFromFile
+Sys.Sync.Cube.Data.ViewExportToFile
+Sys.Time.Attribute.Update
+Sys.Versioning.Caller
+Sys.Versioning.Cube
+Sys.Versioning.Cube.String Only
+Sys.Versioning.Log.Update
+Sys.Workbench.Copy
+Sys.Workbench.Task Dependency.Copy
+Sys.Workbench.Task Dependency.Update
+Sys.Workbench.UpdateStatus
+Sys.Workflow.Cooling Period.Update Status
+Sys.Workflow.Create
+Sys.Workflow.Delete
+Sys.Workflow.WF_.Update.Admin.Caller
+Sys.Workflow.WF_.Update Disable Cooling
+Sys.Workflow.WF_.Update Saved Status
+Sys.Workflow.WF_.Update Saved Status.OPEN
+Temp

@@ -1,0 +1,60 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+SKIPCHECK;
+FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Dimension Attributes** is a companion to **}APQ Dimension Attribute Matrix** and is automatically compiled by the process
+# **}APQ.Cub.DimensionAttributes.Update**. Rather than a matrix of attributes vs. dimensions this cube stores the attribute names as a text 
+# measure with the Type and a count of N, S and A attributes. This allows easy identification of the number and type of attributes per dimension.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+[ '}APQ Dimension Attributes Measure':'EXISTS' ] = N:
+IF( DimIx( '}ElementAttributes_' | !}APQ Dimensions, DB( '}APQ Dimension Attributes', !}APQ Dimensions, !}APQ Item Index, 'ATTRIBUTE NAME' ) ) > 0,
+  1,
+  0
+);
+
+[ '}APQ Dimension Attributes Measure':'A Count' ] = N:
+IF( DB( '}APQ Dimension Attributes', !}APQ Dimensions, !}APQ Item Index, 'TYPE' ) @= 'A',
+  [ '}APQ Dimension Attributes Measure':'EXISTS' ],
+  0
+);
+
+[ '}APQ Dimension Attributes Measure':'S Count' ] = N:
+IF( DB( '}APQ Dimension Attributes', !}APQ Dimensions, !}APQ Item Index, 'TYPE' ) @= 'S',
+  [ '}APQ Dimension Attributes Measure':'EXISTS' ],
+  0
+);
+
+[ '}APQ Dimension Attributes Measure':'N Count' ] = N:
+IF( DB( '}APQ Dimension Attributes', !}APQ Dimensions, !}APQ Item Index, 'TYPE' ) @= 'N',
+  [ '}APQ Dimension Attributes Measure':'EXISTS' ],
+  0
+);
+
+#############################
+FEEDERS;
+#############################
+
+[ '}APQ Dimension Attributes Measure':'ATTRIBUTE NAME' ]  => [ '}APQ Dimension Attributes Measure':'EXISTS' ], [ '}APQ Dimension Attributes Measure':'S Count' ], [ '}APQ Dimension Attributes Measure':'A Count' ], [ '}APQ Dimension Attributes Measure':'N Count' ];
+
+#############################
+##~~   End  Rule File   ~~##
+#############################
+

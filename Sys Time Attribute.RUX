@@ -1,0 +1,959 @@
+﻿FORMAT==100
+FEEDSTRINGS;
+SKIPCHECK;
+
+##############################################################################################################
+### CWA Std. Model  version 3.5
+### Copyright © 2012~2020, Cubewise (Hong Kong) Ltd. All rights reserved.
+### This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+### and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+### you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+### or display any part, in any form, or by any means.
+##############################################################################################################
+
+##############################################################################################################
+###~~~    Start Rule File    ~~~###
+
+
+#########################################################
+### Time Deviation (T + n ; T - n);
+#########################################################
+[{'T+1','T+2','T+3','T+4','T+5','T+6','T+7','T+8','T+9','T+10','T+11','T+12','T+13','T+14','T+15','T+16','T+17','T+18','T+19','T+20','T+21','T+22','T+23','T+24','T+25','T+26','T+27','T+28','T+29','T+30'}, 'yyyy-mm-dd'] = S:
+IF (DB('Sys Time Attribute', !Date, 'T', 'El Type') @='D', Dimnm ('Sys Lookup Date', Dimix ('Sys Lookup Date', !Date) + Numbr(Subst(!Time Deviation, 3, 4)))
+, IF (DB('Sys Time Attribute', !Date, 'T', 'El Type') @='W', Dimnm ('Sys Lookup Year Week', Dimix ('Sys Lookup Year Week', !Date) + Numbr(Subst(!Time Deviation, 3, 4)))
+, IF (DB('Sys Time Attribute', !Date, 'T', 'El Type') @='M', Dimnm ('Sys Lookup Year Month', Dimix ('Sys Lookup Year Month', !Date) + Numbr(Subst(!Time Deviation, 3, 4)))
+, IF (DB('Sys Time Attribute', !Date, 'T', 'El Type') @='Q', Dimnm ('Sys Lookup Year Quarter', Dimix ('Sys Lookup Year Quarter', !Date) + Numbr(Subst(!Time Deviation, 3, 4)))
+, IF (DB('Sys Time Attribute', !Date, 'T', 'El Type') @='Y', Dimnm ('Sys Lookup Year', Dimix ('Sys Lookup Year', !Date) + Numbr(Subst(!Time Deviation, 3, 4)))
+, IF (DB('Sys Time Attribute', !Date, 'T', 'El Type') @='FY', Dimnm ('Sys Lookup Year Fiscal', Dimix ('Sys Lookup Year Fiscal', !Date) + Numbr(Subst(!Time Deviation, 3, 4)))
+    , CONTINUE
+))))));
+
+[{'T-1','T-2','T-3','T-4','T-5','T-6','T-7','T-8','T-9','T-10','T-11','T-12','T-13','T-14','T-15','T-16','T-17','T-18','T-19','T-20','T-21','T-22','T-23','T-24','T-25','T-26','T-27','T-28','T-29','T-30'}, 'yyyy-mm-dd'] = S:
+IF (DB('Sys Time Attribute', !Date, 'T', 'El Type') @='D', Dimnm ('Sys Lookup Date', Dimix ('Sys Lookup Date', !Date) - Numbr(Subst(!Time Deviation, 3, 4)))
+, IF (DB('Sys Time Attribute', !Date, 'T', 'El Type') @='W', Dimnm ('Sys Lookup Year Week', Dimix ('Sys Lookup Year Week', !Date) - Numbr(Subst(!Time Deviation, 3, 4)))
+, IF (DB('Sys Time Attribute', !Date, 'T', 'El Type') @='M', Dimnm ('Sys Lookup Year Month', Dimix ('Sys Lookup Year Month', !Date) - Numbr(Subst(!Time Deviation, 3, 4)))
+, IF (DB('Sys Time Attribute', !Date, 'T', 'El Type') @='Q', Dimnm ('Sys Lookup Year Quarter', Dimix ('Sys Lookup Year Quarter', !Date) - Numbr(Subst(!Time Deviation, 3, 4)))
+, IF (DB('Sys Time Attribute', !Date, 'T', 'El Type') @='Y', Dimnm ('Sys Lookup Year', Dimix ('Sys Lookup Year', !Date) - Numbr(Subst(!Time Deviation, 3, 4)))
+, IF (DB('Sys Time Attribute', !Date, 'T', 'El Type') @='FY', Dimnm ('Sys Lookup Year Fiscal', Dimix ('Sys Lookup Year Fiscal', !Date) - Numbr(Subst(!Time Deviation, 3, 4)))
+    , CONTINUE
+))))));
+
+
+### D Deviation (D + n ; D - n);
+[{'D+1','D+2','D+3','D+4','D+5','D+6','D+7','D+8','D+9','D+10','D+11','D+12','D+13','D+14','D+15','D+16','D+17','D+18','D+19','D+20','D+21','D+22','D+23','D+24','D+25','D+26','D+27','D+28','D+29','D+30'}, 'yyyy-mm-dd'] = S:
+IF (DB('Sys Time Attribute', !Date, 'T', 'El Type') @='D', Dimnm ('Sys Lookup Date', Dimix ('Sys Lookup Date', !Date) + Numbr(Subst(!Time Deviation, 3, 4)))
+    , CONTINUE
+);
+
+[{'D-1','D-2','D-3','D-4','D-5','D-6','D-7','D-8','D-9','D-10','D-11','D-12','D-13','D-14','D-15','D-16','D-17','D-18','D-19','D-20','D-21','D-22','D-23','D-24','D-25','D-26','D-27','D-28','D-29','D-30'}, 'yyyy-mm-dd'] = S:
+IF (DB('Sys Time Attribute', !Date, 'T', 'El Type') @='D', Dimnm ('Sys Lookup Date', Dimix ('Sys Lookup Date', !Date) - Numbr(Subst(!Time Deviation, 3, 4)))
+    , CONTINUE
+);
+
+### W Deviation (W + n ; W - n);
+[{'W+1','W+2','W+3','W+4','W+5','W+6','W+7','W+8','W+9','W+10','W+11','W+12'}, 'yyyy-mm-dd'] = S:
+IF (DB('Sys Time Attribute', !Date, 'T', 'El Type') @='D', Dimnm ('Sys Lookup Date', Dimix ('Sys Lookup Date', !Date) + Numbr(Subst(!Time Deviation, 3, 4)) * 7)
+, IF (DB('Sys Time Attribute', !Date, 'T', 'El Type') @='W', Dimnm ('Sys Lookup Year Week', Dimix ('Sys Lookup Year Week', !Date) + Numbr(Subst(!Time Deviation, 3, 4)))
+    , CONTINUE
+));
+
+[{'W-1','W-2','W-3','W-4','W-5','W-6','W-7','W-8','W-9','W-10','W-11','W-12'}, 'yyyy-mm-dd'] = S:
+IF (DB('Sys Time Attribute', !Date, 'T', 'El Type') @='D', Dimnm ('Sys Lookup Date', Dimix ('Sys Lookup Date', !Date) - Numbr(Subst(!Time Deviation, 3, 4)) * 7)
+, IF (DB('Sys Time Attribute', !Date, 'T', 'El Type') @='W', Dimnm ('Sys Lookup Year Week', Dimix ('Sys Lookup Year Week', !Date) - Numbr(Subst(!Time Deviation, 3, 4)))
+    , CONTINUE
+));
+
+### M Deviation (M + n ; M - n);
+[{'M+1','M+2','M+3','M+4','M+5','M+6','M+7','M+8','M+9'}, 'yyyy-mm-dd'] = S:
+IF (DB('Sys Time Attribute', !Date, 'T', 'El Type') @='D'
+  & Dimix ('Sys Lookup Date', Dimnm ('Sys Lookup Year Month', Dimix ('Sys Lookup Year Month', Subst(!Date, 1, 7)) + Numbr(Subst(!Time Deviation, 3, 4))) | Subst(!Date, 8, 3)) > 0
+    , Dimnm ('Sys Lookup Year Month', Dimix ('Sys Lookup Year Month', Subst(!Date, 1, 7)) + Numbr(Subst(!Time Deviation, 3, 4))) | Subst(!Date, 8, 3)
+, IF (DB('Sys Time Attribute', !Date, 'T', 'El Type') @='M', Dimnm ('Sys Lookup Year Month', Dimix ('Sys Lookup Year Month', !Date) + Numbr(Subst(!Time Deviation, 3, 4)))
+        , CONTINUE
+));
+
+[{'M-1','M-2','M-3','M-4','M-5','M-6','M-7','M-8','M-9'}, 'yyyy-mm-dd'] = S:
+IF (DB('Sys Time Attribute', !Date, 'T', 'El Type') @='D'
+  & Dimix ('Sys Lookup Date', Dimnm ('Sys Lookup Year Month', Dimix ('Sys Lookup Year Month', Subst(!Date, 1, 7)) - Numbr(Subst(!Time Deviation, 3, 4))) | Subst(!Date, 8, 3)) > 0
+    , Dimnm ('Sys Lookup Year Month', Dimix ('Sys Lookup Year Month', Subst(!Date, 1, 7)) - Numbr(Subst(!Time Deviation, 3, 4))) | Subst(!Date, 8, 3)
+, IF (DB('Sys Time Attribute', !Date, 'T', 'El Type') @='M', Dimnm ('Sys Lookup Year Month', Dimix ('Sys Lookup Year Month', !Date) - Numbr(Subst(!Time Deviation, 3, 4)))
+        , CONTINUE
+));
+
+### Q Deviation (Q + n ; Q - n);
+[{'Q+1','Q+2','Q+3','Q+4','Q+5','Q+6'}, 'yyyy-mm-dd'] = S:
+IF (DB('Sys Time Attribute', !Date, 'T', 'El Type') @='D'
+  & Dimix ('Sys Lookup Date', Dimnm ('Sys Lookup Year Month', Dimix ('Sys Lookup Year Month', Subst(!Date, 1, 7)) + Numbr(Subst(!Time Deviation, 3, 4))*3) | Subst(!Date, 8, 3)) > 0
+    , Dimnm ('Sys Lookup Year Month', Dimix ('Sys Lookup Year Month', Subst(!Date, 1, 7)) + Numbr(Subst(!Time Deviation, 3, 4))*3) | Subst(!Date, 8, 3)
+, IF (DB('Sys Time Attribute', !Date, 'T', 'El Type') @='M', Dimnm ('Sys Lookup Year Month', Dimix ('Sys Lookup Year Month', !Date) + Numbr(Subst(!Time Deviation, 3, 4))*3)
+, IF (DB('Sys Time Attribute', !Date, 'T', 'El Type') @='Q', Dimnm ('Sys Lookup Year Quarter', Dimix ('Sys Lookup Year Quarter', !Date) + Numbr(Subst(!Time Deviation, 3, 4)))
+        , CONTINUE
+
+)));
+
+[{'Q-1','Q-2','Q-3','Q-4','Q-5','Q-6'}, 'yyyy-mm-dd'] = S:
+IF (DB('Sys Time Attribute', !Date, 'T', 'El Type') @='D'
+  & Dimix ('Sys Lookup Date', Dimnm ('Sys Lookup Year Month', Dimix ('Sys Lookup Year Month', Subst(!Date, 1, 7)) - Numbr(Subst(!Time Deviation, 3, 4))*3) | Subst(!Date, 8, 3)) > 0
+    , Dimnm ('Sys Lookup Year Month', Dimix ('Sys Lookup Year Month', Subst(!Date, 1, 7)) - Numbr(Subst(!Time Deviation, 3, 4))*3) | Subst(!Date, 8, 3)
+, IF (DB('Sys Time Attribute', !Date, 'T', 'El Type') @='M', Dimnm ('Sys Lookup Year Month', Dimix ('Sys Lookup Year Month', !Date) - Numbr(Subst(!Time Deviation, 3, 4))*3)
+, IF (DB('Sys Time Attribute', !Date, 'T', 'El Type') @='Q', Dimnm ('Sys Lookup Year Quarter', Dimix ('Sys Lookup Year Quarter', !Date) - Numbr(Subst(!Time Deviation, 3, 4)))
+        , CONTINUE
+)));
+
+### Y Deviation (Y + n ; Y - n);
+[{'Y+1','Y+2','Y+3','Y+4','Y+5'}, 'yyyy-mm-dd'] = S:
+IF (DB('Sys Time Attribute', !Date, 'T', 'El Type') @='D'
+  & Dimix ('Sys Lookup Date', Dimnm ('Sys Lookup Year Month', Dimix ('Sys Lookup Year Month', Subst(!Date, 1, 7)) + Numbr(Subst(!Time Deviation, 3, 4))*12) | Subst(!Date, 8, 3)) > 0
+    , Dimnm ('Sys Lookup Year Month', Dimix ('Sys Lookup Year Month', Subst(!Date, 1, 7)) + Numbr(Subst(!Time Deviation, 3, 4))*12) | Subst(!Date, 8, 3)
+, IF (DB('Sys Time Attribute', !Date, 'T', 'El Type') @='M', Dimnm ('Sys Lookup Year Month', Dimix ('Sys Lookup Year Month', !Date) + Numbr(Subst(!Time Deviation, 3, 4))*12)
+, IF (DB('Sys Time Attribute', !Date, 'T', 'El Type') @='Q', Dimnm ('Sys Lookup Year Quarter', Dimix ('Sys Lookup Year Quarter', !Date) + Numbr(Subst(!Time Deviation, 3, 4))*4)
+, IF (DB('Sys Time Attribute', !Date, 'T', 'El Type') @='Y', Dimnm ('Sys Lookup Year', Dimix ('Sys Lookup Year', !Date) + Numbr(Subst(!Time Deviation, 3, 4)))
+, IF (DB('Sys Time Attribute', !Date, 'T', 'El Type') @='FY', Dimnm ('Sys Lookup Year Year Fiscal', Dimix ('Sys Lookup Year Fiscal', !Date) + Numbr(Subst(!Time Deviation, 3, 4)))
+        , CONTINUE
+
+)))));
+
+[{'Y-1','Y-2','Y-3','Y-4','Y-5'}, 'yyyy-mm-dd'] = S:
+IF (DB('Sys Time Attribute', !Date, 'T', 'El Type') @='D'
+  & Dimix ('Sys Lookup Date', Dimnm ('Sys Lookup Year Month', Dimix ('Sys Lookup Year Month', Subst(!Date, 1, 7)) - Numbr(Subst(!Time Deviation, 3, 4))*12) | Subst(!Date, 8, 3)) > 0
+    , Dimnm ('Sys Lookup Year Month', Dimix ('Sys Lookup Year Month', Subst(!Date, 1, 7)) - Numbr(Subst(!Time Deviation, 3, 4))*12) | Subst(!Date, 8, 3)
+, IF (DB('Sys Time Attribute', !Date, 'T', 'El Type') @='M', Dimnm ('Sys Lookup Year Month', Dimix ('Sys Lookup Year Month', !Date) - Numbr(Subst(!Time Deviation, 3, 4))*12)
+, IF (DB('Sys Time Attribute', !Date, 'T', 'El Type') @='Q', Dimnm ('Sys Lookup Year Quarter', Dimix ('Sys Lookup Year Quarter', !Date) - Numbr(Subst(!Time Deviation, 3, 4))*4)
+, IF (DB('Sys Time Attribute', !Date, 'T', 'El Type') @='Y', Dimnm ('Sys Lookup Year', Dimix ('Sys Lookup Year', !Date) - Numbr(Subst(!Time Deviation, 3, 4)))
+, IF (DB('Sys Time Attribute', !Date, 'T', 'El Type') @='FY', Dimnm ('Sys Lookup Year Fiscal', Dimix ('Sys Lookup Year Fiscal', !Date) - Numbr(Subst(!Time Deviation, 3, 4)))
+        , CONTINUE
+)))));
+
+#########################################################
+###   T
+#########################################################
+
+## Day Count
+['T','Calendar Day']=N:1;
+
+['T','Week Day']=N:
+IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D'
+    & ['Weekday Index'] < 6
+    ,1 ,CONTINUE);
+
+['T','Weekend']=N:
+IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D'
+    & ['Weekday Index'] > 5
+    ,1 ,CONTINUE);
+
+
+
+#########################################################
+#### Alias Population
+#########################################################
+
+## Caption zh-Hans
+['T','All Years',{'Caption zh-Hans'}]=S:'全部年';
+['T','All Quarters',{'Caption zh-Hans'}]=S:'全部年 按季';
+['T','All Half Years',{'Caption zh-Hans'}]=S:'全部年 按半年';
+['T','All Fiscal Years',{'Caption zh-Hans'}]=S:'全部财年';
+['T','All Weeks',{'Caption zh-Hans'}]=S:'全部年 按周';
+['T','All Fortnights',{'Caption zh-Hans'}]=S:'全部年 按两周';
+['T','All Days YTD',{'Caption zh-Hans'}]=S:'全部年 日 年累计';
+['T','All Years YTD',{'Caption zh-Hans'}]=S:'全部年 月 年累计';
+['T','All Weeks YTD',{'Caption zh-Hans'}]=S:'全部年 周 年累计';
+['T','All Years YTG',{'Caption zh-Hans'}]=S:'全部年 月 年剩余';
+['T','All Days YTG',{'Caption zh-Hans'}]=S:'全部年 日 年剩余';
+['T','All Weeks YTG',{'Caption zh-Hans'}]=S:'全部年 周 年剩余';
+['T','All Days MTD',{'Caption zh-Hans'}]=S:'全部年 日 月累计';
+['T','All Days MTG',{'Caption zh-Hans'}]=S:'全部年 日 月剩余';
+
+['T','All Years M3M',{'Caption zh-Hans'}]=S:'全部年 M3M';
+['T','All Years M6M',{'Caption zh-Hans'}]=S:'全部年 M6M';
+['T','All Years MAT',{'Caption zh-Hans'}]=S:'全部年 MAT';
+
+['T','All Month Weeks by Month',{'Caption zh-Hans'}]=S:'全部年 月周 按月';
+['T','All Weeks by Month',{'Caption zh-Hans'}]=S:'全部年 周 按月';
+
+['T','Relative Years',{'Caption zh-Hans'}]=S:'相关时间 年';
+['T','Current vs Last Year',{'Caption zh-Hans'}]=S:'当年 vs 去年';
+['T','Current vs Last Year (%)',{'Caption zh-Hans'}]=S:'当年 vs 去年 (%)';
+['T','Last Year',{'Caption zh-Hans'}]=S:'去年';
+['T','Current Year',{'Caption zh-Hans'}]=S:'当年';
+['T','Next Year',{'Caption zh-Hans'}]=S:'下年';
+
+['T','Relative Months',{'Caption zh-Hans'}]=S:'相关时间 月';
+['T','Last Month',{'Caption zh-Hans'}]=S:'上月';
+['T','Current Month',{'Caption zh-Hans'}]=S:'当月';
+['T','Next Month',{'Caption zh-Hans'}]=S:'下月';
+['T','Last Month YTD',{'Caption zh-Hans'}]=S:'上月 年累计';
+['T','Current Month YTD',{'Caption zh-Hans'}]=S:'当月 年累计';
+
+['T','Relative Quarters',{'Caption zh-Hans'}]=S:'相关时间 季';
+['T','Last Quarter',{'Caption zh-Hans'}]=S:'上季';
+['T','Current Quarter',{'Caption zh-Hans'}]=S:'当季';
+['T','Next Quarter',{'Caption zh-Hans'}]=S:'下季';
+
+['T','Relative Weeks',{'Caption zh-Hans'}]=S:'相关时间 周';
+['T','Last Week',{'Caption zh-Hans'}]=S:'上周';
+['T','Current Week',{'Caption zh-Hans'}]=S:'本周';
+['T','Last Week YTD',{'Caption zh-Hans'}]=S:'上周 年累计';
+['T','Current Week YTD',{'Caption zh-Hans'}]=S:'本周 年累计';
+['T','Next Week',{'Caption zh-Hans'}]=S:'下周';
+
+['T','Relative Days',{'Caption zh-Hans'}]=S:'相关时间 日';
+['T','Date':'Last Day',{'Caption zh-Hans'}]=S:'上一日';
+['T','Date':'Current Day',{'Caption zh-Hans'}]=S:'当日';
+['T','Date':'Next Day',{'Caption zh-Hans'}]=S:'下一日';
+['T','Date':'Last Day YTD',{'Caption zh-Hans'}]=S:'上一日 年累计';
+['T','Date':'Current Day YTD',{'Caption zh-Hans'}]=S:'当日 年累计';
+
+['T',{'Caption zh-Hans'}]=S:
+IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D'
+    , SUBST(!Date, 1, 4) |'年 '| SUBST(!Date, 6, 2) |'月'| SUBST(!Date, 9, 2) |'日'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTD'
+    , SUBST(!Date, 1, 4) |'年 '| SUBST(!Date, 6, 2) |'月'| SUBST(!Date, 9, 2) | '日 月累计'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTG'
+    , SUBST(!Date, 1, 4) |'年 '| SUBST(!Date, 6, 2) |'月'| SUBST(!Date, 9, 2) | '日 月剩余'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTD'
+    , SUBST(!Date, 1, 4) |'年 '| SUBST(!Date, 6, 2) |'月'| SUBST(!Date, 9, 2) | '日 年累计'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTG'
+    , SUBST(!Date, 1, 4) |'年 '| SUBST(!Date, 6, 2) |'月'| SUBST(!Date, 9, 2) | '日 年剩余'
+    
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W'
+    , SUBST(!Date, 1, 4) | '年 ' | SUBST(!Date, 7, 2) | '周'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W YTD'
+    , SUBST(!Date, 1, 4) | '年 ' | SUBST(!Date, 7, 2) | '周 年累计'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W YTG'
+    , SUBST(!Date, 1, 4) | '年 ' | SUBST(!Date, 7, 2) | '周 年剩余'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W M'
+    , SUBST(!Date, 1, 4) | '年 ' | SUBST(!Date, 6, 2) | '月 ' | SUBST(!Date, 10, 2) | '周'
+    
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='F'
+    , SUBST(!Date, 1, 4) | '年 '| SUBST(!Date, 7, 2) | '两周'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M'
+    , SUBST(!Date, 1, 4) | '年 '| SUBST(!Date, 6, 2) | '月'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M YTD'
+    , SUBST(!Date, 1, 4) | '年 '| SUBST(!Date, 6, 2) | '月 年累计'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M YTG'
+    , SUBST(!Date, 1, 4) | '年 '| SUBST(!Date, 6, 2) | '月 年剩余'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M M3M'
+    , SUBST(!Date, 1, 4) | '年 '| SUBST(!Date, 6, 2) | '月 3个月滚动平均'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M M6M'
+    , SUBST(!Date, 1, 4) | '年 '| SUBST(!Date, 6, 2) | '月 6个月滚动平均'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M MAT'
+    , SUBST(!Date, 1, 4) | '年 '| SUBST(!Date, 6, 2) | '月 12个月滚动平均'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M W'
+    , SUBST(!Date, 1, 4) | '年 '| SUBST(!Date, 6, 2) | '月 按周'    
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M W M'
+    , SUBST(!Date, 1, 4) | '年 '| SUBST(!Date, 6, 2) | '月 按月周'
+    
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='Q'
+    , SUBST(!Date, 1, 4) | '年 ' | SUBST(!Date, 7, 1) | '季度'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='H'
+    , SUBST(!Date, 1, 4) | '年 ' | IF (SUBST(!Date, 7, 1) @= '1', '上半年','下半年')
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='Y'
+    , SUBST(!Date, 1, 4) | '年 '
+    , CONTINUE
+)))))))))))))))))))));
+
+
+## Caption zh-Hant
+['T','All Years',{'Caption zh-Hant'}]=S:'全部年';
+['T','All Quarters',{'Caption zh-Hant'}]=S:'全部年 按季';
+['T','All Half Years',{'Caption zh-Hant'}]=S:'全部年 按半年';
+['T','All Fiscal Years',{'Caption zh-Hant'}]=S:'全部財年';
+['T','All Weeks',{'Caption zh-Hant'}]=S:'全部年 按周';
+['T','All Fortnights',{'Caption zh-Hant'}]=S:'全部年 按兩周';
+['T','All Days YTD',{'Caption zh-Hant'}]=S:'全部年 日 年纍計';
+['T','All Years YTD',{'Caption zh-Hant'}]=S:'全部年 月 年纍計';
+['T','All Weeks YTD',{'Caption zh-Hant'}]=S:'全部年 周 年纍計';
+['T','All Years YTG',{'Caption zh-Hant'}]=S:'全部年 月 年剩餘';
+['T','All Days YTG',{'Caption zh-Hant'}]=S:'全部年 日 年剩餘';
+['T','All Weeks YTG',{'Caption zh-Hant'}]=S:'全部年 周 年剩餘';
+['T','All Days MTD',{'Caption zh-Hant'}]=S:'全部年 日 月纍計';
+['T','All Days MTG',{'Caption zh-Hant'}]=S:'全部年 日 月剩餘';
+
+['T','All Years M3M',{'Caption zh-Hant'}]=S:'全部年 M3M';
+['T','All Years M6M',{'Caption zh-Hant'}]=S:'全部年 M6M';
+['T','All Years MAT',{'Caption zh-Hant'}]=S:'全部年 MAT';
+
+['T','All Month Weeks by Month',{'Caption zh-Hant'}]=S:'全部年 月周 按月';
+['T','All Weeks by Month',{'Caption zh-Hant'}]=S:'全部年 周 按月';
+
+['T','Relative Years',{'Caption zh-Hant'}]=S:'相關時間 年';
+['T','Current vs Last Year',{'Caption zh-Hant'}]=S:'當年 vs 去年';
+['T','Current vs Last Year (%)',{'Caption zh-Hant'}]=S:'当年 vs 去年 (%)';
+['T','Last Year',{'Caption zh-Hant'}]=S:'上年';
+['T','Current Year',{'Caption zh-Hant'}]=S:'當年';
+['T','Next Year',{'Caption zh-Hant'}]=S:'下年';
+
+['T','Relative Months',{'Caption zh-Hant'}]=S:'相關時間 月';
+['T','Last Month',{'Caption zh-Hant'}]=S:'上月';
+['T','Current Month',{'Caption zh-Hant'}]=S:'當月';
+['T','Next Month',{'Caption zh-Hant'}]=S:'下月';
+['T','Last Month YTD',{'Caption zh-Hant'}]=S:'上月 年纍計';
+['T','Current Month YTD',{'Caption zh-Hant'}]=S:'當月 年纍計';
+
+['T','Relative Quarters',{'Caption zh-Hant'}]=S:'相關時間 季';
+['T','Last Quarter',{'Caption zh-Hant'}]=S:'上季';
+['T','Current Quarter',{'Caption zh-Hant'}]=S:'當季';
+['T','Next Quarter',{'Caption zh-Hant'}]=S:'下季';
+
+['T','Relative Weeks',{'Caption zh-Hant'}]=S:'相關時間 周';
+['T','Last Week',{'Caption zh-Hant'}]=S:'上周';
+['T','Current Week',{'Caption zh-Hant'}]=S:'本周';
+['T','Last Week YTD',{'Caption zh-Hant'}]=S:'上周 年纍計';
+['T','Current Week YTD',{'Caption zh-Hant'}]=S:'本周 年纍計';
+['T','Next Week',{'Caption zh-Hant'}]=S:'下周';
+
+['T','Relative Days',{'Caption zh-Hant'}]=S:'相關時間 日';
+['T','Date':'Last Day',{'Caption zh-Hant'}]=S:'上一日';
+['T','Current Day',{'Caption zh-Hant'}]=S:'當日';
+['T','Next Day',{'Caption zh-Hant'}]=S:'下一日';
+['T','Last Day YTD',{'Caption zh-Hant'}]=S:'上一日 年纍計';
+['T','Current Day YTD',{'Caption zh-Hant'}]=S:'當日 年纍計';
+
+
+
+['T',{'Caption zh-Hant'}]=S:
+IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D'
+    , SUBST(!Date, 1, 4) |'年 '| SUBST(!Date, 6, 2) |'月'| SUBST(!Date, 9, 2) |'日'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTD'
+    , SUBST(!Date, 1, 4) |'年 '| SUBST(!Date, 6, 2) |'月'| SUBST(!Date, 9, 2) | '日 月纍計'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTG'
+    , SUBST(!Date, 1, 4) |'年 '| SUBST(!Date, 6, 2) |'月'| SUBST(!Date, 9, 2) | '日 月剩餘'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTD'
+    , SUBST(!Date, 1, 4) |'年 '| SUBST(!Date, 6, 2) |'月'| SUBST(!Date, 9, 2) | '日 年纍計'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTG'
+    , SUBST(!Date, 1, 4) |'年 '| SUBST(!Date, 6, 2) |'月'| SUBST(!Date, 9, 2) | '日 年剩餘'
+    
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W'
+    , SUBST(!Date, 1, 4) | '年 ' | SUBST(!Date, 7, 2) | '周'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W YTD'
+    , SUBST(!Date, 1, 4) | '年 ' | SUBST(!Date, 7, 2) | '周 年纍計'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W YTG'
+    , SUBST(!Date, 1, 4) | '年 ' | SUBST(!Date, 7, 2) | '周 年剩餘'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W M'
+    , SUBST(!Date, 1, 4) | '年 ' | SUBST(!Date, 6, 2) | '月 ' | SUBST(!Date, 10, 2) | '周'
+    
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='F'
+    , SUBST(!Date, 1, 4) | '年 '| SUBST(!Date, 7, 2) | '两周'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M'
+    , SUBST(!Date, 1, 4) | '年 '| SUBST(!Date, 6, 2) | '月'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M YTD'
+    , SUBST(!Date, 1, 4) | '年 '| SUBST(!Date, 6, 2) | '月 年纍計'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M YTG'
+    , SUBST(!Date, 1, 4) | '年 '| SUBST(!Date, 6, 2) | '月 年剩餘'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M M3M'
+    , SUBST(!Date, 1, 4) | '年 '| SUBST(!Date, 6, 2) | '月 3個月滾動平均'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M M6M'
+    , SUBST(!Date, 1, 4) | '年 '| SUBST(!Date, 6, 2) | '月 6個月滾動平均'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M MAT'
+    , SUBST(!Date, 1, 4) | '年 '| SUBST(!Date, 6, 2) | '月 12個月滾動平均'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M W'
+    , SUBST(!Date, 1, 4) | '年 '| SUBST(!Date, 6, 2) | '月 按周'    
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M W M'
+    , SUBST(!Date, 1, 4) | '年 '| SUBST(!Date, 6, 2) | '月 按月周'
+    
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='Q'
+    , SUBST(!Date, 1, 4) | '年 ' | SUBST(!Date, 7, 1) | '季度'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='H'
+    , SUBST(!Date, 1, 4) | '年 ' | IF (SUBST(!Date, 7, 1) @= '1', '上半年','下半年')
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='Y'
+    , SUBST(!Date, 1, 4) | '年 '
+    , CONTINUE
+)))))))))))))))))))));
+
+
+## yyyy M00 dd
+['T',{'yyyy M00 dd'}]=S:
+IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D'
+    , SUBST(!Date, 1, 4) | ' M' | SUBST(!Date, 6, 2) | ' ' | SUBST(!Date, 9, 2)
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTD'
+    , SUBST(!Date, 1, 4) | ' M' | SUBST(!Date, 6, 2) | ' ' | SUBST(!Date, 9, 2) | ' MTD'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTG'
+    , SUBST(!Date, 1, 4) | ' M' | SUBST(!Date, 6, 2) | ' ' | SUBST(!Date, 9, 2) | ' MTG'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTD'
+    , SUBST(!Date, 1, 4) | ' M' | SUBST(!Date, 6, 2) | ' ' | SUBST(!Date, 9, 2) | ' YTD'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTG'
+    , SUBST(!Date, 1, 4) | ' M' | SUBST(!Date, 6, 2) | ' ' | SUBST(!Date, 9, 2) | ' YTG'
+
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W'
+    , SUBST(!Date, 1, 4) | ' ' | SUBST(!Date, 6, 3)
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W YTD'
+    , SUBST(!Date, 1, 4) | ' ' | SUBST(!Date, 6, 3) | ' YTD'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W YTG'
+    , SUBST(!Date, 1, 4) | ' ' | SUBST(!Date, 6, 3) | ' YTG'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W M'
+    , SUBST(!Date, 1, 4) | ' M' | SUBST(!Date, 6, 2) | ' W' | SUBST(!Date, 10, 2)
+
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='F'
+    , SUBST(!Date, 1, 4) | ' ' | SUBST(!Date, 6, 3)
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M'
+    , SUBST(!Date, 1, 4) | ' M' | SUBST(!Date, 6, 2)
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M YTD'
+    , SUBST(!Date, 1, 4) | ' M' | SUBST(!Date, 6, 2) | ' YTD'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M YTG'
+    , SUBST(!Date, 1, 4) | ' M' | SUBST(!Date, 6, 2) | ' YTG'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M M3M'
+    , SUBST(!Date, 1, 4) | ' M' | SUBST(!Date, 6, 2) | ' M3M'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M M6M'
+    , SUBST(!Date, 1, 4) | ' M' | SUBST(!Date, 6, 2) | ' M6M'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M MAT'
+    , SUBST(!Date, 1, 4) | ' M' | SUBST(!Date, 6, 2) | ' MAT'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M W'
+    , SUBST(!Date, 1, 4) | ' M' | SUBST(!Date, 6, 2) | ' W'    
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M W M'
+    , SUBST(!Date, 1, 4) | ' M' | SUBST(!Date, 6, 2) | ' M W'
+    
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='Q'
+    , SUBST(!Date, 1, 4) | ' ' | SUBST(!Date, 6, 2)
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='H'
+    , SUBST(!Date, 1, 4) | ' ' | SUBST(!Date, 6, 2)
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='Y'
+    , SUBST(!Date, 1, 4)
+    , CONTINUE
+)))))))))))))))))))));
+
+## yyyy mmm dd
+['T',{'yyyy mmm dd'}]=S:
+IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D'
+    , SUBST(!Date, 1, 4) | ' ' | CAPIT(TIMST(DAYNO(!Date), '\M')) | ' ' | SUBST(!Date, 9, 2)
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTD'
+    , SUBST(!Date, 1, 4) | ' ' | CAPIT(TIMST(DAYNO(!Date), '\M')) | ' ' | SUBST(!Date, 9, 2) | ' MTD'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTG'
+    , SUBST(!Date, 1, 4) | ' ' | CAPIT(TIMST(DAYNO(!Date), '\M')) | ' ' | SUBST(!Date, 9, 2) | ' MTG'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTD'
+    , SUBST(!Date, 1, 4) | ' ' | CAPIT(TIMST(DAYNO(!Date), '\M')) | ' ' | SUBST(!Date, 9, 2) | ' YTD'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTG'
+    , SUBST(!Date, 1, 4) | ' ' | CAPIT(TIMST(DAYNO(!Date), '\M')) | ' ' | SUBST(!Date, 9, 2) | ' YTG'
+
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W'
+    , SUBST(!Date, 1, 4) | ' ' | SUBST(!Date, 6, 3)
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W YTD'
+    , SUBST(!Date, 1, 4) | ' ' | SUBST(!Date, 6, 3) | ' YTD'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W YTG'
+    , SUBST(!Date, 1, 4) | ' ' | SUBST(!Date, 6, 3) | ' YTG'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W M'
+    , SUBST(!Date, 1, 4) | ' ' | CAPIT(TIMST(DAYNO(Subst(!Date, 1, 7) | '-01'), '\M')) | ' W' | SUBST(!Date, 10, 2)
+    
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='F'
+    , SUBST(!Date, 1, 4) | ' ' | SUBST(!Date, 6, 3)
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M'
+    , SUBST(!Date, 1, 4) | ' ' | CAPIT(TIMST(DAYNO(Subst(!Date, 1, 7) | '-01'), '\M')) 
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M YTD'
+    , SUBST(!Date, 1, 4) | ' ' | CAPIT(TIMST(DAYNO(Subst(!Date, 1, 7) | '-01'), '\M')) | ' YTD'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M YTG'
+    , SUBST(!Date, 1, 4) | ' ' | CAPIT(TIMST(DAYNO(Subst(!Date, 1, 7) | '-01'), '\M')) | ' YTG'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M M3M'
+    , SUBST(!Date, 1, 4) | ' ' | CAPIT(TIMST(DAYNO(Subst(!Date, 1, 7) | '-01'), '\M')) | ' M3M'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M M6M'
+    , SUBST(!Date, 1, 4) | ' ' | CAPIT(TIMST(DAYNO(Subst(!Date, 1, 7) | '-01'), '\M')) | ' M6M'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M MAT'
+    , SUBST(!Date, 1, 4) | ' ' | CAPIT(TIMST(DAYNO(Subst(!Date, 1, 7) | '-01'), '\M')) | ' MAT'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M W'
+    , SUBST(!Date, 1, 4) | ' ' | CAPIT(TIMST(DAYNO(Subst(!Date, 1, 7) | '-01'), '\M')) | ' W'    
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M W M'
+    , SUBST(!Date, 1, 4) | ' ' | CAPIT(TIMST(DAYNO(Subst(!Date, 1, 7) | '-01'), '\M')) | ' M W'
+    
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='Q'
+    , SUBST(!Date, 1, 4) | ' ' | SUBST(!Date, 6, 2)
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='H'
+    , SUBST(!Date, 1, 4) | ' ' | SUBST(!Date, 6, 2)
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='Y'
+    , SUBST(!Date, 1, 4)
+    , CONTINUE
+)))))))))))))))))))));
+
+## yyyymmdd
+['T',{'yyyymmdd'}]=S:
+IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D'
+    , SUBST(!Date, 1, 4) | SUBST(!Date, 6, 2) | SUBST(!Date, 9, 2)
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTD'
+    , SUBST(!Date, 1, 4) | SUBST(!Date, 6, 2) | SUBST(!Date, 9, 2) | ' MTD'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTG'
+    , SUBST(!Date, 1, 4) | SUBST(!Date, 6, 2) | SUBST(!Date, 9, 2) | ' MTG'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTD'
+    , SUBST(!Date, 1, 4) | SUBST(!Date, 6, 2) | SUBST(!Date, 9, 2) | ' YTD'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTG'
+    , SUBST(!Date, 1, 4) | SUBST(!Date, 6, 2) | SUBST(!Date, 9, 2) | ' YTG'
+    
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W'
+    , SUBST(!Date, 1, 4) | '' | SUBST(!Date, 6, 3)
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W YTD'
+    , SUBST(!Date, 1, 4) | '' | SUBST(!Date, 6, 3) | ' YTD'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W YTG'
+    , SUBST(!Date, 1, 4) | '' | SUBST(!Date, 6, 3) | ' YTG'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W M'
+    , SUBST(!Date, 1, 4) | '' | SUBST(!Date, 6, 2) | 'W' | SUBST(!Date, 10, 2)
+    
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='F'
+    , SUBST(!Date, 1, 4) | ' ' | SUBST(!Date, 6, 3)
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M'
+    , SUBST(!Date, 1, 4) | SUBST(!Date, 6, 2)
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M YTD'
+    , SUBST(!Date, 1, 4) | SUBST(!Date, 6, 2) | ' YTD'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M YTG'
+    , SUBST(!Date, 1, 4) | SUBST(!Date, 6, 2) | ' YTG'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M M3M'
+    , SUBST(!Date, 1, 4) | SUBST(!Date, 6, 2) | ' M3M'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M M6M'
+    , SUBST(!Date, 1, 4) | SUBST(!Date, 6, 2) | ' M6M'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M MAT'
+    , SUBST(!Date, 1, 4) | SUBST(!Date, 6, 2) | ' MAT'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M W'
+    , SUBST(!Date, 1, 4) | SUBST(!Date, 6, 2) | ' W'    
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M W M'
+    , SUBST(!Date, 1, 4) | SUBST(!Date, 6, 2) | ' M W'
+    
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='Q'
+    , SUBST(!Date, 1, 4) | ' ' | SUBST(!Date, 6, 2)
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='H'
+    , SUBST(!Date, 1, 4) | ' ' | SUBST(!Date, 6, 2)
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='Y'
+    , SUBST(!Date, 1, 4)
+    , CONTINUE
+)))))))))))))))))))));
+
+
+## yyyy-mm-dd
+['T',{'yyyy-mm-dd'}]=S:
+IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D'
+    , SUBST(!Date, 1, 4) | '-' | SUBST(!Date, 6, 2) | '-' | SUBST(!Date, 9, 2)
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTD'
+    , SUBST(!Date, 1, 4) | '-' | SUBST(!Date, 6, 2) | '-' | SUBST(!Date, 9, 2) | ' MTD'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTG'
+    , SUBST(!Date, 1, 4) | '-' | SUBST(!Date, 6, 2) | '-' | SUBST(!Date, 9, 2) | ' MTG'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTD'
+    , SUBST(!Date, 1, 4) | '-' | SUBST(!Date, 6, 2) | '-' | SUBST(!Date, 9, 2) | ' YTD'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTG'
+    , SUBST(!Date, 1, 4) | '-' | SUBST(!Date, 6, 2) | '-' | SUBST(!Date, 9, 2) | ' YTG'
+
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W'
+    , SUBST(!Date, 1, 4) | '-' | SUBST(!Date, 6, 3)
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W YTD'
+    , SUBST(!Date, 1, 4) | '-' | SUBST(!Date, 6, 3) | ' YTD'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W YTG'
+    , SUBST(!Date, 1, 4) | '-' | SUBST(!Date, 6, 3) | ' YTG'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W M'
+    , SUBST(!Date, 1, 4) | '-' | SUBST(!Date, 6, 2) | ' W' | SUBST(!Date, 10, 2)
+    
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='F'
+    , SUBST(!Date, 1, 4) | '-' | SUBST(!Date, 6, 3)
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M'
+    , SUBST(!Date, 1, 4) | '-' | SUBST(!Date, 6, 2)
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M YTD'
+    , SUBST(!Date, 1, 4) | '-' | SUBST(!Date, 6, 2) | ' YTD'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M YTG'
+    , SUBST(!Date, 1, 4) | '-' | SUBST(!Date, 6, 2) | ' YTG'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M M3M'
+    , SUBST(!Date, 1, 4) | '-' | SUBST(!Date, 6, 2) | ' M3M'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M M6M'
+    , SUBST(!Date, 1, 4) | '-' | SUBST(!Date, 6, 2) | ' M6M'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M MAT'
+    , SUBST(!Date, 1, 4) | '-' | SUBST(!Date, 6, 2) | ' MAT'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M W'
+    , SUBST(!Date, 1, 4) | '-' | SUBST(!Date, 6, 2) | ' W'    
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M W M'
+    , SUBST(!Date, 1, 4) | '-' | SUBST(!Date, 6, 2) | ' M W'
+    
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='Q'
+    , SUBST(!Date, 1, 4) | '-' | SUBST(!Date, 6, 2)
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='H'
+    , SUBST(!Date, 1, 4) | '-' | SUBST(!Date, 6, 2)
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='Y'
+    , SUBST(!Date, 1, 4)
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='Y W M'
+    , SUBST(!Date, 1, 4) | ' M W'
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='Y M W'
+    , SUBST(!Date, 1, 4) | ' W by Month'
+    , CONTINUE
+)))))))))))))))))))))));
+
+
+## Julian Date
+['T',{'Julian Date'}]=S:
+IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTG'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTG'
+    , STR (Numbr(SUBST(!Date, 1, 2)) - 19,1,0)
+      | SUBST(!Date, 3, 2)
+      | SUBST(DB('Sys Time Attribute', !Date, !Time Deviation, 'Day in Year'), 2, 3)
+    , CONTINUE
+);
+
+
+#### Year + Quarter + Month  Attributes Populateion
+['T',{'Year'}]=S:
+IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTG'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTG'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W M'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W YTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W YTG'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='F'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M YTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M YTG'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M W M'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='Q'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='H'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='Y'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='Y D YTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='Y D YTG'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='Y W'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='Y Q'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='Y F'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='Y H'
+    
+    , SUBST(!Date, 1, 4)
+    , CONTINUE
+);
+
+['T',{'Quarter'}]=S:
+IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='Q'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='H'
+    , SUBST(!Date, 6, 2)
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTG'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTG'    
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M YTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M YTG'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M W M'
+
+    , 'Q' | STR (['Quarter Index'],1,0)
+    , CONTINUE
+));
+
+['T', 'Quarter Index']=
+IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTG'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTG'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M YTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M YTG'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M W M'
+    
+    , INT((['Month Index']-0.5)/3)+1
+
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='Q'
+    , Numbr(SUBST(!Date, 7, 1))
+    , 0
+));
+
+['T',{'Month'}]=S:
+IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTG'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTG'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M YTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M YTG'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M W M'
+    
+    , SUBST(!Date, 6, 2)
+    , CONTINUE
+);
+
+['T', 'Month Index']=
+IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTG'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTG'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M YTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M YTG'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M W M'
+    , Numbr(SUBST(!Date, 6, 2))
+    , 0
+);
+
+
+#### Day Attributes Populateion
+['T',{'Day'}]=S:
+IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTG'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTG'
+
+    , SUBST(!Date, 9, 2)
+    , CONTINUE
+);
+
+
+['T',{'Day in Year'}]=S:
+IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTG'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTG'
+    
+    , IF (['Yearday Index'] < 10, 'D00' | STR(['Yearday Index'],1,0)
+    , IF (['Yearday Index'] < 100, 'D0' | STR(['Yearday Index'],2,0)
+                                , 'D' | STR(['Yearday Index'],3,0)
+          ))
+    , CONTINUE
+);
+
+['T',{'Day in Month'}]=S:
+IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTG'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTG'
+    
+    , 'D' | SUBST(!Date, 9, 2)
+    , CONTINUE
+);
+
+['T',{'Day in Week'}]=S:
+IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTG'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTG'
+    
+    , IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'Weekday Index') = 1, 'Mon'
+    , IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'Weekday Index') = 2, 'Tue'
+    , IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'Weekday Index') = 3, 'Wed'
+    , IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'Weekday Index') = 4, 'Thu'
+    , IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'Weekday Index') = 5, 'Fri'
+    , IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'Weekday Index') = 6, 'Sat'
+    , IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'Weekday Index') = 7, 'Sun'
+    , CONTINUE)))))))
+    , CONTINUE
+);
+
+['T',{'Day in Week zh-Hans','Day in Week zh-Hant'}]=S:
+IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTG'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTG'
+    
+    , IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'Weekday Index') = 1, '星期一'
+    , IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'Weekday Index') = 2, '星期二'
+    , IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'Weekday Index') = 3, '星期三'
+    , IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'Weekday Index') = 4, '星期四'
+    , IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'Weekday Index') = 5, '星期五'
+    , IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'Weekday Index') = 6, '星期六'
+    , IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'Weekday Index') = 7, '星期日'
+    , CONTINUE)))))))
+    , CONTINUE
+);
+
+['T','M Sys Time Attribute':'First Day']=S:
+IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D'
+    , !Date
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='F'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M'
+    , ElComp('Date', !Date, 1)
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='Q'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='H'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='Y'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTG'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTG'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M YTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M YTG'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M W M'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W M'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W YTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W YTG'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='Y W'
+    , DB('Sys Time Attribute', ElComp('Date', !Date, 1), !Time Deviation, !M Sys Time Attribute)
+    , CONTINUE
+)));
+
+['T','M Sys Time Attribute':'Last Day']=S:
+IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D'
+    , !Date
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='F'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M'
+    , ElComp('Date', !Date, ElCompN('Date', !Date))
+, IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='Q'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='H'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='Y'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTG'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTG'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M YTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M YTG'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='M W M'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W M'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W YTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W YTG'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='Y W'
+    , DB('Sys Time Attribute', ElComp('Date', !Date, ElCompN('Date', !Date)), !Time Deviation, !M Sys Time Attribute)
+    , CONTINUE
+)));
+
+
+
+['T', {'Weekday Index'},'2015-01-01']=4;
+['T', {'Weekday Index'}]=
+IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTG'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTG'
+    , MOD ( ['2015-01-01'] - 1 + DAYNO(!Date) - DAYNO('2015-01-01'), 7) + 1
+    , 0
+);
+
+
+['T', {'Monthday Index'}]=
+IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTG'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTG'
+    , Numbr(SUBST(!Date, 9, 2))
+    , 0
+);
+
+
+['T', {'Yearday Index'}]=
+IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTG'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTG'
+    , DAYNO(!Date) - DAYNO(SUBST(!Date, 1, 4) | '-01-01') + 1
+    , 0
+);
+
+
+['T', {'DayNO'}]=
+IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTG'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTG'
+    , DAYNO(!Date)
+    , 0
+);
+
+
+['T', {'DateValue Excel'}]=
+IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTG'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTG'
+
+    , DAYNO(!Date) + 21916
+    , 0
+);
+
+
+
+#### Week Attributes
+
+['T',{'Week'}]=S:
+IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTG'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTG'
+    
+    , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W01', Subst(!Date, 1, 10)) = 1, 'W01'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W02', Subst(!Date, 1, 10)) = 1, 'W02'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W03', Subst(!Date, 1, 10)) = 1, 'W03'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W04', Subst(!Date, 1, 10)) = 1, 'W04'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W05', Subst(!Date, 1, 10)) = 1, 'W05'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W06', Subst(!Date, 1, 10)) = 1, 'W06'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W07', Subst(!Date, 1, 10)) = 1, 'W07'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W08', Subst(!Date, 1, 10)) = 1, 'W08'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W09', Subst(!Date, 1, 10)) = 1, 'W09'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W10', Subst(!Date, 1, 10)) = 1, 'W10'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W11', Subst(!Date, 1, 10)) = 1, 'W11'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W12', Subst(!Date, 1, 10)) = 1, 'W12'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W13', Subst(!Date, 1, 10)) = 1, 'W13'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W14', Subst(!Date, 1, 10)) = 1, 'W14'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W15', Subst(!Date, 1, 10)) = 1, 'W15'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W16', Subst(!Date, 1, 10)) = 1, 'W16'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W17', Subst(!Date, 1, 10)) = 1, 'W17'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W18', Subst(!Date, 1, 10)) = 1, 'W18'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W19', Subst(!Date, 1, 10)) = 1, 'W19'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W20', Subst(!Date, 1, 10)) = 1, 'W20'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W21', Subst(!Date, 1, 10)) = 1, 'W21'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W22', Subst(!Date, 1, 10)) = 1, 'W22'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W23', Subst(!Date, 1, 10)) = 1, 'W23'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W24', Subst(!Date, 1, 10)) = 1, 'W24'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W25', Subst(!Date, 1, 10)) = 1, 'W25'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W26', Subst(!Date, 1, 10)) = 1, 'W26'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W27', Subst(!Date, 1, 10)) = 1, 'W27'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W28', Subst(!Date, 1, 10)) = 1, 'W28'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W29', Subst(!Date, 1, 10)) = 1, 'W29'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W30', Subst(!Date, 1, 10)) = 1, 'W30'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W31', Subst(!Date, 1, 10)) = 1, 'W31'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W32', Subst(!Date, 1, 10)) = 1, 'W32'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W33', Subst(!Date, 1, 10)) = 1, 'W33'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W34', Subst(!Date, 1, 10)) = 1, 'W34'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W35', Subst(!Date, 1, 10)) = 1, 'W35'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W36', Subst(!Date, 1, 10)) = 1, 'W36'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W37', Subst(!Date, 1, 10)) = 1, 'W37'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W38', Subst(!Date, 1, 10)) = 1, 'W38'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W39', Subst(!Date, 1, 10)) = 1, 'W39'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W40', Subst(!Date, 1, 10)) = 1, 'W40'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W41', Subst(!Date, 1, 10)) = 1, 'W41'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W42', Subst(!Date, 1, 10)) = 1, 'W42'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W43', Subst(!Date, 1, 10)) = 1, 'W43'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W44', Subst(!Date, 1, 10)) = 1, 'W44'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W45', Subst(!Date, 1, 10)) = 1, 'W45'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W46', Subst(!Date, 1, 10)) = 1, 'W46'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W47', Subst(!Date, 1, 10)) = 1, 'W47'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W48', Subst(!Date, 1, 10)) = 1, 'W48'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W49', Subst(!Date, 1, 10)) = 1, 'W49'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W50', Subst(!Date, 1, 10)) = 1, 'W50'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W51', Subst(!Date, 1, 10)) = 1, 'W51'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W52', Subst(!Date, 1, 10)) = 1, 'W52'
+          , IF (ELISANC('Date', SUBST(!Date, 1, 4)|'-W53', Subst(!Date, 1, 10)) = 1, 'W53'
+          , CONTINUE
+          )))))))))))))))))))))))))))))))))))))))))))))))))))))
+          
+    , IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W'
+          % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W YTD'
+          % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W YTG'
+          % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='F'
+          , SUBST(!Date, 6, 3)
+          , CONTINUE
+      )
+);
+
+['T', 'Week Index']=
+IF (DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D MTG'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='D YTG'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W'    
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W YTD'
+    % DB('Sys Time Attribute', !Date, !Time Deviation, 'El Type') @='W YTG'
+    
+    , Numbr(SUBST(DB('Sys Time Attribute', !Date, !Time Deviation, 'Week'), 2, 2))
+    , 0
+);
+
+
+
+FEEDERS;
+['T','El Type']=>['Calendar Day'],['Week Day'],['Weekend'];
+
+# feeder to cube Public Holiday Reference
+['T','Calendar Day'] => DB('Public Holiday Reference', Subst(!Date,1,4), Subst(!Date,6,5), 'All Regions', 'Calendar Day');
+['T','Weekend'] => DB('Public Holiday Reference', Subst(!Date,1,4), Subst(!Date,6,5), 'All Regions', 'Weekend');

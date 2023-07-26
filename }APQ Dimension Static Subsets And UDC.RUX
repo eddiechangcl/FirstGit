@@ -1,0 +1,267 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+SKIPCHECK;
+FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Dimension Static Subsets and UDC** is manually edited by the system administrator and/or power users.  The cube serves
+# 3 potential uses:
+# * Entry of user defined static subsets
+# * Entry of user defined single level manually defined consolidations (via flat list in the same way as static subset definition)
+# * Entry of hierarchical user defined consolidations (via entry of a list pf child/parent pairs)
+#
+# This cube (and associated TI process) creates a standardized and robust way of maintaining manually defined list based static subsets and
+# user-defined consolidations.  Even for non-admin users as all that is required is write access to this cube (or limited write access
+# if combined with element security to the **}APQ Dimensions** dimension.)
+#
+# Note:
+# If power users are to be granted the ability to set up static subsets or user-defined consolidation then they _must have **write** access to this cube_.
+# Element security is set automatically such that users only see the dimensions to which they have access.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+# Semi-Dynamic pull from other cube
+[ '}APQ Dimension Node Type':'SemiDynamic Subset', '}APQ Item Index':'Total Items', '}APQ Dimension Static Subsets And UDC Measure':'NodeName' ] = S:
+DB( '}APQ Dimension SemiDynamic Subsets', !}APQ Dimensions, !}APQ Dimension Use Index, 'SubsetName' );
+[ '}APQ Dimension Node Type':'SemiDynamic Subset', '}APQ Item Index':'Total Items', '}APQ Dimension Static Subsets And UDC Measure':{'AliasToSet','Regeneration Frequency','Regeneration Day','LastConstruct','Description'} ] = S:
+DB( '}APQ Dimension SemiDynamic Subsets', !}APQ Dimensions, !}APQ Dimension Use Index, !}APQ Dimension Static Subsets And UDC Measure );
+
+# Until node name is set further data entry is not possible
+# NodeName the "leading variable" for setting up anything in this cube. Needs to be stetted for "Total Items"
+[ '}APQ Item Index':'Total Items', '}APQ Dimension Static Subsets And UDC Measure':{'NodeName','Hierarchy'} ] = S: STET;
+
+# HierarchyUsed
+[ '}APQ Item Index':'Total Items', '}APQ Dimension Static Subsets And UDC Measure':'HierarchyUsed' ] = S:
+IF( DimIx( '}Dimensions', DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, 'Total Items', 'Hierarchy' ) ) = 0,
+    !}APQ Dimensions,
+    DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, 'Total Items', 'Hierarchy' )
+);
+
+# if Total Items not filled then not data enterable
+[ ] = N:
+IF( DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, 'Total Items', 'NodeName' ) @= '',
+  0,
+  Continue
+);
+
+# if Total Items not filled then not data enterable
+[ ] = S:
+IF( DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, 'Total Items', 'NodeName' ) @= '',
+  '',
+  Continue
+);
+
+# Set data entry or exclusion for measures that relate to node setup
+[ '}APQ Dimension Node Type':{'Flat Consolidation','Hier Consolidation'}, '}APQ Dimension Static Subsets And UDC Measure':'AliasToSet' ] = S: '';
+
+# if Total Items not filled then not data enterable
+[ '}APQ Dimension Static Subsets And UDC Measure':{'AliasToSet','Regeneration Frequency','Regeneration Day','LastConstruct','Description'} ] = S:
+IF( !}APQ Item Index @<> 'Total Items',
+  '',
+  Continue
+);
+
+# regeneration frequency: weekly or daily
+[ '}APQ Dimension Static Subsets And UDC Measure':'RegenerationFrequency' ] = S:
+IF( DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, !}APQ Item Index, 'NodeName' ) @= '',
+  '',
+  STET
+);
+
+# RegenerationDay: not relevant if frequency set to daily
+[ '}APQ Dimension Static Subsets And UDC Measure':'RegenerationDay' ] = S:
+IF( DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, !}APQ Item Index, 'NodeName' ) @= '',
+  '',
+  IF( DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, !}APQ Item Index, 'RegenerationFrequency' ) @= 'Daily',
+    'N/A',
+    STET
+  )
+);
+
+# Total Index: write to LastConstructN against the 1st item
+[ '}APQ Item Index':'0001', '}APQ Dimension Static Subsets And UDC Measure':'LastConstructN' ] = N: STET;
+[ '}APQ Dimension Static Subsets And UDC Measure':'LastConstructN' ] = N: 0;
+
+# Create formatted date string as LastConstruct from the LastConstructN index value
+[ '}APQ Dimension Static Subsets And UDC Measure':'LastConstruct' ] = S:
+IF( [ '}APQ Dimension Static Subsets And UDC Measure':'LastConstructN' ] = 0,
+  '',
+  TimSt( [ '}APQ Dimension Static Subsets And UDC Measure':'LastConstructN' ], DB('}APQ Settings','Date Time format','String') )
+);
+
+# ElementName not relevant at C
+[ '}APQ Item Index':'Total Items', '}APQ Dimension Static Subsets And UDC Measure':'ElementName' ] = S: '';
+
+# Element Weight: only relevant for consolidations not subsets. Only relevant for leaf, does not need to consolidate
+[ '}APQ Dimension Node Type':{'Static Subset','SemiDynamic Subset','Dynamic Subset'}, '}APQ Dimension Static Subsets And UDC Measure':'ElementWht' ] = N: 0;
+
+[ '}APQ Dimension Static Subsets And UDC Measure':'ElementWht' ] = C: 0;
+
+# look up node name from the Total Items placeholder
+# If the top node then make it's parent the standard rollup for user defined consolidations set in the settings cube
+[ '}APQ Dimension Node Type':'Hier Consolidation', '}APQ Dimension Static Subsets And UDC Measure':'NodeName' ] = S:
+IF( DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, !}APQ Item Index, 'ElementName' ) @<>
+  DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, 'Total Items', 'NodeName' ),
+  STET,
+  IF( Scan( '<dimension>', DB( '}APQ Settings', 'Std UDC Parent Node Name', 'String' ) ) = 0,
+    DB( '}APQ Settings', 'Std UDC Parent Node Name', 'String' ),
+    IF( Scan( '<dimension>', DB( '}APQ Settings', 'Std UDC Parent Node Name', 'String' ) ) = 1,
+      !}APQ Dimensions | SubSt( DB( '}APQ Settings', 'Std UDC Parent Node Name', 'String' ), 12, Long( DB( '}APQ Settings', 'Std UDC Parent Node Name', 'String' ) ) - 11 ),
+      SubSt( DB( '}APQ Settings', 'Std UDC Parent Node Name', 'String' ), 1, Scan( '<dimension>', DB( '}APQ Settings', 'Std UDC Parent Node Name', 'String' ) ) - 1 ) | !}APQ Dimensions | SubSt( DB( '}APQ Settings', 'Std UDC Parent Node Name', 'String' ),
+Scan( '<dimension>', DB( '}APQ Settings', 'Std UDC Parent Node Name', 'String' ) ) + 11, Long( DB( '}APQ Settings', 'Std UDC Parent Node Name', 'String' ) ) - Scan( '<dimension>', DB( '}APQ Settings', 'Std UDC Parent Node Name', 'String' ) ) + 10 )
+    )
+  )
+);
+
+# look up node name from the Total Items placeholder
+[ '}APQ Dimension Static Subsets And UDC Measure':'NodeName' ] = S:
+DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, 'Total Items', 'NodeName' );
+
+# look up hierarchy from the Total Items placeholder
+[ '}APQ Dimension Static Subsets And UDC Measure':{'Hierarchy','HierarchyUsed'} ] = S:
+DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, 'Total Items', 'HierarchyUsed' );
+
+# Check if the text entered for element name is a valid dimension element (for flat hier we can also check to make sure no circular ref)
+# Note using Min with DimIx is nore efficient than an IF test
+[ '}APQ Dimension Node Type':'Flat Consolidation', '}APQ Dimension Static Subsets And UDC Measure':'IsValid' ] = N:
+IF( DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, !}APQ Item Index, 'ElementName' ) @= '',
+    0,
+    IF( DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, !}APQ Item Index, 'ElementName' ) @= DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, !}APQ Item Index, 'NodeName' ),
+        0,
+        IF(
+            ElIsAnc(
+                DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, !}APQ Item Index, 'Hierarchy' ),
+                DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, !}APQ Item Index, 'ElementName' ),
+                DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, !}APQ Item Index, 'NodeName' )
+            ) =  1,
+            0,
+            Min( 1,
+                DimIx(
+                    DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, 'Total Items', 'HierarchyUsed' ),
+                    DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, !}APQ Item Index, 'ElementPrincipalName' )
+                 )
+            )
+        )
+    )
+);
+
+# For subsets we only care if the element is in the dimension. For hier consols we buid on the fly so can't rely on checks if element exists
+# Note using Min with DimIx is nore efficient than an IF test
+[ '}APQ Dimension Static Subsets And UDC Measure':'IsValid' ] = N:
+Min( 1,
+     DimIx(
+        DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, 'Total Items', 'HierarchyUsed' ),
+        DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, !}APQ Item Index, 'ElementPrincipalName' )
+     )
+);
+
+[ '}APQ Dimension Node Type':{'Hier Consolidation'}, '}APQ Dimension Static Subsets And UDC Measure':'NodeIndex' ] = N: 0;
+
+[ '}APQ Dimension Node Type':{'Static Subset','Flat Consolidation'}, '}APQ Dimension Static Subsets And UDC Measure':'NodeIndex' ] = N:
+IF( [ '}APQ Dimension Static Subsets And UDC Measure':'IsValid' ] = 0,
+  0,
+  STET
+);
+
+# Node Index: for flat subsets & flat consolidations the index of the element within the item. Stet for N (above).
+# For C cells use as a count of the number of items which have elements set up
+[ '}APQ Item Index':'Total Items', '}APQ Dimension Static Subsets And UDC Measure':'NodeIndex' ] = C:
+IF( ElLev( '}APQ Dimensions', !}APQ Dimensions ) = 0
+  & ElLev( '}APQ Dimension Node Type', !}APQ Dimension Node Type ) = 0
+  & ElLev( '}APQ Dimension Use Index', !}APQ Dimension Use Index ) = 0
+  & [ '}APQ Dimension Static Subsets And UDC Measure':'IsValid' ] > 0,
+  1,
+  ConsolidateChildren( '}APQ Dimensions', '}APQ Dimension Node Type', '}APQ Dimension Use Index' )
+);
+
+[ '}APQ Dimension Static Subsets And UDC Measure':'NodeIndex' ] = C: 0;
+
+# PrincipalName: Where ElementName has DimIx>0 but <> DimNm or index determin the principal name
+[ '}APQ Dimension Static Subsets And UDC Measure':'ElementPrincipalName' ] = S:
+IF( Scan( ':', DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, 'Total Items', 'HierarchyUsed' ) ) = 0,
+    DimNm(
+        !}APQ Dimensions,
+        DimIx( !}APQ Dimensions, DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, !}APQ Item Index, 'ElementName' ) )
+    ),
+    IF( DimIx( !}APQ Dimensions | ':Leaves', DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, !}APQ Item Index, 'ElementName' ) ) > 0,
+        ElementName( !}APQ Dimensions, 'Leaves',
+            ElementIndex( !}APQ Dimensions, 'Leaves', DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, !}APQ Item Index, 'ElementName' ) )
+        ),
+        ElementName( !}APQ Dimensions,
+            SubSt(
+                DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, 'Total Items', 'HierarchyUsed' ),
+                Scan( ':', DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, 'Total Items', 'HierarchyUsed' ) ) + 1,
+                100
+            ),
+            ElementIndex( !}APQ Dimensions,
+                SubSt(
+                    DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, 'Total Items', 'HierarchyUsed' ),
+                    Scan( ':', DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, 'Total Items', 'HierarchyUsed' ) ) + 1,
+                    100
+                ),
+                DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, !}APQ Item Index, 'ElementName' )
+            )
+        )
+    )
+);
+
+# Display name: for subsets where an alias is selected to assign to the subset determine the display name of the element
+[ '}APQ Dimension Static Subsets And UDC Measure':'ElementDisplayName' ] = S:
+IF( DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, 'Total Items', 'AliasToSet' ) @= '',
+  DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, !}APQ Item Index, 'ElementPrincipalName' ),
+  IF( Scan( ':', DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, 'Total Items', 'HierarchyUsed' ) ) = 0,
+    AttrS( !}APQ Dimensions,
+      DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, !}APQ Item Index, 'ElementPrincipalName' ),
+      DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, 'Total Items', 'AliasToSet' )
+    ),
+    ElementAttrS( !}APQ Dimensions,
+      SubSt(
+        DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, 'Total Items', 'HierarchyUsed' ),
+        Scan( ':', DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, 'Total Items', 'HierarchyUsed' ) ) + 1,
+        100
+      ),
+      DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, !}APQ Item Index, 'ElementPrincipalName' ),
+      DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, 'Total Items', 'AliasToSet' )
+    )
+  )
+);
+
+
+
+#############################
+FEEDERS;
+#############################
+
+# Feeders for items
+[ '}APQ Dimension Static Subsets And UDC Measure':'NodeName' ] => [ '}APQ Dimension Static Subsets And UDC Measure':'RegenerationFrequency' ],
+[ '}APQ Dimension Static Subsets And UDC Measure':'RegenerationDay' ],
+[ '}APQ Dimension Static Subsets And UDC Measure':'Description' ];
+
+[ '}APQ Dimension Static Subsets And UDC Measure':'LastConstructN' ] => [ '}APQ Item Index':'Total Items', '}APQ Dimension Static Subsets And UDC Measure':'LastConstruct' ];
+
+# Feeders for elements
+[ '}APQ Dimension Static Subsets And UDC Measure':'ElementName' ] => [ '}APQ Dimension Static Subsets And UDC Measure':'NodeName' ],
+[ '}APQ Dimension Static Subsets And UDC Measure':'Hierarchy' ],
+[ '}APQ Dimension Static Subsets And UDC Measure':'IsValid' ],
+[ '}APQ Dimension Static Subsets And UDC Measure':'ElementPrincipalName' ],
+[ '}APQ Dimension Static Subsets And UDC Measure':'ElementDisplayName' ];
+
+
+
+#############################
+##~~    End Rule File    ~~##
+#############################

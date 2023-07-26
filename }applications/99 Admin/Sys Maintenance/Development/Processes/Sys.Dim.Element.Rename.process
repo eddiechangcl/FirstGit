@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=Sys.Dim.Element.Rename
+ENTRYTYPE=process
+ENTRYREFERENCE=TM1:///PROCESS/PUBLIC/Sys.Dim.Element.Rename

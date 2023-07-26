@@ -1,0 +1,98 @@
+FORMAT==100
+##############################################################################################################################
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+SKIPCHECK;
+#############################
+
+# For Validation Type
+[ '}APQ Process Parameters Info Measure':'ValidationType', '}PickList' : 'Value' ] = S:
+IF( ISLEAF=1 & DB( '}APQ Process Parameters Info', !}APQ Processes, !}APQ Process Parameters, 'Count' ) = 1,
+   'Subset:}APQ PickList Validations:PickList Validation Type',
+   CONTINUE
+);
+
+# For Validation Dimension
+[ '}APQ Process Parameters Info Measure':'ValidationDimension', '}PickList' : 'Value' ] = S:
+IF( ISLEAF=1 & DB( '}APQ Process Parameters Info', !}APQ Processes, !}APQ Process Parameters, 'Count' ) = 1 & DB( '}APQ Dimension Subsets', '}APQ Dimensions\' | DB( '}APQ Settings', 'Std All N Elements', 'String' ), 'Element Count' ) <= DB( '}APQ Settings', 'Max subset size for PickList entry', 'Numeric' ),
+   'Subset:}APQ Dimensions:' | DB( '}APQ Settings', 'Std All N Elements', 'String' ),
+   CONTINUE
+);
+
+
+# For Validation Dimension Subset
+[ '}APQ Process Parameters Info Measure':'ValidationSubset', '}PickList' : 'Value' ] = S:
+IF( ISLEAF=1 & DB( '}APQ Process Parameters Info', !}APQ Processes, !}APQ Process Parameters, 'Count' ) = 1,
+   'Subset:}APQ Subsets:' | DB( '}APQ Process Parameters Info', !}APQ Processes, !}APQ Process Parameters, 'ValidationDimension' ),
+   CONTINUE
+);
+
+# Implement the defined picklist logic from validation type | list | dimension | subset
+[ '}APQ Process Parameters Info Measure':{'sDefaultValue','Parallelization Default'} ] = S:
+IF( DB( '}APQ Process Parameters Info', !}APQ Processes, !}APQ Process Parameters, 'ValidationType' ) @= '',
+   CONTINUE,
+   IF( DB( '}APQ Process Parameters Info', !}APQ Processes, !}APQ Process Parameters, 'ValidationType' ) @= 'none',
+      STET,
+      IF( DB( '}APQ Process Parameters Info', !}APQ Processes, !}APQ Process Parameters, 'ValidationType' ) @= 'list' & DB( '}APQ Process Parameters Info', !}APQ Processes, !}APQ Process Parameters, 'ValidationList' ) @<> '',
+         'Static::' | DB( '}APQ Process Parameters Info', !}APQ Processes, !}APQ Process Parameters, 'ValidationList' ),
+         IF(  DB( '}APQ Process Parameters Info', !}APQ Processes, !}APQ Process Parameters, 'ValidationType' ) @= 'subset',
+            IF( DB( '}APQ Process Parameters Info', !}APQ Processes, !}APQ Process Parameters, 'ValidationSubset' ) @= '',
+               'Dimension:' | DB( '}APQ Process Parameters Info', !}APQ Processes, !}APQ Process Parameters, 'ValidationDimension' ),
+               'Subset:' | DB( '}APQ Process Parameters Info', !}APQ Processes, !}APQ Process Parameters, 'ValidationDimension' ) |':'| DB( '}APQ Process Parameters Info', !}APQ Processes, !}APQ Process Parameters, 'ValidationSubset' )
+            ),
+            ''
+         )
+      )
+   )
+);
+
+# Picklist for numeric params
+[ '}APQ Process Parameters Info Measure':{'sDefaultValue','Parallelization Default'} ] = S:
+IF( DB( '}APQ Process Parameters Info', !}APQ Processes, !}APQ Process Parameters, 'Type' ) @= 'N',
+  IF( DB( '}APQ Process Parameters Info', !}APQ Processes, !}APQ Process Parameters, 'Parameter' ) @= 'pDebug',
+    'Static:0:1:2',
+    IF( DB( '}APQ Process Parameters Info', !}APQ Processes, !}APQ Process Parameters, 'Parameter' ) @= 'pDoProcessLogging' % DB( '}APQ Process Parameters Info', !}APQ Processes, !}APQ Process Parameters, 'Parameter' ) @= 'pSuppressZero'
+     % DB( '}APQ Process Parameters Info', !}APQ Processes, !}APQ Process Parameters, 'Parameter' ) @= 'pSuppressConsol' % DB( '}APQ Process Parameters Info', !}APQ Processes, !}APQ Process Parameters, 'Parameter' ) @= 'pSuppressRules',
+      'Static:0:1',
+      STET
+    )
+  ),
+  CONTINUE
+);
+
+# Picklist for string params
+[ '}APQ Process Parameters Info Measure':{'sDefaultValue','Parallelization Default'} ] = S:
+IF( DB( '}APQ Process Parameters Info', !}APQ Processes, !}APQ Process Parameters, 'Parameter' ) @= 'pDebug',
+  'Static:0:1:2',
+  IF( DB( '}APQ Process Parameters Info', !}APQ Processes, !}APQ Process Parameters, 'Parameter' ) @= 'pDoProcessLogging' % DB( '}APQ Process Parameters Info', !}APQ Processes, !}APQ Process Parameters, 'Parameter' ) @= 'pSuppressZero'
+   % DB( '}APQ Process Parameters Info', !}APQ Processes, !}APQ Process Parameters, 'Parameter' ) @= 'pSuppressConsol' % DB( '}APQ Process Parameters Info', !}APQ Processes, !}APQ Process Parameters, 'Parameter' ) @= 'pSuppressRules',
+    'Static:0:1',
+    IF( DB( '}APQ Process Parameters Info', !}APQ Processes, !}APQ Process Parameters, 'Parameter' ) @= 'pDim' % DB( '}APQ Process Parameters Info', !}APQ Processes, !}APQ Process Parameters, 'Parameter' ) @= 'pDimension'
+   % DB( '}APQ Process Parameters Info', !}APQ Processes, !}APQ Process Parameters, 'Parameter' ) @= 'pSourceDim',
+      IF( Scan( '.Dim.Create', !}APQ Processes ) > 0,
+        '',
+        IF(  DB( '}APQ Dimension Subsets', '}APQ Dimensions\' | DB( '}APQ Settings', 'Std All N Elements', 'String' ), 'Element Count' ) <= DB( '}APQ Settings', 'Max subset size for PickList entry', 'Numeric' ),
+          'Subset:}APQ Dimensions:' | DB( '}APQ Settings', 'Std All N Elements', 'String' ),
+          STET
+        )
+      ),
+      IF( DB( '}APQ Process Parameters Info', !}APQ Processes, !}APQ Process Parameters, 'Parameter' ) @= 'pSourceCube' % DB( '}APQ Process Parameters Info', !}APQ Processes, !}APQ Process Parameters, 'Parameter' ) @= 'pCube',
+        IF( Scan( '.Cube.Create', !}APQ Processes ) > 0,
+          '',
+          IF(  DB( '}APQ Dimension Subsets', '}APQ Cubes\' | DB( '}APQ Settings', 'Std All N Elements', 'String' ), 'Element Count' ) <= DB( '}APQ Settings', 'Max subset size for PickList entry', 'Numeric' ),
+            'Subset:}APQ Cubes:' | DB( '}APQ Settings', 'Std All N Elements', 'String' ),
+            STET
+          )
+        ),
+        STET
+      )
+    )
+  )
+);
+
+

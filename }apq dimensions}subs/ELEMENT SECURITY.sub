@@ -1,0 +1,10 @@
+﻿283,100
+284,"ELEMENT SECURITY"
+11,00000000000000
+274,
+18,0
+275,155
+{FILTER( {TM1SUBSETALL( [}APQ Dimensions].[}APQ Dimensions] )}, [}APQ Dimensions].[}APQ Dimensions].CurrentMember.Properties("ELEMENT_SECURITY") = "TRUE")}
+278,0
+281,0
+270,0

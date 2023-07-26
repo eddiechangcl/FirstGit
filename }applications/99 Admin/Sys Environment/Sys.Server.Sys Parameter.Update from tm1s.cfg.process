@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=Sys.Server.Sys Parameter.Update from tm1s.cfg
+ENTRYTYPE=process
+ENTRYREFERENCE=TM1:///PROCESS/PUBLIC/Sys.Server.Sys Parameter.Update from tm1s.cfg

@@ -1,0 +1,45 @@
+﻿283,100
+284,"M Sys Time Attribute - Caption zh-Hans"
+11,20201005064153
+274,
+18,0
+275,
+278,0
+281,0
+270,36
+元素类型
+年
+季
+月
+周
+日
+季 序号
+月 序号
+周 序号
+周 日 序号
+月 日 序号
+年 日 序号
+DayNO
+DateValue Excel
+周 日
+月 日
+年 日
+Julian Date
+yyyy M00 dd
+yyyy mmm dd
+yyyymmdd
+yyyy-mm-dd
+第一天
+最后一天
+Caption zh-Hans
+Caption zh-Hant
+Day in Week zh-Hans
+Day in Week zh-Hant
+日历日
+平日
+周末
+假日
+法定假日
+周末假日
+周末工作日
+工作日

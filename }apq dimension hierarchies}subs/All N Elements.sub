@@ -1,0 +1,506 @@
+﻿283,100
+284,"All N Elements"
+11,20230515004923
+274,
+18,0
+275,
+278,0
+281,0
+270,497
+Currency From:Currency From
+Currency To:Currency To
+Data Source GL:Data Source GL
+Data Source Sales:Data Source Sales
+Date:Date
+Day in Month:Day in Month
+Day in Week:Day in Week
+Day in Year:Day in Year
+Demo Inter Company:Demo Inter Company
+Employee:Employee
+FX Rate Type:FX Rate Type
+Line Item:Line Item
+M Currency:M Currency
+M EDU Employee Profile:M EDU Employee Profile
+M Employee Schedule:M Employee Schedule
+M Employee Training Plan:M Employee Training Plan
+M Employee Working Day:M Employee Working Day
+M FX Rate:M FX Rate
+M GL Reporting:M GL Reporting
+Month:Month
+M Public Holiday Reference:M Public Holiday Reference
+M Reference:M Reference
+M Sales Reporting:M Sales Reporting
+M Sys Archive Parameter:M Sys Archive Parameter
+M Sys Archive Profile:M Sys Archive Profile
+M Sys Menu:M Sys Menu
+M Sys Menu Application Entry:M Sys Menu Application Entry
+M Sys Menu Link:M Sys Menu Link
+M Sys Menu Parameter:M Sys Menu Parameter
+M Sys Module Object:M Sys Module Object
+M Sys Parameter:M Sys Parameter
+M Sys Time Attribute:M Sys Time Attribute
+M Sys Versioning Cube:M Sys Versioning Cube
+M Sys Versioning Log:M Sys Versioning Log
+M Sys Workbench:M Sys Workbench
+M Sys Workbench Task Dependency:M Sys Workbench Task Dependency
+M Sys Workflow Cooling Period:M Sys Workflow Cooling Period
+M UDC:M UDC
+M Unit:M Unit
+M Workflow:M Workflow
+Planning Year:Planning Year
+Quarter:Quarter
+Region:Region
+Scenario:Scenario
+Schedule Type:Schedule Type
+Schedule Week:Schedule Week
+S Employee Schedule:S Employee Schedule
+Sys Archive ID:Sys Archive ID
+Sys Archive Parameter:Sys Archive Parameter
+Sys Lookup Date:Sys Lookup Date
+Sys Lookup Year:Sys Lookup Year
+Sys Lookup Year Fiscal:Sys Lookup Year Fiscal
+Sys Lookup Year Month:Sys Lookup Year Month
+Sys Lookup Year Quarter:Sys Lookup Year Quarter
+Sys Lookup Year Week:Sys Lookup Year Week
+Sys Menu Application Entry:Sys Menu Application Entry
+Sys Menu Link:Sys Menu Link
+Sys Menu Page:Sys Menu Page
+Sys Menu Page Column:Sys Menu Page Column
+Sys Menu Page Row:Sys Menu Page Row
+Sys Menu Parameter:Sys Menu Parameter
+Sys Menu Profile:Sys Menu Profile
+Sys Module:Sys Module
+Sys Module Object Type:Sys Module Object Type
+Sys Parameter:Sys Parameter
+Sys Versioning Module:Sys Versioning Module
+Sys Workbench Group:Sys Workbench Group
+Sys Workbench Priority:Sys Workbench Priority
+Sys Workbench Step:Sys Workbench Step
+Sys Workflow:Sys Workflow
+Time Deviation:Time Deviation
+Training Day:Training Day
+Training Task:Training Task
+UDC:UDC
+UDC Dimension:UDC Dimension
+Version:Version
+Week:Week
+Week Day:Week Day
+Year:Year
+Year Fiscal:Year Fiscal
+Year Month:Year Month
+Year Week:Year Week
+}Annotation_ApplicationID:}Annotation_ApplicationID
+}AnnotationAppContextFacets:}AnnotationAppContextFacets
+}AnnotationMeasures:}AnnotationMeasures
+}ApplicationEntries:}ApplicationEntries
+}ApplicationParameters:}ApplicationParameters
+}APQ Applications:}APQ Applications
+}APQ Calculation Type:}APQ Calculation Type
+}APQ CAM NamespaceID:}APQ CAM NamespaceID
+}APQ Cell Comment Index:}APQ Cell Comment Index
+}APQ Cell Comment Measure:}APQ Cell Comment Measure
+}APQ Chore Info Measure:}APQ Chore Info Measure
+}APQ Chore Info Parameter:}APQ Chore Info Parameter
+}APQ Chores:}APQ Chores
+}APQ Clients:}APQ Clients
+}APQ Clients Consol:}APQ Clients Consol
+}APQ Cube Data Archive Measure:}APQ Cube Data Archive Measure
+}APQ Cube Dependency Measure:}APQ Cube Dependency Measure
+}APQ Cube Last Updated by Process Measure:}APQ Cube Last Updated by Process Measure
+}APQ Cubes:}APQ Cubes
+}APQ Cubes Dependent:}APQ Cubes Dependent
+}APQ Cube View Cache Control Measure:}APQ Cube View Cache Control Measure
+}APQ Cube Views:}APQ Cube Views
+}APQ Cube Views Management Measure:}APQ Cube Views Management Measure
+}APQ Cube Views Measure:}APQ Cube Views Measure
+}APQ Data Source Row:}APQ Data Source Row
+}APQ Dimension Attribute Definition Measure:}APQ Dimension Attribute Definition Measure
+}APQ Dimension Attribute Matrix Measure:}APQ Dimension Attribute Matrix Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes
+}APQ Dimension Attributes Measure:}APQ Dimension Attributes Measure
+}APQ Dimension Defaults Measure:}APQ Dimension Defaults Measure
+}APQ Dimension Defaults Measure Type:}APQ Dimension Defaults Measure Type
+}APQ Dimension Definition Measure:}APQ Dimension Definition Measure
+}APQ Dimension Definition Parameter:}APQ Dimension Definition Parameter
+}APQ Dimension Definition Source Measure:}APQ Dimension Definition Source Measure
+}APQ Dimension Elements:}APQ Dimension Elements
+}APQ Dimension Element Search Measure:}APQ Dimension Element Search Measure
+}APQ Dimension Elements Measure:}APQ Dimension Elements Measure
+}APQ Dimension Hierarchies:}APQ Dimension Hierarchies
+}APQ Dimension Hierarchies Measure:}APQ Dimension Hierarchies Measure
+}APQ Dimension Node Type:}APQ Dimension Node Type
+}APQ Dimensions:}APQ Dimensions
+}APQ Dimension SemiDynamic Subsets Measure:}APQ Dimension SemiDynamic Subsets Measure
+}APQ Dimension Source:}APQ Dimension Source
+}APQ Dimension Static Subsets And UDC Measure:}APQ Dimension Static Subsets And UDC Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets
+}APQ Dimension Subsets Measure:}APQ Dimension Subsets Measure
+}APQ Dimension Subset Use Measure:}APQ Dimension Subset Use Measure
+}APQ Dimension Use Index:}APQ Dimension Use Index
+}APQ Dimension Use Measure:}APQ Dimension Use Measure
+}APQ Escape Characters:}APQ Escape Characters
+}APQ Execution Item:}APQ Execution Item
+}APQ Execution Item Measure:}APQ Execution Item Measure
+}APQ Glossary Measure:}APQ Glossary Measure
+}APQ Groups:}APQ Groups
+}APQ HTML Character Entity:}APQ HTML Character Entity
+}APQ Item Index:}APQ Item Index
+}APQ Number Format:}APQ Number Format
+}APQ Parameters:}APQ Parameters
+}APQ Picklist Dimension Measure:}APQ Picklist Dimension Measure
+}APQ Picklist General Measure:}APQ Picklist General Measure
+}APQ PickList Item:}APQ PickList Item
+}APQ PickList Validations:}APQ PickList Validations
+}APQ Processes:}APQ Processes
+}APQ Process Execution Log Measure:}APQ Process Execution Log Measure
+}APQ Process Execution Tree:}APQ Process Execution Tree
+}APQ ProcessExit Code:}APQ ProcessExit Code
+}APQ Process Parallelization Control Measure:}APQ Process Parallelization Control Measure
+}APQ Process Parameter Matrix Measure:}APQ Process Parameter Matrix Measure
+}APQ Process Parameter Name:}APQ Process Parameter Name
+}APQ Process Parameters:}APQ Process Parameters
+}APQ Process Parameters Info Measure:}APQ Process Parameters Info Measure
+}APQ Process Response Message Measure:}APQ Process Response Message Measure
+}APQ Process to Object Reference Measure:}APQ Process to Object Reference Measure
+}APQ Pulse ServerName:}APQ Pulse ServerName
+}APQ Pulse Service Name:}APQ Pulse Service Name
+}APQ Pulse User login Measure:}APQ Pulse User login Measure
+}APQ Pulse Workbook:}APQ Pulse Workbook
+}APQ Pulse Workbook Clients:}APQ Pulse Workbook Clients
+}APQ Pulse Workbook Path:}APQ Pulse Workbook Path
+}APQ Pulse Workbook Tracker Measure:}APQ Pulse Workbook Tracker Measure
+}APQ Reconciliation Cell Value Change Measure:}APQ Reconciliation Cell Value Change Measure
+}APQ Reconciliation Cell Value Change Profile:}APQ Reconciliation Cell Value Change Profile
+}APQ Reconciliation Check Extended Measure:}APQ Reconciliation Check Extended Measure
+}APQ Reconciliation Check Measure:}APQ Reconciliation Check Measure
+}APQ Reconciliation Item:}APQ Reconciliation Item
+}APQ Reconciliation Setup Detail Measure:}APQ Reconciliation Setup Detail Measure
+}APQ Reconciliation Setup Measure:}APQ Reconciliation Setup Measure
+}APQ Security Effective Permission Measure:}APQ Security Effective Permission Measure
+}APQ Security Level:}APQ Security Level
+}APQ Security Manage Application Feeder Measure:}APQ Security Manage Application Feeder Measure
+}APQ Security Manage Client Groups Measure:}APQ Security Manage Client Groups Measure
+}APQ Security Manage Element Access Measure:}APQ Security Manage Element Access Measure
+}APQ Security Manage Element Security Groups Measure:}APQ Security Manage Element Security Groups Measure
+}APQ Security Manage Object Access Measure:}APQ Security Manage Object Access Measure
+}APQ Security Permission Index:}APQ Security Permission Index
+}APQ Server Message Log Info Measure:}APQ Server Message Log Info Measure
+}APQ Settings Measure:}APQ Settings Measure
+}APQ Staging Control Measure:}APQ Staging Control Measure
+}APQ Staging Control Parameter:}APQ Staging Control Parameter
+}APQ Staging Data Source:}APQ Staging Data Source
+}APQ Staging Dimension:}APQ Staging Dimension
+}APQ Staging Dimension Mapping Measure:}APQ Staging Dimension Mapping Measure
+}APQ Staging Measure:}APQ Staging Measure
+}APQ Staging Variable Name:}APQ Staging Variable Name
+}APQ Subsets:}APQ Subsets
+}APQ Time Date:ByWeek
+}APQ Time Date:DayInYear
+}APQ Time Date:Leaves
+}APQ Time Date:LTD
+}APQ Time Date:LTD Year
+}APQ Time Date:LTG
+}APQ Time Date:LTG Year
+}APQ Time Date:M3M
+}APQ Time Date:M6M
+}APQ Time Date:MAT
+}APQ Time Date:MonthInYear
+}APQ Time Date:MTD
+}APQ Time Date:MTG
+}APQ Time Date:T Date
+}APQ Time Date:WeekInYear
+}APQ Time Date:Year
+}APQ Time Date:YTD
+}APQ Time Date:YTD ByDay
+}APQ Time Date:YTG
+}APQ Time Date:YTG ByDay
+}APQ Time Date:}APQ Time Date
+}APQ Time Date Lookup:}APQ Time Date Lookup
+}APQ Time Date Lookup Measure:}APQ Time Date Lookup Measure
+}APQ Time Day in Year:Leaves
+}APQ Time Day in Year:MTD
+}APQ Time Day in Year:MTG
+}APQ Time Day in Year:YTD
+}APQ Time Day in Year:YTD ByDay
+}APQ Time Day in Year:YTG
+}APQ Time Day in Year:YTG ByDay
+}APQ Time Day in Year:}APQ Time Day in Year
+}APQ Time Dimensions:}APQ Time Dimensions
+}APQ Time Minute:}APQ Time Minute
+}APQ Time Month:Leaves
+}APQ Time Month:QTD
+}APQ Time Month:QTG
+}APQ Time Month:YTD
+}APQ Time Month:YTG
+}APQ Time Month:}APQ Time Month
+}APQ Time Month Conversion Measure:}APQ Time Month Conversion Measure
+}APQ Time Month Simple:}APQ Time Month Simple
+}APQ Time Quarter:Leaves
+}APQ Time Quarter:YTD
+}APQ Time Quarter:YTG
+}APQ Time Quarter:}APQ Time Quarter
+}APQ Time Relative Time Lookup Measure:}APQ Time Relative Time Lookup Measure
+}APQ Time Relative Time Periods:}APQ Time Relative Time Periods
+}APQ Time Second:}APQ Time Second
+}APQ Time Year:Last X
+}APQ Time Year:Leaves
+}APQ Time Year:LTD
+}APQ Time Year:LTG
+}APQ Time Year:}APQ Time Year
+}APQ Time Year-Month:AVG
+}APQ Time Year-Month:Delta
+}APQ Time Year-Month:Delta PY
+}APQ Time Year-Month:Leaves
+}APQ Time Year-Month:LTD
+}APQ Time Year-Month:LTD Quarter
+}APQ Time Year-Month:LTD Year
+}APQ Time Year-Month:LTG
+}APQ Time Year-Month:LTG Quarter
+}APQ Time Year-Month:LTG Year
+}APQ Time Year-Month:M3M
+}APQ Time Year-Month:M6M
+}APQ Time Year-Month:MAT
+}APQ Time Year-Month:Month
+}APQ Time Year-Month:Month YTD
+}APQ Time Year-Month:Quarter
+}APQ Time Year-Month:Quarter YTD
+}APQ Time Year-Month:Year
+}APQ Time Year-Month:Year Last X
+}APQ Time Year-Month:YTD
+}APQ Time Year-Month:YTD Quarter
+}APQ Time Year-Month:YTG
+}APQ Time Year-Month:YTG Quarter
+}APQ Time Year-Month:}APQ Time Year-Month
+}APQ Time Year-Month Lookup:}APQ Time Year-Month Lookup
+}APQ Time Year-Week Lookup:}APQ Time Year-Week Lookup
+}APQ TM1 Objects:}APQ TM1 Objects
+}APQ TM1 Object Type:}APQ TM1 Object Type
+}APQ TM1 Transaction Log Analysis Measure:}APQ TM1 Transaction Log Analysis Measure
+}APQ TM1 Transaction Logs:}APQ TM1 Transaction Logs
+}APQ Universal View:}APQ Universal View
+}APQ Universal View Calculation Measure:}APQ Universal View Calculation Measure
+}APQ Universal View Column:}APQ Universal View Column
+}APQ Universal View Data Measure:}APQ Universal View Data Measure
+}APQ Universal View Dimension:}APQ Universal View Dimension
+}APQ Universal View Dimension Mapping Measure:}APQ Universal View Dimension Mapping Measure
+}APQ Universal View Filter Measure:}APQ Universal View Filter Measure
+}APQ Universal View Format Measure:}APQ Universal View Format Measure
+}APQ Universal View Measure:}APQ Universal View Measure
+}APQ Universal View Row:}APQ Universal View Row
+}APQ Universal View Source Mapping Measure:}APQ Universal View Source Mapping Measure
+}APQ Update Frequency:}APQ Update Frequency
+}APQ User Activity Log Measure:}APQ User Activity Log Measure
+}APQ User Last Active Measure:}APQ User Last Active Measure
+}APQ Version:}APQ Version
+}APQ Views:}APQ Views
+}CAMAssociatedGroups:}CAMAssociatedGroups
+}Chores:}Chores
+}ClientProperties:}ClientProperties
+}Clients:}Clients
+}ClientSettings:}ClientSettings
+}ConnectionProperties:}ConnectionProperties
+}Connections:}Connections
+}CubeAttributes:}CubeAttributes
+}CubeDrillString:}CubeDrillString
+}Cube Functions:}Cube Functions
+}CubeProperties:}CubeProperties
+}Cubes:}Cubes
+}CubeSecurityProperties:}CubeSecurityProperties
+}Cultures:}Cultures
+}DeployedLinkRecord:}DeployedLinkRecord
+}DimensionAttributes:}DimensionAttributes
+}DimensionFormatAttributes:}DimensionFormatAttributes
+}DimensionFormatItems:}DimensionFormatItems
+}DimensionProperties:}DimensionProperties
+}Dimensions:}Dimensions
+}ElementAttributes_Currency From:}ElementAttributes_Currency From
+}ElementAttributes_Currency To:}ElementAttributes_Currency To
+}ElementAttributes_Data Source GL:}ElementAttributes_Data Source GL
+}ElementAttributes_Date:}ElementAttributes_Date
+}ElementAttributes_Day in Month:}ElementAttributes_Day in Month
+}ElementAttributes_Day in Week:}ElementAttributes_Day in Week
+}ElementAttributes_Day in Year:}ElementAttributes_Day in Year
+}ElementAttributes_Employee:}ElementAttributes_Employee
+}ElementAttributes_FX Rate Type:}ElementAttributes_FX Rate Type
+}ElementAttributes_Line Item:}ElementAttributes_Line Item
+}ElementAttributes_M Currency:}ElementAttributes_M Currency
+}ElementAttributes_M FX Rate:}ElementAttributes_M FX Rate
+}ElementAttributes_M GL Reporting:}ElementAttributes_M GL Reporting
+}ElementAttributes_Month:}ElementAttributes_Month
+}ElementAttributes_M Reference:}ElementAttributes_M Reference
+}ElementAttributes_M Sales Reporting:}ElementAttributes_M Sales Reporting
+}ElementAttributes_M Sys Archive Parameter:}ElementAttributes_M Sys Archive Parameter
+}ElementAttributes_M Sys Archive Profile:}ElementAttributes_M Sys Archive Profile
+}ElementAttributes_M Sys Menu:}ElementAttributes_M Sys Menu
+}ElementAttributes_M Sys Menu Application Entry:}ElementAttributes_M Sys Menu Application Entry
+}ElementAttributes_M Sys Module Object:}ElementAttributes_M Sys Module Object
+}ElementAttributes_M Sys Parameter:}ElementAttributes_M Sys Parameter
+}ElementAttributes_M Sys Time Attribute:}ElementAttributes_M Sys Time Attribute
+}ElementAttributes_M Sys Versioning Cube:}ElementAttributes_M Sys Versioning Cube
+}ElementAttributes_M Sys Versioning Log:}ElementAttributes_M Sys Versioning Log
+}ElementAttributes_M Sys Workbench:}ElementAttributes_M Sys Workbench
+}ElementAttributes_M Sys Workbench Task Dependency:}ElementAttributes_M Sys Workbench Task Dependency
+}ElementAttributes_M Sys Workflow Cooling Period:}ElementAttributes_M Sys Workflow Cooling Period
+}ElementAttributes_M UDC:}ElementAttributes_M UDC
+}ElementAttributes_M Unit:}ElementAttributes_M Unit
+}ElementAttributes_M Workflow:}ElementAttributes_M Workflow
+}ElementAttributes_Planning Year:}ElementAttributes_Planning Year
+}ElementAttributes_Quarter:}ElementAttributes_Quarter
+}ElementAttributes_Scenario:}ElementAttributes_Scenario
+}ElementAttributes_Sys Archive ID:}ElementAttributes_Sys Archive ID
+}ElementAttributes_Sys Archive Parameter:}ElementAttributes_Sys Archive Parameter
+}ElementAttributes_Sys Menu Application Entry:}ElementAttributes_Sys Menu Application Entry
+}ElementAttributes_Sys Menu Link:}ElementAttributes_Sys Menu Link
+}ElementAttributes_Sys Menu Page:}ElementAttributes_Sys Menu Page
+}ElementAttributes_Sys Menu Page Column:}ElementAttributes_Sys Menu Page Column
+}ElementAttributes_Sys Menu Page Row:}ElementAttributes_Sys Menu Page Row
+}ElementAttributes_Sys Menu Parameter:}ElementAttributes_Sys Menu Parameter
+}ElementAttributes_Sys Menu Profile:}ElementAttributes_Sys Menu Profile
+}ElementAttributes_Sys Module:}ElementAttributes_Sys Module
+}ElementAttributes_Sys Module Object Type:}ElementAttributes_Sys Module Object Type
+}ElementAttributes_Sys Parameter:}ElementAttributes_Sys Parameter
+}ElementAttributes_Sys Versioning Module:}ElementAttributes_Sys Versioning Module
+}ElementAttributes_Sys Workbench Group:}ElementAttributes_Sys Workbench Group
+}ElementAttributes_Sys Workbench Priority:}ElementAttributes_Sys Workbench Priority
+}ElementAttributes_Sys Workbench Step:}ElementAttributes_Sys Workbench Step
+}ElementAttributes_Sys Workflow:}ElementAttributes_Sys Workflow
+}ElementAttributes_Training Day:}ElementAttributes_Training Day
+}ElementAttributes_Training Task:}ElementAttributes_Training Task
+}ElementAttributes_UDC:}ElementAttributes_UDC
+}ElementAttributes_Version:}ElementAttributes_Version
+}ElementAttributes_Week:}ElementAttributes_Week
+}ElementAttributes_Week Day:}ElementAttributes_Week Day
+}ElementAttributes_Year:}ElementAttributes_Year
+}ElementAttributes_Year Fiscal:}ElementAttributes_Year Fiscal
+}ElementAttributes_Year Month:}ElementAttributes_Year Month
+}ElementAttributes_Year Week:}ElementAttributes_Year Week
+}ElementAttributes_}ApplicationEntries:}ElementAttributes_}ApplicationEntries
+}ElementAttributes_}APQ Applications:}ElementAttributes_}APQ Applications
+}ElementAttributes_}APQ Calculation Type:}ElementAttributes_}APQ Calculation Type
+}ElementAttributes_}APQ CAM NamespaceID:}ElementAttributes_}APQ CAM NamespaceID
+}ElementAttributes_}APQ Chore Info Measure:}ElementAttributes_}APQ Chore Info Measure
+}ElementAttributes_}APQ Chore Info Parameter:}ElementAttributes_}APQ Chore Info Parameter
+}ElementAttributes_}APQ Chores:}ElementAttributes_}APQ Chores
+}ElementAttributes_}APQ Clients:}ElementAttributes_}APQ Clients
+}ElementAttributes_}APQ Clients Consol:}ElementAttributes_}APQ Clients Consol
+}ElementAttributes_}APQ Cube Last Updated by Process Measure:}ElementAttributes_}APQ Cube Last Updated by Process Measure
+}ElementAttributes_}APQ Cubes:}ElementAttributes_}APQ Cubes
+}ElementAttributes_}APQ Cube Views:}ElementAttributes_}APQ Cube Views
+}ElementAttributes_}APQ Cube Views Management Measure:}ElementAttributes_}APQ Cube Views Management Measure
+}ElementAttributes_}APQ Cube Views Measure:}ElementAttributes_}APQ Cube Views Measure
+}ElementAttributes_}APQ Data Source Row:}ElementAttributes_}APQ Data Source Row
+}ElementAttributes_}APQ Dimension Attribute Matrix Measure:}ElementAttributes_}APQ Dimension Attribute Matrix Measure
+}ElementAttributes_}APQ Dimension Attributes Measure:}ElementAttributes_}APQ Dimension Attributes Measure
+}ElementAttributes_}APQ Dimension Defaults Measure:}ElementAttributes_}APQ Dimension Defaults Measure
+}ElementAttributes_}APQ Dimension Defaults Measure Type:}ElementAttributes_}APQ Dimension Defaults Measure Type
+}ElementAttributes_}APQ Dimension Definition Parameter:}ElementAttributes_}APQ Dimension Definition Parameter
+}ElementAttributes_}APQ Dimension Definition Source Measure:}ElementAttributes_}APQ Dimension Definition Source Measure
+}ElementAttributes_}APQ Dimension Elements:}ElementAttributes_}APQ Dimension Elements
+}ElementAttributes_}APQ Dimension Element Search Measure:}ElementAttributes_}APQ Dimension Element Search Measure
+}ElementAttributes_}APQ Dimension Hierarchies:}ElementAttributes_}APQ Dimension Hierarchies
+}ElementAttributes_}APQ Dimension Hierarchies Measure:}ElementAttributes_}APQ Dimension Hierarchies Measure
+}ElementAttributes_}APQ Dimensions:}ElementAttributes_}APQ Dimensions
+}ElementAttributes_}APQ Dimension SemiDynamic Subsets Measure:}ElementAttributes_}APQ Dimension SemiDynamic Subsets Measure
+}ElementAttributes_}APQ Dimension Source:}ElementAttributes_}APQ Dimension Source
+}ElementAttributes_}APQ Dimension Static Subsets And UDC Measure:}ElementAttributes_}APQ Dimension Static Subsets And UDC Measure
+}ElementAttributes_}APQ Dimension Subsets:}ElementAttributes_}APQ Dimension Subsets
+}ElementAttributes_}APQ Dimension Subsets Measure:}ElementAttributes_}APQ Dimension Subsets Measure
+}ElementAttributes_}APQ Dimension Subset Use Measure:}ElementAttributes_}APQ Dimension Subset Use Measure
+}ElementAttributes_}APQ Dimension Use Index:}ElementAttributes_}APQ Dimension Use Index
+}ElementAttributes_}APQ Dimension Use Measure:}ElementAttributes_}APQ Dimension Use Measure
+}ElementAttributes_}APQ Escape Characters:}ElementAttributes_}APQ Escape Characters
+}ElementAttributes_}APQ Execution Item:}ElementAttributes_}APQ Execution Item
+}ElementAttributes_}APQ Glossary Measure:}ElementAttributes_}APQ Glossary Measure
+}ElementAttributes_}APQ Groups:}ElementAttributes_}APQ Groups
+}ElementAttributes_}APQ HTML Character Entity:}ElementAttributes_}APQ HTML Character Entity
+}ElementAttributes_}APQ Item Index:}ElementAttributes_}APQ Item Index
+}ElementAttributes_}APQ Parameters:}ElementAttributes_}APQ Parameters
+}ElementAttributes_}APQ Picklist Dimension Measure:}ElementAttributes_}APQ Picklist Dimension Measure
+}ElementAttributes_}APQ PickList Item:}ElementAttributes_}APQ PickList Item
+}ElementAttributes_}APQ PickList Validations:}ElementAttributes_}APQ PickList Validations
+}ElementAttributes_}APQ Processes:}ElementAttributes_}APQ Processes
+}ElementAttributes_}APQ Process Execution Log Measure:}ElementAttributes_}APQ Process Execution Log Measure
+}ElementAttributes_}APQ ProcessExit Code:}ElementAttributes_}APQ ProcessExit Code
+}ElementAttributes_}APQ Process Parallelization Control Measure:}ElementAttributes_}APQ Process Parallelization Control Measure
+}ElementAttributes_}APQ Process Parameter Matrix Measure:}ElementAttributes_}APQ Process Parameter Matrix Measure
+}ElementAttributes_}APQ Process Parameters:}ElementAttributes_}APQ Process Parameters
+}ElementAttributes_}APQ Process Parameters Info Measure:}ElementAttributes_}APQ Process Parameters Info Measure
+}ElementAttributes_}APQ Process to Object Reference Measure:}ElementAttributes_}APQ Process to Object Reference Measure
+}ElementAttributes_}APQ Pulse ServerName:}ElementAttributes_}APQ Pulse ServerName
+}ElementAttributes_}APQ Pulse Service Name:}ElementAttributes_}APQ Pulse Service Name
+}ElementAttributes_}APQ Pulse User login Measure:}ElementAttributes_}APQ Pulse User login Measure
+}ElementAttributes_}APQ Pulse Workbook:}ElementAttributes_}APQ Pulse Workbook
+}ElementAttributes_}APQ Pulse Workbook Path:}ElementAttributes_}APQ Pulse Workbook Path
+}ElementAttributes_}APQ Reconciliation Cell Value Change Measure:}ElementAttributes_}APQ Reconciliation Cell Value Change Measure
+}ElementAttributes_}APQ Reconciliation Cell Value Change Profile:}ElementAttributes_}APQ Reconciliation Cell Value Change Profile
+}ElementAttributes_}APQ Reconciliation Check Extended Measure:}ElementAttributes_}APQ Reconciliation Check Extended Measure
+}ElementAttributes_}APQ Reconciliation Check Measure:}ElementAttributes_}APQ Reconciliation Check Measure
+}ElementAttributes_}APQ Reconciliation Item:}ElementAttributes_}APQ Reconciliation Item
+}ElementAttributes_}APQ Reconciliation Setup Measure:}ElementAttributes_}APQ Reconciliation Setup Measure
+}ElementAttributes_}APQ Security Effective Permission Measure:}ElementAttributes_}APQ Security Effective Permission Measure
+}ElementAttributes_}APQ Security Level:}ElementAttributes_}APQ Security Level
+}ElementAttributes_}APQ Security Manage Application Feeder Measure:}ElementAttributes_}APQ Security Manage Application Feeder Measure
+}ElementAttributes_}APQ Security Manage Client Groups Measure:}ElementAttributes_}APQ Security Manage Client Groups Measure
+}ElementAttributes_}APQ Security Manage Element Access Measure:}ElementAttributes_}APQ Security Manage Element Access Measure
+}ElementAttributes_}APQ Security Manage Element Security Groups Measure:}ElementAttributes_}APQ Security Manage Element Security Groups Measure
+}ElementAttributes_}APQ Security Manage Object Access Measure:}ElementAttributes_}APQ Security Manage Object Access Measure
+}ElementAttributes_}APQ Security Permission Index:}ElementAttributes_}APQ Security Permission Index
+}ElementAttributes_}APQ Settings Measure:}ElementAttributes_}APQ Settings Measure
+}ElementAttributes_}APQ Staging Control Parameter:}ElementAttributes_}APQ Staging Control Parameter
+}ElementAttributes_}APQ Staging Data Source:}ElementAttributes_}APQ Staging Data Source
+}ElementAttributes_}APQ Staging Dimension:}ElementAttributes_}APQ Staging Dimension
+}ElementAttributes_}APQ Staging Dimension Mapping Measure:}ElementAttributes_}APQ Staging Dimension Mapping Measure
+}ElementAttributes_}APQ Time Date:}ElementAttributes_}APQ Time Date
+}ElementAttributes_}APQ Time Date Lookup:}ElementAttributes_}APQ Time Date Lookup
+}ElementAttributes_}APQ Time Day in Year:}ElementAttributes_}APQ Time Day in Year
+}ElementAttributes_}APQ Time Dimensions:}ElementAttributes_}APQ Time Dimensions
+}ElementAttributes_}APQ Time Minute:}ElementAttributes_}APQ Time Minute
+}ElementAttributes_}APQ Time Month:}ElementAttributes_}APQ Time Month
+}ElementAttributes_}APQ Time Quarter:}ElementAttributes_}APQ Time Quarter
+}ElementAttributes_}APQ Time Relative Time Lookup Measure:}ElementAttributes_}APQ Time Relative Time Lookup Measure
+}ElementAttributes_}APQ Time Relative Time Periods:}ElementAttributes_}APQ Time Relative Time Periods
+}ElementAttributes_}APQ Time Second:}ElementAttributes_}APQ Time Second
+}ElementAttributes_}APQ Time Year:}ElementAttributes_}APQ Time Year
+}ElementAttributes_}APQ Time Year-Month:}ElementAttributes_}APQ Time Year-Month
+}ElementAttributes_}APQ Time Year-Month Lookup:}ElementAttributes_}APQ Time Year-Month Lookup
+}ElementAttributes_}APQ Time Year-Week Lookup:}ElementAttributes_}APQ Time Year-Week Lookup
+}ElementAttributes_}APQ TM1 Objects:}ElementAttributes_}APQ TM1 Objects
+}ElementAttributes_}APQ TM1 Object Type:}ElementAttributes_}APQ TM1 Object Type
+}ElementAttributes_}APQ TM1 Transaction Log Analysis Measure:}ElementAttributes_}APQ TM1 Transaction Log Analysis Measure
+}ElementAttributes_}APQ Universal View:}ElementAttributes_}APQ Universal View
+}ElementAttributes_}APQ Universal View Column:}ElementAttributes_}APQ Universal View Column
+}ElementAttributes_}APQ Universal View Data Measure:}ElementAttributes_}APQ Universal View Data Measure
+}ElementAttributes_}APQ Universal View Dimension:}ElementAttributes_}APQ Universal View Dimension
+}ElementAttributes_}APQ Universal View Dimension Mapping Measure:}ElementAttributes_}APQ Universal View Dimension Mapping Measure
+}ElementAttributes_}APQ Universal View Filter Measure:}ElementAttributes_}APQ Universal View Filter Measure
+}ElementAttributes_}APQ Universal View Measure:}ElementAttributes_}APQ Universal View Measure
+}ElementAttributes_}APQ Universal View Row:}ElementAttributes_}APQ Universal View Row
+}ElementAttributes_}APQ Update Frequency:}ElementAttributes_}APQ Update Frequency
+}ElementAttributes_}APQ User Last Active Measure:}ElementAttributes_}APQ User Last Active Measure
+}ElementAttributes_}Clients:}ElementAttributes_}Clients
+}ElementAttributes_}Cubes:}ElementAttributes_}Cubes
+}ElementAttributes_}Cultures:}ElementAttributes_}Cultures
+}ElementAttributes_}Dimensions:}ElementAttributes_}Dimensions
+}ElementAttributes_}ElementAttributes_}Clients:}ElementAttributes_}ElementAttributes_}Clients
+}ElementAttributes_}Groups:}ElementAttributes_}Groups
+}ElementAttributes_}Processes:}ElementAttributes_}Processes
+}ElementProperties:}ElementProperties
+}Features:}Features
+}Groups:}Groups
+}Hierarchies:}Hierarchies
+}HierarchyProperties:}HierarchyProperties
+}Hold:}Hold
+}LineNumber:}LineNumber
+}PerfClients:}PerfClients
+}PerfCubes:}PerfCubes
+}Permissions:}Permissions
+}PickList:}PickList
+}Processes:}Processes
+}RuleStats:}RuleStats
+}SecurityOverlay:}SecurityOverlay
+}StatsByProcess:}StatsByProcess
+}StatsStatsByClient:}StatsStatsByClient
+}StatsStatsByCube:}StatsStatsByCube
+}StatsStatsByCubeByClient:}StatsStatsByCubeByClient
+}StatsStatsForServer:}StatsStatsForServer
+}TimeIntervals:}TimeIntervals

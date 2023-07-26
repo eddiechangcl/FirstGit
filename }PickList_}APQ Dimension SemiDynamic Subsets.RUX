@@ -1,0 +1,75 @@
+FORMAT==100
+##############################################################################################################################
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+#############################
+SKIPCHECK;
+#############################
+
+# Dimension hierarchy
+[ '}APQ Dimension SemiDynamic Subsets Measure':'Hierarchy' ] = S: 
+If( SubSt( !}APQ Dimensions, 1, 9 ) @= '}APQ Time',
+    'Subset:}APQ Dimension Hierarchies:}Hierarchies_' | !}APQ Dimensions,
+    'Dimension:}Hierarchies_' | !}APQ Dimensions 
+);
+
+# For AliasToSet
+[ '}APQ Dimension SemiDynamic Subsets Measure':'AliasToSet', '}PickList':'Value' ] = S:
+IF( ISLEAF=1 & DB( '}APQ Dimension SemiDynamic Subsets', !}APQ Dimensions, !}APQ Item Index, 'IsUsedCount' ) = 1,
+   'Subset:' | '}ElementAttributes_' | !}APQ Dimensions | ':Alias Attributes',
+   CONTINUE
+);
+
+
+# For Regenration Frequency
+[ '}APQ Dimension SemiDynamic Subsets Measure':'Regeneration Frequency', '}PickList':'Value' ] = S:
+IF( ISLEAF=1 & DB( '}APQ Dimension SemiDynamic Subsets', !}APQ Dimensions, !}APQ Item Index, 'IsUsedCount' ) = 1,
+   'Subset:}APQ PickList Validations:PickList Daily-Weekly-Manual',
+   CONTINUE
+);
+
+# For Regenration Day
+[ '}APQ Dimension SemiDynamic Subsets Measure':'Regeneration Day', '}PickList':'Value' ] = S:
+IF( ISLEAF=1 & DB( '}APQ Dimension SemiDynamic Subsets', !}APQ Dimensions, !}APQ Item Index, 'IsUsedCount' ) = 1,
+   'Subset:}APQ PickList Validations:PickList Days',
+   CONTINUE
+);
+
+# For KeepSubsetDynamic
+[ '}APQ Dimension SemiDynamic Subsets Measure':'KeepSubsetDynamic', '}PickList':'Value' ] = S:
+IF( ISLEAF=1 & DB( '}APQ Dimension SemiDynamic Subsets', !}APQ Dimensions, !}APQ Item Index, 'IsUsedCount' ) = 1,
+   'Subset:}APQ PickList Validations:PickList Y-N',
+   CONTINUE
+);
+
+# ForAutomated MDX Type
+[ '}APQ Dimension SemiDynamic Subsets Measure':'Automated MDX Type', '}PickList':'Value' ] = S:
+IF( ISLEAF=1 & DB( '}APQ Dimension SemiDynamic Subsets', !}APQ Dimensions, !}APQ Item Index, 'IsUsedCount' ) = 1,
+   'Static::Element:Direct Children:Direct Children (A-Z Alpha):Element + Children:Element + Whole Hierarchy:Element + Level 0 Underneath:Level 0 Underneath:Level 0 Underneath (A-Z Alpha):Parents:Parents (A-Z Alpha):String Match',
+   CONTINUE
+);
+
+# Base Element. If MDX type is "String Match" then allow free text entry
+[ '}APQ Dimension SemiDynamic Subsets Measure':'Automated MDX Base Element', '}PickList':'Value' ] = S:
+IF( DB( '}APQ Dimension SemiDynamic Subsets', !}APQ Dimensions, !}APQ Item Index, 'Automated MDX Type' ) @= 'String Match',
+   '',
+   CONTINUE
+);
+
+# Base element. General case: if dimension below the threshold size use the whole dimension picklist else allow free entry.
+[ '}APQ Dimension SemiDynamic Subsets Measure':'Automated MDX Base Element', '}PickList':'Value' ] = S:
+IF(  ISLEAF=1 & DB( '}APQ Dimension SemiDynamic Subsets', !}APQ Dimensions, !}APQ Item Index, 'IsUsedCount' ) = 1 & DimSiz( !}APQ Dimensions ) <= DB( '}APQ Settings', 'Max subset size for PickList entry', 'Numeric' ),
+   'Dimension:' | !}APQ Dimensions,
+   CONTINUE
+);
+
+
+#############################
+##~~    End Rule File    ~~##
+#############################

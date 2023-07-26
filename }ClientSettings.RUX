@@ -1,0 +1,7 @@
+FORMAT==100
+
+# Leave Default Admin user open for data entry
+[ '}Clients':'Admin' ] = S: STET;
+
+# Set all users to be the same as admin
+[ ] = S: DB( '}ClientSettings', 'Admin', !}ClientSettings );

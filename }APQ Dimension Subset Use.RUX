@@ -1,0 +1,41 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+SKIPCHECK;
+FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Dimension Subset Use** is automatically compiled by the process **}APQ.Cub.DimensionSubsetUse.Update.0.Main**.
+# The cube tracks the relationship between views and subsets and can show all the views across all cubes in which a particular subset is used.
+# This can be useful when unable to delete subsets dud to the "used by view" error message.
+#
+# Note: 
+# As the TI process to compile the view/subset relationships relies on powershell scrips to recurse through the data directory inspecting .vue 
+# files the update can be slow if not limited to specific dimensions during the search.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+[ '}APQ Dimension Subset Use Measure':'Is Used' ] = N:
+IF( DB( '}APQ Dimension Use', AttrS( '}APQ Cube Views', !}APQ Cube Views, 'Cube Name' ), AttrS( '}APQ Dimension Subsets', !}APQ Dimension Subsets, 'Dimension' ), 'Is Used' ) > 0,
+  STET,
+  0
+);
+
+
+#############################
+##~~    End Rule File    ~~##
+#############################
+

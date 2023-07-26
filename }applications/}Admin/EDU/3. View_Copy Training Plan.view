@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=3. View_Copy Training Plan
+ENTRYTYPE=view
+ENTRYREFERENCE=TM1:///VIEW/PUBLIC/EDU Training Plan/Copy From Other Employee

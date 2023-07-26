@@ -1,0 +1,374 @@
+﻿283,100
+284,"}APQ Dimension Elements"
+11,20230515004909
+274,
+18,0
+275,
+278,0
+281,0
+270,365
+All Elements
+All N Elements
+All N Elements code
+APQ.Demo Customer
+APQ.Demo Customer - Code and Description
+APQ.Demo Customer - KAM
+APQ.Demo Customer - KAM - Code and Description
+APQ.Demo Customer - Leaves
+APQ.Demo Customer - Leaves - Code and Description
+APQ.Demo Test
+APQ.Demo Test - By Entry
+APQ.Demo Test - By Entry - Caption
+APQ.Demo Test - Caption
+APQ.Demo Test - Leaves
+APQ.Demo Test - Leaves - Caption
+APQ.Demo T Month
+APQ.Demo T Month - Description
+APQ.Demo T Month - Description Short
+APQ.Demo T Month - ERP Date Format
+APQ.Demo T Month - Idx0
+APQ.Demo T Month - Idx00
+APQ.Demo T Month - Leaves
+APQ.Demo T Month - Leaves - Description
+APQ.Demo T Month - Leaves - Description Short
+APQ.Demo T Month - Leaves - ERP Date Format
+APQ.Demo T Month - Leaves - Idx0
+APQ.Demo T Month - Leaves - Idx00
+APQ.Demo T Month - QTD
+APQ.Demo T Month - QTD - Description
+APQ.Demo T Month - QTD - Description Short
+APQ.Demo T Month - QTD - ERP Date Format
+APQ.Demo T Month - QTD - Idx0
+APQ.Demo T Month - QTD - Idx00
+APQ.Demo T Month - QTG
+APQ.Demo T Month - QTG - Description
+APQ.Demo T Month - QTG - Description Short
+APQ.Demo T Month - QTG - ERP Date Format
+APQ.Demo T Month - QTG - Idx0
+APQ.Demo T Month - QTG - Idx00
+APQ.Demo T Month - YTD
+APQ.Demo T Month - YTD - Description
+APQ.Demo T Month - YTD - Description Short
+APQ.Demo T Month - YTD - ERP Date Format
+APQ.Demo T Month - YTD - Idx0
+APQ.Demo T Month - YTD - Idx00
+APQ.Demo T Month - YTG
+APQ.Demo T Month - YTG - Description
+APQ.Demo T Month - YTG - Description Short
+APQ.Demo T Month - YTG - ERP Date Format
+APQ.Demo T Month - YTG - Idx0
+APQ.Demo T Month - YTG - Idx00
+APQ.Demo T Quarter
+APQ.Demo T Quarter - Description
+APQ.Demo T Quarter - Description Short
+APQ.Demo T Quarter - Leaves
+APQ.Demo T Quarter - Leaves - Description
+APQ.Demo T Quarter - Leaves - Description Short
+APQ.Demo T Quarter - YTD
+APQ.Demo T Quarter - YTD - Description
+APQ.Demo T Quarter - YTD - Description Short
+APQ.Demo T Quarter - YTG
+APQ.Demo T Quarter - YTG - Description
+APQ.Demo T Quarter - YTG - Description Short
+Currency From
+Currency From - Caption
+Currency From - Caption zh-Hans
+Currency From - Caption zh-Hant
+Currency From - Code
+Currency From - Country zh-Hans
+Currency From - Country zh-Hant
+Currency From - Description
+Currency To
+Currency To - Caption
+Currency To - Description
+Data Source GL
+Data Source GL - Caption
+Data Source GL - Caption zh-Hans
+Data Source GL - Caption zh-Hant
+Data Source GL - Description
+Data Source GL Plan
+Data Source Sales
+Date
+Date - Caption
+Date - Caption zh-Hans
+Date - Caption zh-Hant
+Date - Description
+Date - Julian Date
+Date - yyyy M00 dd
+Date - yyyymmdd
+Date - yyyy mmm dd
+Day in Month
+Day in Month - 0
+Day in Month - 00
+Day in Month - Caption
+Day in Month - Caption zh-Hans
+Day in Month - Caption zh-Hant
+Day in Month - D00
+Day in Week
+Day in Week - Caption
+Day in Week - Caption zh-Hans
+Day in Week - Caption zh-Hant
+Day in Week - Description
+Day in Week - Description Long
+Day in Year
+Day in Year - Caption
+Day in Year - Caption zh-Hans
+Day in Year - Caption zh-Hant
+Day in Year - dd mmm
+Day in Year - Description
+Day in Year - M00 D00
+Day in Year - mmdd
+Day in Year - mmm dd
+Default
+Default Member
+Demo Account GL
+Demo Account GL - Code and Description
+Demo Account GL Plan
+Demo Account Sales
+Demo Customer
+Demo Customer - Code and Description
+Demo Entity
+Demo Entity - Description
+Demo Entity - Full Description
+Demo Inter Company
+Demo Product
+Demo Product - Code and Description
+Demo Profit Center
+Demo Profit Center - Full Description
+FX Rate Type
+FX Rate Type - Caption
+FX Rate Type - Caption zh-Hans
+FX Rate Type - Caption zh-Hant
+Line Item
+Line Item - Caption
+Line Item - Caption zh-Hans
+Line Item - Caption zh-Hant
+Line Item - Description
+Line Item - Idx0
+Manpower Title
+M Currency
+M Currency - Caption
+M Currency - Caption zh-Hans
+M Currency - Caption zh-Hant
+M Currency - Description
+M FX Rate
+M FX Rate - Caption
+M FX Rate - Caption zh-Hans
+M FX Rate - Caption zh-Hant
+M GL Plan
+M GL Plan - Caption
+M GL Plan - Caption zh-Hans
+M GL Plan - Caption zh-Hant
+M GL Reporting
+M GL Reporting - Caption
+M GL Reporting - Caption zh-Hans
+M GL Reporting - Caption zh-Hant
+M Manpower Reporting
+Month
+Month - Caption
+Month - Caption zh-Hans
+Month - Caption zh-Hant
+Month - Description
+Month - Description zh-Hans
+Month - Description zh-Hant
+Month - M00
+Month - MMM
+Month - MMMM
+M Reference
+M Reference - Caption
+M Reference - Caption zh-Hans
+M Reference - Caption zh-Hant
+M Reference - Description
+M Reference - Description zh-Hans
+M Reference - Description zh-Hant
+M Sales Reporting
+M Sales Reporting - Caption
+M Sales Reporting - Caption zh-Hans
+M Sales Reporting - Caption zh-Hant
+M Sys Archive Parameter
+M Sys Archive Parameter - Caption
+M Sys Archive Parameter - Caption zh-Hans
+M Sys Archive Parameter - Caption zh-Hant
+M Sys Archive Profile
+M Sys Archive Profile - Caption
+M Sys Archive Profile - Caption zh-Hans
+M Sys Archive Profile - Caption zh-Hant
+M Sys Menu
+M Sys Menu Application Entry
+M Sys Menu Link
+M Sys Menu Parameter
+M Sys Module Object
+M Sys Module Object - Caption
+M Sys Module Object - Caption zh-Hans
+M Sys Module Object - Caption zh-Hant
+M Sys Parameter
+M Sys Parameter - Caption
+M Sys Parameter - Caption zh-Hans
+M Sys Parameter - Caption zh-Hant
+M Sys Time Attribute
+M Sys Time Attribute - Alias Month
+M Sys Time Attribute - Alias Week
+M Sys Time Attribute - Caption
+M Sys Time Attribute - Caption zh-Hans
+M Sys Time Attribute - Caption zh-Hant
+M Sys Versioning Cube
+M Sys Versioning Cube - Caption
+M Sys Versioning Cube - Caption zh-Hans
+M Sys Versioning Cube - Caption zh-Hant
+M Sys Versioning Log
+M Sys Versioning Log - Caption
+M Sys Versioning Log - Caption zh-Hans
+M Sys Versioning Log - Caption zh-Hant
+M Sys Workbench
+M Sys Workbench - Caption
+M Sys Workbench - Caption zh-Hans
+M Sys Workbench - Caption zh-Hant
+M Sys Workbench Task Dependency
+M Sys Workbench Task Dependency - Caption
+M Sys Workbench Task Dependency - Caption zh-Hans
+M Sys Workbench Task Dependency - Caption zh-Hant
+M Sys Workflow Cooling Period
+M Sys Workflow Cooling Period - Caption
+M Sys Workflow Cooling Period - Caption zh-Hans
+M Sys Workflow Cooling Period - Caption zh-Hant
+M UDC
+M UDC - Caption
+M UDC - Caption zh-Hans
+M UDC - Caption zh-Hant
+M Unit
+M Unit - Caption
+M Unit - Caption zh-Hans
+M Unit - Caption zh-Hant
+M Unit - Description
+M Workflow
+M Workflow - Caption
+M Workflow - Caption zh-Hans
+M Workflow - Caption zh-Hant
+Planning Year
+Planning Year - Caption
+Planning Year - Caption zh-Hans
+Planning Year - Caption zh-Hant
+Quarter
+Quarter - Caption
+Quarter - Caption zh-Hans
+Quarter - Caption zh-Hant
+Quarter - Description
+Scale
+Scale - Code and Description
+Scenario
+Scenario - Caption
+Scenario - Caption zh-Hans
+Scenario - Caption zh-Hant
+Scenario - Description
+Sys Archive ID
+Sys Archive ID - Caption
+Sys Archive ID - Caption zh-Hans
+Sys Archive ID - Caption zh-Hant
+Sys Archive Parameter
+Sys Archive Parameter - Caption
+Sys Archive Parameter - Caption zh-Hans
+Sys Archive Parameter - Caption zh-Hant
+Sys Lookup Date
+Sys Lookup Year
+Sys Lookup Year Fiscal
+Sys Lookup Year Month
+Sys Lookup Year Quarter
+Sys Lookup Year Week
+Sys Menu Application Entry
+Sys Menu Application Entry - Caption
+Sys Menu Application Entry - Page ID
+Sys Menu Link
+Sys Menu Link - Caption
+Sys Menu Link - Desc
+Sys Menu Page
+Sys Menu Page - Caption
+Sys Menu Page Column
+Sys Menu Page Column - Caption
+Sys Menu Page Row
+Sys Menu Page Row - Caption
+Sys Menu Parameter
+Sys Menu Parameter - Caption
+Sys Menu Profile
+Sys Menu Profile - Caption
+Sys Menu Profile - Caption_Default
+Sys Menu Profile - Desc
+Sys Menu Profile - }TM1_DefaultDisplayValue
+Sys Module
+Sys Module - Caption
+Sys Module - Caption zh-Hans
+Sys Module - Caption zh-Hant
+Sys Module - Code and Description
+Sys Module - Description
+Sys Module Object Type
+Sys Module Object Type - Caption
+Sys Module Object Type - Caption zh-Hans
+Sys Module Object Type - Caption zh-Hant
+Sys Parameter
+Sys Parameter - Caption
+Sys Parameter - Caption zh-Hans
+Sys Parameter - Caption zh-Hant
+Sys Versioning Module
+Sys Versioning Module - Caption
+Sys Versioning Module - Caption zh-Hans
+Sys Versioning Module - Caption zh-Hant
+Sys Workbench Group
+Sys Workbench Group - Caption
+Sys Workbench Group - Caption zh-Hans
+Sys Workbench Group - Caption zh-Hant
+Sys Workbench Group - Description
+Sys Workbench Group - Full Description
+Sys Workbench Priority
+Sys Workbench Priority - Caption
+Sys Workbench Priority - Caption zh-Hans
+Sys Workbench Priority - Caption zh-Hant
+Sys Workbench Step
+Sys Workbench Step - Caption
+Sys Workbench Step - Caption zh-Hans
+Sys Workbench Step - Caption zh-Hant
+Sys Workflow
+Sys Workflow - Caption
+Sys Workflow - Caption zh-Hans
+Sys Workflow - Caption zh-Hant
+Sys Workflow - Description
+Time Deviation
+UDC
+UDC - AAP Description
+UDC - Caption
+UDC - China Description
+UDC - EMEA Description
+UDC - PA Description
+UDC - Root El
+UDC - TWN Description
+UDC Dimension
+Version
+Version - Caption
+Version - Caption zh-Hans
+Version - Caption zh-Hant
+Week
+Week - Caption
+Week - Caption zh-Hans
+Week - Caption zh-Hant
+Week - Description
+Year
+Year - Caption
+Year - Caption zh-Hans
+Year - Caption zh-Hant
+Year - Julian Year
+Year - Y0000
+Year Fiscal
+Year Fiscal - Caption
+Year Fiscal - Caption zh-Hans
+Year Fiscal - Caption zh-Hant
+Year Month
+Year Month - Caption
+Year Month - Caption zh-Hans
+Year Month - Caption zh-Hant
+Year Month - Description
+Year Month - yyyy M00
+Year Month - yyyymm
+Year Month - yyyy mmm
+Year Week
+Year Week - Caption
+Year Week - Caption zh-Hans
+Year Week - Caption zh-Hant
+Year Week - yyyy W00

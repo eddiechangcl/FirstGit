@@ -1,0 +1,409 @@
+﻿283,100
+284,"All N Elements"
+11,20230515004922
+274,Caption_Default
+18,0
+275,
+278,0
+281,0
+270,400
+EDU Employee Profile\Default
+EDU Training Plan\Copy From Other Employee
+EDU Training Plan\Copy User
+EDU Training Plan\Default
+EDU Training Plan\Definition
+EDU Training Plan\Due Date
+Employee Schedule\Default
+FX Rate\FX Rate Calc Check
+FX Rate\FX Rate Import
+FX Rate\FX Rate Override
+Public Holiday Reference\Default
+Sys Archive Parameter\Default
+Sys Archive Profile\Default
+Sys Dimension UDC\Default
+Sys Menu\Sys Menu - Button
+Sys Menu\Sys Menu - Favorite Page
+Sys Menu\Sys Menu - Page
+Sys Menu Parameter\Default
+Sys Menu Parameter\Sys Menu - Para
+Sys Module Object\Default
+Sys Module Object\Sys Module Object
+Sys Module Object\Sys Module Object App
+Sys Module Object\Sys Module Object Summary
+Sys Module Object\zTemp
+Sys Parameter\Default
+Sys Parameter\Sys Caption Language Setting
+Sys Parameter\Update Current Period
+Sys Time Attribute\El D
+Sys Time Attribute\El D - T Dev
+Sys Time Attribute\El D MTD
+Sys Time Attribute\El D MTG
+Sys Time Attribute\El D YTD
+Sys Time Attribute\El D YTG
+Sys Time Attribute\El F
+Sys Time Attribute\El H
+Sys Time Attribute\El M
+Sys Time Attribute\El M - T Dev
+Sys Time Attribute\El M W M
+Sys Time Attribute\El M YTD
+Sys Time Attribute\El M YTG
+Sys Time Attribute\El Q
+Sys Time Attribute\El Q - T Dev
+Sys Time Attribute\El W
+Sys Time Attribute\El W - T Dev
+Sys Time Attribute\El W M
+Sys Time Attribute\El W YTD
+Sys Time Attribute\El W YTG
+Sys Time Attribute\El Y
+Sys Time Attribute\El Y - T Dev
+Sys Time Attribute\El Y Fiscal
+Sys Time Attribute\El Y Fiscal - T Dev
+Sys Versioning Cube\Default
+Sys Versioning Log\Default
+Sys Workbench\Default
+Sys Workbench Task Dependency\Default
+Sys Workflow Cooling Period\Default
+}APQ Chore Info\Chore Schedule Order
+}APQ Chore Info\Default
+}APQ Chore Info\zDrill to Chore Details
+}APQ Cube Data Archive\Default
+}APQ Cube Dependency\Default
+}APQ Cube Dependency\z_Process_source_}APQ.Server.CubeDependency.Set
+}APQ Cube Dimension Dependency\Default
+}APQ Cube Last Updated by Process\Default
+}APQ Cube Last Updated by Process\Update Status
+}APQ Cube View Cache Control\Default
+}APQ Cube View Cache Control\View cache data entry
+}APQ Cube Views\Default
+}APQ Cube Views Management\Default
+}APQ Cube Views Management\Input
+}APQ Cube Views Management\Input no MDX
+}APQ Cube Views Management\Set Default Row & Column dimension
+}APQ Dimension Attribute Definition\APQ.Demo Customer
+}APQ Dimension Attribute Definition\APQ.Demo Test
+}APQ Dimension Attribute Definition\APQ.Demo T Month
+}APQ Dimension Attribute Definition\APQ.Demo T Quarter
+}APQ Dimension Attribute Definition\Currency From
+}APQ Dimension Attribute Definition\Currency To
+}APQ Dimension Attribute Definition\Data Source GL
+}APQ Dimension Attribute Definition\Date
+}APQ Dimension Attribute Definition\Day in Month
+}APQ Dimension Attribute Definition\Day in Week
+}APQ Dimension Attribute Definition\Day in Year
+}APQ Dimension Attribute Definition\Demo Account GL
+}APQ Dimension Attribute Definition\Demo Account GL Plan
+}APQ Dimension Attribute Definition\Demo Customer
+}APQ Dimension Attribute Definition\Demo Entity
+}APQ Dimension Attribute Definition\Demo Product
+}APQ Dimension Attribute Definition\Demo Profit Center
+}APQ Dimension Attribute Definition\FX Rate Type
+}APQ Dimension Attribute Definition\Line Item
+}APQ Dimension Attribute Definition\M Currency
+}APQ Dimension Attribute Definition\M FX Rate
+}APQ Dimension Attribute Definition\M GL Plan
+}APQ Dimension Attribute Definition\M GL Reporting
+}APQ Dimension Attribute Definition\M Manpower Reporting
+}APQ Dimension Attribute Definition\Month
+}APQ Dimension Attribute Definition\M Reference
+}APQ Dimension Attribute Definition\M Sales Reporting
+}APQ Dimension Attribute Definition\M Sys Archive Parameter
+}APQ Dimension Attribute Definition\M Sys Archive Profile
+}APQ Dimension Attribute Definition\M Sys Menu
+}APQ Dimension Attribute Definition\M Sys Menu Application Entry
+}APQ Dimension Attribute Definition\M Sys Module Object
+}APQ Dimension Attribute Definition\M Sys Parameter
+}APQ Dimension Attribute Definition\M Sys Time Attribute
+}APQ Dimension Attribute Definition\M Sys Versioning Cube
+}APQ Dimension Attribute Definition\M Sys Versioning Log
+}APQ Dimension Attribute Definition\M Sys Workbench
+}APQ Dimension Attribute Definition\M Sys Workbench Task Dependency
+}APQ Dimension Attribute Definition\M Sys Workflow Cooling Period
+}APQ Dimension Attribute Definition\M UDC
+}APQ Dimension Attribute Definition\M Unit
+}APQ Dimension Attribute Definition\M Workflow
+}APQ Dimension Attribute Definition\Planning Year
+}APQ Dimension Attribute Definition\Product
+}APQ Dimension Attribute Definition\Product Category
+}APQ Dimension Attribute Definition\Quarter
+}APQ Dimension Attribute Definition\Scale
+}APQ Dimension Attribute Definition\Scenario
+}APQ Dimension Attribute Definition\Sys Archive ID
+}APQ Dimension Attribute Definition\Sys Archive Parameter
+}APQ Dimension Attribute Definition\Sys Menu Application Entry
+}APQ Dimension Attribute Definition\Sys Menu Link
+}APQ Dimension Attribute Definition\Sys Menu Page
+}APQ Dimension Attribute Definition\Sys Menu Page Column
+}APQ Dimension Attribute Definition\Sys Menu Page Row
+}APQ Dimension Attribute Definition\Sys Menu Parameter
+}APQ Dimension Attribute Definition\Sys Menu Profile
+}APQ Dimension Attribute Definition\Sys Module
+}APQ Dimension Attribute Definition\Sys Module Object Type
+}APQ Dimension Attribute Definition\Sys Parameter
+}APQ Dimension Attribute Definition\Sys Versioning Module
+}APQ Dimension Attribute Definition\Sys Workbench Group
+}APQ Dimension Attribute Definition\Sys Workbench Priority
+}APQ Dimension Attribute Definition\Sys Workbench Step
+}APQ Dimension Attribute Definition\Sys Workflow
+}APQ Dimension Attribute Definition\UDC
+}APQ Dimension Attribute Definition\Version
+}APQ Dimension Attribute Definition\Week
+}APQ Dimension Attribute Definition\Year
+}APQ Dimension Attribute Definition\Year Fiscal
+}APQ Dimension Attribute Definition\Year Month
+}APQ Dimension Attribute Definition\Year Week
+}APQ Dimension Attribute Definition\}APQ Applications
+}APQ Dimension Attribute Definition\}APQ Cubes
+}APQ Dimension Attribute Definition\}APQ Cube Views
+}APQ Dimension Attribute Definition\}APQ Dimensions
+}APQ Dimension Attribute Definition\}APQ Dimension Subsets
+}APQ Dimension Attribute Matrix\Attributes in Dimension
+}APQ Dimension Attribute Matrix\Default
+}APQ Dimension Attribute Matrix\Dimension Attribute Matrix
+}APQ Dimension Attribute Matrix\Dimensions having Atrribute
+}APQ Dimension Attributes\Create Attributes
+}APQ Dimension Attributes\Default
+}APQ Dimension Attributes\zDrill to Dimension Attributes
+}APQ Dimension Defaults\Default
+}APQ Dimension Defaults\Set standard subset exclusions
+}APQ Dimension Definition\Default
+}APQ Dimension Definition\Setup Dimension Load
+}APQ Dimension Definition\Setup Dimension Load by Attribute
+}APQ Dimension Definition\Setup Dimension Load Steps
+}APQ Dimension Definition\x_Test dim
+}APQ Dimension Definition Source\Default
+}APQ Dimension Definition Source\Template ByParentChild
+}APQ Dimension Definition Source\Template ByRollup
+}APQ Dimension Definition Source\x_Test dim
+}APQ Dimension Definition Source\}Preview_DimensionSource
+}APQ Dimension Elements\Alias Members
+}APQ Dimension Elements\Default
+}APQ Dimension Element Search\Default
+}APQ Dimension Element Search\Find all matched elements
+}APQ Dimension Element Search\Find principal name matches
+}APQ Dimension Hierarchies\Default
+}APQ Dimension SemiDynamic Subsets\Data entry by dimension
+}APQ Dimension SemiDynamic Subsets\Default
+}APQ Dimension SemiDynamic Subsets\Total Semi-Dynamic Subsets by Dimension
+}APQ Dimension SemiDynamic Subsets\zDrill to SemiDynamic Subsets
+}APQ Dimension Static Subsets And UDC\Data Entry - Flat Consol
+}APQ Dimension Static Subsets And UDC\Data Entry - Hier Consol
+}APQ Dimension Static Subsets And UDC\Data Entry - Static Subset
+}APQ Dimension Static Subsets And UDC\Default
+}APQ Dimension Static Subsets And UDC\Full View
+}APQ Dimension Static Subsets And UDC\Item Initialization
+}APQ Dimension Subsets\All Dynamic Subsets
+}APQ Dimension Subsets\Default
+}APQ Dimension Subsets\Dimensions with Default Subsets
+}APQ Dimension Subsets\Empty Subsets
+}APQ Dimension Subsets\Enter Subset Description Documentation
+}APQ Dimension Subsets\Subsets with Unknown Source
+}APQ Dimension Subset Use\All Subset to View dependencies
+}APQ Dimension Subset Use\Default
+}APQ Dimension Subset Use\Find views where subset used
+}APQ Dimension Subset Use\List view subset use by dimension
+}APQ Dimension Use\Default
+}APQ Dimension Use\Dimensions without cubes
+}APQ Dimension Use\Find cubes where dim is used
+}APQ Dimension Use\List dimensions in cube
+}APQ Dimension Use\List number of dimensions per cube
+}APQ Dimension Use\User dimensions without user cubes
+}APQ Glossary\Default
+}APQ Glossary\Docu Applications
+}APQ Glossary\Docu Applications - APQ
+}APQ Glossary\Docu Chores
+}APQ Glossary\Docu Chores - APQ
+}APQ Glossary\Docu Cubes
+}APQ Glossary\Docu Cubes - APQ
+}APQ Glossary\Docu Dimensions
+}APQ Glossary\Docu Dimensions - APQ
+}APQ Glossary\Docu Processes
+}APQ Glossary\Docu Processes - APQ
+}APQ Glossary\Docu Processes - Bedrock
+}APQ Glossary\Docu Rules
+}APQ Glossary\Docu Rules - APQ
+}APQ Glossary\Short Description Data Entry
+}APQ Picklist Dimension\Default
+}APQ Picklist Dimension\My Prefs
+}APQ Picklist Dimension\Set Defaults
+}APQ Picklist General\Default
+}APQ Picklist General\Set Picklist Items
+}APQ Process Execution Item\All Process Execution Items
+}APQ Process Execution Item\Default
+}APQ Process Execution Item\Define Process Lists
+}APQ Process Execution Item\zDrill from chore detail
+}APQ Process Execution Log\Current Year Logged Process Errors
+}APQ Process Execution Log\Default
+}APQ Process Execution Log\Process Execution Log - Last Run
+}APQ Process Execution Log\Process Execution Log - Today
+}APQ Process Execution Log\Process Execution Log - Yesterday
+}APQ Process Execution Log\zDrill to Process Last Run Details
+}APQ Process Execution Tree\Analyse by Process
+}APQ Process Execution Tree\Analyse by Runtime
+}APQ Process Execution Tree\Analyse by User
+}APQ Process Execution Tree\Default
+}APQ Process Parallelization Control\Default
+}APQ Process Parallelization Control\Disabled Processes
+}APQ Process Parallelization Control\Setup Parallelization
+}APQ Process Parameter Matrix\Default
+}APQ Process Parameters Info\Default
+}APQ Process Parameters Info\Maximum prarms in proceses
+}APQ Process Parameters Info\zDrill to Process Details
+}APQ Process Response Message\Default
+}APQ Process Response Message\Processes last run by me
+}APQ Process to Object Reference\APQ Process Interactions
+}APQ Process to Object Reference\APQ to Bedrock Process Interactions
+}APQ Process to Object Reference\Bedrock Process Interactions
+}APQ Process to Object Reference\Chore Last Run Time
+}APQ Process to Object Reference\Chore Process Dependency Map
+}APQ Process to Object Reference\Chore Process Matrix
+}APQ Process to Object Reference\Chore vs Process Last Timestamp
+}APQ Process to Object Reference\Cube Last Updated by Logged Process
+}APQ Process to Object Reference\Cube Process Dependency Map
+}APQ Process to Object Reference\Cube Process Matrix
+}APQ Process to Object Reference\Default
+}APQ Process to Object Reference\Dimension Last Updated
+}APQ Process to Object Reference\Dimension Process Dependency Map
+}APQ Process to Object Reference\Dimension Process Matrix
+}APQ Process to Object Reference\Processes in Chore
+}APQ Process to Object Reference\Process Execution Log - Last Run
+}APQ Process to Object Reference\Process Process Dependency Map
+}APQ Process to Object Reference\Process Process Matrix
+}APQ Process to Object Reference\zDrill to Chore to Process Map
+}APQ Process to Object Reference\zDrill to Process to Chore Map
+}APQ Process to Object Reference\zDrill to Process Updating Cube
+}APQ Process to Object Reference\zDrill to Process Updating Dimension
+}APQ Pulse User Login\Default
+}APQ Pulse User Login\Last Login Date by User
+}APQ Pulse User Login\Pulse User Login Details
+}APQ Pulse User Login\User Analytics
+}APQ Pulse User Login\User Login Count
+}APQ Pulse Workbook Tracker\Default
+}APQ Pulse Workbook Tracker\Pulse Analysis Web log
+}APQ Pulse Workbook Tracker\Pulse Analysis Workbook
+}APQ Reconciliation Cell Value Change\Default
+}APQ Reconciliation Check\Default
+}APQ Reconciliation Check\Drill
+}APQ Reconciliation Check\Reconciliation Check Results
+}APQ Reconciliation Check\Reconciliation Item Values
+}APQ Reconciliation Check\}z_Reconciliation_Drill_Rule
+}APQ Reconciliation Setup\Comparison Setup
+}APQ Reconciliation Setup\Default
+}APQ Reconciliation Setup\Reconciliation Item Setup
+}APQ Reconciliation Setup Detail\Default
+}APQ Reconciliation Setup Detail\Reconciliation Item Setup
+}APQ Reconciliation Setup Detail\Side by Side Check
+}APQ Security Effective Client Application Folder Permissions\Default
+}APQ Security Effective Client Application Folder Permissions\zDrill to Application Security
+}APQ Security Effective Client Application Folder Permissions\zDrill to Groups Conferring Access Rights
+}APQ Security Effective Client Element Permissions\APQ.Demo Customer
+}APQ Security Effective Client Element Permissions\Default
+}APQ Security Effective Client Element Permissions\zDrill to Groups Conferring Access Rights
+}APQ Security Effective Client Object Permissions\Application Permissions
+}APQ Security Effective Client Object Permissions\Chore Permissions
+}APQ Security Effective Client Object Permissions\Cube Permissions
+}APQ Security Effective Client Object Permissions\Default
+}APQ Security Effective Client Object Permissions\Dimension Permissions
+}APQ Security Effective Client Object Permissions\Process Permissions
+}APQ Security Effective Client Object Permissions\zDrill to Groups conferring access rights
+}APQ Security Effective Client Object Permissions\zDrill to Object Security
+}APQ Security Manage Client Groups\Assign Client to Group
+}APQ Security Manage Client Groups\Default
+}APQ Security Manage Client Groups\Full View
+}APQ Security Manage Client Groups\Inactivate Client
+}APQ Security Manage Client Groups\Inactivate Group
+}APQ Security Manage Client Groups\ztest
+}APQ Security Manage Element Access\Default
+}APQ Security Manage Element Access\Dimension Level Settings
+}APQ Security Manage Element Access\Set Security - APQ.Demo Customer
+}APQ Security Manage Element Security Groups\Default
+}APQ Security Manage Object Access\Default
+}APQ Security Manage Object Access\Set Application Security 1. Root
+}APQ Security Manage Object Access\Set Application Security 2. All
+}APQ Security Manage Object Access\Set Chore Security 1. Global Level
+}APQ Security Manage Object Access\Set Chore Security 2. Object Level
+}APQ Security Manage Object Access\Set Cube Security 1. Global Level
+}APQ Security Manage Object Access\Set Cube Security 2. Object Level
+}APQ Security Manage Object Access\Set Dimension Security 1. Global Level
+}APQ Security Manage Object Access\Set Dimension Security 2. Object Level
+}APQ Security Manage Object Access\Set Process Security 1. Global Level
+}APQ Security Manage Object Access\Set Process Security 2. Object Level
+}APQ Server Message Log Info\Chore Info
+}APQ Server Message Log Info\Default
+}APQ Server Message Log Info\Process Info
+}APQ Settings\Default
+}APQ Staging\Default
+}APQ Staging Dimension Mapping\Default
+}APQ Time Month Conversion\Default
+}APQ Time Relative Time Lookup\APQ Calculation Check
+}APQ Time Relative Time Lookup\Default
+}APQ TM1 Transaction Log Analysis\Default
+}APQ Universal View Calculation\Default
+}APQ Universal View Calculation\Set Column Calculation
+}APQ Universal View Calculation\Set Measure Calculation
+}APQ Universal View Calculation\Set Row Calculation
+}APQ Universal View Calculation\Set View Calculation
+}APQ Universal View Data\Default
+}APQ Universal View Dimension Mapping\Default
+}APQ Universal View Filter\Default
+}APQ Universal View Format\Default
+}APQ Universal View Format\Enter Custom Format
+}APQ Universal View Source Mapping\Default
+}APQ Universal View Source Mapping\Set Security Enforcement
+}APQ Universal View Source Mapping\Set View Number Formatting
+}APQ User Activity Log\Default
+}APQ User Activity Log\Unique Logins by Day
+}APQ User Activity Log\Unique Logins by Month
+}APQ User Activity Log\User Activity by Day
+}APQ User Activity Log\User Activity by Time of Day
+}APQ User Last Active\All
+}APQ User Last Active\Default
+}CellSecurity_}APQ Picklist Dimension\Default
+}CellSecurity_}APQ Picklist General\Default
+}CellSecurity_}APQ Process Response Message\Default
+}ClientGroups\Default
+}ClientProperties\Default
+}ClientSettings\Default
+}CubeAttributes\Cube Name
+}CubeAttributes\Default
+}CubeProperties\Default
+}CubeSecurity\All
+}CubeSecurity\Default
+}CubeSecurity\zDrill to Security Cube
+}DimensionAttributes\Default
+}DimensionAttributes\DimensionAttributes
+}DimensionAttributes\Dimension Name
+}DimensionProperties\Default
+}ElementAttributes_Currency From\Default
+}ElementAttributes_M Reference\Default
+}ElementAttributes_Sys Menu Profile\Sys Menu Language Setting
+}ElementAttributes_}APQ Applications\Set Apliqode Framework Securiity
+}ElementAttributes_}APQ Chores\Set Apliqode Framework Securiity
+}ElementAttributes_}APQ Cubes\Set Apliqode Framework Securiity
+}ElementAttributes_}APQ Dimensions\Set Apliqode Framework Securiity
+}ElementAttributes_}APQ Execution Item\Update Execution Item Description
+}ElementAttributes_}APQ Processes\Set Apliqode Framework Securiity
+}ElementAttributes_}Clients\Default
+}ElementAttributes_}Clients\User Language Setting
+}ElementSecurity_}APQ Applications\Default
+}ElementSecurity_}APQ Cubes\Default
+}ElementSecurity_}APQ Cube Views\Default
+}ElementSecurity_}APQ Dimension Attribute Definition Measure\Default
+}ElementSecurity_}APQ Dimensions\Default
+}ElementSecurity_}APQ Dimension Subsets\Default
+}HierarchyProperties\Default
+}LocalizedCubeAttributes\Default
+}LocalizedDimensionAttributes\Default
+}LocalizedElementAttributes_Currency From\Default
+}LocalizedElementAttributes_Date\Default
+}LocalizedElementAttributes_Month\Default
+}PickList_}APQ Process Execution Item\Default
+}PickList_}APQ Process Parallelization Control\Default
+}PickList_}APQ Process Parameters Info\Default
+}PickList_}APQ Reconciliation Setup\Default
+}PickList_}APQ Reconciliation Setup Detail\Default
+}PickList_}APQ Settings\Default
+}PickList_}APQ Time Relative Time Lookup\Default
+}StatsByCube\Default
+}StatsByCube\Memory by Cube
+}StatsByCube\Sys Stats Cube
+}StatsForServer\Default

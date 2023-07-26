@@ -1,0 +1,10 @@
+﻿283,100
+284,"Site Map Start (incl. apliqode)"
+11,00000000000000
+274,Caption_Default
+18,0
+275,237
+{ HIERARCHIZE( {TM1FILTERBYLEVEL( {UNION( {EXCEPT( {TM1SUBSETALL( [}APQ Cube Views] )}, {TM1FILTERBYPATTERN( {TM1SUBSETALL( [}APQ Cube Views] )}, "}*")} )}, {TM1FILTERBYPATTERN( {TM1SUBSETALL( [}APQ Cube Views] )}, "}APQ*")} )}, 1,2)} )}
+278,0
+281,0
+270,0

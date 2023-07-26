@@ -1,0 +1,80 @@
+﻿FORMAT==100
+FEEDSTRINGS;
+SKIPCHECK;
+
+##############################################################################################################
+### CWA Std. Model  version 3.00
+### Copyright © 2012~2020, Cubewise (Hong Kong) Ltd. All rights reserved.
+### This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+### and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+### you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+### or display any part, in any form, or by any means.
+##############################################################################################################
+
+##############################################################################################################
+###~~~    Start Rule File    ~~~###
+
+### NO TOTAL FOR RATES
+[] = C: 0;
+
+### DEFAULT "1" WHEN CURRENCY FROM AND CURRENCY TO ARE THE SAME
+[{'Rate', 'Rate Override'}] = If (!Currency From @=  !Currency To, 1, CONTINUE);
+
+### STET USD/EUR from for Input
+[{'Rate', 'Rate Override'}, 'Currency From':'EUR'] = N:
+IF (Dimix ('Sys Lookup Year Month', !Year|'-'|!Month) >= Dimix ('Sys Lookup Year Month', '2021-03')
+    ,STET
+    ,CONTINUE
+);
+
+[{'Rate', 'Rate Override'}, 'Currency From':'USD'] = N:
+IF (Dimix ('Sys Lookup Year Month', !Year|'-'|!Month) <= Dimix ('Sys Lookup Year Month', '2019-12')
+    ,STET
+    ,CONTINUE
+);
+
+### Calcc Everything Else
+#[{'Rate', 'Rate Override'}] = N:
+#    DB('FX Rate', !Scenario, !Year, !Month, 'USD', !Currency To, !FX Rate Type, !M FX Rate)
+#    \ DB('FX Rate', !Scenario, !Year, !Month, 'USD', !Currency From, !FX Rate Type, !M FX Rate);
+
+[{'Rate', 'Rate Override'}] = N:
+IF (Dimix ('Sys Lookup Year Month', !Year|'-'|!Month) >= Dimix ('Sys Lookup Year Month', '2021-03')
+    ,DB('FX Rate', !Scenario, !Year, !Month, 'EUR', !Currency To, !FX Rate Type, !M FX Rate)
+        \ DB('FX Rate', !Scenario, !Year, !Month, 'EUR', !Currency From, !FX Rate Type, !M FX Rate)
+    ,IF (Dimix ('Sys Lookup Year Month', !Year|'-'|!Month) <= Dimix ('Sys Lookup Year Month', '2019-12')
+    ,DB('FX Rate', !Scenario, !Year, !Month, 'USD', !Currency To, !FX Rate Type, !M FX Rate)
+        \ DB('FX Rate', !Scenario, !Year, !Month, 'USD', !Currency From, !FX Rate Type, !M FX Rate)
+        ,CONTINUE
+));
+
+
+#########################################################
+# RATES ARE ASSUMED THE FOLLOWING:
+# 1. RATE FINAL IS THE RATE TO USE EVERYWHERE ELSE IN THE MODEL
+# 2. THE RATES GET REVERSED AFTER RATES INPUTTED BY THE ADMINISTRATOR
+# 4. IF INPUT IS POPULATED, USE THE INPUTTED RATE, ELSE USE REVERSED.
+#########################################################
+
+['Rate Final'] = N:
+	If (['Rate Override'] <> 0, ['Rate Override'], ['Rate']);
+
+
+##############################################################################################################
+FEEDERS;
+##############################################################################################################
+
+#########################################################
+###  Internal Cube Feeders
+['Rate Override'] => ['Rate Final'];
+['Rate'] => ['Rate Final'];
+
+
+#########################################################
+###  External Cube Feeders
+
+
+
+
+##############################################################################################################
+###    End Rule File    ~~##

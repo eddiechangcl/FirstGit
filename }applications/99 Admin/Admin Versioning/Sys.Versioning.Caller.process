@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=Sys.Versioning.Caller
+ENTRYTYPE=process
+ENTRYREFERENCE=TM1:///PROCESS/PUBLIC/Sys.Versioning.Caller

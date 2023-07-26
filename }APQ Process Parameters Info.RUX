@@ -1,0 +1,112 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+SKIPCHECK;
+FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Process Parameters Info** is automatically compiled by the process **}APQ.Cub.ProcessParametersInfo.Update.0.Main**
+# by reading the contents of all the .pro files in the data directory and compiling into the cube the parameters of each process, 
+# their type and the default value. This information is used by the process **}APQ.Server.ProcessParallelization.Run** which writes out
+# the tm1runti.exe and hustle.exe command files.  This allows for parallel loading to be set up in a very quick and seamless way with 
+# little development overhead.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+[ '}APQ Process Parameters Info Measure':'Count' ] = N: IF( DB( '}APQ Process Parameters Info', !}APQ Processes, !}APQ Process Parameters, 'Parameter' ) @<> '', 1, 0 );
+
+[ '}APQ Process Parameters Info Measure':'CountS' ] = N:
+IF( DB( '}APQ Process Parameters Info', !}APQ Processes, !}APQ Process Parameters, 'Parameter' ) @<> '' & DB( '}APQ Process Parameters Info', !}APQ Processes, !}APQ Process Parameters, 'Type' ) @= 'S',
+  1,
+  0
+);
+
+[ '}APQ Process Parameters Info Measure':'CountN' ] = N:
+IF( DB( '}APQ Process Parameters Info', !}APQ Processes, !}APQ Process Parameters, 'Parameter' ) @<> '' & DB( '}APQ Process Parameters Info', !}APQ Processes, !}APQ Process Parameters, 'Type' ) @= 'N',
+  1,
+  0
+);
+
+[ '}APQ Process Parameters':'Total APQ Process Parameters', '}APQ Process Parameters Info Measure':'Parameter' ] = S:
+DB( '}APQ Process Parameters Info', !}APQ Processes, 'P1', !}APQ Process Parameters Info Measure ) |
+IF( DB( '}APQ Process Parameters Info', !}APQ Processes, 'P2', !}APQ Process Parameters Info Measure ) @<> '', ':', '' ) |
+DB( '}APQ Process Parameters Info', !}APQ Processes, 'P2', !}APQ Process Parameters Info Measure ) |
+IF( DB( '}APQ Process Parameters Info', !}APQ Processes, 'P3', !}APQ Process Parameters Info Measure ) @<> '', ':', '' ) |
+DB( '}APQ Process Parameters Info', !}APQ Processes, 'P3', !}APQ Process Parameters Info Measure ) |
+IF( DB( '}APQ Process Parameters Info', !}APQ Processes, 'P4', !}APQ Process Parameters Info Measure ) @<> '', ':', '' ) |
+DB( '}APQ Process Parameters Info', !}APQ Processes, 'P4', !}APQ Process Parameters Info Measure ) |
+IF( DB( '}APQ Process Parameters Info', !}APQ Processes, 'P5', !}APQ Process Parameters Info Measure ) @<> '', ':', '' ) |
+DB( '}APQ Process Parameters Info', !}APQ Processes, 'P5', !}APQ Process Parameters Info Measure ) |
+IF( DB( '}APQ Process Parameters Info', !}APQ Processes, 'P6', !}APQ Process Parameters Info Measure ) @<> '', ':', '' ) |
+DB( '}APQ Process Parameters Info', !}APQ Processes, 'P6', !}APQ Process Parameters Info Measure ) |
+IF( DB( '}APQ Process Parameters Info', !}APQ Processes, 'P7', !}APQ Process Parameters Info Measure ) @<> '', ':', '' ) |
+DB( '}APQ Process Parameters Info', !}APQ Processes, 'P7', !}APQ Process Parameters Info Measure ) |
+IF( DB( '}APQ Process Parameters Info', !}APQ Processes, 'P8', !}APQ Process Parameters Info Measure ) @<> '', ':', '' ) |
+DB( '}APQ Process Parameters Info', !}APQ Processes, 'P8', !}APQ Process Parameters Info Measure ) |
+IF( DB( '}APQ Process Parameters Info', !}APQ Processes, 'P9', !}APQ Process Parameters Info Measure ) @<> '', ':', '' ) |
+DB( '}APQ Process Parameters Info', !}APQ Processes, 'P9', !}APQ Process Parameters Info Measure ) |
+IF( DB( '}APQ Process Parameters Info', !}APQ Processes, 'P10', !}APQ Process Parameters Info Measure ) @<> '', ':', '' ) |
+DB( '}APQ Process Parameters Info', !}APQ Processes, 'P10', !}APQ Process Parameters Info Measure ) |
+IF( DB( '}APQ Process Parameters Info', !}APQ Processes, 'P11', !}APQ Process Parameters Info Measure ) @<> '', ':', '' ) |
+DB( '}APQ Process Parameters Info', !}APQ Processes, 'P11', !}APQ Process Parameters Info Measure ) |
+IF( DB( '}APQ Process Parameters Info', !}APQ Processes, 'P12', !}APQ Process Parameters Info Measure ) @<> '', ':', '' ) |
+DB( '}APQ Process Parameters Info', !}APQ Processes, 'P12', !}APQ Process Parameters Info Measure ) |
+IF( DB( '}APQ Process Parameters Info', !}APQ Processes, 'P13', !}APQ Process Parameters Info Measure ) @<> '', ':', '' ) |
+DB( '}APQ Process Parameters Info', !}APQ Processes, 'P13', !}APQ Process Parameters Info Measure ) |
+IF( DB( '}APQ Process Parameters Info', !}APQ Processes, 'P14', !}APQ Process Parameters Info Measure ) @<> '', ':', '' ) |
+DB( '}APQ Process Parameters Info', !}APQ Processes, 'P14', !}APQ Process Parameters Info Measure ) |
+IF( DB( '}APQ Process Parameters Info', !}APQ Processes, 'P15', !}APQ Process Parameters Info Measure ) @<> '', ':', '' ) |
+DB( '}APQ Process Parameters Info', !}APQ Processes, 'P15', !}APQ Process Parameters Info Measure ) |
+IF( DB( '}APQ Process Parameters Info', !}APQ Processes, 'P16', !}APQ Process Parameters Info Measure ) @<> '', ':', '' ) |
+DB( '}APQ Process Parameters Info', !}APQ Processes, 'P16', !}APQ Process Parameters Info Measure ) |
+IF( DB( '}APQ Process Parameters Info', !}APQ Processes, 'P17', !}APQ Process Parameters Info Measure ) @<> '', ':', '' ) |
+DB( '}APQ Process Parameters Info', !}APQ Processes, 'P17', !}APQ Process Parameters Info Measure ) |
+IF( DB( '}APQ Process Parameters Info', !}APQ Processes, 'P18', !}APQ Process Parameters Info Measure ) @<> '', ':', '' ) |
+DB( '}APQ Process Parameters Info', !}APQ Processes, 'P18', !}APQ Process Parameters Info Measure ) |
+IF( DB( '}APQ Process Parameters Info', !}APQ Processes, 'P19', !}APQ Process Parameters Info Measure ) @<> '', ':', '' ) |
+DB( '}APQ Process Parameters Info', !}APQ Processes, 'P19', !}APQ Process Parameters Info Measure ) |
+IF( DB( '}APQ Process Parameters Info', !}APQ Processes, 'P20', !}APQ Process Parameters Info Measure ) @<> '', ':', '' ) |
+DB( '}APQ Process Parameters Info', !}APQ Processes, 'P20', !}APQ Process Parameters Info Measure );
+
+[ '}APQ Process Parameters':'Total APQ Process Parameters' ] = S: '';
+
+[ '}APQ Process Parameters':'Total APQ Process Parameters', '}APQ Process Parameters Info Measure':'nDefaultValue' ] = C: 0;
+
+[ '}APQ Process Parameters Info Measure':'ValidationList' ] = S:
+IF( DB( '}APQ Process Parameters Info', !}APQ Processes, !}APQ Process Parameters, 'ValidationType' ) @<> 'List',
+  '',
+  STET
+);
+
+[ '}APQ Process Parameters Info Measure':{'ValidationDimension','ValidationSubset'} ] = S:
+IF( DB( '}APQ Process Parameters Info', !}APQ Processes, !}APQ Process Parameters, 'ValidationType' ) @<> 'Subset',
+  '',
+  STET
+);
+
+
+#############################
+FEEDERS;
+#############################
+
+[ '}APQ Process Parameters Info Measure':'Parameter' ] => [ '}APQ Process Parameters Info Measure':'Count' ], [ '}APQ Process Parameters Info Measure':'CountS' ], [ '}APQ Process Parameters Info Measure':'CountN' ];
+
+
+#############################
+##~~    End Rule File    ~~##
+#############################
+
+

@@ -1,0 +1,29 @@
+﻿283,100
+284,"Sys Module - Code and Description"
+11,20201005064154
+274,
+18,0
+275,
+278,0
+281,0
+270,20
+All Sys Modules
+S00 Bedrock Modified
+S01 Apliqode Modified
+S11 Sys Environment
+S12 Sys Time
+S13 Sys Time Attribute
+S14 Sys Archive
+S15
+S21 Menu
+S22 Security
+S23 Version Control
+S24 Workbench
+S25 Workflow
+S26
+S50 Sample Dimensions
+S51 Sample Exchange Rate
+S52 Sample GL
+S53 Sample HR
+S54 Sample Sales
+S55

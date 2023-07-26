@@ -1,0 +1,10 @@
+﻿283,100
+284,"Element Security - APQ.Demo Customer"
+11,20200918193026
+274,
+18,0
+275,182
+{Filter( {[}APQ Groups].[}APQ Groups].[Total APQ Element Security Groups].Children}, [}APQ Groups].[}APQ Groups].CurrentMember.Properties("ELEMENT_SECURITY") = "APQ.Demo Customer" )}
+278,0
+281,0
+270,0

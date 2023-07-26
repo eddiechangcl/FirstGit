@@ -1,0 +1,444 @@
+﻿FORMAT==100
+FEEDSTRINGS;
+SKIPCHECK;
+
+##############################################################################################################
+### CWA Std. Model  version 3.00
+### Copyright © 2012~2020, Cubewise (Hong Kong) Ltd. All rights reserved.
+### This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+### and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+### you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+### or display any part, in any form, or by any means.
+##############################################################################################################
+
+##############################################################################################################
+###~~~    Start Rule File    ~~~###
+
+###############################################
+### Skip Top Level Line Item
+['All Line Items']=S:'';
+
+###############################################
+### File Name
+['File Name']=S:
+IF (['Object Count']>0
+        , IF (!Sys Module Object Type @= 'Cube'
+              ,DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')| '.cub'
+              , IF (!Sys Module Object Type @= 'Dimension'
+                        ,DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')| '.dim'
+              , IF (!Sys Module Object Type @= 'Process'
+                        ,DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')| '.pro'
+              , IF (!Sys Module Object Type @= 'Chore'
+                        ,DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')| '.cho'
+              , IF (!Sys Module Object Type @= 'Application' & ['App Entry is Valid']>0
+                        , IF (ElPar ('}APQ Applications', DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name'), 1) @<>'}Applications'
+                                  ,SubSt (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')
+                                          , Long( ElPar ('}APQ Applications', DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name'), 1)) + 2
+                                          , Long( DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name'))
+                                      )
+                                  ,DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')
+                              )
+              ,'')))))
+        ,'');
+
+###############################################
+### App Objects
+
+['Application','App Entry File']=S:
+IF (['Object Count']>0 & ['App Entry is Valid']>0
+        ,  DB('}APQ Settings','Location: Data Dir','String') | '\}Applications\' |
+           DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')
+        ,'');
+
+['Application','App Template File']=S:
+IF (['Application','App Entry is .blob']>0 % ['Application','App Entry is .view']>0
+        ,  DB ('}APQ Application Entries'
+                     , DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')
+                     , 'Entry File Location'
+                 )
+        ,'');
+
+['Application','App Http String']=S:
+IF (['Object Count']>0 & ['App Entry is Valid']>0 & DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'File Name') @<>''
+        ,  'Contents(' | Char (39) | 'Applications' | Char (39) | ')'
+              | IF (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 01') @='', ''
+                            , '/Contents(' | Char (39) | DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 01') |  Char (39) | ')')
+              | IF (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 02') @='', ''
+                            , '/Contents(' | Char (39) | DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 02') | Char (39) | ')')
+              | IF (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 03') @='', ''
+                            , '/Contents(' | Char (39) | DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 03') | Char (39) | ')')
+              | IF (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 04') @='', ''
+                            , '/Contents(' | Char (39) | DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 04') | Char (39) | ')')
+              | IF (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 05') @='', ''
+                            , '/Contents(' | Char (39) | DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 05') | Char (39) | ')')
+              | IF (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 06') @='', ''
+                            , '/Contents(' | Char (39) | DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 06') | Char (39) | ')')
+              | IF (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 07') @='', ''
+                            , '/Contents(' | Char (39) | DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 07') | Char (39) | ')')
+              | IF (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 08') @='', ''
+                            , '/Contents(' | Char (39) | DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 08') | Char (39) | ')')
+              | IF (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'File Name') @='', ''
+                            , '/Contents(' | Char (39) | DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'File Name') | Char (39) | ')')
+        ,'');
+
+['Application','App Folder 01']=S:
+IF (['Object Count']>0 & ['App Entry is Valid']>0
+       , SubSt (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')
+                    , 1
+                    , SCAN ('\', DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')) - 1
+                 )
+        ,'');
+
+['Application','App Folder 02']=S:
+IF (['Object Count']>0 & ['App Entry is Valid']>0 & DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 01') @<>''
+       , SubSt (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')
+                    , Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 01')) + 2
+                    , SCAN ('\'
+                                 , SubSt (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')
+                                        , Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 01')) + 2
+                                        , Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name'))
+                                     )
+                            ) - 1
+                 )
+        ,'');
+
+['Application','App Folder 03']=S:
+IF (['Object Count']>0 & ['App Entry is Valid']>0 & DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 02') @<>''
+       , SubSt (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')
+                    , Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 01')) + 1
+                        + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 02')) + 2
+                    , SCAN ('\'
+                                 , SubSt (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')
+                                        , Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 01')) + 1
+                                              + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 02')) + 2
+                                        , Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name'))
+                                     )
+                            ) - 1
+                 )
+        ,'');
+
+['Application','App Folder 04']=S:
+IF (['Object Count']>0 & ['App Entry is Valid']>0 & DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 03') @<>''
+       , SubSt (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')
+                    , Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 01')) + 1
+                        + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 02')) + 1
+                        + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 03')) + 2
+                    , SCAN ('\'
+                                 , SubSt (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')
+                                        , Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 01')) + 1
+                                              + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 02')) + 1
+                                              + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 03')) + 2
+                                        , Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name'))
+                                     )
+                            ) - 1
+                 )
+        ,'');
+
+['Application','App Folder 05']=S:
+IF (['Object Count']>0 & ['App Entry is Valid']>0 & DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 04') @<>''
+       , SubSt (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')
+                    , Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 01')) + 1
+                        + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 02')) + 1
+                        + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 03')) + 1
+                        + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 04')) + 2
+                    , SCAN ('\'
+                                 , SubSt (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')
+                                        , Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 01')) + 1
+                                              + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 02')) + 1
+                                              + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 03')) + 1
+                                              + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 04')) + 2
+                                        , Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name'))
+                                     )
+                            ) - 1
+                 )
+        ,'');
+
+['Application','App Folder 06']=S:
+IF (['Object Count']>0 & ['App Entry is Valid']>0 & DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 05') @<>''
+       , SubSt (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')
+                    , Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 01')) + 1
+                        + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 02')) + 1
+                        + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 03')) + 1
+                        + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 04')) + 1
+                        + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 05')) + 2
+                    , SCAN ('\'
+                                 , SubSt (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')
+                                        , Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 01')) + 1
+                                              + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 02')) + 1
+                                              + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 03')) + 1
+                                              + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 04')) + 1
+                                              + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 05')) + 2
+                                        , Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name'))
+                                     )
+                            ) - 1
+                 )
+        ,'');
+
+['Application','App Folder 07']=S:
+IF (['Object Count']>0 & ['App Entry is Valid']>0 & DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 06') @<>''
+       , SubSt (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')
+                    , Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 01')) + 1
+                        + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 02')) + 1
+                        + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 03')) + 1
+                        + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 04')) + 1
+                        + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 05')) + 1                  
+                        + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 06')) + 2
+                    , SCAN ('\'
+                                 , SubSt (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')
+                                        , Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 01')) + 1
+                                              + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 02')) + 1
+                                              + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 03')) + 1
+                                              + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 04')) + 1
+                                              + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 05')) + 1
+                                              + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 06')) + 2
+                                        , Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name'))
+                                     )
+                            ) - 1
+                 )
+        ,'');        
+
+['Application','App Folder 08']=S:
+IF (['Object Count']>0 & ['App Entry is Valid']>0 & DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 07') @<>''
+       , SubSt (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')
+                    , Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 01')) + 1
+                        + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 02')) + 1
+                        + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 03')) + 1
+                        + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 04')) + 1
+                        + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 05')) + 1                  
+                        + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 06')) + 1
+                        + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 07')) + 2
+                    , SCAN ('\'
+                                 , SubSt (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')
+                                        , Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 01')) + 1
+                                              + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 02')) + 1
+                                              + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 03')) + 1
+                                              + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 04')) + 1
+                                              + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 05')) + 1
+                                              + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 06')) + 1
+                                              + Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'App Folder 07')) + 2
+                                        , Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name'))
+                                     )
+                            ) - 1
+                 )
+        ,'');  
+
+['Application','App Entry is .cube']=N:
+IF (['Object Count']>0
+        ,  IF ( DimIx ( '}APQ Applications', DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')) > 0
+                 & Lower(SubSt (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')
+                       , Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')) - 4, 5)) @='.cube'
+            , 1
+            , 0)
+        , CONTINUE);
+
+['Application','App Entry is .dimension']=N:
+IF (['Object Count']>0
+        ,  IF ( DimIx ( '}APQ Applications', DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')) > 0
+                 & Lower(SubSt (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')
+                       , Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')) - 9, 10)) @='.dimension'
+            , 1
+            , 0)
+        , CONTINUE);
+
+['Application','App Entry is .view']=N:
+IF (['Object Count']>0
+        ,  IF ( DimIx ( '}APQ Applications', DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')) > 0
+                 & Lower(SubSt (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')
+                       , Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')) - 4, 5)) @='.view'
+            , 1
+            , 0)
+        , CONTINUE);
+
+['Application','App Entry is .subset']=N:
+IF (['Object Count']>0
+        ,  IF ( DimIx ( '}APQ Applications', DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')) > 0
+                 & Lower(SubSt (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')
+                       , Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')) - 6, 7)) @='.subset'
+            , 1
+            , 0)
+        , CONTINUE);
+
+['Application','App Entry is .process']=N:
+IF (['Object Count']>0
+        ,  IF ( DimIx ( '}APQ Applications', DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')) > 0
+                 & Lower(SubSt (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')
+                       , Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')) - 7, 8)) @='.process'
+            , 1
+            , 0)
+        , CONTINUE);
+
+['Application','App Entry is .chore']=N:
+IF (['Object Count']>0
+        ,  IF ( DimIx ( '}APQ Applications', DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')) > 0
+                 & Lower(SubSt (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')
+                       , Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')) - 5, 6)) @='.chore'
+            , 1
+            , 0)
+        , CONTINUE);
+
+['Application','App Entry is .extr']=N:
+IF (['Object Count']>0
+        ,  IF ( DimIx ( '}APQ Applications', DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')) > 0
+                 & Lower(SubSt (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')
+                       , Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')) - 4, 5)) @='.extr'
+            , 1
+            , 0)
+        , CONTINUE);
+
+['Application','App Entry is .blob']=N:
+IF (['Object Count']>0
+        ,  IF ( DimIx ( '}APQ Applications', DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')) > 0
+                 & Lower(SubSt (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')
+                       , Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')) - 4, 5)) @='.blob'
+            , 1
+            , 0)
+        , CONTINUE);
+
+['Application','App Entry is folder']=N:
+IF (['Object Count']>0
+        ,  IF ( DimIx ( '}APQ Applications', DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')) > 0
+                 & Lower(SubSt (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')
+                       , Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')) - 4, 5)) @<>'.cube'
+                 & Lower(SubSt (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')
+                       , Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')) - 9, 10)) @<>'.dimension'
+                 & Lower(SubSt (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')
+                       , Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')) - 4, 5)) @<>'.view'
+                 & Lower(SubSt (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')
+                       , Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')) - 6, 7)) @<>'.subset'
+                 & Lower(SubSt (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')
+                       , Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')) - 7, 8)) @<>'.process'
+                 & Lower(SubSt (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')
+                       , Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')) - 5, 6)) @<>'.chore'
+                 & Lower(SubSt (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')
+                       , Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')) - 4, 5)) @<>'.blob'
+                 & Lower(SubSt (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')
+                       , Long (DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')) - 4, 5)) @<>'.extr'
+            , 1
+            , 0)
+        , CONTINUE);
+
+###############################################
+### Cube Objects
+['Cube','Cube File']=S:
+IF (['Object Count']>0
+        ,  DB('}APQ Settings','Location: Data Dir','String') | '\' |
+           DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')| '.cub'
+        ,'');
+
+['Cube','Cube Rule File']=S:
+IF (['Object Count']>0
+        , DB('}APQ Settings','Location: Data Dir','String') | '\' |
+            DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')| '.rux'
+        ,'');
+
+['Cube','Cube Picklist Cube File']=S:
+IF (['Object Count']>0
+        ,  DB('}APQ Settings','Location: Data Dir','String') | '\}PickList_' |
+           DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')| '.cub'
+        ,'');
+
+['Cube','Cube Picklist Cube Rule File']=S:
+IF (['Object Count']>0
+        , DB('}APQ Settings','Location: Data Dir','String') | '\}PickList_' |
+            DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')| '.rux'
+        ,'');
+
+['Cube','Cube View Folder']=S:
+IF (['Object Count']>0
+        , DB('}APQ Settings','Location: Data Dir','String') | '\' |
+           DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')| '}vues'
+        ,'');
+
+###############################################
+### Dimension Objects
+['Dimension','Dimension File']=S:
+IF (['Object Count']>0
+        , DB('}APQ Settings','Location: Data Dir','String') | '\' |
+          DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')| '.dim'
+        ,'');
+
+['Dimension','Dimension Attribute Dimension File']=S:
+IF (['Object Count']>0
+        , DB('}APQ Settings','Location: Data Dir','String') | '\}ElementAttributes_' |
+          DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')| '.dim'
+        ,'');
+
+['Dimension','Dimension Attribute Cube File']=S:
+IF (['Object Count']>0
+        , DB('}APQ Settings','Location: Data Dir','String') | '\}ElementAttributes_' |
+          DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')| '.cub'
+        ,'');
+
+['Dimension','Dimension Attribute Cube Rule File']=S:
+IF (['Object Count']>0
+        , DB('}APQ Settings','Location: Data Dir','String') | '\}ElementAttributes_' |
+          DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')| '.rux'
+        ,'');
+
+['Dimension','Dimension Attribute Cube Picklist Cube File']=S:
+IF (['Object Count']>0
+        , DB('}APQ Settings','Location: Data Dir','String') | '\}PickList_}ElementAttributes_' |
+          DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')| '.cub'
+        ,'');
+
+['Dimension','Dimension Attribute Cube Picklist Cube Rule File']=S:
+IF (['Object Count']>0
+        , DB('}APQ Settings','Location: Data Dir','String') | '\}PickList_}ElementAttributes_' |
+          DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')| '.rux'
+        ,'');
+
+['Dimension','Dimension Localize Cube File']=S:
+IF (['Object Count']>0
+        , DB('}APQ Settings','Location: Data Dir','String') | '\}LocalizedElementAttributes_' |
+          DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')| '.cub'
+        ,'');
+
+['Dimension','Dimension Localize Cube Rule File']=S:
+IF (['Object Count']>0
+        , DB('}APQ Settings','Location: Data Dir','String') | '\}LocalizedElementAttributes_' |
+          DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')| '.rux'
+        ,'');
+
+['Dimension','Dimension Subset Folder']=S:
+IF (['Object Count']>0
+        , DB('}APQ Settings','Location: Data Dir','String') | '\' |
+          DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')| '}subs'
+        ,'');
+
+###############################################
+### Process Objects
+['Process','Process File']=S:
+IF(['Object Count']>0
+        , DB('}APQ Settings','Location: Data Dir','String') | '\' |
+          DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')| '.pro'
+        ,'');
+
+['Chore','Chore File']=S:
+IF(['Object Count']>0
+        , DB('}APQ Settings','Location: Data Dir','String') | '\' |
+          DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name')| '.cho'
+        ,'');
+
+###############################################
+### Count
+['Object Count']=N:IF(DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name') @='', STET, 1);
+['Control Object Count']=N:IF(SubSt(DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name'),1,1) @='}', 1, STET);
+['APQ Object Count']=N:IF(SubSt(DB('Sys Module Object',!Sys Module,!Sys Module Object Type,!Line Item,'Object Name'),1,4) @='}APQ', 1, STET);
+
+##############################################################################################################
+
+FEEDERS;
+##############################################################################################################
+
+#############################
+###  Internal Cube Feeders
+['Object Name']=>['App Entry is Valid'];
+
+
+#############################
+###  External Cube Feeders
+
+
+
+##############################################################################################################
+###~~~   End Rule File  ~~~###

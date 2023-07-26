@@ -1,0 +1,50 @@
+﻿FORMAT==100
+FEEDSTRINGS;
+SKIPCHECK;
+
+##############################################################################################################
+### CWA Std. Model  version 3.00
+### Copyright © 2012~2020, Cubewise (Hong Kong) Ltd. All rights reserved.
+### This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+### and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+### you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+### or display any part, in any form, or by any means.
+##############################################################################################################
+
+##############################################################################################################
+###~~~    Start Rule File    ~~~###
+
+
+###############################################
+### Manual Setting
+
+[{'Server Name','Server Data Folder Path','Admin Host Name','TM1Web URL'},'String Value']=S:
+IF(DB('Sys Menu Parameter','Using System Parameter','String Value') @<>'Y'
+        , STET, CONTINUE);
+
+###############################################
+### Copy from System Parameter
+
+['Server Name','String Value'] = S: DB('Sys Parameter','TM1 Server Name','Text');
+['Server Data Folder Path','String Value'] = S: DB('Sys Parameter','TM1 Data Directory','Text');
+['Admin Host Name','String Value'] = S: DB('Sys Parameter','Admin Host','Text');
+['TM1Web URL','String Value'] = S: DB('Sys Parameter','TM1 Web URL','Text');
+
+
+##############################################################################################################
+
+#FEEDERS;
+##############################################################################################################
+
+#############################
+###  Internal Cube Feeders
+
+
+
+#############################
+###  External Cube Feeders
+
+
+
+##############################################################################################################
+###~~~   End Rule File  ~~~###

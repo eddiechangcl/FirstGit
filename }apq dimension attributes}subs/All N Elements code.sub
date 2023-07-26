@@ -1,0 +1,507 @@
+﻿283,100
+284,"All N Elements code"
+11,20230515004922
+274,
+18,0
+275,
+278,0
+281,0
+270,498
+0
+00
+Active
+Admin User
+Alias_ByRollup
+Alias Month
+Alias Week
+APQ Admin
+APQObjNm
+APQ PUser
+APQ Time Dim Alias
+APQ Time Dim Analog
+APQ User
+ASCII Code
+ATTR_FRAMEWORK
+AttrName
+Attr Type
+Auto Menu
+BaseCulture
+Base Period
+Block
+Cal Month
+Cal Month Name
+Cal Year
+Caption
+Caption [zh-Hant]
+Caption [zh-TW]
+Caption_ByRollup
+Caption_Default
+Caption V001
+Caption V002
+Caption V003
+Caption V004
+Caption V005
+Caption V006
+Caption V007
+Caption V008
+Caption V009
+Caption V010
+Caption V011
+Caption V012
+Caption V013
+Caption V014
+Caption V015
+Caption V016
+Caption V017
+Caption V018
+Caption V019
+Caption V020
+Caption V021
+Caption V022
+Caption V023
+Caption V024
+Caption V025
+Caption V026
+Caption V027
+Caption V028
+Caption V029
+Caption V030
+Caption V031
+Caption V032
+Caption V033
+Caption V034
+Caption V035
+Caption V036
+Caption V037
+Caption V038
+Caption V039
+Caption V040
+Caption V041
+Caption V042
+Caption V043
+Caption V044
+Caption V045
+Caption V046
+Caption V047
+Caption V048
+Caption V049
+Caption V050
+Caption with Tooltip
+Caption zh-Hans
+Caption zh-Hant
+CELL_SECURITY
+CellType
+Character
+Code
+Code + Name
+Code and Description
+Color
+Comparison
+Country
+Country zh-Hans
+Country zh-Hant
+Cube
+Cube Name
+CubeSaveData
+CUBE Source
+D00
+Day
+Day D00
+Day Index
+Day in Month
+Day in Year
+DayNO
+Day Numeric
+Day Part
+Days
+Days Working
+dd-mm-yyyy
+DD.MM.YYYY
+dd/mm/yyyy
+DDD dd/mm/yyyy
+dd mmm
+dd MMM YYYY
+Delete
+DeletedDate
+Desc
+Description
+Description [zh-Hans]
+Description [zh-Hant]
+Description Long
+Description Short
+Description zh-Hans
+Description zh-Hant
+Dimension
+E1
+E10
+E11
+E12
+E13
+E14
+E15
+E16
+E17
+E18
+E19
+E2
+E20
+E21
+E22
+E23
+E24
+E25
+E26
+E27
+E28
+E29
+E3
+E30
+E4
+E5
+E6
+E7
+E8
+E9
+ELEMENT_FRAMEWORK
+ELEMENT_SECURITY
+El Type
+Email
+EmployeeID
+End Month
+Entry Display Name
+Entry File Location
+Entry Name
+Entry Name ENG
+Entry Name SCH
+Entry Reference
+Entry Type
+Entry URL
+ERP Date Format
+Escape Code
+FieldType
+File Reference
+First Day
+First Day in Period
+First Week in Period
+Format
+Format V001
+Format V002
+Format V003
+Format V004
+Format V005
+Format V006
+Format V007
+Format V008
+Format V009
+Format V010
+Format V011
+Format V012
+Format V013
+Format V014
+Format V015
+Format V016
+Format V017
+Format V018
+Format V019
+Format V020
+Format V021
+Format V022
+Format V023
+Format V024
+Format V025
+Format V026
+Format V027
+Format V028
+Format V029
+Format V030
+Format V031
+Format V032
+Format V033
+Format V034
+Format V035
+Format V036
+Format V037
+Format V038
+Format V039
+Format V040
+Format V041
+Format V042
+Format V043
+Format V044
+Format V045
+Format V046
+Format V047
+Format V048
+Format V049
+Format V050
+Frequency Days
+Full Description
+Group
+Group2
+H1
+H10
+H11
+H12
+H13
+H14
+H15
+H16
+H17
+H18
+H19
+H2
+H20
+H21
+H22
+H23
+H24
+H25
+H26
+H27
+H28
+H29
+H3
+H30
+H4
+H5
+H6
+H7
+H8
+H9
+h:mm:ss AM/PM
+h:mm AM/PM
+HASATTRIBUTES
+HASDEFAULTSUBSET
+HASDEFAULTVIEW
+HASHIERARCHIES
+HASPUBLICVIEWS
+HASRULES
+HASUSERINPUT
+HH:mm:ss
+hh:mm:ss AM/PM
+hh:mm AM/PM
+Hierarchy
+html entity code
+html numeric code
+ibcs-class
+Icon
+Idx0
+Idx00
+Idx000
+Idx_TM1
+Idx_TM1_N
+Idx_UNX
+Idx_UNX_N
+Idx_XLS
+Idx_XLS_N
+IndexValue
+Info
+IS_VALID
+IsApp
+IsChore
+IsCube
+IsDeleted
+IsDimension
+IsMandatory
+IsProcess
+IsRule
+Is Workflow Page
+Iteration Source Flag
+Julian Date
+Julian Year
+Label
+Label (Wrapping)
+Language
+LAST_ACTIVE
+Last Day
+Last Day in Period
+Last Line Item
+Last Month
+Last Quarter
+Last Week
+Last Week in Period
+Last Work Day
+Last Year
+LCID
+Long Name
+M00
+M00 D00
+MDXQuery
+Menu ID
+Menu Profile
+Minute +1
+Minute -1
+MM-DD
+mmdd
+MMM
+MMM-DD
+mmm dd
+MMMM
+MMMM DD
+Month
+Month +1
+Month +10
+Month +11
+Month +12
+Month +2
+Month +3
+Month +4
+Month +5
+Month +6
+Month +7
+Month +8
+Month +9
+Month -1
+Month -10
+Month -11
+Month -12
+Month -2
+Month -3
+Month -4
+Month -5
+Month -6
+Month -7
+Month -8
+Month -9
+Monthday Index
+Month Index
+Month M00
+Month mmm
+Month Num
+MultiCommitMode
+Name Source
+NamespaceName
+Next Day
+Next Element Feeder
+Next Line Item
+Next Month
+Next Quarter
+Next Week
+Next Work Day
+Next Year
+No Scaling
+Number
+NumberOfProcesses
+ObjectHier
+On Board Date
+Ordinal
+P+1
+P+10
+P+11
+P+12
+P+2
+P+3
+P+4
+P+5
+P+6
+P+7
+P+8
+P+9
+P-1
+P-10
+P-11
+P-12
+P-2
+P-3
+P-4
+P-5
+P-6
+P-7
+P-8
+P-9
+Page ID
+Parameter Type
+Period
+Period Index
+Period Name
+Picklist
+Planning Application
+Planning Application Filter
+Planning Unit Alias
+Planning Unit Dimension
+Planning Unit Root Element
+Prev FCST
+Previous Day
+PropertyID
+Q Numeric
+Quarter
+Quarter +1
+Quarter +2
+Quarter +3
+Quarter-1
+Quarter -2
+Quarter -3
+Quarter Index
+Reference
+Region
+Relativity Measure
+Require Approval
+Reviewer Application
+Root El
+Scenario Scope
+ScheduleFrequency
+Short Name
+showPopUp
+SkipElementDataCheck
+SKIPMAP
+Source
+SourceType
+Staging Last Update End Time
+Start Month
+StartTimestamp
+Status Staging
+Status Staging Comment
+Steper_Status
+Str Name
+Subset
+Swap
+SYS_NAME
+SysObjNm
+SysSecObjNm
+Target cube
+Task ID
+TimeRelative
+TM1Web URL
+Type
+UIWriteProtected
+UniqueID
+Use
+User Entry
+UserID
+View
+View Name
+Web API URL
+Week
+Week Day
+Weekday Index
+Week Day Name
+Week Day Num
+Week Index
+Y+1
+Y+2
+Y+3
+Y+4
+Y+5
+Y-1
+Y-2
+Y-3
+Y-4
+Y-5
+Y0000
+Year
+Year +1
+Year -1
+Year Month
+Year Week
+YYYY-MM
+YYYY-MM-DD
+YYYY-Mth
+yyyy/mm/dd
+yyyy M00
+yyyy M00 dd
+yyyymm
+yyyymmdd
+yyyy mmm
+yyyy mmm dd
+yyyy W00
+}TM1_DefaultDisplayValue

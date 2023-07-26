@@ -1,0 +1,66 @@
+FORMAT==100
+##############################################################################################################################
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+SKIPCHECK;
+#############################
+
+[ '}APQ Security Manage Element Access Measure':{'Inactive','Exclusions'} ] = S: 'Static::1:0';
+
+[ '}APQ Dimension Elements':'TOTAL DIMENSION ELEMENTS', '}APQ Security Manage Element Access Measure':'Permission Type' ] = S: 'Static::ALL:ROOT:WILDCARD:ATTRIBUTE';
+
+[ '}APQ Security Manage Element Access Measure':'Permission Type' ] = S: 'Static::POINT' | IF( ElLev( !}APQ Dimension Hierarchies, !}APQ Dimension Elements ) = 0, '', ':RECURSIVE' );
+
+[ '}APQ Security Manage Element Access Measure':'Permission Level' ] = S: 'Subset:}APQ Security Level:PickList Element Security';
+
+[ '}APQ Security Manage Element Access Measure':'Wildcard Alias' ] = S:
+IF( DB( '}APQ Security Manage Element Access', !}APQ Groups, !}APQ Dimension Hierarchies, !}APQ Dimension Elements, 'Permission Type' ) @= 'ATTRIBUTE',
+    'Dimension:}ElementAttributes_' | AttrS( '}APQ Dimension Hierarchies', !}APQ Dimension Hierarchies, 'Dimension' ),
+    Continue 
+);
+
+[ '}APQ Security Manage Element Access Measure':'Exclusion Wildcard Alias' ] = S:
+IF( DB( '}APQ Security Manage Element Access', !}APQ Groups, !}APQ Dimension Hierarchies, !}APQ Dimension Elements, 'Exclusion Type' ) @= 'ATTRIBUTE',
+    'Dimension:}ElementAttributes_' | AttrS( '}APQ Dimension Hierarchies', !}APQ Dimension Hierarchies, 'Dimension' ),
+    Continue 
+);
+
+[ '}APQ Security Manage Element Access Measure':{'Wildcard Alias','Exclusion Wildcard Alias'} ] = S: 'Subset:}ElementAttributes_' | AttrS( '}APQ Dimension Hierarchies', !}APQ Dimension Hierarchies, 'Dimension' ) | ':Alias Attributes';
+
+[ '}APQ Security Manage Element Access Measure':'Exclusion Type' ] = S: 'Static::POINT:RECURSIVE:WILDCARD:ATTRIBUTE';
+
+[ '}APQ Security Manage Element Access Measure':'Exclusion Entry' ] = S: 
+IF( DB( '}APQ Security Manage Element Access', !}APQ Groups, !}APQ Dimension Hierarchies, !}APQ Dimension Elements, 'Exclusion Type' ) @= 'WILDCARD'
+  % DB( '}APQ Security Manage Element Access', !}APQ Groups, !}APQ Dimension Hierarchies, !}APQ Dimension Elements, 'Exclusion Type' ) @= 'ATTRIBUTE',
+    '',
+    IF( DimSiz( !}APQ Dimension Hierarchies ) <= DB( '}APQ Settings', 'Max subset size for PickList entry', 'Numeric' ),
+        'Dimension:' | 
+        IF( ElLev( '}APQ Dimension Hierarchies', !}APQ Dimension Hierarchies ) = 1,
+            !}APQ Dimension Hierarchies,
+            AttrS( '}APQ Dimension Hierarchies', !}APQ Dimension Hierarchies, 'Dimension' ) |'\:'| AttrS( '}APQ Dimension Hierarchies', !}APQ Dimension Hierarchies, 'Hierarchy' )
+        ),
+        ''
+    )
+);
+
+[ '}APQ Dimension Elements':'TOTAL DIMENSION ELEMENTS', '}APQ Security Manage Element Access Measure':{'InheritToDimLevel','ExcludeToDimLevel'} ] = S: 
+'Subset:}APQ PickList Validations:PickList Levels 0-' | Trim( Str( DnLev( !}APQ Dimension Hierarchies ) - 1, 3, 0 ) );
+
+[ '}APQ Security Manage Element Access Measure':'InheritToDimLevel' ] = S: 
+'Subset:}APQ PickList Validations:PickList Levels 0-' | Trim( Str( ElLev( !}APQ Dimension Hierarchies, !}APQ Dimension Elements ) - 1, 3, 0 ) );
+
+[ '}APQ Security Manage Element Access Measure':'ExcludeToDimLevel' ] = S: 
+'Subset:}APQ PickList Validations:PickList Levels 0-' | 
+IF( DB( '}APQ Security Manage Element Access', !}APQ Groups, !}APQ Dimension Hierarchies, !}APQ Dimension Elements, 'Exclusion Type' ) @= 'WILDCARD',
+    Trim( Str( DnLev( !}APQ Dimension Hierarchies ) - 1, 3, 0 ) ),
+    Trim( Str( ElLev( !}APQ Dimension Hierarchies, DB( '}APQ Security Manage Element Access', !}APQ Groups, !}APQ Dimension Hierarchies, !}APQ Dimension Elements, 'Exclusion Entry' ) ) - 1, 3, 0 ) )
+);
+
+#############################
+##~~    End Rule File    ~~##
+#############################

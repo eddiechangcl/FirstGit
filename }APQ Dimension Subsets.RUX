@@ -1,0 +1,111 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+SKIPCHECK;
+FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-05-10 Make description automatic for subsets with APQ source 
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Dimension Subsets** is automatically compiled by reading the }Subsets control dimensions.  This is done by the process 
+# **}APQ.Dim.ControlDimensionCopies.Update** combined with additional information collected by **}APQ.Cub.DimensionSubsets.Update**. 
+# This allows for an easy overview of the number of subsets per dimension however this feature is quite trivial. Other statistical and informational
+# measures are also collected such as element count, if the subset is dynamic, the MDX expression.
+#
+# However, the main reason for this cube's inclusion as an }APQ object is that having a list of dimensions per subset is very useful in 
+# deriving picklists for various applications both within the apliqode framework and other applications within the TM1 instance in general.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+[ '}APQ  Dimension Subsets Measure':'Count' ] = N:
+IF( DB( '}APQ  Dimension Subsets', !}APQ  Dimension Subsets, 'Subset Name' ) @<> '',
+  1,
+  0
+);
+
+[ '}APQ  Dimension Subsets Measure':'Std Count' ] = N:
+IF( DB( '}APQ  Dimension Subsets', !}APQ  Dimension Subsets, 'Source' ) @= 'Standard Sub',
+  1,
+  0
+);
+
+[ '}APQ  Dimension Subsets Measure':'Static Count' ] = N:
+IF( DB( '}APQ  Dimension Subsets', !}APQ  Dimension Subsets, 'Source' ) @= 'Static Sub',
+  1,
+  0
+);
+
+[ '}APQ  Dimension Subsets Measure':'SemiDyn Count' ] = N:
+IF( DB( '}APQ  Dimension Subsets', !}APQ  Dimension Subsets, 'Source' ) @= 'SemiDynamic Sub',
+  1,
+  0
+);
+
+[ '}APQ  Dimension Subsets Measure':'Internal Count' ] = N:
+IF( SubSt( DB( '}APQ  Dimension Subsets', !}APQ  Dimension Subsets, 'Source' ), 1, 12 )  @= 'APQ Internal',
+  1,
+  0
+);
+
+[ '}APQ  Dimension Subsets Measure':'Unknown Count' ] = N:
+IF( DB( '}APQ  Dimension Subsets', !}APQ  Dimension Subsets, 'Source' ) @= '',
+  1,
+  0
+);
+
+[ '}APQ  Dimension Subsets Measure':'IsDefaultSubset' ] = N:
+IF( DB( '}APQ Dimension Subsets', !}APQ Dimension Subsets, 'Subset Name' ) @= 'Default',
+  [ '}APQ  Dimension Subsets Measure':'Count' ],
+  0
+);
+
+[ '}APQ  Dimension Subsets Measure':'IsEmpty' ] = N:
+IF( [ '}APQ Dimension Subsets Measure':'Element Count' ] = 0,
+  1,
+  0
+);
+
+[ '}APQ  Dimension Subsets Measure':'Description' ] = S:
+IF( IsLeaf = 1,
+    IF( DB( '}APQ  Dimension Subsets', !}APQ  Dimension Subsets, 'Source' ) @= '',
+        STET,
+            IF( DB( '}APQ  Dimension Subsets', !}APQ  Dimension Subsets, 'Source' ) @= 'Standard Sub',
+            'Standard subset defined in process }APQ.Dim.Sub.StandardSubsets.Update',
+            IF( DB( '}APQ  Dimension Subsets', !}APQ  Dimension Subsets, 'Source' ) @= 'Static Sub',
+                'Static subset defined in cube }APQ Dimension Static Subsets And UDC',
+                IF( DB( '}APQ  Dimension Subsets', !}APQ  Dimension Subsets, 'Source' ) @= 'SemiDynamic Sub',
+                    'Semi-dynamic subset defined in cube }APQ Dimension SemiDynamic Subsets',
+                    IF( SubSt( DB( '}APQ  Dimension Subsets', !}APQ  Dimension Subsets, 'Source' ), 1, 12 ) @= 'APQ Internal',
+                        'APQ internal subset',
+                        'Unknown source. Check!'
+                    )
+                )
+            )
+        )
+    ),
+    Trim( Str( [ '}APQ  Dimension Subsets Measure':'Count' ], 6, 0 ) ) |'  subsets'
+);
+
+
+#############################
+FEEDERS;
+#############################
+
+# Can't feed IsEmpty from Element Count as IsEmpty = 1 where Elements = 0
+[ '}APQ Dimension Subsets Measure':'Subset Name' ] => [ '}APQ  Dimension Subsets Measure':'Count Check' ], [ '}APQ  Dimension Subsets Measure':'IsDefaultSubset' ], [ '}APQ  Dimension Subsets Measure':'IsEmpty' ], [ '}APQ  Dimension Subsets Measure':'IsDefaultSubset' ];
+
+
+#############################
+##~~   End  Rule File   ~~##
+#############################

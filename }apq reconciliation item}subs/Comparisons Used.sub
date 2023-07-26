@@ -1,0 +1,10 @@
+﻿283,100
+284,"Comparisons Used"
+11,20230512024331
+274,
+18,0
+275,207
+{ FILTER({TM1SubsetToSet( [}APQ Reconciliation Item], "All Comparisons" )}, [}APQ Reconciliation Setup].([}APQ Reconciliation Item].CurrentMember,[}APQ Reconciliation Setup Measure].[Long Description])<>"")}
+278,0
+281,0
+270,0

@@ -1,0 +1,148 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+SKIPCHECK;
+FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-05-20  Embedded into Apliqode Framework from Apliqo FPM
+##############################################################################################################################
+#Region @DOC
+# The **}APQ Universal View Calculation** cube does not perform any calculations but rather is used to _**define**_ calculations "on the fly". 
+# This is done by activating pre-written generic rules, no rules are required to be added or edited by the user configuring the view. 
+# The user selects from a menu of pre-programmed calculations via Picklist (e.g. "(A+B)/C" and maps the required variables A, B & C which would
+# typically be other rows or columns in the view. It is possible to "nest" calculations.
+#
+# Use Case:
+# Adding a calculation to a report where the calculation doesn't exist as a calculation in the cube or cubes which form the view.
+# For example adding a variance calculation or a sum for which a consolidation doesn't exist.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+#Region : Mapping rules
+
+[ '}APQ Universal View':'All Views' ] = S: '';
+
+# View ID
+[ '}APQ Universal View Row':'All Rows', '}APQ Universal View Column':'All Columns', '}APQ Universal View Measure':'All Measures', '}APQ Universal View Calculation Measure':'ID' ] = S:
+IF( DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'Cube' ) @= '',
+   '',
+   IF( AttrS( '}APQ Universal View', !}APQ Universal View, 'Caption' ) @<> '' ,
+      AttrS( '}APQ Universal View', !}APQ Universal View, 'Caption' ),
+      !}APQ Universal View
+   )
+);
+
+# Row ID
+[ '}APQ Universal View Column':'All Columns', '}APQ Universal View Measure':'All Measures', '}APQ Universal View Calculation Measure':'ID' ] = S:
+DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'RowDim' ), 'E' | SubSt( !}APQ Universal View Row, 2, 4 ) );
+
+# Column ID
+[ '}APQ Universal View Row':'All Rows', '}APQ Universal View Measure':'All Measures', '}APQ Universal View Calculation Measure':'ID' ] = S:
+DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'ColumnDim' ), 'E' | SubSt( !}APQ Universal View Column, 2, 4 ) );
+
+# Measure ID
+[ '}APQ Universal View Row':'All Rows', '}APQ Universal View Column':'All Columns', '}APQ Universal View Calculation Measure':'ID' ] = S:
+DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'MeasureDim' ), 'E' | SubSt( !}APQ Universal View Measure, 2, 4 ) );
+
+[ '}APQ Universal View Calculation Measure':{'Cube','RowDim','ColumnDim','MeasureDim'} ] = S:
+IF( DB( '}APQ Universal View Calculation', !}APQ Universal View, !}APQ Universal View Row, !}APQ Universal View Column, !}APQ Universal View Measure, 'ID' ) @= '',
+   '',
+   CONTINUE
+);
+
+[ '}APQ Universal View Calculation Measure':'Cube' ] = S: DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'Cube' );
+
+[ '}APQ Universal View Calculation Measure':'RowDim' ] = S:
+TabDim(
+   DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'Cube' ),
+   DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, 'All Dimensions', 'RowDimID' )
+);
+
+[ '}APQ Universal View Calculation Measure':'ColumnDim' ] = S:
+TabDim(
+   DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'Cube' ),
+   DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, 'All Dimensions', 'ColumnDimID' )
+);
+
+[ '}APQ Universal View Calculation Measure':'MeasureDim' ] = S:
+TabDim(
+   DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'Cube' ),
+   DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, 'All Dimensions', 'RowDimID' )
+);
+
+# View case: no inheritance
+[ '}APQ Universal View Row':'All Rows', '}APQ Universal View Column':'All Columns', '}APQ Universal View Measure':'All Measures', '}APQ Universal View Calculation Measure':{'CalcMethod Entry','Toggle Subset','A Entry','B Entry','C Entry','D Entry'} ] = S:
+IF( DB( '}APQ Universal View Calculation', !}APQ Universal View, !}APQ Universal View Row, !}APQ Universal View Column, !}APQ Universal View Measure, 'ID' ) @= '',
+   '',
+   STET
+);
+
+[ '}APQ Universal View Row':'All Rows', '}APQ Universal View Column':'All Columns', '}APQ Universal View Measure':'All Measures', '}APQ Universal View Calculation Measure':{'CalcMethod Override','A Override','B Override','C Override','D Override'} ] = S: '';
+
+# General case: rows, columns & measure can inherit from parent view
+[ '}APQ Universal View Calculation Measure':{'CalcMethod Entry','Toggle Subset','A Entry','B Entry','C Entry','D Entry'} ] = S:
+IF( DB( '}APQ Universal View Calculation', !}APQ Universal View, !}APQ Universal View Row, !}APQ Universal View Column, !}APQ Universal View Measure, 'ID' ) @= '',
+   '',
+   IF( ElIsPar( '}APQ Universal View', 'All Views', !}APQ Universal View ) = 1,
+      STET,
+      DB( '}APQ Universal View Calculation', ElPar( '}APQ Universal View', !}APQ Universal View, 1 ), !}APQ Universal View Row, !}APQ Universal View Column, !}APQ Universal View Measure, !}APQ Universal View Calculation Measure )
+   )
+);
+
+[ '}APQ Universal View Calculation Measure':{'CalcMethod Override','A Override','B Override','C Override','D Override'} ] = S:
+IF( DB( '}APQ Universal View Calculation', !}APQ Universal View, !}APQ Universal View Row, !}APQ Universal View Column, !}APQ Universal View Measure, 'ID' ) @= '',
+   '',
+   STET
+);
+
+[ '}APQ Universal View Calculation Measure':{'CalcMethod','A','B','C','D'} ] = S:
+IF( DB( '}APQ Universal View Calculation', !}APQ Universal View, !}APQ Universal View Row, !}APQ Universal View Column, !}APQ Universal View Measure, !}APQ Universal View Calculation Measure | 'Override' ) @<> '',
+   DB( '}APQ Universal View Calculation', !}APQ Universal View, !}APQ Universal View Row, !}APQ Universal View Column, !}APQ Universal View Measure, !}APQ Universal View Calculation Measure | 'Override' ),
+   DB( '}APQ Universal View Calculation', !}APQ Universal View, !}APQ Universal View Row, !}APQ Universal View Column, !}APQ Universal View Measure, !}APQ Universal View Calculation Measure | 'Entry' )
+);
+
+#EndRegion
+
+##############################################################################################################################
+#Region : Feeders
+FEEDERS;
+##############################################################################################################################
+
+# Internal cube feeders
+##################
+
+# None
+
+# External inter-cube feeders
+##################
+
+[ '}APQ Universal View Calculation Measure':'CalcMethod Entry' ] =>
+DB( '}APQ Universal View Data', 'Total APQ Clients', !}APQ Universal View,
+   DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'RowDim' ), 'sFeeder' ),
+   DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'ColumnDim' ), 'sFeeder' ),
+   DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'MeasureDim' ), 'sFeeder' ),
+   'Value'
+),
+DB( '}APQ Universal View Data', 'Total APQ Clients', !}APQ Universal View,
+   DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'RowDim' ), 'sFeeder' ),
+   DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'ColumnDim' ), 'sFeeder' ),
+   DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'MeasureDim' ), 'sFeeder' ),
+   'ValueFrozen'
+);
+
+#EndRegion
+
+##############################################################################################################################
+##~~    End Rule File    ~~##
+##############################################################################################################################

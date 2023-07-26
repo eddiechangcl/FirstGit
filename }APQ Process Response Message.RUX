@@ -1,0 +1,53 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+#SKIPCHECK;
+#FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Process Response Message** provides a standard framework to return a custom TI process success or failure response message
+# to a Excel sheet, websheet, or web UI.  Inclusion of the **}Clients** dimension allows for custom messages per user. A standard confirm 
+# message (or success/failure message) can be entered against the Admin user (or a custom non-personal user) and pulled through to all other
+# users via rule.
+#
+# Note:
+# * Any TI process and or Excel sheet / websheet that requires custom response message functionality plus the TI process being executed 
+#   will need to be customized to read from and write to }APQ Process Response Message.
+# * This is a lookup cube with limited dimensionality and so does not require SkipCheck or Feeders.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+
+[ '}APQ Clients':'Admin' ] = S: STET;
+
+[  ] = S:
+IF( !}APQ Clients @=  DB( '}APQ Settings', 'Default User', 'String' ),
+  STET,
+  Continue
+);
+
+[ '}APQ Process Response Message Measure':{'Button Caption','Confirm Message'} ] = S:
+DB( '}APQ Process Response Message', DB( '}APQ Settings', 'Default User', 'String' ), !}APQ Processes, !}APQ Process Response Message Measure );
+
+
+#############################
+# FEEDERS;
+#############################
+
+
+#############################
+##~~    End Rule File    ~~##
+#############################

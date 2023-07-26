@@ -1,0 +1,70 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+SKIPCHECK;
+FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Cube View Cache Control** needs to be manually entered by the system administrator or authorised power user.
+# The purpose of the cube is to select per cube the views which should be pre-calculated or cached using the TI ViewConstruct function.
+# This can significantly improve user query time where cube data is relatively static. After selection of views to cache via picklist
+# this is done simply by calling the process **}APQ.Cub.Vue.Cache** with the (optional) pCube parameter for the selected cube for which to cache views.
+# If this parameter is blank or omitted then all configured views for all cubes will be pre-calculated.
+#
+# Note:
+# * It is imortant before using this process that **VMM** and **VMT** are properly configured in **}CubeProperties**.
+# * To grant power users the ability to set up view caching then they _*must have write access to this cube*_.
+# * Element security is set automatically such that users only see the cubes and views to which they have access.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+[ '}APQ Cube View Cache Control Measure':'IsUsed' ] = N:
+IF( DB( '}APQ Cube View Cache Control', !}APQ Cubes, !}APQ Item Index, 'ViewName' ) @<> '',
+  1,
+  0
+);
+
+[ '}APQ Cube View Cache Control Measure':'ViewName' ] = S: STET;
+
+[ '}APQ Cube View Cache Control Measure':'Description' ] = S:
+DB( '}APQ Cube Views', !}APQ Cubes |'\'| DB( '}APQ Cube View Cache Control', !}APQ Cubes, !}APQ Item Index, 'ViewName '), 'Description' );
+
+
+[ '}APQ Cube View Cache Control Measure':'ConstructTime' ] = S:
+IF( [ '}APQ Cube View Cache Control Measure':'LastConstructN' ] = 0,
+  '',
+  TimSt( [ '}APQ Cube View Cache Control Measure':'ConstructTimeN' ], DB('}APQ Settings','Time format','String') )
+);
+
+[ '}APQ Cube View Cache Control Measure':'LastConstruct' ] = S:
+IF( [ '}APQ Cube View Cache Control Measure':'LastConstructN' ] = 0,
+  '',
+  TimSt( [ '}APQ Cube View Cache Control Measure':'LastConstructN' ], DB('}APQ Settings','Date Time format','String') )
+);
+
+
+#############################
+FEEDERS;
+#############################
+
+[ '}APQ Cube View Cache Control Measure':'ViewName' ] => [ '}APQ Cube View Cache Control Measure':'IsUsed' ], [ '}APQ Cube View Cache Control Measure':'Description' ];
+
+[ '}APQ Cube View Cache Control Measure':'LastConstructN' ] => [ '}APQ Cube View Cache Control Measure':'LastConstruct' ];
+[ '}APQ Cube View Cache Control Measure':'ConstructTimeN' ] => [ '}APQ Cube View Cache Control Measure':'ConstructTime' ];
+
+#############################
+##~~   End  Rule File   ~~##
+#############################

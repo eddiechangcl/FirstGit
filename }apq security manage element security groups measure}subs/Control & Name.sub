@@ -1,0 +1,23 @@
+﻿283,100
+284,"Control & Name"
+11,20230512024331
+274,
+18,0
+275,316
+{FILTER( {TM1SUBSETALL( [}APQ Security Manage Element Security Groups Measure] )}, [}APQ Security Manage Element Security Groups Measure].[Group] = "Control")}+{FILTER( {TM1SUBSETALL( [}APQ Security Manage Element Security Groups Measure] )}, [}APQ Security Manage Element Security Groups Measure].[Group] = "Name")}
+278,0
+281,0
+270,13
+Require Element Security
+Auto Create Groups
+Managing Dimension 2
+Managing Dimension 3
+Group Name Prefix
+Group Name Part Delimiter
+Create Groups to Element Level
+Create Read Only Groups
+Create Point Only Groups for C Elements
+Exclude Dimension from Group Name
+Dimension Attribute for Name
+Element Attribute for Name
+Sample Group Name

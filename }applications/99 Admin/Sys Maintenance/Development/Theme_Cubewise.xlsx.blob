@@ -1,0 +1,5 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=Theme_Cubewise.xlsx
+ENTRYTYPE=blob
+ENTRYREFERENCE=TM1:///blob/PUBLIC/.\}Externals\sys_development_theme_cubewise_v1.xlsx
+REMOVEBLOBONDELETE=Yes

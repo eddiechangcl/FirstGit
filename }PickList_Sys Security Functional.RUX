@@ -1,0 +1,13 @@
+﻿FORMAT==100
+#Region System
+FEEDSTRINGS;
+SKIPCHECK;
+#EndRegion
+
+['Application','Object Name','Value'] = S: 'subset:}ApplicationEntries:Default';
+
+['Cube','Object Name','Value']= S: 'dimension:}Cubes';
+
+['Process','Object Name','Value']= S: 'dimension:}Processes';
+
+['Chore','Object Name','Value'] = S: 'dimension:}Chores';

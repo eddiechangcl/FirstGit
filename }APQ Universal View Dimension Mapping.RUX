@@ -1,0 +1,296 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+SKIPCHECK;
+FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-05-20  Embedded into Apliqode Framework from Apliqo FPM
+##############################################################################################################################
+#Region @DOC
+# This is the key mapping cube which allows the application to work (without correct mapping of dimensions in this cube the application will not work.) 
+# Each dimension in the cube mapped to the view must be assigned a function. There are 5 possible functions:
+#   1. Fixed : Sets the view context (like title element or SUBNM). The end user does not have the possibility to change the selection. Must have an element set.
+#   2. Filter : Sets the view context. Different from fixed as the end user can change the element selection in the report at runtime. Must have an element set. Setting a subset is optional.
+#   3. Row : Sets the row dimension. Setting a subset is mandatory.
+#   4. Column : Sets the column dimension. Setting a subset is mandatory.
+#   5. Measure : Sets the measure dimension. Setting a subset is mandatory.
+#
+# Note:
+# View to sub-view inheritance works in this cube as in every other cube in the module. If a dimension setting for a sub-view is the same as the parent view
+# then there is no need for any entry. Otherwise use the _override_ measures to set a different value at sub-view level.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+#Region : Mapping rules
+
+[ '}APQ Universal View Dimension':'All Dimensions', '}APQ Universal View Dimension Mapping Measure':'Dimension' ] = S:
+DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'Cube' );
+
+[ '}APQ Universal View Dimension':'All Dimensions' ] = S: '';
+
+[ '}APQ Universal View Dimension Mapping Measure':'ParentViewDimID' ] = S:
+IF( TabDim( DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'Cube' ), Numbr( !}APQ Universal View Dimension ) ) @= '',
+   '',
+   IF( ElPar( '}APQ Universal View', !}APQ Universal View, 1 ) @= 'All Views',
+      !}APQ Universal View Dimension,
+      CONTINUE
+   )
+);
+
+[ '}APQ Universal View Dimension Mapping Measure':'ParentViewDimID' ] = S:
+IF( DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'Cube' ) @= DB( '}APQ Universal View Source Mapping', ElPar( '}APQ Universal View', !}APQ Universal View, 1 ), 'Cube' ),
+   !}APQ Universal View Dimension,
+   IF( DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'Dimension' ) @= DB( '}APQ Universal View Dimension Mapping', ElPar( '}APQ Universal View', !}APQ Universal View, 1 ), !}APQ Universal View Dimension, 'Dimension' ),
+      !}APQ Universal View Dimension,
+      DimNm( '}APQ Universal View Dimension', DimIx( '}APQ Universal View Dimension', 'D' | Str(
+         DB( '}APQ Dimension Use',
+            DB( '}APQ Universal View Source Mapping', ElPar( '}APQ Universal View', !}APQ Universal View, 1 ), 'Cube' ),
+            DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'Dimension' ),
+            'Position'
+         ),
+         2, 0
+      ) ) )
+   )
+);
+
+[ '}APQ Universal View Dimension Mapping Measure':'Dimension' ] = S:
+TabDim( DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'Cube' ), Numbr( !}APQ Universal View Dimension ) );
+
+[ '}APQ Universal View Dimension Mapping Measure':'Function' ] = S:
+IF( DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'FunctionOverride' ) @<> '',
+   DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'FunctionOverride' ),
+   DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'FunctionEntry' )
+);
+
+[ '}APQ Universal View Dimension Mapping Measure':'Subset' ] = S:
+IF( DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'SubsetOverride' ) @<> '',
+   DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'SubsetOverride' ),
+   DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'SubsetEntry' )
+);
+
+[ '}APQ Universal View Dimension Mapping Measure':'Element' ] = S:
+IF( DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'Function' ) @= 'Row' %
+     DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'Function' ) @= 'Column' %
+     DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'Function' ) @= 'Measure',
+   DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'E0001' ),
+   IF( DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'ElementOverride' ) @<> '',
+      DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'ElementOverride' ),
+      DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'ElementEntry' )
+   )
+);
+
+[ '}APQ Universal View Dimension Mapping Measure':{'FunctionEntry','SubsetEntry','ElementEntry'} ] = S:
+IF( ElIsPar( '}APQ Universal View', 'All Views', !}APQ Universal View ) = 1,
+   STET,
+   IF( DB('}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'Dimension' ) @= DB('}APQ Universal View Dimension Mapping', ElPar( '}APQ Universal View', !}APQ Universal View, 1 ), !}APQ Universal View Dimension, 'Dimension' ),
+      DB( '}APQ Universal View Dimension Mapping', ElPar( '}APQ Universal View', !}APQ Universal View, 1 ), !}APQ Universal View Dimension, !}APQ Universal View Dimension Mapping Measure ),
+      IF( DimIx( '}APQ Universal View Dimension', DB('}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'ParentViewDimID' ) ) = 0,
+         STET,
+         DB( '}APQ Universal View Dimension Mapping',
+            ElPar( '}APQ Universal View', !}APQ Universal View, 1 ),
+            DB('}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'ParentViewDimID' ),
+            !}APQ Universal View Dimension Mapping Measure
+         )
+      )
+   )
+);
+
+[ '}APQ Universal View Dimension Mapping Measure':'sFeeder' ] = S:
+IF( DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'Function' ) @= 'Row',
+   'S R' | Fill( '0', 4 - Long( Trim( Str( [ '}APQ Universal View Dimension Mapping Measure':'<< Subset Elements >>' ], 4, 0 ) ) ) ) | Trim( Str( [ '}APQ Universal View Dimension Mapping Measure':'<< Subset Elements >>' ], 4, 0 ) ),
+   IF( DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'Function' ) @= 'Column',
+      'S C' | Fill( '0', 4 - Long( Trim( Str( [ '}APQ Universal View Dimension Mapping Measure':'<< Subset Elements >>' ], 4, 0 ) ) ) ) | Trim( Str( [ '}APQ Universal View Dimension Mapping Measure':'<< Subset Elements >>' ], 4, 0 ) ),
+      IF( DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'Function' ) @= 'Measure',
+         'S M' | Fill( '0', 2 - Long( Trim( Str( [ '}APQ Universal View Dimension Mapping Measure':'<< Subset Elements >>' ], 2, 0 ) ) ) ) | Trim( Str( [ '}APQ Universal View Dimension Mapping Measure':'<< Subset Elements >>' ], 2, 0 ) ),
+         ''
+      )
+   )
+);
+
+[ '}APQ Universal View Dimension Mapping Measure':'IsInvalid' ] = N:
+IF( DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'Dimension' ) @= '',
+   0,
+   IF( DimIx( DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'Dimension' ), DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'Element' ) ) = 0,
+      1,
+      0
+   )
+);
+
+[ '}APQ Universal View Dimension Mapping Measure':'IsFixed' ] = N:
+IF( DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'Function' ) @= 'Fixed',
+   1,
+   0
+);
+
+[ '}APQ Universal View Dimension Mapping Measure':'IsFilter' ] = N:
+IF( DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'Function' ) @= 'Filter',
+   1,
+   0
+);
+
+[ '}APQ Universal View Dimension Mapping Measure':'IsRow' ] = N:
+IF( DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'Function' ) @= 'Row',
+   1,
+   0
+);
+
+[ '}APQ Universal View Dimension Mapping Measure':'IsMultiRow' ] = N: 0;
+
+[ '}APQ Universal View Dimension':'All Dimensions', '}APQ Universal View Dimension Mapping Measure':'IsMultiRow' ] = C:
+IF( [ '}APQ Universal View Dimension Mapping Measure':'IsRow' ] > 1,
+   1,
+   0
+);
+
+[ '}APQ Universal View Dimension Mapping Measure':'RowDimID' ] =
+N:
+IF( [ '}APQ Universal View Dimension Mapping Measure':'IsRow' ] * DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, 'S ' | !}APQ Universal View Dimension, 'IsRow' ) = 1,
+   Numbr( !}APQ Universal View Dimension ),
+   0
+);
+C:
+IF( ElLev( '}APQ Universal View', !}APQ Universal View ) = 0,
+   STET,
+   ConsolidatedMax( 0, '', !}APQ Universal View, !}APQ Universal View Dimension, !}APQ Universal View Dimension Mapping Measure )
+);
+
+[ '}APQ Universal View Dimension Mapping Measure':'IsColumn' ] = N:
+IF( DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'Function' ) @= 'Column',
+   1,
+   0
+);
+
+[ '}APQ Universal View Dimension Mapping Measure':'IsMultiColumn' ] = N: 0;
+
+[ '}APQ Universal View Dimension':'All Dimensions', '}APQ Universal View Dimension Mapping Measure':'IsMultiColumn' ] = C:
+IF( [ '}APQ Universal View Dimension Mapping Measure':'IsColumn' ] > 1,
+   1,
+   0
+);
+
+[ '}APQ Universal View Dimension Mapping Measure':'ColumnDimID' ] =
+N:
+IF( [ '}APQ Universal View Dimension Mapping Measure':'IsColumn' ] * DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, 'S ' | !}APQ Universal View Dimension, 'IsColumn' ) = 1,
+   Numbr( !}APQ Universal View Dimension ),
+   0
+);
+C:
+IF( ElLev( '}APQ Universal View', !}APQ Universal View ) = 0,
+   STET,
+   ConsolidatedMax( 0, '', !}APQ Universal View, !}APQ Universal View Dimension, !}APQ Universal View Dimension Mapping Measure )
+);
+
+[ '}APQ Universal View Dimension Mapping Measure':'IsMeasure' ] = N:
+IF( DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'Function' ) @= 'Measure',
+   1,
+   0
+);
+
+[ '}APQ Universal View Dimension Mapping Measure':'MeasureDimID' ] =
+N:
+IF( [ '}APQ Universal View Dimension Mapping Measure':'IsMeasure' ] * DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, 'S ' | !}APQ Universal View Dimension, 'IsMeasure' ) = 1,
+   Numbr( !}APQ Universal View Dimension ),
+   0
+);
+C:
+IF( ElLev( '}APQ Universal View', !}APQ Universal View ) = 0,
+   STET,
+   ConsolidatedMax( 0, '', !}APQ Universal View, !}APQ Universal View Dimension, !}APQ Universal View Dimension Mapping Measure )
+);
+
+[ '}APQ Universal View Dimension Mapping Measure':'<< Subset Elements >>' ] = C:
+IF( ElLev( '}APQ Universal View', !}APQ Universal View ) = 0,
+   STET,
+   IF( !}APQ Universal View Dimension @= 'All Dimensions',
+      ConsolidateChildren( '}APQ Universal View Dimension' ),
+      ConsolidatedCountUnique( 0, '}APQ Universal View Dimension Mapping Measure', '', !}APQ Universal View, !}APQ Universal View Dimension, !}APQ Universal View Dimension Mapping Measure )
+   )
+);
+
+[ ] = N:
+IF( ElIsPar( '}APQ Universal View Dimension Mapping Measure', '<< Subset Elements >>', !}APQ Universal View Dimension Mapping Measure ) = 0,
+   CONTINUE,
+   IF( DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, SubSt( !}APQ Universal View Dimension Mapping Measure, 2, 5 ) ) @= '',
+      0,
+      1
+   )
+);
+
+#EndRegion
+
+##############################################################################################################################
+#Region : Feeders
+FEEDERS;
+##############################################################################################################################
+
+# Internal cube feeders
+##################
+
+[ '}APQ Universal View Dimension Mapping Measure':{'FunctionEntry','FunctionOverride'} ] => [ '}APQ Universal View Dimension Mapping Measure':'Function' ],
+  [ '}APQ Universal View Dimension Mapping Measure':'IsFixed' ],
+  [ '}APQ Universal View Dimension Mapping Measure':'IsFilter' ],
+  [ '}APQ Universal View Dimension Mapping Measure':'IsRow' ],
+  [ '}APQ Universal View Dimension Mapping Measure':'IsColumn' ],
+  [ '}APQ Universal View Dimension Mapping Measure':'IsMeasure' ],
+  [ '}APQ Universal View Dimension Mapping Measure':'IsMultiRow' ],
+  [ '}APQ Universal View Dimension Mapping Measure':'IsMultiColumn' ],
+  [ '}APQ Universal View Dimension Mapping Measure':'RowDimID' ],
+  [ '}APQ Universal View Dimension Mapping Measure':'ColumnDimID' ],
+  [ '}APQ Universal View Dimension Mapping Measure':'MeasureDimID' ],
+  [ '}APQ Universal View Dimension Mapping Measure':'sFeeder' ];
+
+[ '}APQ Universal View Dimension Mapping Measure':{'SubsetEntry','SubsetOverride'} ] => [ '}APQ Universal View Dimension Mapping Measure':'Subset' ];
+
+[ '}APQ Universal View Dimension Mapping Measure':{'ElementEntry','ElementOverride'} ] => [ '}APQ Universal View Dimension Mapping Measure':'Element' ],
+  [ '}APQ Universal View Dimension Mapping Measure':'IsInvalid' ];
+
+[ ] => DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'n' | !}APQ Universal View Dimension Mapping Measure );
+
+# External inter-cube feeders
+##################
+
+[ '}APQ Universal View Dimension Mapping Measure':'<< Subset Elements >>' ] =>
+DB( '}APQ Universal View Data', 'Total APQ Clients', !}APQ Universal View,
+   DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View,
+      'D' | Trim( Str( DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, 'All Dimensions', 'RowDimID' ), 2, 0 ) ),
+      'sFeeder'
+   ),
+   DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View,
+      'D' | Trim( Str( DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, 'All Dimensions', 'ColumnDimID' ), 2, 0 ) ),
+      'sFeeder'
+   ),
+   DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View,
+      'D' | Trim( Str( DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, 'All Dimensions', 'MeasureDimID' ), 2, 0 ) ),
+      'sFeeder'
+   ),
+   'Value'
+),
+DB( '}APQ Universal View Data', 'Total APQ Clients', !}APQ Universal View,
+   DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View,
+      'D' | Trim( Str( DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, 'All Dimensions', 'RowDimID' ), 2, 0 ) ),
+      'sFeeder'
+   ),
+   DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View,
+      'D' | Trim( Str( DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, 'All Dimensions', 'ColumnDimID' ), 2, 0 ) ),
+      'sFeeder'
+   ),
+   'M0001',
+   'Value'
+);
+
+#EndRegion
+
+##############################################################################################################################
+##~~    End Rule File    ~~##
+##############################################################################################################################

@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=Sys Caption Language Setting
+ENTRYTYPE=view
+ENTRYREFERENCE=TM1:///VIEW/PUBLIC/Sys Parameter/Sys Caption Language Setting

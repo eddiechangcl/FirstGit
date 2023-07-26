@@ -1,0 +1,45 @@
+﻿283,100
+284,"Picklist_Template"
+11,20230515004942
+274,Caption_Default
+18,0
+275,
+278,0
+281,0
+270,36
+00 Menu\Menu.blob
+99 Admin\Admin Dimension\UDC\Dim UDC Setting.blob
+99 Admin\Admin Menu\Menu Setting.blob
+99 Admin\Admin Security\Data Security\Data Security Assignment.xlsx.blob
+99 Admin\Admin Security\Functional Security\Functional Security Object Assignment.xlsx.blob
+99 Admin\Admin Security\User Group Assignment\User Group Assignment.xlsx.blob
+99 Admin\Admin Workbench\Workbench.blob
+99 Admin\Admin Workbench\Workbench Setting.blob
+99 Admin\Admin Workflow\Workflow Setting.blob
+99 Admin\Admin Workflow\Workflow Status.blob
+99 Admin\Sys Apliqode\0 Shortcuts\ProcessExecute.blob
+99 Admin\Sys Apliqode\1 Security\1 General\Effective Application Security.blob
+99 Admin\Sys Apliqode\1 Security\1 General\Effective Object Security.blob
+99 Admin\Sys Apliqode\1 Security\1 General\Maintain Application Security.blob
+99 Admin\Sys Apliqode\1 Security\1 General\Maintain Object Security.blob
+99 Admin\Sys Apliqode\1 Security\2 Element Security\Effective Dimension Element Security.blob
+99 Admin\Sys Apliqode\1 Security\2 Element Security\Maintain Dimension Element Security.blob
+99 Admin\Sys Apliqode\2 Housekeeping\Attribute Maintenance.blob
+99 Admin\Sys Apliqode\2 Housekeeping\Semi Dynamic Subset Maintenance.blob
+99 Admin\Sys Apliqode\2 Housekeeping\Static Subsets And UDC Maintenance.blob
+99 Admin\Sys Apliqode\3 Catalog Reference\0 APQ Glossary\APQ Functionality Glossary.blob
+99 Admin\Sys Apliqode\3 Catalog Reference\1 User Info\Application Usage Tracker.blob
+99 Admin\Sys Apliqode\3 Catalog Reference\1 User Info\User Logins by Time Bucket.blob
+99 Admin\Sys Apliqode\3 Catalog Reference\3 Dimension Info\Dimension Hierarchy Check.blob
+99 Admin\Sys Apliqode\3 Catalog Reference\4 Process Info\APQ Chore and Process Logging.blob
+99 Admin\Sys Apliqode\3 Catalog Reference\4 Process Info\APQ Process to Object Reference.blob
+99 Admin\Sys Apliqode\5 Reconciliation\Automated Reconciliation Checks.blob
+99 Admin\Sys Apliqode\5 Reconciliation\Dimension Hierarchy Check.blob
+99 Admin\Sys Apliqode\6 Process Execution Item\Manage Process Execution List.blob
+99 Admin\Sys Apliqode\7 Copy Views\CopyPrivateViewSubset.blob
+99 Admin\Sys Apliqode\8 Dimension Management\Create DimensionSource.sql.blob
+99 Admin\Sys Apliqode\8 Dimension Management\Dimension Management.blob
+99 Admin\Sys Apliqode\8 Dimension Management\SQL Query Template.sql.blob
+99 Admin\Sys Maintenance\Development\Snippets.xlsx.blob
+99 Admin\Sys Maintenance\Development\Theme_Cubewise.xlsx.blob
+99 Admin\Sys Maintenance\Email\Email Setting.xlsx.blob

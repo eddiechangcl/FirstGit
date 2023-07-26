@@ -1,0 +1,27 @@
+﻿FORMAT==100
+#Region System
+FEEDSTRINGS;
+SKIPCHECK;
+#EndRegion
+['Page Style']=S:'Static::Style 01:Style 02:Style 03:Style 04';
+['Page Status']=S:'Static::Enabled';
+
+['Button Type']= S:'Static::Page:Template:View:Link:Hyperlink:Workflow';
+['Button ID']= S:
+   IF (DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button Type') @=''
+           , CONTINUE
+   , IF (DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button Type') @='Page'
+           , 'Subset:Sys Menu Page:Picklist_Page'
+   , IF (DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button Type') @='Template'
+           , 'Subset:Sys Menu Application Entry:Picklist_Template'
+   , IF (DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button Type') @='View'
+           , 'Subset:Sys Menu Application Entry:Picklist_View'
+   , IF (DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button Type') @='URL'
+           , 'Subset:Sys Menu Application Entry:Picklist_URL'
+   , IF (DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button Type') @='Link'
+           , 'Subset:Sys Menu Link:Picklist_Link'
+   , IF (DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button Type') @='Workflow'
+           , 'Subset:Sys Workflow:Picklist_Workflow'
+
+           , ''
+   )))))));

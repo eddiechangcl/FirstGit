@@ -1,0 +1,188 @@
+﻿283,100
+284,"}APQ Views"
+11,20230515004909
+274,
+18,0
+275,
+278,0
+281,0
+270,179
+}APQ Views:}APQ Views:All C Elements
+}APQ Views:}APQ Views:All Elements
+}APQ Views:}APQ Views:All N Elements
+}APQ Views:}APQ Views:All N Elements code
+}APQ Views:}APQ Views:APQ.Demo Sales Cube
+}APQ Views:}APQ Views:APQ.Demo Sales Cube 2
+}APQ Views:}APQ Views:APQ.Demo Sales Reconciliation Check Extended
+}APQ Views:}APQ Views:APQ.Demo Sales Summary
+}APQ Views:}APQ Views:Default
+}APQ Views:}APQ Views:Default Member
+}APQ Views:}APQ Views:Demo GL Plan
+}APQ Views:}APQ Views:Demo GL Reporting
+}APQ Views:}APQ Views:Demo Sales Reporting
+}APQ Views:}APQ Views:Demo Sales Reporting by Date
+}APQ Views:}APQ Views:Demo Sales Reporting by Week
+}APQ Views:}APQ Views:EDU Employee Profile
+}APQ Views:}APQ Views:EDU Training Plan
+}APQ Views:}APQ Views:Employee Schedule
+}APQ Views:}APQ Views:Exchange Rate
+}APQ Views:}APQ Views:FX Rate
+}APQ Views:}APQ Views:Public Holiday Reference
+}APQ Views:}APQ Views:Sys Archive Parameter
+}APQ Views:}APQ Views:Sys Archive Profile
+}APQ Views:}APQ Views:Sys Definition Day Attribute
+}APQ Views:}APQ Views:Sys Definition Month Attribute
+}APQ Views:}APQ Views:Sys Definition Week Attribute
+}APQ Views:}APQ Views:Sys Dimension UDC
+}APQ Views:}APQ Views:Sys Lookup Year Month
+}APQ Views:}APQ Views:Sys Menu
+}APQ Views:}APQ Views:Sys Menu Parameter
+}APQ Views:}APQ Views:Sys Module Object
+}APQ Views:}APQ Views:Sys Parameter
+}APQ Views:}APQ Views:Sys Time Attribute
+}APQ Views:}APQ Views:Sys Versioning Cube
+}APQ Views:}APQ Views:Sys Versioning Log
+}APQ Views:}APQ Views:Sys Workbench
+}APQ Views:}APQ Views:Sys Workbench Task Dependency
+}APQ Views:}APQ Views:Sys Workflow Cooling Period
+}APQ Views:}APQ Views:Sys Workflow Sales Forecast
+}APQ Views:}APQ Views:Top Elements
+}APQ Views:}APQ Views:}ApplicationSecurity
+}APQ Views:}APQ Views:}APQ Application Activity Back
+}APQ Views:}APQ Views:}APQ Application Activity Log
+}APQ Views:}APQ Views:}APQ Application Entries
+}APQ Views:}APQ Views:}APQ Application to Cube Reference
+}APQ Views:}APQ Views:}APQ Chore Info
+}APQ Views:}APQ Views:}APQ Cube Data Archive
+}APQ Views:}APQ Views:}APQ Cube Dependency
+}APQ Views:}APQ Views:}APQ Cube Dimension Dependency
+}APQ Views:}APQ Views:}APQ Cube Last Updated by Process
+}APQ Views:}APQ Views:}APQ Cube View Cache Control
+}APQ Views:}APQ Views:}APQ Cube Views
+}APQ Views:}APQ Views:}APQ Cube Views Management
+}APQ Views:}APQ Views:}APQ Dimension Attribute Definition
+}APQ Views:}APQ Views:}APQ Dimension Attribute Matrix
+}APQ Views:}APQ Views:}APQ Dimension Attributes
+}APQ Views:}APQ Views:}APQ Dimension Defaults
+}APQ Views:}APQ Views:}APQ Dimension Definition
+}APQ Views:}APQ Views:}APQ Dimension Definition Source
+}APQ Views:}APQ Views:}APQ Dimension Elements
+}APQ Views:}APQ Views:}APQ Dimension Element Search
+}APQ Views:}APQ Views:}APQ Dimension Hierarchies
+}APQ Views:}APQ Views:}APQ Dimension SemiDynamic Subsets
+}APQ Views:}APQ Views:}APQ Dimension Static Subsets And UDC
+}APQ Views:}APQ Views:}APQ Dimension Subsets
+}APQ Views:}APQ Views:}APQ Dimension Subset Use
+}APQ Views:}APQ Views:}APQ Dimension Use
+}APQ Views:}APQ Views:}APQ Glossary
+}APQ Views:}APQ Views:}APQ Menu
+}APQ Views:}APQ Views:}APQ Menu Link
+}APQ Views:}APQ Views:}APQ Menu User Preference
+}APQ Views:}APQ Views:}APQ Picklist Dimension
+}APQ Views:}APQ Views:}APQ Picklist General
+}APQ Views:}APQ Views:}APQ Process Execution Item
+}APQ Views:}APQ Views:}APQ Process Execution Log
+}APQ Views:}APQ Views:}APQ Process Execution Tree
+}APQ Views:}APQ Views:}APQ Process Parallelization Control
+}APQ Views:}APQ Views:}APQ Process Parameter Matrix
+}APQ Views:}APQ Views:}APQ Process Parameters Info
+}APQ Views:}APQ Views:}APQ Process Response Message
+}APQ Views:}APQ Views:}APQ Process to Object Reference
+}APQ Views:}APQ Views:}APQ Pulse User Login
+}APQ Views:}APQ Views:}APQ Pulse Workbook Tracker
+}APQ Views:}APQ Views:}APQ Reconciliation Cell Value Change
+}APQ Views:}APQ Views:}APQ Reconciliation Check
+}APQ Views:}APQ Views:}APQ Reconciliation Setup
+}APQ Views:}APQ Views:}APQ Reconciliation Setup Detail
+}APQ Views:}APQ Views:}APQ Security Effective Client Application Folder Permissions
+}APQ Views:}APQ Views:}APQ Security Effective Client Element Permissions
+}APQ Views:}APQ Views:}APQ Security Effective Client Object Permissions
+}APQ Views:}APQ Views:}APQ Security Manage Client Groups
+}APQ Views:}APQ Views:}APQ Security Manage Element Access
+}APQ Views:}APQ Views:}APQ Security Manage Element Security Groups
+}APQ Views:}APQ Views:}APQ Security Manage Object Access
+}APQ Views:}APQ Views:}APQ Security Manage Object Access NEW
+}APQ Views:}APQ Views:}APQ Server Message Log Info
+}APQ Views:}APQ Views:}APQ Settings
+}APQ Views:}APQ Views:}APQ Staging
+}APQ Views:}APQ Views:}APQ Staging Dimension Mapping
+}APQ Views:}APQ Views:}APQ Time Info
+}APQ Views:}APQ Views:}APQ Time Month Conversion
+}APQ Views:}APQ Views:}APQ Time Relative Time Lookup
+}APQ Views:}APQ Views:}APQ TM1 Transaction Log Analysis
+}APQ Views:}APQ Views:}APQ Universal View Calculation
+}APQ Views:}APQ Views:}APQ Universal View Data
+}APQ Views:}APQ Views:}APQ Universal View Dimension Mapping
+}APQ Views:}APQ Views:}APQ Universal View Filter
+}APQ Views:}APQ Views:}APQ Universal View Format
+}APQ Views:}APQ Views:}APQ Universal View Security Access
+}APQ Views:}APQ Views:}APQ Universal View Source Mapping
+}APQ Views:}APQ Views:}APQ User Activity Log
+}APQ Views:}APQ Views:}APQ User Last Active
+}APQ Views:}APQ Views:}CellComments_APQ.Demo Sales Cube
+}APQ Views:}APQ Views:}CellComments_APQ.Demo Sales Cube 2
+}APQ Views:}APQ Views:}CellComments_APQ.Demo Sales Summary
+}APQ Views:}APQ Views:}CellSecurity_}APQ Application Activity Back
+}APQ Views:}APQ Views:}CellSecurity_}APQ Application Activity Log
+}APQ Views:}APQ Views:}CellSecurity_}APQ Picklist Dimension
+}APQ Views:}APQ Views:}CellSecurity_}APQ Picklist General
+}APQ Views:}APQ Views:}CellSecurity_}APQ Process Response Message
+}APQ Views:}APQ Views:}ChoreSecurity
+}APQ Views:}APQ Views:}ClientGroups
+}APQ Views:}APQ Views:}ClientProperties
+}APQ Views:}APQ Views:}ClientSettings
+}APQ Views:}APQ Views:}CubeAttributes
+}APQ Views:}APQ Views:}CubeDrill_}APQ Application to Cube Reference
+}APQ Views:}APQ Views:}CubeDrill_}APQ Security Effective Client Application Folder Permissions
+}APQ Views:}APQ Views:}CubeDrill_}APQ Security Effective Client Element Permissions
+}APQ Views:}APQ Views:}CubeDrill_}APQ Security Effective Client Object Permissions
+}APQ Views:}APQ Views:}CubeProperties
+}APQ Views:}APQ Views:}CubeSecurity
+}APQ Views:}APQ Views:}CubeSecurityProperties
+}APQ Views:}APQ Views:}DimensionAttributes
+}APQ Views:}APQ Views:}DimensionProperties
+}APQ Views:}APQ Views:}DimensionSecurity
+}APQ Views:}APQ Views:}ElementAttributes_APQ.Demo Sales Cube Measure
+}APQ Views:}APQ Views:}ElementAttributes_Currency From
+}APQ Views:}APQ Views:}ElementAttributes_M Reference
+}APQ Views:}APQ Views:}ElementAttributes_Sys Menu Profile
+}APQ Views:}APQ Views:}ElementAttributes_Time Date DayInYear
+}APQ Views:}APQ Views:}ElementAttributes_}APQ Applications
+}APQ Views:}APQ Views:}ElementAttributes_}APQ Chores
+}APQ Views:}APQ Views:}ElementAttributes_}APQ Cubes
+}APQ Views:}APQ Views:}ElementAttributes_}APQ Dimensions
+}APQ Views:}APQ Views:}ElementAttributes_}APQ Execution Item
+}APQ Views:}APQ Views:}ElementAttributes_}APQ Processes
+}APQ Views:}APQ Views:}ElementAttributes_}APQ Security Effective Permission Measure
+}APQ Views:}APQ Views:}ElementAttributes_}APQ Security Level
+}APQ Views:}APQ Views:}ElementAttributes_}APQ Security Manage Client Groups Measure
+}APQ Views:}APQ Views:}ElementAttributes_}APQ Security Manage Element Access Measure
+}APQ Views:}APQ Views:}ElementAttributes_}APQ Security Manage Object Access Measure
+}APQ Views:}APQ Views:}ElementAttributes_}Clients
+}APQ Views:}APQ Views:}ElementSecurity_APQ.Demo Customer
+}APQ Views:}APQ Views:}ElementSecurity_}APQ Applications
+}APQ Views:}APQ Views:}ElementSecurity_}APQ Cubes
+}APQ Views:}APQ Views:}ElementSecurity_}APQ Cube Views
+}APQ Views:}APQ Views:}ElementSecurity_}APQ Dimension Attribute Definition Measure
+}APQ Views:}APQ Views:}ElementSecurity_}APQ Dimensions
+}APQ Views:}APQ Views:}ElementSecurity_}APQ Dimension Subsets
+}APQ Views:}APQ Views:}HierarchyProperties
+}APQ Views:}APQ Views:}LocalizedCubeAttributes
+}APQ Views:}APQ Views:}LocalizedDimensionAttributes
+}APQ Views:}APQ Views:}LocalizedElementAttributes_Currency From
+}APQ Views:}APQ Views:}LocalizedElementAttributes_Date
+}APQ Views:}APQ Views:}LocalizedElementAttributes_Month
+}APQ Views:}APQ Views:}PickList_}APQ Process Execution Item
+}APQ Views:}APQ Views:}PickList_}APQ Process Parallelization Control
+}APQ Views:}APQ Views:}PickList_}APQ Process Parameters Info
+}APQ Views:}APQ Views:}PickList_}APQ Reconciliation Setup
+}APQ Views:}APQ Views:}PickList_}APQ Reconciliation Setup Detail
+}APQ Views:}APQ Views:}PickList_}APQ Security Manage Client Groups
+}APQ Views:}APQ Views:}PickList_}APQ Security Manage Element Access
+}APQ Views:}APQ Views:}PickList_}APQ Security Manage Object Access
+}APQ Views:}APQ Views:}PickList_}APQ Settings
+}APQ Views:}APQ Views:}PickList_}APQ Time Info
+}APQ Views:}APQ Views:}PickList_}APQ Time Relative Time Lookup
+}APQ Views:}APQ Views:}ProcessSecurity
+}APQ Views:}APQ Views:}StatsByCube
+}APQ Views:}APQ Views:}StatsForServer

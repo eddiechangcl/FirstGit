@@ -1,0 +1,10 @@
+﻿283,100
+284,"PickList Last 90 Days"
+11,20190618043035
+274,
+18,0
+275,176
+{TM1SORTBYINDEX( {LastPeriods( 90, StrToMember( "[}APQ Time Date Lookup].["+[}APQ Settings].([}APQ Parameters].[Current Day],[}APQ Settings Measure].[String])+"]" ) )}, DESC )}
+278,0
+281,0
+270,0

@@ -1,0 +1,5 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=Create DimensionSource.sql
+ENTRYTYPE=blob
+ENTRYREFERENCE=TM1:///blob/PUBLIC/.\}Externals\Create DimensionSource.sql_20170621133036.sql
+REMOVEBLOBONDELETE=Yes

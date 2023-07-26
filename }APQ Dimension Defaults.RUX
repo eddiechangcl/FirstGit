@@ -1,0 +1,181 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+#SKIPCHECK;
+#FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Dimension Defaults** has a primary purpose of setting the **Default Member** per dimension for use in the **Reconciliation Module** 
+# family of cubes which perform automated recolciliation checks of inter- or intra- cube values (not within apliqode framework cubes but within the 
+# custom model in general especially user reporting or planning cubes). An example of how to use and configure the **Reconciliation Application** is
+# included in the Apliqode Framework Demo Applcation using the **Sales Cube** family as an example.
+# 
+# **}APQ Dimension Defaults** is also used to set the global default value for **Default Member** per dimension hierarchy for which is used to set
+# default navigation and filter preferences and also copied to **}HierarchyProperties** and **}DimensionProperties**.
+#
+# Note:
+# As this is a small lookup cube of limited dimensionality there is no requirement for SkipCheck or Feeders.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+### STETS & EXCEPTIONS
+[ '}APQ Dimension Defaults Measure':'Standard Subsets' ] = S: '';
+
+# For leaf hierarchy some measures to be excluded
+[ '}APQ Dimension Defaults Measure':{'Automatic Total','Total Override','Total_Member'} ] = S: 
+IF( Scan( ':Leaves', !}APQ Dimension Hierarchies ) > 0,
+    '',
+    Continue
+);
+
+# For default hierarchy always inherit from dimension regardless of measure
+[ ] = S: 
+IF( IsLeaf = 1 & !}APQ Dimension Hierarchies @= ElPar( '}APQ Dimension Hierarchies', !}APQ Dimension Hierarchies, 1 ) |':'| ElPar( '}APQ Dimension Hierarchies', !}APQ Dimension Hierarchies, 1 ),
+    DB( '}APQ Dimension Defaults', ElPar( '}APQ Dimension Hierarchies', !}APQ Dimension Hierarchies, 1 ), !}APQ Dimension Defaults Measure, 'String' ),
+    Continue 
+);
+
+[ '}APQ Dimension Defaults Measure':{'Std All C Elements','Std Top Elements'} ] = S: 
+IF( Scan( ':Leaves', !}APQ Dimension Hierarchies ) > 0,
+    IF( DB( '}APQ Settings', !}APQ Dimension Defaults Measure, 'Numeric' ) = 1,
+        '1',
+        ''
+    ),
+    Continue
+);
+
+# Stets for input at dimension AND hierarchy level 
+[ '}APQ Dimension Defaults Measure':{'Automatic Default','Default Override'} ] = S: Stet;
+
+# Stets for input at dimension level & Inheritance for dimension level 
+[ '}APQ Dimension Defaults Measure':{'Automatic Alias','Alias Override','Automatic NA','NA Override'} ] = S: 
+IF( ElLev( '}APQ Dimension Hierarchies', !}APQ Dimension Hierarchies ) >= 1,
+    Stet,
+    DB( '}APQ Dimension Defaults', ElPar( '}APQ Dimension Hierarchies', !}APQ Dimension Hierarchies, 1 ), !}APQ Dimension Defaults Measure, !}APQ Dimension Defaults Measure Type )
+);
+
+# Inheritance at hierarchy level (rule calc at dimension level)
+[ '}APQ Dimension Defaults Measure':{'Default_Alias','NA_Member','Caption Autofill','Caption Name','Caption Type','Caption Source'} ] = S: 
+IF( ElLev( '}APQ Dimension Hierarchies', !}APQ Dimension Hierarchies ) = 0,
+    DB( '}APQ Dimension Defaults', ElPar( '}APQ Dimension Hierarchies', !}APQ Dimension Hierarchies, 1 ), !}APQ Dimension Defaults Measure, !}APQ Dimension Defaults Measure Type ),
+    Continue
+);
+
+### Measure rule calculations
+[ '}APQ Dimension Defaults Measure':'Default_Alias' ] = S:
+IF( DimIx( '}ElementAttributes_' | !}APQ Dimension Hierarchies, DB( '}APQ Dimension Defaults', !}APQ Dimension Hierarchies, 'Alias Override', 'String' ) ) > 0,
+    DB( '}APQ Dimension Defaults', !}APQ Dimension Hierarchies, 'Alias Override', 'String' ),
+    IF( DimIx( '}ElementAttributes_' | !}APQ Dimension Hierarchies, DB( '}APQ Dimension Defaults', !}APQ Dimension Hierarchies, 'Automatic Alias', 'String' ) ) > 0,
+        DB( '}APQ Dimension Defaults', !}APQ Dimension Hierarchies, 'Automatic Alias', 'String' ),
+        ''
+    ) 
+);
+
+[ '}APQ Dimension Defaults Measure':{'Automatic Alias','Alias Override','Default_Alias'} ] = N:
+Sign( DimIx( 
+    '}ElementAttributes_' | SubSt( !}APQ Dimension Hierarchies, 1, Scan( ':', !}APQ Dimension Hierarchies ) - 1 ), 
+    DB( '}APQ Dimension Defaults', !}APQ Dimension Hierarchies, !}APQ Dimension Defaults Measure, 'String' ) 
+) );
+
+[ '}APQ Dimension Defaults Measure':'Default_Member' ] = S:
+IF( DimIx( !}APQ Dimension Hierarchies, DB( '}APQ Dimension Defaults', !}APQ Dimension Hierarchies, 'Default Override', 'String' ) ) > 0,
+    DimNm( !}APQ Dimension Hierarchies, DimIx( !}APQ Dimension Hierarchies, DB( '}APQ Dimension Defaults', !}APQ Dimension Hierarchies, 'Default Override', 'String' ) ) ),
+    IF( DimIx( !}APQ Dimension Hierarchies, DB( '}APQ Dimension Defaults', !}APQ Dimension Hierarchies, 'Automatic Default', 'String' ) ) > 0,
+        DB( '}APQ Dimension Defaults', !}APQ Dimension Hierarchies, 'Automatic Default', 'String' ),
+        DimNm( !}APQ Dimension Hierarchies, 1 )
+    )
+);
+
+[ '}APQ Dimension Defaults Measure':'NA_Member' ] = S:
+IF( DimIx( !}APQ Dimension Hierarchies, DB( '}APQ Dimension Defaults', !}APQ Dimension Hierarchies, 'NA Override', 'String' ) ) > 0,
+    DimNm( !}APQ Dimension Hierarchies, DimIx( !}APQ Dimension Hierarchies, DB( '}APQ Dimension Defaults', !}APQ Dimension Hierarchies, 'NA Override', 'String' ) ) ),
+    IF( DimIx( !}APQ Dimension Hierarchies, DB( '}APQ Dimension Defaults', !}APQ Dimension Hierarchies, 'Automatic NA', 'String' ) ) > 0,
+        DB( '}APQ Dimension Defaults', !}APQ Dimension Hierarchies, 'Automatic NA', 'String' ),
+        ''
+    )
+);
+
+[ '}APQ Dimension Defaults Measure':'Total_Member' ] = S:
+IF( DimIx( !}APQ Dimension Hierarchies, DB( '}APQ Dimension Defaults', !}APQ Dimension Hierarchies, 'Total Override', 'String' ) ) > 0,
+    DimNm( !}APQ Dimension Hierarchies, DimIx( !}APQ Dimension Hierarchies, DB( '}APQ Dimension Defaults', !}APQ Dimension Hierarchies, 'Total Override', 'String' ) ) ),
+    IF( DimIx( !}APQ Dimension Hierarchies, DB( '}APQ Dimension Defaults', !}APQ Dimension Hierarchies, 'Automatic Total', 'String' ) ) > 0,
+        DB( '}APQ Dimension Defaults', !}APQ Dimension Hierarchies, 'Automatic Total', 'String' ),
+        ''
+    )
+);
+
+[ '}APQ Dimension Defaults Measure':{'Automatic Default','Default Override','Default_Member','Automatic NA','NA Override','NA_Member','Automatic Total','Total Override','Total_Member'} ] = N:
+Sign( DimIx( 
+    !}APQ Dimension Hierarchies, 
+    DB( '}APQ Dimension Defaults', !}APQ Dimension Hierarchies, !}APQ Dimension Defaults Measure, 'String' ) 
+) );
+
+[ '}APQ Dimension Defaults Measure':'Caption Type' ] = S:
+IF( DB( '}APQ Dimension Defaults', !}APQ Dimension Hierarchies, 'Caption Name', 'String' ) @= 'Caption_Default',
+    'A',
+    Continue
+);
+
+[ '}APQ Dimension Defaults Measure':'Caption Autofill' ] = N: 
+Numbr( DB( '}APQ Dimension Defaults', !}APQ Dimension Hierarchies, !}APQ Dimension Defaults Measure, 'String' ) );
+
+[ '}APQ Dimension Defaults Measure':{'Caption Name','Caption Type','Caption Source'} ] = S:
+IF( ['}APQ Dimension Defaults Measure':'Caption Autofill', '}APQ Dimension Defaults Measure Type':'Numeric'] = 0,
+    '',
+    STET
+);
+
+### Standard subsets
+# For standard subsets ensure that certain types of flat control dimensions (e.g attributes and dims only containing strings) don't get Standard subsets created (except for "All Elements")
+# Need to "invert" the true/false
+[ '}APQ Dimension Defaults Measure':{'Std All N Elements','Std All N Elements Principal','Std All C Elements','Std Top Elements','Std Default Member Subset'} ] = S:
+IF( Scan( '}ElementAttributes_', !}APQ Dimension Hierarchies ) = 1,
+    IF( DB( '}APQ Settings', !}APQ Dimension Defaults Measure, 'Numeric' ) = 1,
+        '1',
+        ''
+    ),
+    Continue
+);
+
+#  For standard subsets ensure not generated for new PA control dimensions
+[ '}APQ Dimension Defaults Measure':{'Std All Elements','Std All N Elements','Std All N Elements Principal','Std All C Elements','Std Top Elements','Std Default Member Subset'} ] = S:
+IF( Scan( '}Subsets_', !}APQ Dimension Hierarchies ) = 1 % Scan( '}Hierarchies_', !}APQ Dimension Hierarchies ) = 1 % Scan( '}Views_', !}APQ Dimension Hierarchies ) = 1,
+    IF( DB( '}APQ Settings', !}APQ Dimension Defaults Measure, 'Numeric' ) = 1,
+        '1',
+        ''
+    ),
+    Continue
+);
+
+# Else for standard subsets give option to "reverse the polarity of true/false enabled from settings cube so data entry is by exception to disable if enabled globally
+[ '}APQ Dimension Defaults Measure':{'Std All Elements','Std All N Elements','Std All N Elements Principal','Std All C Elements','Std Top Elements','Std Default Member Subset'} ] = S: 
+IF( DB( '}APQ Settings', !}APQ Dimension Defaults Measure, 'Numeric' ) = 1,
+    STET,
+    '1'
+);
+
+[ '}APQ Dimension Defaults Measure':{'Std All Elements','Std All N Elements','Std All N Elements Principal','Std All C Elements','Std Top Elements','Std Default Member Subset'} ] = N: 
+Numbr( DB( '}APQ Dimension Defaults', !}APQ Dimension Hierarchies, !}APQ Dimension Defaults Measure, 'String' ) );
+
+
+#############################
+#FEEDERS;
+#############################
+
+
+#############################
+##~~   End  Rule File   ~~##
+#############################

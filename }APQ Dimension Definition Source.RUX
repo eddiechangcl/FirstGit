@@ -1,0 +1,81 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+SKIPCHECK;
+FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Dimension Definition Source** stores information on the mapping of dimension metadata when the source type is specified as
+# **CUBE** in the configuration cube **}APQ Dimension Definition**.  This cube is then read be the **}APQ.Dim.Definition.Load...** processes to build
+# dimensions from the entered data.
+#
+# This allows for a standard modular approach to define & maintain TM1 dimensions which is easily extended to additional dimensions with no
+# additional coding.  All that is needed is for the selected datasource to conform to the defined apliqode framework standard (in terms of 
+# columns for element definition, parent definition & attribute definition).  Providing a string cube as a data source ensures that no formatting 
+# is required for the process to "just work".  _Note that a maximum of **100K rows**_ is allowed for.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+# For same named hierarchy do the input at dimension level
+[ ] = S:
+IF( ElLev( '}APQ Dimension Hierarchies', !}APQ Dimension Hierarchies ) > 0,
+  STET,
+  IF( SubSt( !}APQ Dimension Hierarchies, 1, Scan( ':', !}APQ Dimension Hierarchies ) - 1 ) @<> SubSt( !}APQ Dimension Hierarchies, Scan( ':', !}APQ Dimension Hierarchies ) + 1, Scan( ':', !}APQ Dimension Hierarchies ) - 1 ),
+    STET,
+    DB( '}APQ Dimension Definition Source', SubSt( !}APQ Dimension Hierarchies, 1, Scan( ':', !}APQ Dimension Hierarchies ) - 1 ), !}APQ Data Source Row, !}APQ Dimension Definition Source Measure )
+  ) 
+);
+
+# For Total row Comment leave blank to store front end view defintion (C3 Canvas UI)
+[ '}APQ Data Source Row':'Total Rows', '}APQ Dimension Definition Source Measure':'vComment' ] = S: STET;
+
+# For Total row get the mapping of attribute names
+[ '}APQ Data Source Row':'Total Rows' ] = S:
+DB( '}APQ Dimension Definition', !}APQ Dimension Hierarchies, 'Total Items', AttrS( '}APQ Dimension Definition Source Measure', !}APQ Dimension Definition Source Measure, 'AttrName' ), 'String' );
+
+# Get the line count of the elements defined
+[ '}APQ Dimension Definition Source Measure':'LineCount' ] = N: Sign( [ '}APQ Dimension Definition Source Measure':'LineCheck' ] );
+C: 
+If( Scan( ':', !}APQ Dimension Hierarchies ) = 0,
+    DB( '}APQ Dimension Definition Source', !}APQ Dimension Hierarchies |':'| !}APQ Dimension Hierarchies, !}APQ Data Source Row, !}APQ Dimension Definition Source Measure ),
+    STET
+);
+
+# Check all possible elements for entry
+[ '}APQ Dimension Definition Source Measure':{'nElement','nParent1','nParent2','nParent3','nParent4','nParent5','nParent6','nParent7','nParent8','nParent9','nParent10','nParent11','nParent12','nParent13','nParent14','nParent15','nParent16','nParent17','nParent18','nParent19','nParent20','nParent21','nParent22','nParent23','nParent24','nParent25','nParent26','nParent27','nParent28','nParent29','nParent30'} ] = N: 
+If( DB( '}APQ Dimension Definition Source', !}APQ Dimension Hierarchies, !}APQ Data Source Row, 'v' | SubSt( !}APQ Dimension Definition Source Measure, 2, 8 ) ) @<> '',
+    1,
+    0
+);
+
+#############################
+FEEDERS;
+#############################
+
+# Feed check elements from test entry elements
+[ '}APQ Dimension Definition Source Measure':{'vElement','vParent1','vParent2','vParent3','vParent4','vParent5','vParent6','vParent7','vParent8','vParent9','vParent10','vParent11','vParent12','vParent13','vParent14','vParent15','vParent16','vParent17','vParent18','vParent19','vParent20','vParent21','vParent22','vParent23','vParent24','vParent25','vParent26','vParent27','vParent28','vParent29','vParent30'} ] => 
+DB( '}APQ Dimension Definition Source', !}APQ Dimension Hierarchies |':'| !}APQ Dimension Hierarchies, !}APQ Data Source Row, !}APQ Dimension Definition Source Measure ),
+DB( '}APQ Dimension Definition Source', !}APQ Dimension Hierarchies, !}APQ Data Source Row, 'n' | SubSt( !}APQ Dimension Definition Source Measure, 2, 8 ) ),
+DB( '}APQ Dimension Definition Source', !}APQ Dimension Hierarchies |':'| !}APQ Dimension Hierarchies, !}APQ Data Source Row, 'n' | SubSt( !}APQ Dimension Definition Source Measure, 2, 8 ) );
+
+# linecount numeric measure needs to be fed
+[ '}APQ Dimension Definition Source Measure':'LineCheck' ] => [ '}APQ Dimension Definition Source Measure':'LineCount' ];
+
+#############################
+##~~   End  Rule File   ~~##
+#############################
+
+

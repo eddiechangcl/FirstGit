@@ -1,0 +1,106 @@
+FORMAT==100
+##############################################################################################################################
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+SKIPCHECK;
+#############################
+
+[ '}APQ Dimension Definition Parameter':'Unwind Consolidation List Separator' ] = S: 'Static::\::¦:|:;:_:.:-:^:&:\+:\\:\/';
+
+[ '}APQ Dimension Definition Parameter':{ 'Amend Dimension To build', 'Launch Standard Subset Updates', 'Launch Subset Framework Updates', 'Launch Attribute Framework Updates', 'Automatically Create Top Node', 'Allow N to C element type conversion', 'Group Orphan N Elements', 'Delete Orphan C Elements', 'Automatically Create NA Element',
+  'Automatically Create Dummy N Elements', 'Dimension Sort Order', 'Dimension Delete All Elements', 'Delete And Recreate All Attributes', 'Dimension Unwind','Unwind Recursively', 'Delete Source Dimension After Clone', 'Load Attrs First To Framework', 'Step disabled','Allow alias in place of element names',
+  'Update Element Security','Full element security refresh (including automatic group creation)','Element security refresh for preconfigured groups'},
+  '}APQ Dimension Definition Measure':'String', '}PickList':'Value' ] = S:
+'Static::Y:N';
+
+[ '}APQ Dimension Definition Parameter':'Template Type', '}APQ Dimension Definition Measure':'String', '}PickList':'Value' ] = S: 'Static::ByParentChild:ByRollup';
+
+[ '}APQ Dimension Definition Parameter':'Automatically Create Dummy N Elements to Level', '}APQ Dimension Definition Measure':'String', '}PickList':'Value' ] = S:
+   'Subset:}APQ PickList Validations:PickList Levels 0-' | Str( DnLev( !}APQ Dimension Hierarchies ) - 1, 2, 0 );
+
+[ '}APQ Dimension Definition Parameter':{ 'Dimension To Build', 'Launch another dimension', 'Source Dimension Name' }, '}APQ Dimension Definition Measure':'String', '}PickList':'Value' ] = S:
+IF(  DB( '}APQ Dimension Subsets', '}Dimensions\All Real Dimensions and Hierarchies', 'Element Count' ) <= DB( '}APQ Settings', 'Max subset size for PickList entry', 'Numeric' ),
+   'Subset:}Dimensions:All Real Dimensions and Hierarchies',
+   STET
+);
+
+[ '}APQ Dimension Definition Parameter':{ 'Source Subset Name' }, '}APQ Dimension Definition Measure':'String', '}PickList':'Value' ] = S:
+IF( DB( '}APQ Settings', 'TM1 Version', 'Numeric' ) > 11,
+   'Dimension:}Subsets_',
+   'Subset:}APQ Subsets:'
+) |
+IF( Scan( ':', DB( '}APQ Dimension Definition', !}APQ Dimension Hierarchies, !}APQ Item Index, 'Source Dimension Name', !}APQ Dimension Definition Measure ) ) = 0,
+    DB( '}APQ Dimension Definition', !}APQ Dimension Hierarchies, !}APQ Item Index, 'Source Dimension Name', !}APQ Dimension Definition Measure ),
+    SubSt( DB( '}APQ Dimension Definition', !}APQ Dimension Hierarchies, !}APQ Item Index, 'Source Dimension Name', !}APQ Dimension Definition Measure ), 1, Scan( ':', DB( '}APQ Dimension Definition', !}APQ Dimension Hierarchies, !}APQ Item Index, 'Source Dimension Name', !}APQ Dimension Definition Measure ) ) - 1 )
+);
+
+[ '}APQ Dimension Definition Parameter':{ 'Source Type' }, '}APQ Dimension Definition Measure':'String', '}PickList':'Value'  ]= S:
+'Static::CSV:ODBC:CUBE:DIMENSION:ATTRIBUTE:PROCESS';
+
+[ '}APQ Dimension Definition Parameter':{ 'ODBC Source' }, '}APQ Dimension Definition Measure':'String', '}PickList':'Value' ] = S:
+'Subset:}APQ Parameters:ODBC Connections';
+
+[ '}APQ Dimension Definition Measure':'String', '}PickList':'Value' ] = S:
+IF( ELISANC ( '}APQ Dimension Definition Parameter', 'Attributes', !}APQ Dimension Definition Parameter ) = 1 & SUBST( !}APQ Dimension Definition Parameter, LONG( !}APQ Dimension Definition Parameter ) -17, 18) @= 'Code Concatenation',
+   'Static::Type 1 - "Code - Alias":Type 2 - "Alias (Code)":Type 3 - "Code Alias"',
+   Continue
+);
+
+[ '}APQ Dimension Definition Measure':'String', '}PickList':'Value' ] = S:
+IF( ELISANC ( '}APQ Dimension Definition Parameter', 'Attributes', !}APQ Dimension Definition Parameter ) = 1,
+    IF( SUBST( !}APQ Dimension Definition Parameter, LONG( !}APQ Dimension Definition Parameter ) -3, 4) @= 'Type',
+        'Static:A:S:N',
+        IF( SUBST( !}APQ Dimension Definition Parameter, LONG( !}APQ Dimension Definition Parameter ) -5, 6) @= 'Locale',
+            'Subset:}Cultures:Languages',
+            STET
+        )
+    ),
+    Continue
+);
+
+[ '}APQ Dimension Definition Parameter':{ 'Component Sort Sense', 'Element Sort Sense' }, '}APQ Dimension Definition Measure':'String', '}PickList':'Value' ] = S:
+'Static:Ascending:Descending';
+
+[ '}APQ Dimension Definition Parameter':{ 'Component Sort Type' }, '}APQ Dimension Definition Measure':'String', '}PickList':'Value' ] = S:
+'Static:ByInput:ByName';
+
+[ '}APQ Dimension Definition Parameter':{ 'Element Sort Type' }, '}APQ Dimension Definition Measure':'String', '}PickList':'Value' ] = S:
+'Static:ByInput:ByName:ByLevel:ByHierarchy';
+
+# ATTRIBUTE
+# Dimension hierarchy
+[ '}APQ Dimension Definition Parameter':'Source Hierarchy', '}APQ Dimension Definition Measure':'String', '}PickList':'Value' ] = S:
+If( SubSt( !}APQ Dimension Hierarchies, 1, 9 ) @= '}APQ Time',
+    'Subset:}APQ Dimension Hierarchies:}Hierarchies_' | !}APQ Dimension Hierarchies,
+    'Dimension:}Hierarchies_' | IF( SCAN(':', !}APQ Dimension Hierarchies) >0, SUBST(!}APQ Dimension Hierarchies, 1, SCAN(':', !}APQ Dimension Hierarchies)-1 ), !}APQ Dimension Hierarchies )
+);
+
+[ '}APQ Dimension Definition Parameter':{ 'Attribute Name' }, '}APQ Dimension Definition Measure':'String', '}PickList':'Value' ] = S:
+'Dimension:}ElementAttributes_' |
+IF( SCAN( ':', !}APQ Dimension Hierarchies) > 0,
+    SUBST( !}APQ Dimension Hierarchies, 1, SCAN( ':', !}APQ Dimension Hierarchies) - 1 ),
+    !}APQ Dimension Hierarchies
+);
+
+[ '}APQ Dimension Definition Parameter':{ 'Skip Blank Attribute' }, '}APQ Dimension Definition Measure':'String', '}PickList':'Value' ] = S:
+'Static:Skip:Send to Unallocated Node';
+
+[ '}APQ Item Index':'Total Items', '}APQ Dimension Definition Parameter':{'Launch a custom process BEFORE step 1', 'Launch a custom process AFTER final step'  }, '}APQ Dimension Definition Measure':'String', '}PickList':'Value' ] = S:
+IF(  DB( '}APQ Dimension Subsets', '}APQ Processes\' | DB( '}APQ Settings', 'Std All N Elements', 'String' ), 'Element Count' ) <= DB( '}APQ Settings', 'Max subset size for PickList entry', 'Numeric' ),
+   'Subset:}APQ Processes:' | DB( '}APQ Settings', 'Std All N Elements', 'String' ),
+   STET
+);
+
+[ '}APQ Dimension Definition Parameter':{ 'Process Name' }, '}APQ Dimension Definition Measure':'String', '}PickList':'Value' ] = S:
+IF(  DB( '}APQ Dimension Subsets', '}APQ Processes\' | DB( '}APQ Settings', 'Std All N Elements', 'String' ), 'Element Count' ) <= DB( '}APQ Settings', 'Max subset size for PickList entry', 'Numeric' ),
+   'Subset:}APQ Processes:' | DB( '}APQ Settings', 'Std All N Elements', 'String' ),
+   STET
+);
+
+
+

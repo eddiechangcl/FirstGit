@@ -1,0 +1,5 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=APQ Process to Object Reference
+ENTRYTYPE=blob
+ENTRYREFERENCE=TM1:///blob/PUBLIC/.\}Externals\APQ Process to Object Referencev2.2.xlsx_20160721150335.xlsx
+REMOVEBLOBONDELETE=Yes

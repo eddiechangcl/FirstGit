@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=User Session Analysis
+ENTRYTYPE=view
+ENTRYREFERENCE=TM1:///VIEW/PUBLIC/}APQ User Activity Log/User Activity by Day

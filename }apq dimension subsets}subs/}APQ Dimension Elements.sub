@@ -1,0 +1,374 @@
+﻿283,100
+284,"}APQ Dimension Elements"
+11,20230515004909
+274,
+18,0
+275,
+278,0
+281,0
+270,365
+}APQ Dimension Elements:}APQ Dimension Elements:All Elements
+}APQ Dimension Elements:}APQ Dimension Elements:All N Elements
+}APQ Dimension Elements:}APQ Dimension Elements:All N Elements code
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo Customer
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo Customer - Code and Description
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo Customer - KAM
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo Customer - KAM - Code and Description
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo Customer - Leaves
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo Customer - Leaves - Code and Description
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo Test
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo Test - By Entry
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo Test - By Entry - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo Test - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo Test - Leaves
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo Test - Leaves - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Month
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Month - Description
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Month - Description Short
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Month - ERP Date Format
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Month - Idx0
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Month - Idx00
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Month - Leaves
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Month - Leaves - Description
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Month - Leaves - Description Short
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Month - Leaves - ERP Date Format
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Month - Leaves - Idx0
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Month - Leaves - Idx00
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Month - QTD
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Month - QTD - Description
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Month - QTD - Description Short
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Month - QTD - ERP Date Format
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Month - QTD - Idx0
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Month - QTD - Idx00
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Month - QTG
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Month - QTG - Description
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Month - QTG - Description Short
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Month - QTG - ERP Date Format
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Month - QTG - Idx0
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Month - QTG - Idx00
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Month - YTD
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Month - YTD - Description
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Month - YTD - Description Short
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Month - YTD - ERP Date Format
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Month - YTD - Idx0
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Month - YTD - Idx00
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Month - YTG
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Month - YTG - Description
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Month - YTG - Description Short
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Month - YTG - ERP Date Format
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Month - YTG - Idx0
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Month - YTG - Idx00
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Quarter
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Quarter - Description
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Quarter - Description Short
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Quarter - Leaves
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Quarter - Leaves - Description
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Quarter - Leaves - Description Short
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Quarter - YTD
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Quarter - YTD - Description
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Quarter - YTD - Description Short
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Quarter - YTG
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Quarter - YTG - Description
+}APQ Dimension Elements:}APQ Dimension Elements:APQ.Demo T Quarter - YTG - Description Short
+}APQ Dimension Elements:}APQ Dimension Elements:Currency From
+}APQ Dimension Elements:}APQ Dimension Elements:Currency From - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:Currency From - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:Currency From - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:Currency From - Code
+}APQ Dimension Elements:}APQ Dimension Elements:Currency From - Country zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:Currency From - Country zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:Currency From - Description
+}APQ Dimension Elements:}APQ Dimension Elements:Currency To
+}APQ Dimension Elements:}APQ Dimension Elements:Currency To - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:Currency To - Description
+}APQ Dimension Elements:}APQ Dimension Elements:Data Source GL
+}APQ Dimension Elements:}APQ Dimension Elements:Data Source GL - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:Data Source GL - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:Data Source GL - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:Data Source GL - Description
+}APQ Dimension Elements:}APQ Dimension Elements:Data Source GL Plan
+}APQ Dimension Elements:}APQ Dimension Elements:Data Source Sales
+}APQ Dimension Elements:}APQ Dimension Elements:Date
+}APQ Dimension Elements:}APQ Dimension Elements:Date - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:Date - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:Date - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:Date - Description
+}APQ Dimension Elements:}APQ Dimension Elements:Date - Julian Date
+}APQ Dimension Elements:}APQ Dimension Elements:Date - yyyy M00 dd
+}APQ Dimension Elements:}APQ Dimension Elements:Date - yyyymmdd
+}APQ Dimension Elements:}APQ Dimension Elements:Date - yyyy mmm dd
+}APQ Dimension Elements:}APQ Dimension Elements:Day in Month
+}APQ Dimension Elements:}APQ Dimension Elements:Day in Month - 0
+}APQ Dimension Elements:}APQ Dimension Elements:Day in Month - 00
+}APQ Dimension Elements:}APQ Dimension Elements:Day in Month - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:Day in Month - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:Day in Month - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:Day in Month - D00
+}APQ Dimension Elements:}APQ Dimension Elements:Day in Week
+}APQ Dimension Elements:}APQ Dimension Elements:Day in Week - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:Day in Week - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:Day in Week - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:Day in Week - Description
+}APQ Dimension Elements:}APQ Dimension Elements:Day in Week - Description Long
+}APQ Dimension Elements:}APQ Dimension Elements:Day in Year
+}APQ Dimension Elements:}APQ Dimension Elements:Day in Year - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:Day in Year - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:Day in Year - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:Day in Year - dd mmm
+}APQ Dimension Elements:}APQ Dimension Elements:Day in Year - Description
+}APQ Dimension Elements:}APQ Dimension Elements:Day in Year - M00 D00
+}APQ Dimension Elements:}APQ Dimension Elements:Day in Year - mmdd
+}APQ Dimension Elements:}APQ Dimension Elements:Day in Year - mmm dd
+}APQ Dimension Elements:}APQ Dimension Elements:Default
+}APQ Dimension Elements:}APQ Dimension Elements:Default Member
+}APQ Dimension Elements:}APQ Dimension Elements:Demo Account GL
+}APQ Dimension Elements:}APQ Dimension Elements:Demo Account GL - Code and Description
+}APQ Dimension Elements:}APQ Dimension Elements:Demo Account GL Plan
+}APQ Dimension Elements:}APQ Dimension Elements:Demo Account Sales
+}APQ Dimension Elements:}APQ Dimension Elements:Demo Customer
+}APQ Dimension Elements:}APQ Dimension Elements:Demo Customer - Code and Description
+}APQ Dimension Elements:}APQ Dimension Elements:Demo Entity
+}APQ Dimension Elements:}APQ Dimension Elements:Demo Entity - Description
+}APQ Dimension Elements:}APQ Dimension Elements:Demo Entity - Full Description
+}APQ Dimension Elements:}APQ Dimension Elements:Demo Inter Company
+}APQ Dimension Elements:}APQ Dimension Elements:Demo Product
+}APQ Dimension Elements:}APQ Dimension Elements:Demo Product - Code and Description
+}APQ Dimension Elements:}APQ Dimension Elements:Demo Profit Center
+}APQ Dimension Elements:}APQ Dimension Elements:Demo Profit Center - Full Description
+}APQ Dimension Elements:}APQ Dimension Elements:FX Rate Type
+}APQ Dimension Elements:}APQ Dimension Elements:FX Rate Type - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:FX Rate Type - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:FX Rate Type - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:Line Item
+}APQ Dimension Elements:}APQ Dimension Elements:Line Item - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:Line Item - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:Line Item - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:Line Item - Description
+}APQ Dimension Elements:}APQ Dimension Elements:Line Item - Idx0
+}APQ Dimension Elements:}APQ Dimension Elements:Manpower Title
+}APQ Dimension Elements:}APQ Dimension Elements:M Currency
+}APQ Dimension Elements:}APQ Dimension Elements:M Currency - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:M Currency - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:M Currency - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:M Currency - Description
+}APQ Dimension Elements:}APQ Dimension Elements:M FX Rate
+}APQ Dimension Elements:}APQ Dimension Elements:M FX Rate - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:M FX Rate - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:M FX Rate - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:M GL Plan
+}APQ Dimension Elements:}APQ Dimension Elements:M GL Plan - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:M GL Plan - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:M GL Plan - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:M GL Reporting
+}APQ Dimension Elements:}APQ Dimension Elements:M GL Reporting - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:M GL Reporting - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:M GL Reporting - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:M Manpower Reporting
+}APQ Dimension Elements:}APQ Dimension Elements:Month
+}APQ Dimension Elements:}APQ Dimension Elements:Month - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:Month - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:Month - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:Month - Description
+}APQ Dimension Elements:}APQ Dimension Elements:Month - Description zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:Month - Description zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:Month - M00
+}APQ Dimension Elements:}APQ Dimension Elements:Month - MMM
+}APQ Dimension Elements:}APQ Dimension Elements:Month - MMMM
+}APQ Dimension Elements:}APQ Dimension Elements:M Reference
+}APQ Dimension Elements:}APQ Dimension Elements:M Reference - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:M Reference - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:M Reference - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:M Reference - Description
+}APQ Dimension Elements:}APQ Dimension Elements:M Reference - Description zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:M Reference - Description zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:M Sales Reporting
+}APQ Dimension Elements:}APQ Dimension Elements:M Sales Reporting - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:M Sales Reporting - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:M Sales Reporting - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Archive Parameter
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Archive Parameter - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Archive Parameter - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Archive Parameter - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Archive Profile
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Archive Profile - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Archive Profile - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Archive Profile - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Menu
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Menu Application Entry
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Menu Link
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Menu Parameter
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Module Object
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Module Object - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Module Object - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Module Object - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Parameter
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Parameter - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Parameter - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Parameter - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Time Attribute
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Time Attribute - Alias Month
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Time Attribute - Alias Week
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Time Attribute - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Time Attribute - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Time Attribute - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Versioning Cube
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Versioning Cube - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Versioning Cube - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Versioning Cube - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Versioning Log
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Versioning Log - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Versioning Log - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Versioning Log - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Workbench
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Workbench - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Workbench - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Workbench - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Workbench Task Dependency
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Workbench Task Dependency - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Workbench Task Dependency - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Workbench Task Dependency - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Workflow Cooling Period
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Workflow Cooling Period - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Workflow Cooling Period - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:M Sys Workflow Cooling Period - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:M UDC
+}APQ Dimension Elements:}APQ Dimension Elements:M UDC - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:M UDC - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:M UDC - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:M Unit
+}APQ Dimension Elements:}APQ Dimension Elements:M Unit - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:M Unit - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:M Unit - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:M Unit - Description
+}APQ Dimension Elements:}APQ Dimension Elements:M Workflow
+}APQ Dimension Elements:}APQ Dimension Elements:M Workflow - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:M Workflow - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:M Workflow - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:Planning Year
+}APQ Dimension Elements:}APQ Dimension Elements:Planning Year - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:Planning Year - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:Planning Year - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:Quarter
+}APQ Dimension Elements:}APQ Dimension Elements:Quarter - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:Quarter - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:Quarter - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:Quarter - Description
+}APQ Dimension Elements:}APQ Dimension Elements:Scale
+}APQ Dimension Elements:}APQ Dimension Elements:Scale - Code and Description
+}APQ Dimension Elements:}APQ Dimension Elements:Scenario
+}APQ Dimension Elements:}APQ Dimension Elements:Scenario - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:Scenario - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:Scenario - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:Scenario - Description
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Archive ID
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Archive ID - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Archive ID - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Archive ID - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Archive Parameter
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Archive Parameter - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Archive Parameter - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Archive Parameter - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Lookup Date
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Lookup Year
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Lookup Year Fiscal
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Lookup Year Month
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Lookup Year Quarter
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Lookup Year Week
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Menu Application Entry
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Menu Application Entry - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Menu Application Entry - Page ID
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Menu Link
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Menu Link - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Menu Link - Desc
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Menu Page
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Menu Page - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Menu Page Column
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Menu Page Column - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Menu Page Row
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Menu Page Row - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Menu Parameter
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Menu Parameter - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Menu Profile
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Menu Profile - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Menu Profile - Caption_Default
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Menu Profile - Desc
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Menu Profile - }TM1_DefaultDisplayValue
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Module
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Module - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Module - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Module - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Module - Code and Description
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Module - Description
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Module Object Type
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Module Object Type - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Module Object Type - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Module Object Type - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Parameter
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Parameter - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Parameter - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Parameter - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Versioning Module
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Versioning Module - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Versioning Module - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Versioning Module - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Workbench Group
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Workbench Group - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Workbench Group - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Workbench Group - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Workbench Group - Description
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Workbench Group - Full Description
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Workbench Priority
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Workbench Priority - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Workbench Priority - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Workbench Priority - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Workbench Step
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Workbench Step - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Workbench Step - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Workbench Step - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Workflow
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Workflow - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Workflow - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Workflow - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:Sys Workflow - Description
+}APQ Dimension Elements:}APQ Dimension Elements:Time Deviation
+}APQ Dimension Elements:}APQ Dimension Elements:UDC
+}APQ Dimension Elements:}APQ Dimension Elements:UDC - AAP Description
+}APQ Dimension Elements:}APQ Dimension Elements:UDC - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:UDC - China Description
+}APQ Dimension Elements:}APQ Dimension Elements:UDC - EMEA Description
+}APQ Dimension Elements:}APQ Dimension Elements:UDC - PA Description
+}APQ Dimension Elements:}APQ Dimension Elements:UDC - Root El
+}APQ Dimension Elements:}APQ Dimension Elements:UDC - TWN Description
+}APQ Dimension Elements:}APQ Dimension Elements:UDC Dimension
+}APQ Dimension Elements:}APQ Dimension Elements:Version
+}APQ Dimension Elements:}APQ Dimension Elements:Version - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:Version - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:Version - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:Week
+}APQ Dimension Elements:}APQ Dimension Elements:Week - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:Week - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:Week - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:Week - Description
+}APQ Dimension Elements:}APQ Dimension Elements:Year
+}APQ Dimension Elements:}APQ Dimension Elements:Year - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:Year - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:Year - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:Year - Julian Year
+}APQ Dimension Elements:}APQ Dimension Elements:Year - Y0000
+}APQ Dimension Elements:}APQ Dimension Elements:Year Fiscal
+}APQ Dimension Elements:}APQ Dimension Elements:Year Fiscal - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:Year Fiscal - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:Year Fiscal - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:Year Month
+}APQ Dimension Elements:}APQ Dimension Elements:Year Month - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:Year Month - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:Year Month - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:Year Month - Description
+}APQ Dimension Elements:}APQ Dimension Elements:Year Month - yyyy M00
+}APQ Dimension Elements:}APQ Dimension Elements:Year Month - yyyymm
+}APQ Dimension Elements:}APQ Dimension Elements:Year Month - yyyy mmm
+}APQ Dimension Elements:}APQ Dimension Elements:Year Week
+}APQ Dimension Elements:}APQ Dimension Elements:Year Week - Caption
+}APQ Dimension Elements:}APQ Dimension Elements:Year Week - Caption zh-Hans
+}APQ Dimension Elements:}APQ Dimension Elements:Year Week - Caption zh-Hant
+}APQ Dimension Elements:}APQ Dimension Elements:Year Week - yyyy W00

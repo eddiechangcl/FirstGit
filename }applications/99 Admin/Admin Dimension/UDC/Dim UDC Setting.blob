@@ -1,0 +1,5 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=Dim UDC Setting
+ENTRYTYPE=blob
+ENTRYREFERENCE=TM1:///blob/PUBLIC/.\}externals\sys_udc_definition v2.2.xlsx
+REMOVEBLOBONDELETE=Yes

@@ -1,0 +1,227 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+SKIPCHECK;
+FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Dimension SemiDynamic Subsets** is manually entered by the system administrators and/or power users. In terms of data entry
+# the setup is simple; the user enters:-
+# * a subset name
+# * alias to apply
+# * schedule (daily/weekly, day of week if weekly)
+# * Base member for MDX
+# * MDX Type (for automatic MDX generation or else enter a custom MDX expression)
+#
+# The process **}APQ.Dim.Sub.SemiDynamicSubsets.Update** reads from the cube as a data source to create or update either a static or dynamic subset
+# based on the MDX expression.  The process accepts a dimension name as a filter or runs for all dimensions if the parameter is blank. The process
+# should be scheduled as part of a daily maintenance chore and/or called with the dimension name parameter as part of dimension maintenance processes.
+#
+# This cube together with the TI process creates a standardized and robust way of maintaining and/or publishing MDX based static subsets even for
+# non-admin users as everything that is required is write access to this cube (or limited write access if combined with element security to the
+# **}APQ Dimensions** dimension).
+#
+# Note:
+# If power users are to be granted the ability to set up semi-dynamic subsets then they _must have **write** access to this cube_.
+# Element security is set automatically such that users only see the dimensions to which they have access.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+[ '}APQ Dimension SemiDynamic Subsets Measure':'IsUsedCount' ] = N:
+IF( Long( DB( '}APQ Dimension SemiDynamic Subsets', !}APQ Dimensions, !}APQ Item Index, 'SubsetName' ) ) > 1,
+  1,
+  0
+);
+
+[ '}APQ Dimension SemiDynamic Subsets Measure':'NumberOfElements' ] = N:
+IF( [ '}APQ Dimension SemiDynamic Subsets Measure':'IsUsedCount' ] = 0,
+  0,
+  STET
+);
+
+[ '}APQ Dimension SemiDynamic Subsets Measure':{'RegenerationFrequency','AliasToSet','AutomatedMDXType','AutomatedMDXBaseElement','KeepSubsetDynamic','Description'} ] = S:
+IF( [ '}APQ Dimension SemiDynamic Subsets Measure':'IsUsedCount' ] = 0,
+  '',
+  STET
+);
+
+[  '}APQ Dimension SemiDynamic Subsets Measure':'RegenerationDay' ] = S:
+IF( [ '}APQ Dimension SemiDynamic Subsets Measure':'IsUsedCount' ] = 0,
+  '',
+  IF( DB( '}APQ Dimension SemiDynamic Subsets', !}APQ Dimensions, !}APQ Item Index, 'RegenerationFrequency' ) @= 'Daily',
+    'N/A',
+    STET
+  )
+);
+
+[ '}APQ Dimension SemiDynamic Subsets Measure':'LastConstruct' ] = S:
+IF( [ '}APQ Dimension SemiDynamic Subsets Measure':'LastConstructN' ] = 0,
+  '',
+  TimSt( [ '}APQ Dimension SemiDynamic Subsets Measure':'LastConstructN' ], DB('}APQ Settings','Date Time format','String') )
+);
+
+[ '}APQ Dimension SemiDynamic Subsets Measure':'ConstructTime' ] = S:
+IF( [ '}APQ Dimension SemiDynamic Subsets Measure':'ConstructTimeN' ] = 0,
+  '0.0 s',
+  Trim( Str( 86400 * [ '}APQ Dimension SemiDynamic Subsets Measure':'ConstructTimeN' ], 6, 1 ) ) | ' s'
+);
+
+[ '}APQ Dimension SemiDynamic Subsets Measure':'SubsetExpression' ] = S:
+IF( [ '}APQ Dimension SemiDynamic Subsets Measure':'IsUsedCount' ] = 0,
+  '',
+  Continue
+);
+
+# Hieararchy to use in automatically generated MDX
+[ '}APQ Dimension SemiDynamic Subsets Measure':'HierarchyUsed' ] = S:
+IF( [ '}APQ Dimension SemiDynamic Subsets Measure':'IsUsedCount' ] = 0,
+    '',
+    IF( '' @= DB( '}APQ Dimension SemiDynamic Subsets', !}APQ Dimensions, !}APQ Item Index, 'Hierarchy' ) %
+        !}APQ Dimensions @= DB( '}APQ Dimension SemiDynamic Subsets', !}APQ Dimensions, !}APQ Item Index, 'Hierarchy' ) %
+        !}APQ Dimensions |':'| !}APQ Dimensions @= DB( '}APQ Dimension SemiDynamic Subsets', !}APQ Dimensions, !}APQ Item Index, 'Hierarchy' ),
+        !}APQ Dimensions,
+        Trim( SubSt( DB( '}APQ Dimension SemiDynamic Subsets', !}APQ Dimensions, !}APQ Item Index, 'Hierarchy' ), Scan( ':', DB( '}APQ Dimension SemiDynamic Subsets', !}APQ Dimensions, !}APQ Item Index, 'Hierarchy' ) ) + 1, 100 ) )
+    )
+);
+
+# for the possible automatically generated MDX expressions use continue for test as IF indentation getting too cumbersome
+[ '}APQ Dimension SemiDynamic Subsets Measure':'SubsetExpression' ] = S:
+IF( DB('}APQ Dimension SemiDynamic Subsets',!}APQ Dimensions,!}APQ Item Index,'Automated MDX Type') @= '',
+   STET,
+   Continue
+);
+[ '}APQ Dimension SemiDynamic Subsets Measure':'SubsetExpression' ] = S:
+IF( DB('}APQ Dimension SemiDynamic Subsets',!}APQ Dimensions,!}APQ Item Index,'Automated MDX Type') @= 'Element',
+   '{[' | !}APQ Dimensions | '].[' |
+   DB( '}APQ Dimension SemiDynamic Subsets', !}APQ Dimensions, !}APQ Item Index, 'HierarchyUsed' ) |
+   '].[' | DB('}APQ Dimension SemiDynamic Subsets',!}APQ Dimensions,!}APQ Item Index,'Automated MDX Base Element' ) | ']}',
+   Continue
+);
+[ '}APQ Dimension SemiDynamic Subsets Measure':'SubsetExpression' ] = S:
+IF( DB('}APQ Dimension SemiDynamic Subsets',!}APQ Dimensions,!}APQ Item Index,'Automated MDX Type') @= 'Direct Children',
+   '{[' | !}APQ Dimensions | '].[' |
+   DB( '}APQ Dimension SemiDynamic Subsets', !}APQ Dimensions, !}APQ Item Index, 'HierarchyUsed' ) |
+   '].[' | DB('}APQ Dimension SemiDynamic Subsets',!}APQ Dimensions,!}APQ Item Index,'Automated MDX Base Element' ) | '].Children}',
+   Continue
+);
+[ '}APQ Dimension SemiDynamic Subsets Measure':'SubsetExpression' ] = S:
+IF( DB('}APQ Dimension SemiDynamic Subsets',!}APQ Dimensions,!}APQ Item Index,'Automated MDX Type') @= 'Direct Children (A-Z Alpha)',
+   '{TM1SORT( {[' | !}APQ Dimensions | '].[' |
+   DB( '}APQ Dimension SemiDynamic Subsets', !}APQ Dimensions, !}APQ Item Index, 'HierarchyUsed' ) |
+   '].[' | DB('}APQ Dimension SemiDynamic Subsets',!}APQ Dimensions,!}APQ Item Index,'Automated MDX Base Element' ) | '].Children}, ASC )}',
+   Continue
+);
+[ '}APQ Dimension SemiDynamic Subsets Measure':'SubsetExpression' ] = S:
+IF( DB('}APQ Dimension SemiDynamic Subsets',!}APQ Dimensions,!}APQ Item Index,'Automated MDX Type') @= 'Element + Children',
+   '{{[' | !}APQ Dimensions | '].[' |
+   DB( '}APQ Dimension SemiDynamic Subsets', !}APQ Dimensions, !}APQ Item Index, 'HierarchyUsed' ) |
+   '].[' | DB('}APQ Dimension SemiDynamic Subsets',!}APQ Dimensions,!}APQ Item Index,'Automated MDX Base Element' ) | ']},{[' | !}APQ Dimensions | '].[' |
+   DB( '}APQ Dimension SemiDynamic Subsets', !}APQ Dimensions, !}APQ Item Index, 'HierarchyUsed' ) |
+   '].[' | DB('}APQ Dimension SemiDynamic Subsets',!}APQ Dimensions,!}APQ Item Index,'Automated MDX Base Element' ) | '].Children}}',
+   Continue
+);
+[ '}APQ Dimension SemiDynamic Subsets Measure':'SubsetExpression' ] = S:
+IF( DB('}APQ Dimension SemiDynamic Subsets',!}APQ Dimensions,!}APQ Item Index,'Automated MDX Type') @= 'Element + Whole Hierarchy',
+   '{TM1DRILLDOWNMEMBER( {[' | !}APQ Dimensions | '].[' |
+   DB( '}APQ Dimension SemiDynamic Subsets', !}APQ Dimensions, !}APQ Item Index, 'HierarchyUsed' ) |
+   '].[' | DB('}APQ Dimension SemiDynamic Subsets',!}APQ Dimensions,!}APQ Item Index,'Automated MDX Base Element' ) | ']}, All , RECURSIVE )}',
+   Continue
+);
+[ '}APQ Dimension SemiDynamic Subsets Measure':'SubsetExpression' ] = S:
+IF( DB('}APQ Dimension SemiDynamic Subsets',!}APQ Dimensions,!}APQ Item Index,'Automated MDX Type') @= 'Level 0 Underneath',
+   IF( DB('}APQ Dimension SemiDynamic Subsets',!}APQ Dimensions,!}APQ Item Index,'Automated MDX Base Element') @= '',
+      '{TM1FilterByLevel( {TM1SubsetAll( [' | !}APQ Dimensions | '].[' |
+      DB( '}APQ Dimension SemiDynamic Subsets', !}APQ Dimensions, !}APQ Item Index, 'HierarchyUsed' ) |
+      '] )}, 0 )}',
+      '{Descendants( [' | !}APQ Dimensions | '].[' |
+      DB( '}APQ Dimension SemiDynamic Subsets', !}APQ Dimensions, !}APQ Item Index, 'HierarchyUsed' ) |
+      '].[' | DB('}APQ Dimension SemiDynamic Subsets',!}APQ Dimensions,!}APQ Item Index,'Automated MDX Base Element' ) | '], [' |!}APQ Dimensions| '].[' |
+      DB( '}APQ Dimension SemiDynamic Subsets', !}APQ Dimensions, !}APQ Item Index, 'HierarchyUsed' ) |
+      '].Levels.Count, LEAVES )}'
+   ),
+   Continue
+);
+[ '}APQ Dimension SemiDynamic Subsets Measure':'SubsetExpression' ] = S:
+IF( DB('}APQ Dimension SemiDynamic Subsets',!}APQ Dimensions,!}APQ Item Index,'Automated MDX Type') @= 'Element + Level 0 Underneath',
+   '{ [' | !}APQ Dimensions | '].[' |
+   DB( '}APQ Dimension SemiDynamic Subsets', !}APQ Dimensions, !}APQ Item Index, 'HierarchyUsed' ) |
+   '].[' | DB('}APQ Dimension SemiDynamic Subsets',!}APQ Dimensions,!}APQ Item Index,'Automated MDX Base Element' ) | '], Descendants( [' | !}APQ Dimensions | '].[' |
+   DB( '}APQ Dimension SemiDynamic Subsets', !}APQ Dimensions, !}APQ Item Index, 'HierarchyUsed' ) |
+   '].[' | DB('}APQ Dimension SemiDynamic Subsets',!}APQ Dimensions,!}APQ Item Index,'Automated MDX Base Element' ) | '], [' |!}APQ Dimensions| '].[' |!}APQ Dimensions| '].Levels.Count, LEAVES ) }',
+   Continue
+);
+[ '}APQ Dimension SemiDynamic Subsets Measure':'SubsetExpression' ] = S:
+IF( DB('}APQ Dimension SemiDynamic Subsets',!}APQ Dimensions,!}APQ Item Index,'Automated MDX Type') @= 'Level 0 Underneath (A-Z Alpha)',
+   IF( DB('}APQ Dimension SemiDynamic Subsets',!}APQ Dimensions,!}APQ Item Index,'Automated MDX Base Element') @= '',
+      '{TM1Sort( {TM1FilterByLevel( {TM1SubsetAll( [' | !}APQ Dimensions | '].[' |
+      DB( '}APQ Dimension SemiDynamic Subsets', !}APQ Dimensions, !}APQ Item Index, 'HierarchyUsed' ) |
+      '] )}, 0 )}, ASC )}',
+      '{TM1Sort( {Descendants( [' | !}APQ Dimensions | '].[' |
+      DB( '}APQ Dimension SemiDynamic Subsets', !}APQ Dimensions, !}APQ Item Index, 'HierarchyUsed' ) |
+      '].[' | DB('}APQ Dimension SemiDynamic Subsets',!}APQ Dimensions,!}APQ Item Index,'Automated MDX Base Element' ) | '], [' |!}APQ Dimensions| '].[' |
+      DB( '}APQ Dimension SemiDynamic Subsets', !}APQ Dimensions, !}APQ Item Index, 'HierarchyUsed' ) |
+      '].Levels.Count, LEAVES )}, ASC )}'
+   ),
+   Continue
+);
+[ '}APQ Dimension SemiDynamic Subsets Measure':'SubsetExpression' ] = S:
+IF( DB('}APQ Dimension SemiDynamic Subsets',!}APQ Dimensions,!}APQ Item Index,'Automated MDX Type') @= 'Parents',
+   '{TM1ROLLUP( {[' | !}APQ Dimensions | '].[' |
+   DB( '}APQ Dimension SemiDynamic Subsets', !}APQ Dimensions, !}APQ Item Index, 'HierarchyUsed' ) |
+   '].[' | DB('}APQ Dimension SemiDynamic Subsets',!}APQ Dimensions,!}APQ Item Index,'Automated MDX Base Element' ) |']}, {[' | !}APQ Dimensions | '].[' |
+   DB( '}APQ Dimension SemiDynamic Subsets', !}APQ Dimensions, !}APQ Item Index, 'HierarchyUsed' ) |
+   '].[' | DB('}APQ Dimension SemiDynamic Subsets',!}APQ Dimensions,!}APQ Item Index,'Automated MDX Base Element' ) | ']}) }',
+   Continue
+);
+[ '}APQ Dimension SemiDynamic Subsets Measure':'SubsetExpression' ] = S:
+IF( DB('}APQ Dimension SemiDynamic Subsets',!}APQ Dimensions,!}APQ Item Index,'Automated MDX Type') @= 'Parents (A-Z Alpha)',
+   '{TM1SORT( {TM1ROLLUP({[' | !}APQ Dimensions | '].[' |
+   DB( '}APQ Dimension SemiDynamic Subsets', !}APQ Dimensions, !}APQ Item Index, 'HierarchyUsed' ) |
+   '].[' | DB('}APQ Dimension SemiDynamic Subsets',!}APQ Dimensions,!}APQ Item Index,'Automated MDX Base Element' ) |']}, {[' | !}APQ Dimensions | '].[' |
+   DB( '}APQ Dimension SemiDynamic Subsets', !}APQ Dimensions, !}APQ Item Index, 'HierarchyUsed' ) |
+   '].[' | DB('}APQ Dimension SemiDynamic Subsets',!}APQ Dimensions,!}APQ Item Index,'Automated MDX Base Element' ) | ']}) }, ASC )}',
+   Continue
+);
+[ '}APQ Dimension SemiDynamic Subsets Measure':'SubsetExpression' ] = S:
+IF( DB('}APQ Dimension SemiDynamic Subsets',!}APQ Dimensions,!}APQ Item Index,'Automated MDX Type') @= 'String Match',
+   '{TM1FILTERBYPATTERN( {TM1SUBSETALL( [' |
+   DB( '}APQ Dimension SemiDynamic Subsets', !}APQ Dimensions, !}APQ Item Index, 'HierarchyUsed' ) |
+   '] )}, "' |DB('}APQ Dimension SemiDynamic Subsets',!}APQ Dimensions,!}APQ Item Index,'Automated MDX Base Element')| '" )}',
+   Continue
+);
+
+# If predefined method not found then must leave stet to allow MDX expression to be written directly
+[ '}APQ Dimension SemiDynamic Subsets Measure':'SubsetExpression' ] = S: STET;
+
+
+#############################
+FEEDERS;
+#############################
+
+[ '}APQ Dimension SemiDynamic Subsets Measure':'SubsetName' ] => [ '}APQ Dimension SemiDynamic Subsets Measure':'IsUsedCount' ],
+[ '}APQ Dimension SemiDynamic Subsets Measure':'RegenerationFrequency' ],
+[ '}APQ Dimension SemiDynamic Subsets Measure':'RegenerationDay' ],
+[ '}APQ Dimension SemiDynamic Subsets Measure':'Description' ];
+
+[ '}APQ Dimension SemiDynamic Subsets Measure':'AutomatedMDXType' ] => [ '}APQ Dimension SemiDynamic Subsets Measure':'SubsetExpression' ];
+
+[ '}APQ Dimension SemiDynamic Subsets Measure':'NumberOfElements' ] => [ '}APQ Dimension SemiDynamic Subsets Measure':'IsUsedCount' ];
+
+[ '}APQ Dimension SemiDynamic Subsets Measure':'LastConstructN' ] => [ '}APQ Dimension SemiDynamic Subsets Measure':'LastConstruct' ], [ '}APQ Dimension SemiDynamic Subsets Measure':'Construct Time' ];
+
+#############################
+##~~    End Rule File    ~~##
+#############################

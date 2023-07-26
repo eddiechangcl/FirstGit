@@ -1,0 +1,37 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+SKIPCHECK;
+FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# **}APQ Transaction Log analysis** is a very useful cube for troubleshooting and is maintained on an ad hoc as needs basis by the process **}APQ.Cub.TM1TransactionLogAnalysis.Update**
+# which can be run manually as needed by the system administrator. The process scans a selected tm1s.log (transaction log) file and records highly summarized
+# information on a cube by cube basis capturing values for measures: number of numeric & string transactions (divided into clear and data entry), user(s) writing changes 
+# and time stamps for data entry start and finish.
+#
+# Use Case:
+# The intent of this cube and process is to enable easy and rapid troubleshooting for occurrences where there is a "blow out" in transaction log size.
+# Typically this is caused by a user performing a data spread or a TI process not switching off logging either prior to ViewZeroOut or prior to data load. 
+# This cube allows rapid identification of either the user of process causing the blow out in transaction logs and for corrective action to be taken.  
+# A process causing such a blowout can be determined via cross reference of the time stamp to process run time log in }APQ  Process Execution Log.
+# (remember to correct for GMT vs. local as transaction logs are always GMT and process execution is from the local server time) and the cross reference from **}APQ Process to Object Reference**
+# of Process to Cube interactions.  
+# 
+# Note:
+# This cube contains no rules. 
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################

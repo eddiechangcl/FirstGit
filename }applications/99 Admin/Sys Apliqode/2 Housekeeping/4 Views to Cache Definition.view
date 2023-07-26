@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=4 Views to Cache Definition
+ENTRYTYPE=view
+ENTRYREFERENCE=TM1:///VIEW/PUBLIC/}APQ Cube View Cache Control/Default

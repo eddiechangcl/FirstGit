@@ -1,0 +1,148 @@
+﻿283,100
+284,"All N Elements code"
+11,20230515004923
+274,
+18,0
+275,
+278,0
+281,0
+270,139
+Windows Server Name
+TM1 Admin Host
+Windows Service Name
+TM1 Server Name
+TM1Web URL
+Use CAM
+Pulse URL
+Supported Workbook Path1
+Supported Workbook Path2
+Supported Workbook Path3
+Supported Workbook Path4
+Supported Workbook Path5
+Location: Instance
+Location: Data Dir
+Location: Framework
+Location: Backup
+Location: Debugging
+Location: Scripts
+Location: 7Zip
+Max CPUs
+RunTI User
+RunTI Pwd
+Location: Hustle
+Location: TM1RunTI
+Location: TM1RunTI Config
+Location: Hustle Path
+Pulse ODBC
+Pulse ODBC User
+Pulse ODBC Pwd
+Pulse Monitor
+Pulse Monitor User
+Pulse Monitor Pwd
+Log Drill
+Log Drill User
+Log Drill Pwd
+Location: Source Data
+Location: Export
+DatasourceASCIIDelimiter
+DatasourceASCIIDecimalSeparator
+DatasourceASCIIQuoteCharacter
+smtp server:port
+smtp User
+smtp Pwd
+Location: Blat
+Local System Time
+GMT Time Shift Hours
+GMT System Time
+Year Dimension
+Month Dimension
+Year-Month Dimension
+Current Year
+Current Month
+Current Year-Month
+Current Year-Month Index
+Last Year
+Last Month
+Last Year-Month
+Next Year
+Next Month
+Next Year-Month
+Current Day
+Current Day in Month
+Last Day
+Fin Year Dimension
+Fin Month Dimension
+Fin Year-Month Dimension
+Current Year Fin
+Current Month Fin
+Current Year-Month Fin
+Current Year-Month Index Fin
+Last Year Fin
+Last Month Fin
+Last Year-Month Fin
+Next Year Fin
+Next Month Fin
+Next Year-Month Fin
+Customer Name
+Customer Key
+Max dimension size for element copy
+Max dimension size for subset info refresh
+Max dimension size for std subset refresh
+Max subset size for PickList entry
+Max subsets per dimension
+Max sec for SemiDynamic subset refresh
+Preserve Deleted Users
+Security Group: End User
+Security Group: Power User
+Replace with blank value
+Enforce Process Security
+Create Std Subsets in Alternate Hierarchies
+Std All Elements
+Std All N Elements
+Std All N Elements Principal
+Std All C Elements
+Std Top Elements
+Std Default Member Subset
+Std Planning Picklist
+Std Reporting Picklist
+Std UDC Parent Node Name
+Std Top Node Name
+Std NA Element
+Std Dummy N Element
+Default User
+Std Default Hierarchy
+Std Datasource View Prefix
+Std ZeroOut View Prefix
+Std Datasource Dummy View
+Std Flat Dimension
+Std Localized Default
+Std Copy of Dimension
+Std Rel Time Subset Prefix
+Std Comment Cube Name
+Std Alias 1
+Std Alias 2
+Std Unallocated Node
+ODBC Datasource
+ODBC Datasource User
+ODBC Datasource Pwd
+C3 Staging
+C3 Staging User
+C3 Staging Pwd
+Apliqode Version
+Pulse Version
+TM1 Version
+smtp Use SSL
+smtp Use PowerShell
+pDelim
+pDimDelim
+pEleStartDelim
+pEleDelim
+Security Group: Admin User
+Email: Send Notifications
+Email: From
+Email: To
+Namespace
+RSAT Installed
+Date format
+Date Time format
+Time format

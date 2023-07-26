@@ -1,0 +1,93 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+#SKIPCHECK;
+#FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ PickList General** if added as a reference to websheets can be used as a standard functionality to allow users to input 
+# data (e.g a forecast driver or user preference) via a PickList.  For any settings that are generic accross all users this cube can still 
+# be used but with the user writing to the _default user_ in **}APQ Clients** not their own user ID.
+#
+# This allows for one generic cube to cater for PickList data entry for a variety of use cases where the picklist content itself is not 
+# dependent of data elsewhere in the model.
+#
+# Note:
+# * All users must have write access to this cube. 
+# * This is a lookup cube with limited dimensionality and so does not require SkipCheck or Feeders.
+#
+# Caution:
+# With parallel interaction there is no locking or contention risk, but over-using this cube in a large data entry model accross multiple applications 
+# could cause constant clearing of cached values due to cube dependencies.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+# Item selection is always stet
+[ '}APQ Picklist General Measure':'Item Selection' ] = S: STET;
+
+# Flow Dimension, Subset, Display Alias from Default User
+[ '}APQ Picklist General Measure':{'Dimension','Subset','Display Alias'} ] = S:
+IF( !}APQ Clients @= DB( '}APQ Settings', 'Default User', 'String' ),
+  STET,
+  DB( '}APQ Picklist General', DB( '}APQ Settings', 'Default User', 'String' ), !}APQ PickList Item, !}APQ Picklist General Measure )
+);
+
+# DEFINE the PickList against the default user, automaric picklist generation if dimension & subset filled
+[ '}APQ Picklist General Measure':'Item PickList' ] = S:
+IF( !}APQ Clients @= DB( '}APQ Settings', 'Default User', 'String' ),
+  IF(  DB( '}APQ Picklist General', !}APQ Clients, !}APQ PickList Item, 'Dimension' ) @= '' % DB( '}APQ Picklist General', !}APQ Clients, !}APQ PickList Item, 'Subset' ) @= '',
+    STET,
+    'Subset:' | DB( '}APQ Picklist General', !}APQ Clients, !}APQ PickList Item, 'Dimension' ) |':'| DB( '}APQ Picklist General', !}APQ Clients, !}APQ PickList Item, 'Subset' )
+  ),
+  DB( '}APQ Picklist General', DB( '}APQ Settings', 'Default User', 'String' ), !}APQ PickList Item, !}APQ Picklist General Measure )
+);
+
+# Check default user then stet for description else get description from default user
+[ '}APQ Picklist General Measure':'Item Description' ] = S:
+IF( !}APQ Clients @= DB( '}APQ Settings', 'Default User', 'String' ),
+  STET,
+  IF( DB( '}APQ Picklist General', DB( '}APQ Settings', 'Default User', 'String' ), !}APQ PickList Item, !}APQ Picklist General Measure ) @= '',
+    'Item not used.',
+    DB( '}APQ Picklist General', DB( '}APQ Settings', 'Default User', 'String' ), !}APQ PickList Item, !}APQ Picklist General Measure )
+  )
+);
+
+# Check default user then stet for caption else get caption from default user
+[ '}APQ Picklist General Measure':'Caption' ] = S:
+IF( !}APQ Clients @= DB( '}APQ Settings', 'Default User', 'String' ),
+  STET,
+  IF( DB( '}APQ Picklist General', DB( '}APQ Settings', 'Default User', 'String' ), !}APQ PickList Item, !}APQ Picklist General Measure ) @= '',
+    '',
+    DB( '}APQ Picklist General', DB( '}APQ Settings', 'Default User', 'String' ), !}APQ PickList Item, !}APQ Picklist General Measure )
+  )
+);
+
+# For the "final value" get the valu from the default user selection if the selection for the user is blank
+[ '}APQ Picklist General Measure':'Item Value' ] = S:
+IF( DB( '}APQ Picklist General', !}APQ Clients, !}APQ PickList Item, 'Item Selection' ) @<> '',
+  DB( '}APQ Picklist General', !}APQ Clients, !}APQ PickList Item, 'Item Selection' ),
+  DB( '}APQ Picklist General', DB( '}APQ Settings', 'Default User', 'String' ), !}APQ PickList Item, 'Item Selection' )
+);
+
+
+#############################
+#FEEDERS;
+#############################
+
+
+#############################
+##~~    End Rule File    ~~##
+#############################

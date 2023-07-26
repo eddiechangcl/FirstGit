@@ -1,0 +1,57 @@
+FORMAT==100
+##############################################################################################################################
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+#############################
+SKIPCHECK;
+#############################
+
+## Subset Selection
+#############################
+[ '}APQ PickList Dimension Measure':{'Subset N','Subset C','Subset Plan','Subset Report','Subset Min','Subset Max','Subset N Override','Subset C Override','Subset Plan Override','Subset Report Override','Subset Min Override','Subset Max Override'} ] = S:
+'Dimension:}Subsets_' | AttrS( '}APQ Dimension Hierarchies', !}APQ Dimension Hierarchies, 'Dimension' );
+
+## EXCEPTIONS for dimensions not using the standard subsets or requiring a specific case
+#############################
+
+## TM1 Object Type dimension: only N elements applicable; application, chore, cube, dimension, process ...
+[ '}APQ Dimension Hierarchies':'}APQ TM1 Object Type' ] = S:
+'Subset:' | !}APQ Dimension Hierarchies |':'|
+IF( DB( '}APQ Picklist Dimension', !}APQ Clients, !}APQ Dimension Hierarchies, 'Subset ' | AttrS( '}APQ Picklist Dimension Measure', !}APQ Picklist Dimension Measure, 'Type' ) ) @<> '',
+   DB( '}APQ Picklist Dimension', !}APQ Clients, !}APQ Dimension Hierarchies, 'Subset ' | AttrS( '}APQ Picklist Dimension Measure', !}APQ Picklist Dimension Measure, 'Type' ) ),
+   'APQ Glossary'
+);
+
+## Dimension Node Type dimension: only N elements applicable; Flat Consol, Hier Consol, Static Subset ...
+[ '}APQ Dimension Hierarchies':'}APQ Dimension Node Type' ] = S:
+'Subset:' | !}APQ Dimension Hierarchies |':'|
+IF( DB( '}APQ Picklist Dimension', !}APQ Clients, !}APQ Dimension Hierarchies, 'Subset ' | AttrS( '}APQ Picklist Dimension Measure', !}APQ Picklist Dimension Measure, 'Type' ) ) @<> '',
+   DB( '}APQ Picklist Dimension', !}APQ Clients, !}APQ Dimension Hierarchies, 'Subset ' | AttrS( '}APQ Picklist Dimension Measure', !}APQ Picklist Dimension Measure, 'Type' ) ),
+   'Picklist - Static Subsets and UDC'
+);
+
+## Remaining "GENERIC" section to use standard subsets
+#############################
+
+[ '}APQ PickList Dimension Measure':{'Current N Selection','Default N Selection','Current C Selection','Default C Selection','Current Plan Selection','Default Plan Selection','Current Report Selection','Default Report Selection','Current Min Selection','Default Min Selection','Current Max Selection','Default Max Selection'} ] = S:
+IF(
+   ( DimIx( '}APQ Dimension Subsets', AttrS( '}APQ Dimension Hierarchies', !}APQ Dimension Hierarchies, 'Dimension' ) |'\'| DB( '}APQ Picklist Dimension', !}APQ Clients, !}APQ Dimension Hierarchies, 'Subset ' | AttrS( '}APQ Picklist Dimension Measure', !}APQ Picklist Dimension Measure, 'Type' ) | 'Final' ) ) > 0 &
+     DB( '}APQ Dimension Subsets', AttrS( '}APQ Dimension Hierarchies', !}APQ Dimension Hierarchies, 'Dimension' ) |'\'| DB( '}APQ Picklist Dimension', !}APQ Clients, !}APQ Dimension Hierarchies, 'Subset ' | AttrS( '}APQ Picklist Dimension Measure', !}APQ Picklist Dimension Measure, 'Type' ) | 'Final' ), 'Element Count' ) <= DB( '}APQ Settings', 'Max subset size for PickList entry', 'Numeric' )
+   ),
+   IF( Scan( ':', !}APQ Dimension Hierarchies ) = 0,
+      'Subset:' | !}APQ Dimension Hierarchies |':'| DB( '}APQ Picklist Dimension', !}APQ Clients, !}APQ Dimension Hierarchies, 'Subset ' | AttrS( '}APQ Picklist Dimension Measure', !}APQ Picklist Dimension Measure, 'Type' ) | 'Final' ),
+      'Subset:' | AttrS( '}APQ Dimension Hierarchies', !}APQ Dimension Hierarchies, 'Dimension' ) |'\:'| AttrS( '}APQ Dimension Hierarchies', !}APQ Dimension Hierarchies, 'Hierarchy' ) |':'| DB( '}APQ Picklist Dimension', !}APQ Clients, !}APQ Dimension Hierarchies, 'Subset ' | AttrS( '}APQ Picklist Dimension Measure', !}APQ Picklist Dimension Measure, 'Type' ) | 'Final' )
+   ),
+   STET
+);
+
+
+#############################
+##~~    End Rule File    ~~##
+############################

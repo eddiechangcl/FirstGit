@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=APQ Process Parameters Info
+ENTRYTYPE=view
+ENTRYREFERENCE=TM1:///VIEW/PUBLIC/}APQ Process Parameters Info/Default

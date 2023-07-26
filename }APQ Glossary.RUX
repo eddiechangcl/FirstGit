@@ -1,0 +1,97 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+#SKIPCHECK;
+#FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2020-08-06 Add html href link measures
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Glossary** is automatically compiled by rules linked to the rest of the Apliqode Framework application.  A URL for the **Pulse documentation** 
+# link for each object (if **Pulse** is installed) is generated as well as a _TM1 Web URL_ (if an object type which supports a TM1 Web URL such as cube view or 
+# applications).  If **Pulse** is installed then the process **}APQ.Cub.Glossary.Update.Description** writes the description from **Pulse** to the cube, 
+# otherwise the description field is available for direct entry or modification.
+#
+# One of the most useful features of **}APQ Glossary** is the drill-throughs which are built in to link/navigate to other areas of the Apliqode Framework 
+# application and the TM1 model in general.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+# Check object naming for belonging to }APQ
+[ '}APQ Glossary Measure':'APQ Object' ] = N:
+IF( SubSt( !}APQ TM1 Objects, 1, 4 ) @= '}APQ' % SubSt( !}APQ TM1 Objects, 1, 4 ) @= 'APQ.',
+  1,
+  0
+);
+
+# Check if valid object type / object name combination
+[ '}APQ TM1 Object Type':'Application' ] = S: IF( AttrS( '}APQ TM1 Objects', !}APQ TM1 Objects, 'IsApp' ) @<> 'TRUE', '', CONTINUE );
+[ '}APQ TM1 Object Type':'Cube' ] = S: IF( AttrS( '}APQ TM1 Objects', !}APQ TM1 Objects, 'IsCube' ) @<> 'TRUE', '', CONTINUE );
+[ '}APQ TM1 Object Type':'Dimension' ] = S: IF( AttrS( '}APQ TM1 Objects', !}APQ TM1 Objects, 'IsDimension' ) @<> 'TRUE', '', CONTINUE );
+[ '}APQ TM1 Object Type':'Chore' ] = S: IF( AttrS( '}APQ TM1 Objects', !}APQ TM1 Objects, 'IsChore' ) @<> 'TRUE', '', CONTINUE );
+[ '}APQ TM1 Object Type':'Process' ] = S: IF( AttrS( '}APQ TM1 Objects', !}APQ TM1 Objects, 'IsProcess' ) @<> 'TRUE', '', CONTINUE );
+[ '}APQ TM1 Object Type':'Rule' ] = S: IF( AttrS( '}APQ TM1 Objects', !}APQ TM1 Objects, 'IsCube' ) @<> 'TRUE', '', CONTINUE );
+
+# For rule pull description from cube
+[ '}APQ TM1 Object Type':'Rule', '}APQ Glossary Measure':'Description' ] = S:
+IF( AttrS( '}APQ TM1 Objects', !}APQ TM1 Objects, 'IsCube' ) @= '',
+  '',
+  IF( AttrS( '}APQ TM1 Objects', !}APQ TM1 Objects, 'IsRule' ) @= '',
+    'Cube: ' | !}APQ TM1 Objects | ' has no calculation rule file associated.',
+    IF( DB( '}APQ Glossary', 'Cube', !}APQ TM1 Objects, !}APQ Glossary Measure ) @= '',
+      'Cube: ' | !}APQ TM1 Objects | ' has no documentation entered.',
+      DB( '}APQ Glossary', 'Cube', !}APQ TM1 Objects, !}APQ Glossary Measure )
+    )
+  )
+);
+
+# Lookup TM1 Web URL references
+[ '}APQ TM1 Object Type':'Application', '}APQ Glossary Measure':'TM1 Web URL' ] = S: DB( '}APQ Application Entries', !}APQ TM1 Objects, 'Entry URL' );
+[ '}APQ TM1 Object Type':'Cube', '}APQ Glossary Measure':'TM1 Web URL' ] = S: DB( '}APQ Cube Views', !}APQ TM1 Objects | '\Default', !}APQ Glossary Measure );
+
+# TM1 Web links
+[ '}APQ TM1 Object Type':{'Application','Cube'}, '}APQ Glossary Measure':'TM1 Web Link' ] = S: 
+'<a href="' | DB( '}APQ Glossary', !}APQ TM1 Object Type, !}APQ TM1 Objects, 'TM1 Web URL' ) | '"target="_blank">Open in TM1Web</a>';
+
+# Create Pulse URL references
+[ '}APQ TM1 Object Type':'Application', '}APQ Glossary Measure':'Pulse URL' ] = S:
+IF( DB( '}APQ Application Entries', !}APQ TM1 Objects, 'Type' ) @= 'Template',
+  DB( '}APQ Settings', !}APQ Glossary Measure, 'String' ) | '/#/websheet/Applications/' | AttrS( '}APQ Applications', !}APQ TM1 Objects, 'Caption_Default' ),
+  ''
+);
+[ '}APQ TM1 Object Type':'Cube', '}APQ Glossary Measure':'Pulse URL' ] = S: DB( '}APQ Settings', !}APQ Glossary Measure, 'String' ) | '/#/cube/' | DB( '}APQ Settings', 'TM1 Server Name', 'String' ) | '/' | !}APQ TM1 Objects;
+[ '}APQ TM1 Object Type':'Dimension', '}APQ Glossary Measure':'Pulse URL' ] = S: DB( '}APQ Settings', !}APQ Glossary Measure, 'String' ) | '/#/dimension/' | DB( '}APQ Settings', 'TM1 Server Name', 'String' ) | '/' | !}APQ TM1 Objects;
+[ '}APQ TM1 Object Type':'Chore', '}APQ Glossary Measure':'Pulse URL' ] = S: DB( '}APQ Settings', !}APQ Glossary Measure, 'String' ) | '/#/chore/' | DB( '}APQ Settings', 'TM1 Server Name', 'String' ) | '/' | !}APQ TM1 Objects;
+[ '}APQ TM1 Object Type':'Process', '}APQ Glossary Measure':'Pulse URL' ] = S: DB( '}APQ Settings', !}APQ Glossary Measure, 'String' ) | '/#/process/' | DB( '}APQ Settings', 'TM1 Server Name', 'String' ) | '/' | !}APQ TM1 Objects;
+[ '}APQ TM1 Object Type':'Rule', '}APQ Glossary Measure':'Pulse URL' ] = S: DB( '}APQ Settings', !}APQ Glossary Measure, 'String' ) | '/#/rule/' | DB( '}APQ Settings', 'TM1 Server Name', 'String' ) | '/' | !}APQ TM1 Objects;
+
+# Pulse documentation links
+[ '}APQ TM1 Object Type':{'Application','Cube','Dimension','Chore','Process','Rule'}, '}APQ Glossary Measure':'Pulse Link' ] = S: 
+'<a href="' | DB( '}APQ Glossary', !}APQ TM1 Object Type, !}APQ TM1 Objects, 'Pulse URL' ) | '"target="_blank">Open PulseForTM1 documentation</a>';
+
+# Blank out remaining invalid combinations
+[ '}APQ Glossary Measure':'TM1 Web URL' ] = S: '';
+[ '}APQ Glossary Measure':'Pulse URL' ] = S: '';
+[ '}APQ Glossary Measure':'TM1 Web Link' ] = S: '';
+[ '}APQ Glossary Measure':'Pulse Link' ] = S: '';
+
+
+#############################
+#FEEDERS;
+#############################
+
+
+#############################
+##~~    End Rule File    ~~##
+#############################

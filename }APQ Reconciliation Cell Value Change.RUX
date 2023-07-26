@@ -1,0 +1,79 @@
+FORMAT==100
+##############################################################################################################################
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+#############################
+SKIPCHECK;
+FEEDSTRINGS;
+#############################
+
+# Description
+[ '}APQ Reconciliation Cell Value Change Measure':'Description' ] = S:
+IF( DB( '}APQ Reconciliation Setup', !}APQ Reconciliation Item, 'Reference' ) @= '',
+    '',
+    IF( SubSt( !}APQ Reconciliation Item, 1, 1 ) @= 'R',
+        DB( '}APQ Reconciliation Setup', !}APQ Reconciliation Item, 'Reference' ) |' - '| DB( '}APQ Reconciliation Setup', !}APQ Reconciliation Item, 'Item Description' ),
+        SubSt( AttrS( '}APQ Reconciliation Item', !}APQ Reconciliation Item, 'Code and Description' ), 7, Long( AttrS( '}APQ Reconciliation Item', !}APQ Reconciliation Item, 'Code and Description' ) ) - 6 )
+    )
+);
+
+# IsActive drives the cube. Must be stet
+[ '}APQ Reconciliation Cell Value Change Measure':'IsActive' ] = N: STET;
+
+# Alert Type must also be stet
+[ '}APQ Reconciliation Cell Value Change Measure':'Alert Type' ] = S: STET;
+
+# Alert Level must also be stet
+[ '}APQ Reconciliation Cell Value Change Measure':'Alert Level' ] = S: STET;
+
+# Constant value and last value must also be stet
+[ '}APQ Reconciliation Cell Value Change Measure':{'Constant Value','Last Value','Change Threshold'} ] = N: STET;
+
+# The cell value to compare
+[ '}APQ Reconciliation Cell Value Change Measure':'Cell Value' ] = N: DB( '}APQ Reconciliation Check', !}APQ Reconciliation Item, 'Value' );
+
+# Alert Flag
+[ '}APQ Reconciliation Cell Value Change Measure':'Change Flag' ] = N:
+IF( DB( '}APQ Reconciliation Cell Value Change', !}APQ Reconciliation Cell Value Change Profile, !}APQ Reconciliation Item, 'Alert Type' ) @= '',
+    0,
+    IF( DB( '}APQ Reconciliation Cell Value Change', !}APQ Reconciliation Cell Value Change Profile, !}APQ Reconciliation Item, 'Alert Type' ) @= 'Last Value' & [ '}APQ Reconciliation Cell Value Change Measure':'Last Value' ] <> 0,
+        IF( [ '}APQ Reconciliation Cell Value Change Measure':'Change Threshold' ] - ABS( [ '}APQ Reconciliation Cell Value Change Measure':'Cell Value' ] - [ '}APQ Reconciliation Cell Value Change Measure':'Last Value' ] ) < 0,
+            1,
+            0
+        ),
+        IF( DB( '}APQ Reconciliation Cell Value Change', !}APQ Reconciliation Cell Value Change Profile, !}APQ Reconciliation Item, 'Alert Type' ) @= 'Constant Value' & [ '}APQ Reconciliation Cell Value Change Measure':'Constant Value' ] <> 0,
+            IF( [ '}APQ Reconciliation Cell Value Change Measure':'Change Threshold' ] - ABS( [ '}APQ Reconciliation Cell Value Change Measure':'Cell Value' ] - [ '}APQ Reconciliation Cell Value Change Measure':'Constant Value' ] ) < 0,
+                1,
+                0
+            ),
+            0
+        )
+    )
+);
+
+# Timestamp of the last run
+[ '}APQ Reconciliation Cell Value Change Measure':'sLastTimestamp' ] = S:
+If( [ '}APQ Reconciliation Cell Value Change Measure':'nLastTimestamp' ] = 0,
+    '',
+    TIMST( [ '}APQ Reconciliation Cell Value Change Measure':'nLastTimestamp' ], DB('}APQ Settings','Date Time format','String'), 1 )
+);
+
+
+#############################
+FEEDERS;
+#############################
+
+[ '}APQ Reconciliation Cell Value Change Measure':'IsActive' ] => [ '}APQ Reconciliation Cell Value Change Measure':'Cell Value' ], [ '}APQ Reconciliation Cell Value Change Measure':'Change Flag' ],
+[ '}APQ Reconciliation Cell Value Change Measure':'Description' ];
+
+[ '}APQ Reconciliation Cell Value Change Measure':'nLastTimestamp' ] => [ '}APQ Reconciliation Cell Value Change Measure':'sLastTimestamp' ];
+
+#############################
+##~~    End Rule File    ~~##
+#############################

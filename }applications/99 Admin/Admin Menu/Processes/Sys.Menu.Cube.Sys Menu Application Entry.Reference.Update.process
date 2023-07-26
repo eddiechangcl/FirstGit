@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=Sys.Menu.Cube.Sys Menu Application Entry.Reference.Update
+ENTRYTYPE=process
+ENTRYREFERENCE=TM1:///PROCESS/PUBLIC/Sys.Menu.Cube.Sys Menu Application Entry.Reference.Update

@@ -1,0 +1,7 @@
+﻿FORMAT==100
+#Region System
+FEEDSTRINGS;
+SKIPCHECK;
+#EndRegion
+['All Links','Desc']=S:'';
+['Desc']=S:SUBST(!Sys Menu Link,6,3) | ' - ' |DB('Sys Menu Link',!Sys Menu Link,'Entry Name');

@@ -1,0 +1,41 @@
+﻿FORMAT==100
+FEEDSTRINGS;
+SKIPCHECK;
+
+##############################################################################################################
+### CWA Std. Model  version 3.00
+### Copyright © 2012~2020, Cubewise (Hong Kong) Ltd. All rights reserved.
+### This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+### and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+### you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+### or display any part, in any form, or by any means.
+##############################################################################################################
+
+##############################################################################################################
+###~~~    Start Rule File    ~~~###
+
+### REFERENCE FROM SYS PARAMETER
+['Admin Host','Text'] = S: DB('Sys Parameter','Admin Host','Text');
+['TM1 Server Name','Text'] = S: DB('Sys Parameter','TM1 Server Name','Text');
+['CAM Namespace','Text'] = S: DB('Sys Parameter','CAM Namespace','Text');
+['Export Folder','Text'] = S: DB('Sys Parameter','Export Folder','Text');
+['TM1 Data Directory','Text'] = S: DB('Sys Parameter','TM1 Model Data Directory','Text');
+['TM1RunTI.exe Path','Text'] = S: DB('Sys Parameter','TM1RunTI.exe Path','Text');
+['Hustle.exe Path','Text'] = S: DB('Sys Parameter','Hustle.exe Path','Text');
+['Maximum Hustle Threads','Numeric'] = N: DB('Sys Parameter','Maximum Hustle Threads','Numeric');
+
+### BLOCK THE HEADINGS
+[] = S: If (SubSt(!Sys Archive Parameter, 1, 4) @= '>>>>', '', STET);
+[] = N: If (SubSt(!Sys Archive Parameter, 1, 4) @= '>>>>', 0, STET);
+
+
+
+##############################################################################################################
+FEEDERS;
+##############################################################################################################
+
+
+
+
+##############################################################################################################
+###    End Rule File    ~~##

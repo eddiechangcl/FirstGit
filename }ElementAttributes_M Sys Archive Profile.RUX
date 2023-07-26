@@ -1,0 +1,42 @@
+﻿FORMAT==100
+FEEDSTRINGS;
+SKIPCHECK;
+
+##############################################################################################################
+### CWA Std. Model  version 3.00
+### Copyright © 2020, Cubewise (Hong Kong) Ltd. All rights reserved.
+### This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+### and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+### you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+### or display any part, in any form, or by any means.
+##############################################################################################################
+
+
+##############################################################################################################
+###~~~    Start Rule File    ~~~###
+
+['Caption']=S:
+
+### Using Current User Specific Language
+IF (ATTRS('}Clients', TM1USER(), 'Language') @='en'
+    , STET
+, IF (ATTRS('}Clients', TM1USER(), 'Language') @<>''
+    , DB('}ElementAttributes_M Sys Archive Profile', !M Sys Archive Profile, 'Caption ' | ATTRS('}Clients', TM1USER(), 'Language'))
+
+    ### Using Instance Primary Language
+    ,IF (DB('Sys Parameter', 'Primary Language', 'Text') @='en'
+        , STET
+    ,IF (DB('Sys Parameter', 'Primary Language', 'Text') @<>''
+        , DB('}ElementAttributes_M Sys Archive Profile', !M Sys Archive Profile, 'Caption ' | DB('Sys Parameter', 'Primary Language', 'Text'))
+
+        ### Using UI Settings
+        , STET
+))));
+
+
+##############################################################################################################
+FEEDERS;
+##############################################################################################################
+
+
+

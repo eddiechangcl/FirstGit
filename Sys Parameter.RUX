@@ -1,0 +1,93 @@
+﻿FORMAT==100
+FEEDSTRINGS;
+SKIPCHECK;
+
+##############################################################################################################
+### CWA Std. Model  version 3.00
+### Copyright © 2012~2020, Cubewise (Hong Kong) Ltd. All rights reserved.
+### This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+### and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+### you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+### or display any part, in any form, or by any means.
+##############################################################################################################
+
+##############################################################################################################
+###~~~    Start Rule File    ~~~###
+
+###############################################
+###  SYSTEM INFORMATION
+
+['System Date', 'Text'] = S:  Today(1);
+
+
+
+### Path
+['tm1s.cfg Location', 'Text'] = S:DB('Sys Parameter', 'TM1 Instance Directory', 'Text') | '\cfg\tm1s.cfg';
+['TM1 Data Directory', 'Text'] = S:DB('Sys Parameter', 'TM1 Instance Directory', 'Text') | '\data';
+['TM1 Logging Directory', 'Text'] = S:DB('Sys Parameter', 'TM1 Instance Directory', 'Text') | '\log';
+['TM1 Source Data Directory', 'Text'] = S:DB('Sys Parameter', 'TM1 Instance Directory', 'Text') | '\source';
+['TM1 Master Data Directory', 'Text'] = S:DB('Sys Parameter', 'TM1 Instance Directory', 'Text') | '\data';
+['Export Folder', 'Text'] = S:DB('Sys Parameter', 'TM1 Instance Directory', 'Text') | '\export';
+
+['Hustle.exe Path', 'Text'] = S:DB('Sys Parameter', 'TM1 Instance Directory', 'Text') | '\script\hustle\hustle.exe';
+['7zip.exe Path', 'Text'] = S:DB('Sys Parameter', 'TM1 Instance Directory', 'Text') | '\script\7za\7za.exe';
+['curl.exe Path', 'Text'] = S:DB('Sys Parameter', 'TM1 Instance Directory', 'Text') | '\script\curl\curl.exe';
+
+### Backup
+['TM1 Model Backup Directory', 'Text'] = S:DB('Sys Parameter', 'TM1 Instance Directory', 'Text') | '\backup';
+['TM1 Backup File Name Prefix', 'Text'] = S:DB('Sys Parameter', 'TM1 Server Name', 'Text') | '_data_';
+
+
+### Current Actual Time Period
+['Current Actual Year', 'Text'] = S:STET;
+['Current Actual Month', 'Text'] = S:STET;
+
+### Set Numeric for Current Actual Year
+['Current Actual Year', 'Numeric'] = N: Numbr(DB('Sys Parameter', !Sys Parameter, 'Text'));
+
+### Current Forecast Time Period
+['Current Forecast Year', 'Text'] = S: DB('Sys Parameter', 'Current Actual Year', 'Text');
+['Current Forecast Month', 'Text'] = S: DB('Sys Parameter', 'Current Actual Month', 'Text');
+
+### Current Budget Time Period
+['Current Budget Year', 'Text'] = S: AttrS('Year', DB('Sys Parameter', 'Current Actual Year', 'Text'), 'Next Year');
+['Current CY+1', 'Text'] = S: AttrS('Year', DB('Sys Parameter', 'Current Budget Year', 'Text'), 'Next Year');
+['Current CY+2', 'Text'] = S: AttrS('Year', DB('Sys Parameter', 'Current CY+1', 'Text'), 'Next Year');
+['Current CY+3', 'Text'] = S: AttrS('Year', DB('Sys Parameter', 'Current CY+2', 'Text'), 'Next Year');
+
+### Use Data Starting Points
+['System Start Year', 'Text'] = S: '2015';
+['System Start Month', 'Text'] = S: 'M01';
+
+### Use Data Starting Points
+#['Current User', 'Text'] = S: DB('}ElementAttributes_}Clients', TM1USER(), 'Name');
+['Current User', 'Text'] = S: DB('}ElementAttributes_}Clients', TM1USER(), 'EmployeeID');
+
+
+###############################################
+###  BLOCK THE HEADINGS
+
+[] = S: If (SubSt(!Sys Parameter, 1, 4) @= '>>>>', '', STET);
+[] = N: If (SubSt(!Sys Parameter, 1, 4) @= '>>>>', 0, STET);
+
+
+
+##############################################################################################################
+
+FEEDERS;
+##############################################################################################################
+
+#############################
+###  Internal Cube Feeders
+
+
+
+
+#############################
+###  External Cube Feeders
+
+
+
+
+##############################################################################################################
+###    End Rule File    ~~##

@@ -1,0 +1,27 @@
+FORMAT==100
+##############################################################################################################################
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+SKIPCHECK;
+#############################
+
+[ '}APQ Reconciliation Setup Detail Measure':'Default Override'] = S:
+IF(  DimSiz( DB( '}APQ Reconciliation Setup Detail', !}APQ Reconciliation Item, !}APQ Dimensions, 'DimensionHierarchy' ) ) <= DB( '}APQ Settings', 'Max subset size for PickList entry', 'Numeric' ),
+    IF( DB( '}APQ Reconciliation Setup Detail', !}APQ Reconciliation Item, !}APQ Dimensions, 'Hierarchy' ) @= !}APQ Dimensions,
+        'Dimension:' | !}APQ Dimensions,
+        'Dimension:' | !}APQ Dimensions |'\:'| DB( '}APQ Reconciliation Setup Detail', !}APQ Reconciliation Item, !}APQ Dimensions, 'Hierarchy' )
+    ),
+    STET
+);
+
+[ '}APQ Reconciliation Setup Detail Measure':'Hierarchy Selection'] = S: 'Dimension:}Hierarchies_' | !}APQ Dimensions;
+
+['}APQ Reconciliation Setup Detail Measure':'Drill View Location'] = S: 'Static:Title:Row:Column';
+
+['}APQ Reconciliation Setup Detail Measure':'Drill Subset'] = S: 'Dimension:}Subsets_' | !}APQ Dimensions;
+

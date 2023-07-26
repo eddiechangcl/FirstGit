@@ -1,0 +1,29 @@
+﻿FORMAT==100
+##############################################################################################################################
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+SKIPCHECK;
+#############################
+
+[ '}APQ Security Manage Element Security Groups Measure':{'Require Element Security','Auto Create Groups','Create All Group','Create Root Only Group','Create Read Only Groups','Create Point Only Groups for C Elements','Exclude Dimension from Group Name'} ] = S: 'Static::1:0';
+
+[ '}APQ Security Manage Element Security Groups Measure':'Create Groups To Element Level' ] = S: 
+'Subset:}APQ PickList Validations:PickList Levels 0-' | Trim( Str( DnLev( !}APQ Dimensions ) - 1, 3, 0 ) );
+
+[ '}APQ Security Manage Element Security Groups Measure':{'Managing Dimension 1','Managing Dimension 2','Managing Dimension 3'} ] = S: 'Subset:}APQ Dimensions:All Real Dimensions';
+
+[ '}APQ Security Manage Element Security Groups Measure':'Group Name Part Delimiter' ] = S: 'Static::\::¦:|:;:_:.:-:^:&:+';
+
+[ '}APQ Security Manage Element Security Groups Measure':'Dimension Attribute for Name' ] = S: 'Static::Caption';
+
+[ '}APQ Security Manage Element Security Groups Measure':'Element Attribute for Name' ] = S: 'Subset:}ElementAttributes_' | !}APQ Dimensions | ':String & Alias Attributes';
+
+
+#############################
+##~~    End Rule File    ~~##
+#############################

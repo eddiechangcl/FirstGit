@@ -1,0 +1,30 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+SKIPCHECK;
+FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Time Month Conversion** is used to store the conversion mapping between calendar month and financial month. 
+# This allows the process **}APQ.Dim.Time.Update.Month.CalToFin.Conversion** to be run on any hierarchical time dimension where 
+# the principal element names are code based (e.g. M01-M12) and convert display alias month names from calendar to financial months or vice versa.
+#
+# Note:
+# * This cube contains no rules.
+# * In order for the relative time period reporting to function correctly for fiscal year based time dimensions then a mapping text attribute needs to
+#   also be maintained in the financial month dimension (as a text attribute not alias) so that the rules in **}APQ Time Relative Time Lookup** will function correctly to set the correct relative time periods.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################

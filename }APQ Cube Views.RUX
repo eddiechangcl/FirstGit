@@ -1,0 +1,59 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+SKIPCHECK;
+FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Cube Views** is automatically compiled by reading the }Views control dimensions which are created automatically per cube from TM1 v11. 
+# This is done by a combination of the processes **}APQ.Dim.ControlDimensionCopies.Update** and **}APQ.Cub.CubeViews.Update**. 
+# The cube allows for an easy overview of the number of cube views per cube however this is quite trivial in itself. What is of 
+# significant value is that this cube includes an autonatically generated _*TM1 Web URL API string*_ for each public cube view 
+# which is very useful for constructing TM1 Web applications and menus. 
+#
+# Note:
+# * In order to implement automated "site map" functionality for cube view URLs _all users must have read access to this cube_. 
+# * Element security is set automatically such that users only see the cubes and views to which they have access.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+[ '}APQ Cube Views Measure':'Count' ] = N:
+If( DB( '}APQ Cube Views', !}APQ Cube Views, 'View Name' ) @<> '',
+  1,
+  0
+);
+
+[ '}APQ Cube Views Measure':'IsDefaultView' ] = N:
+If( DB( '}APQ Cube Views', !}APQ Cube Views, 'View Name' ) @= 'Default',
+  [ '}APQ Cube Views Measure':'Count' ],
+  0
+);
+
+
+#############################
+FEEDERS;
+#############################
+
+[ '}APQ Cube Views Measure':'Cube Name' ] => [ '}APQ Cube Views Measure':'Count' ];
+
+[ '}APQ Cube Views Measure':'View Name' ] => [ '}APQ Cube Views Measure':'IsDefaultView' ];
+
+
+#############################
+##~~   End  Rule File   ~~##
+#############################
+
+

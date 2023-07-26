@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=}bedrock.cube.data.save
+ENTRYTYPE=process
+ENTRYREFERENCE=TM1:///PROCESS/PUBLIC/}bedrock.cube.data.save

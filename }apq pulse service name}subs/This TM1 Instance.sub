@@ -1,0 +1,10 @@
+﻿283,100
+284,"This TM1 Instance"
+11,20201005064118
+274,
+18,0
+275,143
+{StrToMember( "[}APQ Pulse Service Name].["+[}APQ Settings].([}APQ Parameters].[Windows Service Name],[}APQ Settings Measure].[String])+"]" ) }
+278,0
+281,0
+270,0

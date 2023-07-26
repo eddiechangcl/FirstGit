@@ -1,0 +1,812 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+#SKIPCHECK;
+#FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Reconciliation Check** is part of the **Reconciliation** family of cubes which perform automated reconciliation checks of inter- 
+# or intra- cube values.  An example of how to use and configure the **Reconciliation Application** is included in the Apliqode Framework Demo Applcation 
+# using the **Sales Cube** family as an example.
+#
+# **}APQ Reconciliation Check** displays the _single cell point values_ for each of the defined reconciliations items and the pairs of reconciliation 
+# items defined for each check. The dimensionality of the cube is simple 2-dimensional with the single cell references defined in **}APQ Reconciliation Setup Detail**.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+# No data entry for consolidated nodes
+[ '}APQ Reconciliation Item':{'Comparisons','Items'} ] = S: '';
+
+## String fields
+
+# comparison description
+[ '}APQ Reconciliation Check Measure':'Description' ] = S:
+IF( SUBST( !}APQ Reconciliation Item, 1, 1 ) @= 'C',
+  DB( '}APQ Reconciliation Setup', !}APQ Reconciliation Item, 'Long Description' ),
+  TRIM( SUBST( DB( '}APQ Reconciliation Setup', !}APQ Reconciliation Item, 'Long Description' ), LONG(!}APQ Reconciliation Item)+2, 255))
+);
+
+## Known Variance
+[ '}APQ Reconciliation Check Measure':'Known Variance' ] = N: DB( '}APQ Reconciliation Setup', !}APQ Reconciliation Item, 'Comparison Known Variance');
+
+## Comparison Calculation
+#   as absolute values to avoid sign issues
+[ '}APQ Reconciliation Check Measure':'Value' ] = N:
+IF( SUBST( !}APQ Reconciliation Item, 1, 1 ) @= 'C',
+  ABS( DB('}APQ Reconciliation Check', DB( '}APQ Reconciliation Setup', !}APQ Reconciliation Item, 'Reference'), 'Value' ) )
+  -
+  ABS( DB('}APQ Reconciliation Check', DB( '}APQ Reconciliation Setup', !}APQ Reconciliation Item, 'Comparison'), 'Value' ) ),
+  CONTINUE
+);
+
+#Region - Item Calculations
+# If the item is static then STET to allow input
+[ '}APQ Reconciliation Check Measure':'Value' ] = N:
+IF( DB( '}APQ Reconciliation Setup', !}APQ Reconciliation Item, 'IsStatic' ) = 1,
+    STET,
+    CONTINUE
+);
+
+#Region - 2 dim to 8 dim cubes
+# Test case with 2 dimensions
+[ '}APQ Reconciliation Check Measure':'Value' ] = N:
+IF( TABDIM( ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'), 3 ) @= '',
+     DB(ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H1') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E1'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H2') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E2')
+         ),
+     CONTINUE
+   );
+
+# Test case with 3 dimensions
+[ '}APQ Reconciliation Check Measure':'Value' ] = N:
+IF( TABDIM( ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'), 4 ) @= '',
+     DB(ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H1') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E1'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H2') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E2'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H3') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E3')
+         ),
+     CONTINUE
+   );
+
+# Test case with 4 dimensions
+[ '}APQ Reconciliation Check Measure':'Value' ] = N:
+IF( TABDIM( ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'), 5 ) @= '',
+     DB(ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H1') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E1'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H2') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E2'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H3') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E3'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H4') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E4')
+         ),
+     CONTINUE
+   );
+
+# Test case with 5 dimensions
+[ '}APQ Reconciliation Check Measure':'Value' ] = N:
+IF( TABDIM( ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'), 6 ) @= '',
+     DB(ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H1') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E1'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H2') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E2'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H3') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E3'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H4') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E4'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H5') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E5')
+         ),
+     CONTINUE
+   );
+
+# Test case with 6 dimensions
+[ '}APQ Reconciliation Check Measure':'Value' ] = N:
+IF( TABDIM( ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'), 7 ) @= '',
+     DB(ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H1') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E1'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H2') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E2'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H3') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E3'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H4') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E4'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H5') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E5'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H6') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E6')
+         ),
+     CONTINUE
+   );
+
+# Test case with 7 dimensions
+[ '}APQ Reconciliation Check Measure':'Value' ] = N:
+IF( TABDIM( ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'), 8 ) @= '',
+     DB(ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H1') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E1'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H2') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E2'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H3') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E3'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H4') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E4'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H5') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E5'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H6') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E6'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H7') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E7')
+         ),
+     CONTINUE
+   );
+
+
+# Test case with 8 dimensions
+[ '}APQ Reconciliation Check Measure':'Value' ] = N:
+IF( TABDIM( ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'), 9 ) @= '',
+     DB(ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H1') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E1'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H2') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E2'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H3') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E3'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H4') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E4'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H5') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E5'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H6') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E6'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H7') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E7'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H8') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E8')
+         ),
+     CONTINUE
+   );
+#EndRegion
+
+#Region - 9 dim to 15 dim cubes
+# Test case with 9 dimensions
+[ '}APQ Reconciliation Check Measure':'Value' ] = N:
+IF( TABDIM( ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'), 10 ) @= '',
+     DB(ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H1') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E1'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H2') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E2'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H3') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E3'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H4') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E4'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H5') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E5'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H6') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E6'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H7') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E7'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H8') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E8'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H9') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E9')
+         ),
+     CONTINUE
+   );
+
+
+# Test case with 10 dimensions
+[ '}APQ Reconciliation Check Measure':'Value' ] = N:
+IF( TABDIM( ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'), 11 ) @= '',
+     DB(ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H1') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E1'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H2') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E2'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H3') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E3'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H4') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E4'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H5') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E5'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H6') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E6'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H7') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E7'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H8') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E8'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H9') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E9'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H10') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E10')
+         ),
+     CONTINUE
+   );
+
+
+# Test case with 11 dimensions
+[ '}APQ Reconciliation Check Measure':'Value' ] = N:
+IF( TABDIM( ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'), 12 ) @= '',
+     DB(ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H1') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E1'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H2') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E2'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H3') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E3'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H4') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E4'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H5') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E5'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H6') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E6'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H7') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E7'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H8') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E8'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H9') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E9'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H10') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E10'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H11') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E11')
+         ),
+     CONTINUE
+   );
+
+
+# Test case with 12 dimensions
+[ '}APQ Reconciliation Check Measure':'Value' ] = N:
+IF( TABDIM( ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'), 13 ) @= '',
+     DB(ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H1') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E1'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H2') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E2'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H3') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E3'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H4') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E4'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H5') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E5'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H6') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E6'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H7') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E7'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H8') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E8'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H9') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E9'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H10') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E10'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H11') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E11'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H12') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E12')
+         ),
+     CONTINUE
+   );
+
+# Test case with 13 dimensions
+[ '}APQ Reconciliation Check Measure':'Value' ] = N:
+IF( TABDIM( ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'), 14 ) @= '',
+     DB(ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H1') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E1'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H2') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E2'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H3') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E3'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H4') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E4'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H5') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E5'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H6') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E6'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H7') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E7'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H8') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E8'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H9') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E9'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H10') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E10'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H11') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E11'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H12') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E12'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H13') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E13')
+         ),
+     CONTINUE
+   );
+
+# Test case with 14 dimensions
+[ '}APQ Reconciliation Check Measure':'Value' ] = N:
+IF( TABDIM( ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'), 15 ) @= '',
+     DB(ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H1') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E1'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H2') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E2'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H3') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E3'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H4') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E4'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H5') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E5'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H6') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E6'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H7') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E7'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H8') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E8'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H9') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E9'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H10') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E10'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H11') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E11'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H12') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E12'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H13') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E13'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H14') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E14')
+         ),
+     CONTINUE
+   );
+
+# Test case with 15 dimensions
+[ '}APQ Reconciliation Check Measure':'Value' ] = N:
+IF( TABDIM( ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'), 16 ) @= '',
+     DB(ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H1') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E1'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H2') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E2'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H3') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E3'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H4') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E4'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H5') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E5'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H6') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E6'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H7') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E7'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H8') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E8'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H9') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E9'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H10') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E10'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H11') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E11'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H12') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E12'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H13') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E13'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H14') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E14'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H15') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E15')
+         ),
+     CONTINUE
+   );
+
+
+# Test case with 16 dimensions
+[ '}APQ Reconciliation Check Measure':'Value' ] = N:
+IF( TABDIM( ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'), 17 ) @= '',
+     DB(ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H1') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E1'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H2') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E2'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H3') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E3'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H4') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E4'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H5') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E5'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H6') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E6'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H7') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E7'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H8') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E8'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H9') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E9'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H10') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E10'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H11') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E11'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H12') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E12'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H13') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E13'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H14') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E14'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H15') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E15'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H16') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E16')
+         ),
+     CONTINUE
+   );
+#EndRegion
+
+#Region - 17 dim to 24 dim cubes
+# Test case with 17 dimensions
+[ '}APQ Reconciliation Check Measure':'Value' ] = N:
+IF( TABDIM( ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'), 18 ) @= '',
+     DB(ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H1') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E1'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H2') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E2'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H3') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E3'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H4') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E4'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H5') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E5'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H6') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E6'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H7') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E7'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H8') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E8'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H9') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E9'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H10') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E10'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H11') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E11'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H12') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E12'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H13') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E13'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H14') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E14'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H15') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E15'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H16') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E16'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H17') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E17')
+         ),
+     CONTINUE
+   );
+
+# Test case with 18 dimensions
+[ '}APQ Reconciliation Check Measure':'Value' ] = N:
+IF( TABDIM( ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'), 19 ) @= '',
+     DB(ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H1') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E1'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H2') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E2'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H3') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E3'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H4') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E4'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H5') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E5'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H6') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E6'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H7') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E7'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H8') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E8'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H9') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E9'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H10') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E10'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H11') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E11'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H12') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E12'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H13') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E13'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H14') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E14'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H15') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E15'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H16') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E16'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H17') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E17'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H18') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E18')
+         ),
+     CONTINUE
+   );
+
+# Test case with 19 dimensions
+[ '}APQ Reconciliation Check Measure':'Value' ] = N:
+IF( TABDIM( ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'), 20 ) @= '',
+     DB(ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H1') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E1'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H2') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E2'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H3') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E3'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H4') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E4'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H5') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E5'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H6') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E6'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H7') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E7'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H8') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E8'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H9') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E9'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H10') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E10'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H11') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E11'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H12') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E12'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H13') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E13'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H14') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E14'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H15') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E15'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H16') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E16'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H17') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E17'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H18') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E18'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H19') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E19')
+         ),
+     CONTINUE
+   );
+
+# Test case with 20 dimensions
+[ '}APQ Reconciliation Check Measure':'Value' ] = N:
+IF( TABDIM( ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'), 21 ) @= '',
+     DB(ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H1') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E1'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H2') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E2'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H3') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E3'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H4') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E4'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H5') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E5'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H6') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E6'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H7') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E7'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H8') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E8'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H9') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E9'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H10') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E10'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H11') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E11'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H12') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E12'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H13') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E13'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H14') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E14'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H15') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E15'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H16') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E16'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H17') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E17'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H18') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E18'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H19') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E19'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H20') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E20')
+         ),
+     CONTINUE
+   );
+
+# Test case with 21 dimensions
+[ '}APQ Reconciliation Check Measure':'Value' ] = N:
+IF( TABDIM( ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'), 22 ) @= '',
+     DB(ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H1') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E1'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H2') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E2'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H3') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E3'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H4') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E4'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H5') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E5'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H6') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E6'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H7') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E7'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H8') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E8'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H9') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E9'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H10') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E10'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H11') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E11'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H12') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E12'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H13') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E13'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H14') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E14'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H15') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E15'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H16') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E16'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H17') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E17'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H18') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E18'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H19') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E19'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H20') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E20'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H21') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E21')
+         ),
+     CONTINUE
+   );
+
+# Test case with 22 dimensions
+[ '}APQ Reconciliation Check Measure':'Value' ] = N:
+IF( TABDIM( ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'), 23 ) @= '',
+     DB(ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H1') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E1'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H2') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E2'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H3') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E3'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H4') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E4'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H5') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E5'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H6') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E6'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H7') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E7'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H8') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E8'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H9') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E9'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H10') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E10'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H11') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E11'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H12') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E12'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H13') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E13'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H14') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E14'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H15') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E15'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H16') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E16'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H17') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E17'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H18') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E18'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H19') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E19'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H20') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E20'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H21') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E21'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H22') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E22')
+         ),
+     CONTINUE
+   );
+
+# Test case with 23 dimensions
+[ '}APQ Reconciliation Check Measure':'Value' ] = N:
+IF( TABDIM( ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'), 24 ) @= '',
+     DB(ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H1') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E1'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H2') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E2'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H3') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E3'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H4') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E4'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H5') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E5'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H6') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E6'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H7') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E7'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H8') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E8'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H9') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E9'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H10') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E10'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H11') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E11'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H12') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E12'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H13') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E13'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H14') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E14'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H15') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E15'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H16') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E16'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H17') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E17'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H18') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E18'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H19') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E19'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H20') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E20'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H21') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E21'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H22') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E22'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H23') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E23')
+         ),
+     CONTINUE
+   );
+
+# Test case with 24 dimensions
+[ '}APQ Reconciliation Check Measure':'Value' ] = N:
+IF( TABDIM( ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'), 25 ) @= '',
+     DB(ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H1') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E1'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H2') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E2'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H3') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E3'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H4') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E4'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H5') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E5'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H6') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E6'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H7') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E7'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H8') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E8'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H9') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E9'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H10') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E10'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H11') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E11'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H12') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E12'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H13') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E13'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H14') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E14'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H15') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E15'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H16') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E16'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H17') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E17'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H18') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E18'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H19') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E19'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H20') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E20'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H21') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E21'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H22') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E22'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H23') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E23'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H24') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E24')
+         ),
+     CONTINUE
+   );
+#EndRegion
+
+#Region 25 dim + cubes
+# Test case with 25 dimensions
+[ '}APQ Reconciliation Check Measure':'Value' ] = N:
+IF( TABDIM( ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'), 26 ) @= '',
+     DB(ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H1') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E1'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H2') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E2'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H3') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E3'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H4') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E4'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H5') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E5'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H6') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E6'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H7') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E7'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H8') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E8'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H9') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E9'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H10') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E10'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H11') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E11'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H12') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E12'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H13') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E13'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H14') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E14'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H15') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E15'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H16') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E16'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H17') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E17'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H18') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E18'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H19') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E19'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H20') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E20'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H21') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E21'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H22') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E22'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H23') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E23'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H24') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E24'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H25') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E25')
+         ),
+     CONTINUE
+   );
+
+# Test case with 26 dimensions
+[ '}APQ Reconciliation Check Measure':'Value' ] = N:
+IF( TABDIM( ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'), 27 ) @= '',
+     DB(ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H1') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E1'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H2') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E2'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H3') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E3'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H4') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E4'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H5') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E5'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H6') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E6'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H7') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E7'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H8') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E8'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H9') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E9'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H10') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E10'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H11') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E11'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H12') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E12'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H13') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E13'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H14') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E14'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H15') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E15'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H16') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E16'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H17') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E17'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H18') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E18'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H19') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E19'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H20') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E20'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H21') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E21'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H22') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E22'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H23') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E23'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H24') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E24'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H25') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E25'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H26') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E26')
+         ),
+     CONTINUE
+   );
+
+# Test case with 27 dimensions
+[ '}APQ Reconciliation Check Measure':'Value' ] = N:
+IF( TABDIM( ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'), 28 ) @= '',
+     DB(ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H1') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E1'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H2') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E2'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H3') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E3'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H4') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E4'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H5') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E5'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H6') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E6'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H7') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E7'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H8') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E8'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H9') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E9'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H10') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E10'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H11') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E11'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H12') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E12'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H13') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E13'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H14') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E14'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H15') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E15'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H16') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E16'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H17') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E17'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H18') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E18'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H19') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E19'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H20') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E20'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H21') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E21'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H22') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E22'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H23') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E23'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H24') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E24'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H25') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E25'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H26') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E26'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H27') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E27')
+         ),
+     CONTINUE
+   );
+
+# Test case with 28 dimensions
+[ '}APQ Reconciliation Check Measure':'Value' ] = N:
+IF( TABDIM( ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'), 29 ) @= '',
+     DB(ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H1') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E1'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H2') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E2'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H3') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E3'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H4') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E4'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H5') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E5'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H6') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E6'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H7') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E7'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H8') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E8'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H9') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E9'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H10') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E10'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H11') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E11'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H12') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E12'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H13') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E13'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H14') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E14'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H15') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E15'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H16') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E16'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H17') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E17'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H18') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E18'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H19') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E19'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H20') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E20'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H21') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E21'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H22') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E22'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H23') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E23'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H24') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E24'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H25') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E25'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H26') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E26'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H27') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E27'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H28') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E28')
+         ),
+     CONTINUE
+   );
+
+# Test case with 29 dimensions
+[ '}APQ Reconciliation Check Measure':'Value' ] = N:
+IF( TABDIM( ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'), 30 ) @= '',
+     DB(ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H1') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E1'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H2') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E2'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H3') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E3'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H4') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E4'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H5') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E5'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H6') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E6'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H7') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E7'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H8') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E8'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H9') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E9'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H10') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E10'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H11') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E11'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H12') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E12'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H13') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E13'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H14') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E14'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H15') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E15'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H16') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E16'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H17') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E17'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H18') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E18'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H19') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E19'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H20') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E20'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H21') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E21'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H22') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E22'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H23') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E23'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H24') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E24'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H25') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E25'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H26') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E26'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H27') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E27'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H28') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E28'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H29') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E29')
+         ),
+     CONTINUE
+   );
+
+# Test case with 30 dimensions
+[ '}APQ Reconciliation Check Measure':'Value' ] = N:
+IF( TABDIM( ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'), 31 ) @= '',
+     DB(ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'Cube'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H1') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E1'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H2') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E2'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H3') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E3'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H4') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E4'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H5') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E5'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H6') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E6'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H7') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E7'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H8') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E8'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H9') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E9'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H10') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E10'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H11') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E11'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H12') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E12'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H13') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E13'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H14') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E14'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H15') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E15'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H16') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E16'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H17') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E17'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H18') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E18'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H19') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E19'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H20') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E20'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H21') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E21'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H22') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E22'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H23') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E23'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H24') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E24'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H25') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E25'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H26') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E26'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H27') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E27'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H28') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E28'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H29') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E29'),
+           ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'H30') : ATTRS('}APQ Reconciliation Item',!}APQ Reconciliation Item, 'E30')
+         ),
+     CONTINUE
+   );
+#EndRegion
+#EndRegion
+
+#Region - threshold Calculations
+[ '}APQ Reconciliation Check Measure':'Value Threshold' ] = S:
+IF( SubSt( !}APQ Reconciliation Item, 1, 1 ) @= 'C' ,
+    IF( ABS( [ '}APQ Reconciliation Check Measure':'Value' ] ) <= ABS( [ '}APQ Reconciliation Check Measure':'Known Variance' ] ),
+        'OK',
+        IF( ABS( [ '}APQ Reconciliation Check Measure':'Value' ] ) > DB( '}APQ Reconciliation Setup', !}APQ Reconciliation Item, 'Comparison Threshold Danger' ),
+            'ERROR',
+            IF( ABS( [ '}APQ Reconciliation Check Measure':'Value' ] ) > DB( '}APQ Reconciliation Setup', !}APQ Reconciliation Item, 'Comparison Threshold Warning' ),
+                'WARNING',
+                'OK'
+            )
+        )
+    ),
+    ''
+);
+
+[ '}APQ Reconciliation Check Measure':'Static Threshold' ] = S:
+IF( SubSt( !}APQ Reconciliation Item, 1, 1 ) @= 'C' ,
+    IF( ABS( [ '}APQ Reconciliation Check Measure':'Static' ] ) <= ABS( [ '}APQ Reconciliation Check Measure':'Known Variance' ] ),
+        'OK',
+        IF( ABS( [ '}APQ Reconciliation Check Measure':'Static' ] ) >DB( '}APQ Reconciliation Setup', !}APQ Reconciliation Item, 'Comparison Threshold Danger' ),
+            'ERROR',
+            IF( ABS( [ '}APQ Reconciliation Check Measure':'Static' ] ) >DB( '}APQ Reconciliation Setup', !}APQ Reconciliation Item, 'Comparison Threshold Warning' ),
+                'WARNING',
+                'OK'
+            )
+        )
+    ),
+    ''
+);
+#EndRegion
+
+#############################
+#FEEDERS;
+#############################
+
+
+#############################
+##~~    End Rule File    ~~##
+#############################

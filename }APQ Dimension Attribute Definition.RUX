@@ -1,0 +1,101 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+SKIPCHECK;
+FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2020-02-17 accomodate localized attributes
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Dimension Attribute Definition** is used as a "database cube" for storing either:
+# * attribute data which does not have a source system and is maintained/mapped manually by power users
+# * "overide values" where source system masterdata is incorect or needs to be varied in the reporting system
+# * Parent type attribute defined rollup mappings as an alternate to **}APQ Dimension Static Subsets And UDC** mappings
+#
+#This cube effectively could if desired act as a universal repository of all attribute data for all dimensions in a model.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+# For same named hierarchy do the input at dimension level
+[ '}APQ Dimension Attribute Definition Measure':{'Load Value','Overide Value'} ] = S:
+IF( Scan( ':', !}APQ Dimension Hierarchies ) = 0,
+    CONTINUE,
+    IF( SubSt( !}APQ Dimension Hierarchies, 1, Scan( ':', !}APQ Dimension Hierarchies ) - 1 ) @<> SubSt( !}APQ Dimension Hierarchies, Scan( ':', !}APQ Dimension Hierarchies ) + 1, Scan( ':', !}APQ Dimension Hierarchies ) - 1 ),
+        CONTINUE,
+        DB( ' }APQ Dimension Attribute Definition', SubSt( !}APQ Dimension Hierarchies, 1, Scan( ':', !}APQ Dimension Hierarchies ) - 1 ), !}APQ Dimension Elements, !}APQ Dimension Attributes, !}APQ Dimension Attribute Definition Measure )
+    ) 
+);
+
+# For data entry prohibit entry unless element is not only in the dimension but also a principal name (important to prevent duplicate entries!)
+[ '}APQ Dimension Attribute Definition Measure':{'Load Value','Overide Value'} ] = S:
+IF( ( DimIx( !}APQ Dimension Hierarchies, !}APQ Dimension Elements ) = 0 % 
+      DimIx( '}ElementAttributes_' | If( Scan(':', !}APQ Dimension Hierarchies) = 0, !}APQ Dimension Hierarchies, SubSt(!}APQ Dimension Hierarchies, 1, Scan(':', !}APQ Dimension Hierarchies)-1) ), !}APQ Dimension Attributes ) = 0 ) & 
+      DB( '}APQ Dimension Definition', !}APQ Dimension Hierarchies, 'Total Items', 'Load Attrs First To Framework', 'Count' ) = 0,
+    '',
+    IF( !}APQ Dimension Elements @= DimNm( !}APQ Dimension Hierarchies, DimIx( !}APQ Dimension Hierarchies, !}APQ Dimension Elements ) ),
+        STET,
+        ''
+    )
+);
+
+# For current attribute value & final value if element is not a member of the hierarchy then prohibit a value
+[ '}APQ Dimension Attribute Definition Measure':{'Current Attr Value','Final Value'} ] = S:
+IF( DimIx( !}APQ Dimension Hierarchies, !}APQ Dimension Elements ) = 0,
+    '',
+    If( Scan( '[', !}APQ Dimension Attributes ) = 0,
+        If( DimIx( '}ElementAttributes_' | If( Scan(':', !}APQ Dimension Hierarchies) = 0, !}APQ Dimension Hierarchies, SubSt(!}APQ Dimension Hierarchies, 1, Scan(':', !}APQ Dimension Hierarchies)-1) ), !}APQ Dimension Attributes ) = 0,
+            '',
+            Continue
+        ),
+        If( DimIx( '}ElementAttributes_' | If( Scan(':', !}APQ Dimension Hierarchies) = 0, !}APQ Dimension Hierarchies, SubSt(!}APQ Dimension Hierarchies, 1, Scan(':', !}APQ Dimension Hierarchies)-1) ), SubSt( !}APQ Dimension Attributes, 1, Scan('[', !}APQ Dimension Attributes) -1 ) ) = 0,
+            '',
+            Continue
+        )
+    )
+);
+
+# Lookup the final value (also possible for alias elements)
+# in some bizare omission AttrS is not recognized in rules
+[ '}APQ Dimension Attribute Definition Measure':'Current Attr Value' ] = S: 
+If( Scan( '[', !}APQ Dimension Attributes ) = 0,
+    AttrS( !}APQ Dimension Hierarchies, !}APQ Dimension Elements, !}APQ Dimension Attributes ),
+    If( DB( '}LocalizedElementAttributes_' | !}APQ Dimension Hierarchies, !}APQ Dimension Elements, SubSt( !}APQ Dimension Attributes, (Scan('[', !}APQ Dimension Attributes)+1), (Long(!}APQ Dimension Attributes)-Scan('[', !}APQ Dimension Attributes)-1) ), SubSt( !}APQ Dimension Attributes, 1, Scan('[', !}APQ Dimension Attributes) -1 ) ) @= '',
+        AttrS( !}APQ Dimension Hierarchies, !}APQ Dimension Elements, SubSt( !}APQ Dimension Attributes, 1, Scan('[', !}APQ Dimension Attributes) -1 ) ),
+        DB( '}LocalizedElementAttributes_' | !}APQ Dimension Hierarchies, !}APQ Dimension Elements, SubSt( !}APQ Dimension Attributes, (Scan('[', !}APQ Dimension Attributes)+1), (Long(!}APQ Dimension Attributes)-Scan('[', !}APQ Dimension Attributes)-1) ), SubSt( !}APQ Dimension Attributes, 1, Scan('[', !}APQ Dimension Attributes) -1 ) )
+    )
+#    AttrSL( !}APQ Dimension Hierarchies, !}APQ Dimension Elements, SubSt( !}APQ Dimension Attributes, 1, Scan('[', !}APQ Dimension Attributes) -1 ), SubSt( !}APQ Dimension Attributes, Scan('[', !}APQ Dimension Attributes) +1, 2 ) )
+);
+
+# Determine final value by taking overide or loaded value
+[ '}APQ Dimension Attribute Definition Measure':'Final Value' ] = S:
+IF( CellGetS( '}APQ Dimension Attribute Definition', !}APQ Dimension Hierarchies, !}APQ Dimension Elements, !}APQ Dimension Attributes, 'Overide Value' ) @= '',
+    CellGetS( '}APQ Dimension Attribute Definition', !}APQ Dimension Hierarchies, !}APQ Dimension Elements, !}APQ Dimension Attributes, 'Load Value' ),
+    CellGetS( '}APQ Dimension Attribute Definition', !}APQ Dimension Hierarchies, !}APQ Dimension Elements, !}APQ Dimension Attributes, 'Overide Value' )
+);
+
+
+#############################
+FEEDERS;
+#############################
+
+[ '}APQ Dimension Attribute Definition Measure':'Load Value' ] => [ '}APQ Dimension Attribute Definition Measure':'Final Value' ],[ '}APQ Dimension Attribute Definition Measure':'Current Attr Value' ],
+DB( ' }APQ Dimension Attribute Definition', !}APQ Dimension Hierarchies|':'|!}APQ Dimension Hierarchies, !}APQ Dimension Elements, !}APQ Dimension Attributes, !}APQ Dimension Attribute Definition Measure );
+
+[ '}APQ Dimension Attribute Definition Measure':'Overide Value' ] => [ '}APQ Dimension Attribute Definition Measure':'Final Value' ],[ '}APQ Dimension Attribute Definition Measure':'Current Attr Value' ],
+DB( ' }APQ Dimension Attribute Definition', !}APQ Dimension Hierarchies|':'|!}APQ Dimension Hierarchies, !}APQ Dimension Elements, !}APQ Dimension Attributes, !}APQ Dimension Attribute Definition Measure );
+
+
+#############################
+##~~   End  Rule File   ~~##
+#############################

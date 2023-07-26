@@ -1,0 +1,10 @@
+﻿283,100
+284,"Element Security - Product"
+11,00000000000000
+274,
+18,0
+275,172
+{Filter( {[}APQ Groups].[}APQ Groups].[Total APQ Element Security Groups].Children}, [}APQ Groups].[}APQ Groups].CurrentMember.Properties("ELEMENT_SECURITY") = "Product" )}
+278,0
+281,0
+270,0

@@ -1,0 +1,10 @@
+﻿283,100
+284,"Picklist_Link"
+11,20230512024330
+274,Desc
+18,0
+275,100
+FILTER({[Sys Menu Link].[All Links].Children},[Sys Menu Link].([M Sys Menu Link].[Entry Name]) <>"")
+278,0
+281,0
+270,0

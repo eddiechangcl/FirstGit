@@ -1,0 +1,12 @@
+﻿FORMAT==100
+SkipCheck;
+['Calendar Day'] =N: 
+    DB('Sys Time Attribute', !Year | '-' | !Day in Year, 'T', 'Calendar Day');
+    
+['Weekend'] =N: 
+    DB('Sys Time Attribute', !Year | '-' | !Day in Year, 'T', 'Weekend');
+
+
+
+Feeders;
+

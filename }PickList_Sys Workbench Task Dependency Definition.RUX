@@ -1,0 +1,32 @@
+﻿FORMAT==100
+
+###################################
+#Scenario
+###################################
+[ { 'Preorder - Scenario', 'Postorder - Scenario' } ] = S:
+    'Subset:Scenario:PickList_Workbench_Scenario' ;
+
+###################################
+#Year
+###################################
+[ { 'Preorder - Year', 'Postorder - Year' } ] = S:
+    'Subset:Year:PickList_Workbench_Year' ;
+
+###################################
+#Group
+###################################
+[ { 'Preorder - Group', 'Postorder - Group' } ] = S:
+    'Subset:Sys Workbench Group:PickList_Workbench_Group' ;
+
+
+###################################
+#Priority
+###################################
+[ { 'Preorder - Priority', 'Postorder - Priority' } ] = S:
+    'Subset:Sys Workbench Priority:PickList_Workbench_Priority' ;
+
+###################################
+#Step
+###################################
+[ { 'Preorder - Step', 'Postorder - Step' } ] = S:
+    'Subset:Sys Workbench Step:PickList_Workbench_Step' ;

@@ -1,0 +1,44 @@
+FORMAT==100
+##############################################################################################################################
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+#############################
+SKIPCHECK;
+#############################
+
+[ '}APQ TM1 Object Type':'Cube', '}APQ Process to Object Reference Measure':{'Object Last Time Updated','Process Start Time','Process Finish Time'} ] = S:
+IF( IsLeaf = 0,
+  '',
+  IF( DB( '}APQ Process to Object Reference', !}APQ TM1 Object Type, !}APQ TM1 Objects, !}APQ Processes, 'Object Last Time Updated' ) @= '',
+    '',
+    'Drill to Process Last Run Details (4)'
+  )
+);
+
+[ '}APQ TM1 Object Type':'Dimension', '}APQ Process to Object Reference Measure':{'Process Start Time','Process Finish Time'} ] = S:
+IF( IsLeaf = 0,
+  '',
+  IF( DB( '}APQ Process to Object  Reference', !}APQ TM1 Object Type, !}APQ TM1 Objects, !}APQ Processes, 'Process Start Time' ) @= '',
+    '',
+    'Drill to Process Last Run Details (4)'
+  )
+);
+
+[ '}APQ TM1 Object Type':'Process', '}APQ Process to Object Reference Measure':{'Process Start Time','Process Finish Time'} ] = S:
+IF( IsLeaf = 0,
+  '',
+  IF( DB( '}APQ Process to Object  Reference', !}APQ TM1 Object Type, !}APQ TM1 Objects, !}APQ Processes, 'Process Start Time' ) @= '',
+    '',
+    'Drill to Process Last Run Details (4)'
+  )
+);
+
+#############################
+### END
+#############################

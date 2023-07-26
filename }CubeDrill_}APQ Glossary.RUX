@@ -1,0 +1,50 @@
+FORMAT==100
+##############################################################################################################################
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+#############################
+SKIPCHECK;
+#############################
+
+[ '}APQ TM1 Object Type':'Application' ] = S:
+IF( DimIx( '}APQ Applications', !}APQ TM1 Objects ) = 0,
+  '',
+  IF( DB( '}APQ Application Entries', !}APQ TM1 Objects, 'Type' ) @= 'Template',
+    ' drill to Application User Activity, drill to Application Entry Detail, drill to Application Security, drill to Security Cube, drill to Pulse Documentation',
+    ' drill to Application Entry Detail, drill to Application Security, drill to Security Cube, drill to Pulse Documentation'
+  )
+);
+
+[ '}APQ TM1 Object Type':'Chore' ] = S:
+IF( DimIx( '}APQ Chores', !}APQ TM1 Objects ) = 0,
+  '',
+    ' drill to Chore Details, drill to Chore to Process Map, drill to Object Security, drill to Security Cube, drill to Pulse Documentation'
+);
+
+[ '}APQ TM1 Object Type':'Process' ] = S:
+IF( DimIx( '}APQ Processes', !}APQ TM1 Objects ) = 0,
+  '',
+    ' drill to Process Details, drill to Process to Chore Map, drill to Process Last Run Details (3), drill to Object Security, drill to Security Cube, drill to Pulse Documentation'
+);
+
+[ '}APQ TM1 Object Type':'Cube' ] = S:
+IF( DimIx( '}APQ Cubes', !}APQ TM1 Objects ) = 0,
+  '',
+    ' drill to Cube, drill to dimensions in Cube, drill to Process Updating Cube, drill to Object Security, drill to Security Cube, drill to Pulse Documentation'
+);
+
+[ '}APQ TM1 Object Type':'Dimension' ] = S:
+IF( DimIx( '}APQ Dimensions', !}APQ TM1 Objects ) = 0,
+  '',
+    ' drill to cubes using Dimension, drill to Process Updating Dimension, drill to Dimension Attributes, drill to SemiDynamic Subsets, drill to Object Security, drill to Security Cube, drill to Pulse Documentation'
+);
+
+#############################
+### END
+#############################

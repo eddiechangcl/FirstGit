@@ -1,0 +1,58 @@
+﻿FORMAT==100
+FEEDSTRINGS;
+SKIPCHECK;
+
+##############################################################################################################
+### CWA Std. Model  version 3.00
+### Copyright © 2020, Cubewise (Hong Kong) Ltd. All rights reserved.
+### This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+### and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+### you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+### or display any part, in any form, or by any means.
+##############################################################################################################
+
+
+##############################################################################################################
+###~~~    Start Rule File    ~~~###
+
+### Using Current User Specific Language
+[{'en','zh-Hant','zh-Hans'}]=S:
+IF (ATTRS('}Clients', TM1USER(), 'Language') @='en'
+    , STET
+, IF (ATTRS('}Clients', TM1USER(), 'Language') @<>''
+      , DB('}ElementAttributes_Version', !Version, !}ElementAttributes_Version | ' ' | ATTRS('}Clients', TM1USER(), 'Language'))
+      , DB('}ElementAttributes_Version', !Version, !}ElementAttributes_Version | ' ' | !}Cultures)
+));
+
+
+### Copy Languages
+['zh']=S:DB('}LocalizedElementAttributes_Version', !Version, 'zh-Hans', !}ElementAttributes_Version);
+
+['zh-CN']=S:DB('}LocalizedElementAttributes_Version', !Version, 'zh-Hans', !}ElementAttributes_Version);
+['zh-SG']=S:DB('}LocalizedElementAttributes_Version', !Version, 'zh-Hans', !}ElementAttributes_Version);
+
+['zh-HK']=S:DB('}LocalizedElementAttributes_Version', !Version, 'zh-Hant', !}ElementAttributes_Version);
+['zh-TW']=S:DB('}LocalizedElementAttributes_Version', !Version, 'zh-Hant', !}ElementAttributes_Version);
+['zh-MO']=S:DB('}LocalizedElementAttributes_Version', !Version, 'zh-Hant', !}ElementAttributes_Version);
+
+
+##############################################################################################################
+FEEDERS;
+##############################################################################################################
+
+#############################
+###  Internal Cube Feeders
+
+
+
+
+#############################
+###  External Cube Feeders
+
+
+
+
+##############################################################################################################
+###    End Rule File    ~~##
+
+

@@ -1,0 +1,33 @@
+FORMAT==100
+##############################################################################################################################
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+#############################
+SKIPCHECK;
+FEEDSTRINGS;
+#############################
+
+
+#############################
+FEEDERS;
+#############################
+
+# External Feeders
+[ '}ElementAttributes_}APQ Chores':'APQ User' ] =>
+    DB( '}APQ Security Manage Object Access', DB( '}APQ Settings', 'Security Group: End User', 'String' ), 'Chore', '001', !}APQ Chores, 'Permission Level' );
+
+[ '}ElementAttributes_}APQ Chores':'APQ PUser' ] =>
+    DB( '}APQ Security Manage Object Access', DB( '}APQ Settings', 'Security Group: Power User', 'String' ), 'Chore', '001', !}APQ Chores, 'Permission Level' );
+
+[ '}ElementAttributes_}APQ Chores':'APQ Admin' ] =>
+    DB( '}APQ Security Manage Object Access', DB( '}APQ Settings', 'Security Group: Admin User', 'String' ), 'Chore', '001', !}APQ Chores, 'Permission Level' );
+
+#############################
+##~~   End  Rule File   ~~##
+#############################

@@ -1,0 +1,75 @@
+FORMAT==100
+##############################################################################################################################
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+SKIPCHECK;
+#############################
+
+[ '}APQ Cube Views Management Measure':{'Default Column Dim','Default Row Dim'}, '}PickList':'Value' ] = S: 'Subset:}APQ Dimensions:}Cube_' | !}APQ Cubes;
+
+[ '}APQ Cube Views Management Measure' : { 'Delete Zeroes On Columns', 'Delete Zeroes On Rows' }, '}PickList' : 'Value' ] = S:
+IF( ISLEAF =1,
+   IF( DB( '}APQ Cube Views Management', !}APQ Cubes, !}APQ Item Index, 'IsUsedCount' ) = 1,
+      'Subset:}APQ PickList Validations:PickList Y-N',
+      CONTINUE
+    ),
+   CONTINUE
+);
+
+[ '}APQ Cube Views Management Measure' : 'View Type', '}PickList' : 'Value' ] = S:
+IF( ISLEAF =1,
+   IF( DB( '}APQ Cube Views Management', !}APQ Cubes, !}APQ Item Index, 'IsUsedCount' ) = 1,
+      'Subset:}APQ PickList Validations:PickList View Type',
+      CONTINUE
+    ),
+   CONTINUE
+);
+
+[ '}PickList' : 'Value' ] = S:
+IF( ISLEAF=1 & ATTRS( '}APQ Cube Views Management Measure', !}APQ Cube Views Management Measure, 'Type' ) @= 'Position',
+   IF( DB( '}APQ Cube Views Management', !}APQ Cubes, !}APQ Item Index, 'IsUsedCount' ) = 1,
+      'Static::Title:Row:Column',
+      CONTINUE
+   ),
+   CONTINUE
+);
+
+
+[ '}PickList':'Value' ] = S:
+IF( ISLEAF=1 & ATTRS( '}APQ Cube Views Management Measure', !}APQ Cube Views Management Measure, 'Type' ) @= 'Subset',
+  IF(DB( '}APQ Cube Views Management', !}APQ Cubes, !}APQ Item Index, 'IsUsedCount' ) = 1,
+    IF( DB( '}APQ Settings', 'TM1 Version', 'Numeric' ) > 11,
+      'Dimension:}Subsets_',
+      'Subset:}APQ Subsets:'
+    ) | DB( '}APQ Cube Views Management', !}APQ Cubes, !}APQ Item Index,ATTRS( '}APQ Cube Views Management Measure', !}APQ Cube Views Management Measure, 'Group' ) | ' Name' ),
+    Continue
+  ),
+  Continue
+);
+
+
+[ '}PickList':'Value' ]=S:
+IF( ISLEAF=1 & ATTRS( '}APQ Cube Views Management Measure', !}APQ Cube Views Management Measure, 'Type' ) @= 'Stacked Position',
+  IF( DB( '}APQ Cube Views Management', !}APQ Cubes, !}APQ Item Index, 'IsUsedCount' ) = 1,
+    'subset:}APQ PickList Validations:PickList ' | STR(DB('}APQ Cube Views Management',!}APQ Cubes,!}APQ Item Index,'Dim Count'), 2, 0),
+#    'Static:1:2:3:4:5:6:7:8:9:10:11:12:13:14:15:16:17:18:19:20',
+    Continue
+  ),
+  Continue
+);
+
+
+[ '}PickList':'Value' ]=S:
+IF( ISLEAF=1 & ATTRS( '}APQ Cube Views Management Measure', !}APQ Cube Views Management Measure, 'Type' ) @= 'Title Element',
+  IF( DB( '}APQ Cube Views Management', !}APQ Cubes, !}APQ Item Index, 'IsUsedCount' ) = 1,
+    'Subset:' | DB( '}APQ Cube Views Management', !}APQ Cubes, !}APQ Item Index,ATTRS( '}APQ Cube Views Management Measure', !}APQ Cube Views Management Measure, 'Group' ) | ' Name' )
+    |':'| DB( '}APQ Cube Views Management', !}APQ Cubes, !}APQ Item Index, ATTRS( '}APQ Cube Views Management Measure', !}APQ Cube Views Management Measure, 'Group' ) | ' Subset' ),
+    Continue
+  ),
+  Continue
+);

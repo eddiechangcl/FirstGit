@@ -1,0 +1,80 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+SKIPCHECK;
+FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Cube Last Updated by Process** is updated automatically by each process using the standard _*process logging module code snippet*_
+# and the standard variable naming convention cCubTgt for the cube being acted on by the CellPut functions.  A timestamp is recorded when
+# the cube was updated and by which process.  Via rule the last run timestampt for the process is lookup up from the cube **}APQ Process Execution Log**
+# which makes side-by-side comparisson possible if the last process run timestamp is consistent with the cube update timestamp.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+[ '}APQ Cube Last Updated by Process Measure':'sLastTimeUpdate'] = S:
+If( IsLeaf = 0 % [ '}APQ Cube Last Updated by Process Measure':'nLastTimeUpdate' ] = 0,
+  '',
+  TimSt( [ '}APQ Cube Last Updated by Process Measure':'nLastTimeUpdate' ], DB('}APQ Settings','Date Time format','String') )
+);
+
+[ '}APQ Cube Last Updated by Process Measure':'Update Frequency' ] = S:
+IF( DType( '}APQ Cubes', !}APQ Cubes ) @= 'N',
+  STET,
+  ''
+);
+
+[ '}APQ Cube Last Updated by Process Measure':'Days Since Update' ] = N:
+IF( DB( '}APQ Cube Last Updated by Process', !}APQ Cubes, 'sLastTimeUpdate' ) @= '',
+  0,
+  DimIx( '}APQ Time Date Lookup', TimSt( NOW, DB('}APQ Settings','Date format','String') ) ) - DimIx( '}APQ Time Date Lookup', SubSt( DB( '}APQ Cube Last Updated by Process', !}APQ Cubes, 'sLastTimeUpdate' ), 1, 10 ) )
+);
+
+[ '}APQ Cube Last Updated by Process Measure':'Update Status' ] = S:
+IF( DB( '}APQ Cube Last Updated by Process', !}APQ Cubes, 'Update Frequency' ) @= '' & DB( '}APQ Cube Last Updated by Process', !}APQ Cubes, 'sLastTimeUpdate' ) @= '',
+  '',
+  IF( ( DB( '}APQ Cube Last Updated by Process', !}APQ Cubes, 'Update Frequency' ) @<> '' & DB( '}APQ Cube Last Updated by Process', !}APQ Cubes, 'Update Frequency' ) @<> 'Manual' ) & DB( '}APQ Cube Last Updated by Process', !}APQ Cubes, 'sLastTimeUpdate'
+ ) @= '',
+    'ERROR! No update timestamp available.',
+    IF( DB( '}APQ Cube Last Updated by Process', !}APQ Cubes, 'Update Frequency' ) @= '' % DB( '}APQ Cube Last Updated by Process', !}APQ Cubes, 'Update Frequency' ) @= 'Manual' ,
+      'No alert.',
+      IF(
+        [ '}APQ Cube Last Updated by Process Measure':'Days Since Update' ] <=
+        AttrN( '}APQ Update Frequency', DB( '}APQ Cube Last Updated by Process', !}APQ Cubes, 'Update Frequency' ), 'Frequency Days' ),
+        'OK.',
+        'WARNING! Update overdue by ' | Trim( Str(
+        [ '}APQ Cube Last Updated by Process Measure':'Days Since Update' ] - AttrN( '}APQ Update Frequency', DB( '}APQ Cube Last Updated by Process', !}APQ Cubes, 'Update Frequency' ), 'Frequency Days' ),
+        4, 0 ) ) | ' days.'
+      )
+    )
+  )
+);
+
+
+#############################
+Feeders;
+#############################
+
+
+[ '}APQ Cube Last Updated by Process Measure':'nLastTimeUpdate' ] => [ '}APQ Cube Last Updated by Process Measure':'sLastTimeUpdate' ],[ '}APQ Cube Last Updated by Process Measure':'Days Since Update' ],[ '}APQ Cube Last Updated by Process Measure':'Updat
+e Status' ];
+
+[ '}APQ Cube Last Updated by Process Measure':'Update Frequency' ] => [ '}APQ Cube Last Updated by Process Measure':'Days Since Update' ],[ '}APQ Cube Last Updated by Process Measure':'Update Status' ];
+
+
+#############################
+##~~    End Rule File    ~~##
+#############################

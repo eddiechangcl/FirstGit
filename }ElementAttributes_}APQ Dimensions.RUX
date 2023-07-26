@@ -1,0 +1,57 @@
+﻿FORMAT==100
+##############################################################################################################################
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+#############################
+SKIPCHECK;
+FEEDSTRINGS;
+#############################
+
+[ '}ElementAttributes_}APQ Dimensions':'ELEMENT_FRAMEWORK' ] = S:
+IF( SubSt( !}APQ Dimensions, 1, 4 ) @= '}APQ',
+    STET,
+    IF( AttrS( '}APQ Dimensions', !}APQ Dimensions, 'ELEMENT_SECURITY' ) @= 'TRUE',
+        'TRUE',
+        IF( AttrS( '}APQ Dimensions', !}APQ Dimensions, 'ATTR_FRAMEWORK' ) @= 'TRUE',
+            'TRUE',
+            STET
+        )
+    )
+);
+
+[ '}APQ Dimensions':{'}APQ Dimensions':'}APQ Time Date', '}APQ Dimensions':'}APQ Time Day in Year', '}APQ Dimensions':'}APQ Time Month', '}APQ Dimensions':'}APQ Time Quarter', '}APQ Dimensions':'}APQ Time Year', '}APQ Dimensions':'}APQ Time Year-Month'}, '}ElementAttributes_}APQ Dimensions':'TimeRelative' ] = S: 'TRUE';
+#[ '}APQ Dimensions':'Time Analysis', '}ElementAttributes_}APQ Dimensions':'TimeRelative' ] = S: 'FALSE'; 
+[ '}ElementAttributes_}APQ Dimensions':'TimeRelative' ] = S: 
+If( Scan( '}APQ', !}APQ Dimensions ) = 1,
+    'FALSE',
+    STET
+);
+
+#############################
+FEEDERS;
+#############################
+
+# Internal Feeders
+[ '}ElementAttributes_}APQ Dimensions':'ELEMENT_SECURITY' ] => [ '}ElementAttributes_}APQ Dimensions':'ELEMENT_FRAMEWORK' ];
+
+[ '}ElementAttributes_}APQ Dimensions':'ATTR_FRAMEWORK' ] => [ '}ElementAttributes_}APQ Dimensions':'ELEMENT_FRAMEWORK' ];
+
+# External Feeders
+[ '}ElementAttributes_}APQ Dimensions':'APQ User' ] =>
+    DB( '}APQ Security Manage Object Access', DB( '}APQ Settings', 'Security Group: End User', 'String' ), 'Dimension', '001', !}APQ Dimensions, 'Permission Level' );
+
+[ '}ElementAttributes_}APQ Dimensions':'APQ PUser' ] =>
+    DB( '}APQ Security Manage Object Access', DB( '}APQ Settings', 'Security Group: Power User', 'String' ), 'Dimension', '001', !}APQ Dimensions, 'Permission Level' );
+
+[ '}ElementAttributes_}APQ Dimensions':'APQ Admin' ] =>
+    DB( '}APQ Security Manage Object Access', DB( '}APQ Settings', 'Security Group: Admin User', 'String' ), 'Dimension', '001', !}APQ Dimensions, 'Permission Level' );
+
+#############################
+##~~   End  Rule File   ~~##
+#############################

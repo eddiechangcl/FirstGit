@@ -1,0 +1,120 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+SKIPCHECK;
+FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# This is the ultimate process logging cube, **}APQ Process Execution Log** is updated automatically by each process using the standardized
+# process logging code module snippet. This is the standard process logging cube which captures to second granularity each unique run of a
+# process with logging configured.  If configured manually in the prolog of each logged process then the runtime parameters are logged.
+# Automatically logged are start and finish time, execution run time, number of records, number of errors, name of error log, user,
+# execution count per day, total execution count **and process parameters**.  As well as logging to unique time intersections a separate
+# "last run" element is also logged for easy reference.
+#
+# By integrating with the automated Relative Time subset and consolidation updates standard views are kept up to date for process runs
+# today & yesterday and other analysis views.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+[ '}APQ Time Year':'}APQ Time Year':'Current Year' ]  = C:
+DB( '}APQ Process Execution Log', ElComp( '}APQ Time Year', !}APQ Time Year, 1 ), !}APQ Time Day in Year, !}APQ Time Minute, !}APQ Time Second, !}APQ Processes, !}APQ Process Execution Log Measure );
+[ '}APQ Time Year':'}APQ Time Year':'Current Year' ]  = S:
+DB( '}APQ Process Execution Log', ElComp( '}APQ Time Year', !}APQ Time Year, 1 ), !}APQ Time Day in Year, !}APQ Time Minute, !}APQ Time Second, !}APQ Processes, !}APQ Process Execution Log Measure );
+
+[ '}APQ Time Day in Year':'Current Day' ]  = C:
+DB( '}APQ Process Execution Log', !}APQ Time Year,  ElComp( '}APQ Time Day in Year', !}APQ Time Day in Year, 1 ), !}APQ Time Minute, !}APQ Time Second, !}APQ Processes, !}APQ Process Execution Log Measure );
+[ '}APQ Time Day in Year':'Current Day' ]  = S:
+DB( '}APQ Process Execution Log', !}APQ Time Year,  ElComp( '}APQ Time Day in Year', !}APQ Time Day in Year, 1 ), !}APQ Time Minute, !}APQ Time Second, !}APQ Processes, !}APQ Process Execution Log Measure );
+
+[ '}APQ Process Execution Log Measure':'nProcessExecutionIndex' ]  = C:
+IF( ElLev( '}APQ Processes', !}APQ Processes ) = 0,
+  [ '}APQ Time Year':'}APQ Time Year':'Total Years', '}APQ Time Day in Year':'}APQ Time Day in Year':'Total Year', '}APQ Time Minute':'Total Day', '}APQ Time Second':'Total Minute', '}APQ Process Execution Log Measure':'nProcessStartedFlag' ],
+  0
+);
+
+[ '}APQ Process Execution Log Measure':'nProcessExecutionTotalCount' ]  = C:
+[ '}APQ Time Year':'}APQ Time Year':'Total Years', '}APQ Time Day in Year':'}APQ Time Day in Year':'Total Year', '}APQ Time Minute':'Total Day', '}APQ Time Second':'Total Minute', '}APQ Process Execution Log Measure':'nProcessStartedFlag' ];
+
+[ '}APQ Process Execution Log Measure':'nProcessExecutionIntraDayIndex' ] = C:
+IF( ElLev( '}APQ Processes', !}APQ Processes ) = 0 &  ElLev( '}APQ Time Year', !}APQ Time Year ) = 0 &  ElLev( '}APQ Time Day in Year', !}APQ Time Day in Year ) = 0,
+  [ '}APQ Time Minute':'Total Day', '}APQ Time Second':'Total Minute', '}APQ Process Execution Log Measure':'nProcessStartedFlag' ],
+  0
+);
+
+[ '}APQ Process Execution Log Measure':'nProcessExecutionIntraDayCount' ] = C:
+IF( ElLev( '}APQ Time Year', !}APQ Time Year ) = 0 &  ElLev( '}APQ Time Day in Year', !}APQ Time Day in Year ) = 0,
+  [ '}APQ Time Minute':'Total Day', '}APQ Time Second':'Total Minute', '}APQ Process Execution Log Measure':'nProcessStartedFlag' ],
+  0
+);
+
+[ '}APQ Process Execution Log Measure':'nProcessExecutionTime' ] = N:
+IF( [ '}APQ Process Execution Log Measure':'nProcessFinishTime' ] < [ '}APQ Process Execution Log Measure':'nProcessStartTime' ],
+  0,
+  [ '}APQ Process Execution Log Measure':'nProcessFinishTime' ] - [ '}APQ Process Execution Log Measure':'nProcessStartTime' ]
+);
+
+[ '}APQ Process Execution Log Measure':'nAvgExecutionTimeSeconds' ] = C: [ '}APQ Process Execution Log Measure':'nProcessExecutionTimeSeconds' ] \ [ '}APQ Process Execution Log Measure':'nProcessExecutionTotalCount' ];
+
+[ '}APQ Process Execution Log Measure':'nAvgExecutionTimeMinutes' ] = C: [ '}APQ Process Execution Log Measure':'nProcessExecutionTimeMinutes' ] \ [ '}APQ Process Execution Log Measure':'nProcessExecutionTotalCount' ];
+
+[ '}APQ Process Execution Log Measure':'sProcessStartTime' ]  = S:
+IF( IsLeaf = 0 % [ '}APQ Process Execution Log Measure':'nProcessStartTime' ] = 0,
+  '',
+  TimSt( [ '}APQ Process Execution Log Measure':'nProcessStartTime' ], DB('}APQ Settings','Date Time format','String') )
+);
+
+[ '}APQ Process Execution Log Measure':'sProcessFinishTime' ]  = S:
+IF( IsLeaf = 0 % [ '}APQ Process Execution Log Measure':'nProcessFinishTime' ] = 0,
+  '',
+  TimSt( [ '}APQ Process Execution Log Measure':'nProcessFinishTime' ], DB('}APQ Settings','Date Time format','String') )
+);
+
+[ '}APQ Process Execution Log Measure':'sProcessExecutionTime' ]  = S:
+IF( [ '}APQ Process Execution Log Measure':'nProcessFinishTime' ] = 0,
+  '',
+  TimSt( [ '}APQ Process Execution Log Measure':'nProcessExecutionTime' ], DB('}APQ Settings','Time format','String') )
+);
+
+[ '}APQ Process Execution Log Measure':'sProcessReturnCode' ]  = S:
+IF( IsLeaf = 0 % [ '}APQ Process Execution Log Measure':'nProcessStartedFlag' ] = 0,
+  '',
+  IF( [ '}APQ Process Execution Log Measure':'nProcessReturnCode' ] > 0,
+    AttrS( '}APQ ProcessExit Code', Str( [ '}APQ Process Execution Log Measure':'nProcessReturnCode' ], 2, 0 ), 'Caption_Default' ),
+    IF( [ '}APQ Process Execution Log Measure':'nProcessCompletedFlag' ] = 1 & [ '}APQ Process Execution Log Measure':'nProcessReturnCode' ] = 0,
+      IF( [ '}APQ Process Execution Log Measure':'nTotalMinorErrorCount' ] = 0,
+        'ProcessExitNormal',
+        'ProcessExitMinorError'
+      ),
+      'ProcessExitByQuit'
+    )
+  )
+);
+
+#############################
+FEEDERS;
+#############################
+
+[ '}APQ Process Execution Log Measure':'nProcessStartTime' ] => [ '}APQ Process Execution Log Measure':'sProcessStartTime' ];
+
+[ '}APQ Process Execution Log Measure':'nProcessFinishTime' ] => [ '}APQ Process Execution Log Measure':'sProcessFinishTime' ], [ '}APQ Process Execution Log Measure':'sProcessExecutionTime' ],
+[ '}APQ Process Execution Log Measure':'nProcessExecutionTime' ];
+
+[ '}APQ Process Execution Log Measure':'nProcessReturnCode' ] => [ '}APQ Process Execution Log Measure':'sProcessReturnCode' ];
+
+#############################
+##~~   End  Rule File   ~~##
+#############################

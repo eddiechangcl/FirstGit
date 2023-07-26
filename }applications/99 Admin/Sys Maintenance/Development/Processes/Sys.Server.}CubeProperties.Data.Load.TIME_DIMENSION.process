@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=Sys.Server.}CubeProperties.Data.Load.TIME_DIMENSION
+ENTRYTYPE=process
+ENTRYREFERENCE=TM1:///PROCESS/PUBLIC/Sys.Server.}CubeProperties.Data.Load.TIME_DIMENSION

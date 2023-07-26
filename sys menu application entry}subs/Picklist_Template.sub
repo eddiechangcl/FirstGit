@@ -1,0 +1,10 @@
+﻿283,100
+284,"Picklist_Template"
+11,20230512024257
+274,
+18,0
+275,113
+{FILTER( {TM1SUBSETALL( [Sys Menu Application Entry] )}, [Sys Menu Application Entry].[Entry Type] = "Template")}
+278,0
+281,0
+270,0

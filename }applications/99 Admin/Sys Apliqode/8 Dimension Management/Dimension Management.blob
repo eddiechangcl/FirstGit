@@ -1,0 +1,5 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=Dimension Management
+ENTRYTYPE=blob
+ENTRYREFERENCE=TM1:///blob/PUBLIC/.\}Externals\Dimension Update 4.xlsx_20160907121920.xlsx
+REMOVEBLOBONDELETE=Yes

@@ -1,0 +1,228 @@
+﻿FORMAT==100
+FEEDSTRINGS;
+SKIPCHECK;
+
+##############################################################################################################
+### CWA Std. Model  version 3.00
+### Copyright © 2012~2020, Cubewise (Hong Kong) Ltd. All rights reserved.
+### This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+### and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+### you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+### or display any part, in any form, or by any means.
+##############################################################################################################
+
+##############################################################################################################
+###~~~    Start Rule File    ~~~###
+
+#######################################################
+#CURRENT TASK STATUS
+
+[ 'INPUT LINE', 'Task Start Status' ] = S:
+  IF(
+       DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder Task Count') = 0,
+       '',
+       CONTINUE
+  );
+
+[ 'INPUT LINE', 'Task Start Status' ] = S:
+  IF(
+       DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder Task Count') =
+       DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder Task Completed Flag'),
+       'Starting',
+       'Wait to Start'
+  );
+
+
+[ { 'INPUT LINE', 'All Line Items' } ] = S: '' ;
+
+#######################################################
+#PREORDER INFORMATION
+
+[ 'Preorder Task Name' ] = S:
+  IF(
+        DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Scenario') @<> '' &
+        DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Year') @<> '' &
+        DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Group') @<> '' &
+        DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Priority') @<> '',
+        IF(
+              DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Step') @= '' %
+              DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Step') @= 'All Sys Workbench Steps',
+              CONTINUE,
+              ####
+              DB(
+                      'Sys Workbench',
+                      DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Scenario'),
+                      DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Year'),
+                      DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Group'),
+                      DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Priority'),
+                      'All Sys Workbench Steps',
+                     'Task Name'
+              )   |
+              DB(
+                      'Sys Workbench',
+                      DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Scenario'),
+                      DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Year'),
+                      DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Group'),
+                      DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Priority'),
+                      'All Sys Workbench Steps',
+                      'Task Description'
+              )    |    ':'   |
+              DB(
+                      'Sys Workbench',
+                      DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Scenario'),
+                      DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Year'),
+                      DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Group'),
+                      DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Priority'),
+                      DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Step'),
+                     'Task Name'
+              )   |
+              DB(
+                      'Sys Workbench',
+                      DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Scenario'),
+                      DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Year'),
+                      DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Group'),
+                      DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Priority'),
+                      DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Step'),
+                      'Task Description'
+              )
+              ####
+        ),
+        ''
+  );
+
+#Preorder Task Name
+[ 'Preorder Task Name' ] = S:
+  DB(
+          'Sys Workbench',
+          DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Scenario'),
+          DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Year'),
+          DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Group'),
+          DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Priority'),
+          IF(
+                 DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Step') @= '',
+                 'All Sys Workbench Steps',
+                 DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Step')
+          ),
+          'Task Name'
+  )   |
+  DB(
+          'Sys Workbench',
+          DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Scenario'),
+          DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Year'),
+          DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Group'),
+          DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Priority'),
+          IF(
+                 DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Step') @= '',
+                 'All Sys Workbench Steps',
+                 DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Step')
+          ),
+          'Task Description'
+   ) ;
+
+
+#Preorder Task Count
+[ 'INPUT LINE', 'Preorder Task Count' ] = [ 'All Line Items' ] ;
+
+[ 'Preorder Task Count' ] =
+    IF(
+          ELISANC( 'Line Item', 'All Line Items', !Line Item ) = 1,
+          IF( DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder Task Name') @<> '',1,0 ),
+          ConsolidateChildren( 'Line Item' )
+    );
+
+
+#Preorder Task Completed Flag
+[ 'INPUT LINE', 'Preorder Task Completed Flag' ] = [ 'All Line Items' ] ;
+
+[ 'Preorder Task Completed Flag' ] =
+IF(
+      ELISANC( 'Line Item', 'All Line Items', !Line Item ) = 1,
+    IF(
+          DB(
+                 'Sys Workbench',
+                 DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Scenario'),
+                 DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Year'),
+                 DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Group'),
+                 DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Priority'),
+                 IF(
+                        DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Step') @= '',
+                        'All Sys Workbench Steps',
+                        DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Preorder - Step')
+                 ),
+                 'Validation Status') @= 'Completed',
+          1,
+          0
+    ),
+   ConsolidateChildren( 'Line Item' )
+);
+
+#######################################################
+#POSTORDER INFORMATION
+
+#Postorder Task Name
+[ 'Postorder Task Name' ] = S:
+  DB(
+          'Sys Workbench',
+          DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Postorder - Scenario'),
+          DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Postorder - Year'),
+          DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Postorder - Group'),
+          DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Postorder - Priority'),
+          IF(
+                 DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Postorder - Step') @= '',
+                 'All Sys Workbench Steps',
+                 DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Postorder - Step')
+          ),
+          'Task Name'
+  )   |
+  DB(
+          'Sys Workbench',
+          DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Postorder - Scenario'),
+          DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Postorder - Year'),
+          DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Postorder - Group'),
+          DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Postorder - Priority'),
+          IF(
+                 DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Postorder - Step') @= '',
+                 'All Sys Workbench Steps',
+                 DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Postorder - Step')
+          ),
+          'Task Description'
+   ) ;
+
+
+#Postorder Task Count
+[ 'INPUT LINE', 'Postorder Task Count' ] = [ 'All Line Items' ] ;
+
+[ 'Postorder Task Count' ] =
+    IF(
+          ELISANC( 'Line Item', 'All Line Items', !Line Item ) = 1,
+          IF( DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,!Line Item,'Postorder Task Name') @<> '',1,0 ),
+          ConsolidateChildren( 'Line Item' )
+    );
+
+
+
+
+##############################################################################################################
+FEEDERS;
+##############################################################################################################
+
+#########################################################
+###  Internal Cube Feeders
+
+###############
+#Preorder feeders
+
+[ 'Preorder - Scenario' ] => [ 'Preorder Task Name' ], [ 'Preorder Task Count' ], [ 'Preorder Task Completed Flag' ] ;
+[ { 'Preorder Task Count', 'Preorder Task Completed Flag' }, 'All Line Items' ] => [ 'INPUT LINE' ] , [ 'INPUT LINE', 'Task Start Status' ];
+
+
+###############
+#Postorder feeders
+
+[ 'Postorder - Scenario' ] => [ 'Postorder Task Name' ], [ 'Postorder Task Count' ] ;
+[ 'Postorder Task Count', 'All Line Items' ] => [ 'INPUT LINE' ] ;
+
+
+
+##############################################################################################################
+###    End Rule File    ~~##

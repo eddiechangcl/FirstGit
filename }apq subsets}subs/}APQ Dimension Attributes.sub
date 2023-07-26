@@ -1,0 +1,219 @@
+﻿283,100
+284,"}APQ Dimension Attributes"
+11,20230515004909
+274,
+18,0
+275,
+278,0
+281,0
+270,210
+All C Elements
+All Elements
+All N Elements
+All N Elements code
+Currency
+Currency From
+Currency To
+Data Source GL
+Date
+Day in Month
+Day in Week
+Day in Year
+Default
+Default Member
+Demo Account GL
+Demo Account GL Plan
+Demo Customer
+Demo Entity
+Demo Product
+Demo Profit Center
+Employee
+FX Rate Type
+Line Item
+M Currency
+M Exchange Rate
+M FX Rate
+M GL Plan
+M GL Reporting
+M Manpower Reporting
+Month
+Month Fiscal
+M Reference
+M Sales Reporting
+M Sys Archive Parameter
+M Sys Archive Profile
+M Sys Menu
+M Sys Menu Application Entry
+M Sys Module Object
+M Sys Parameter
+M Sys Time Attribute
+M Sys Versioning Cube
+M Sys Versioning Log
+M Sys Workbench
+M Sys Workbench Task Dependency
+M Sys Workflow Cooling Period
+M UDC
+M Unit
+M Workflow
+Planning Year
+Profit Center
+Quarter
+Region
+Scale
+Scenario
+Sys Archive ID
+Sys Archive Parameter
+Sys Lookup Date
+Sys Lookup Month
+Sys Menu Application Entry
+Sys Menu Link
+Sys Menu Measure
+Sys Menu Page
+Sys Menu Page Column
+Sys Menu Page Row
+Sys Menu Parameter
+Sys Menu Profile
+Sys Module
+Sys Module Object Type
+Sys Parameter
+Sys Security Object Type
+Sys Versioning Module
+Sys Workbench Group
+Sys Workbench Priority
+Sys Workbench Step
+Sys Workflow
+Top Elements
+Training Day
+Training Task
+UDC
+Version
+Week
+Week Day
+Year
+Year Fiscal
+Year Month
+Year Week
+zFin Year-Month
+zTest Cust
+zTest NewTemplate
+zYear-Month
+zYear Last X
+zYear LTD
+zYear LTG
+zzTest
+}ApplicationEntries
+}APQ Application Activity Back Measure
+}APQ Applications
+}APQ Application to Cube Reference Measure
+}APQ Calculation Type
+}APQ CAM NamespaceID
+}APQ Chore Info Measure
+}APQ Chore Info Parameter
+}APQ Chores
+}APQ Clients
+}APQ Clients Consol
+}APQ Cube Last Updated by Process Measure
+}APQ Cubes
+}APQ Cube Views
+}APQ Cube Views Management Measure
+}APQ Cube Views Measure
+}APQ Data Source Row
+}APQ Dimension Attribute Matrix Measure
+}APQ Dimension Attributes Measure
+}APQ Dimension Defaults Measure
+}APQ Dimension Defaults Measure Type
+}APQ Dimension Definition Parameter
+}APQ Dimension Definition Source Measure
+}APQ Dimension Elements
+}APQ Dimension Element Search Measure
+}APQ Dimension Hierarchies
+}APQ Dimension Hierarchies Measure
+}APQ Dimensions
+}APQ Dimension SemiDynamic Subsets Measure
+}APQ Dimension Source
+}APQ Dimension Static Subsets And UDC Measure
+}APQ Dimension Subsets
+}APQ Dimension Subsets Measure
+}APQ Dimension Subset Use Measure
+}APQ Dimension Use Index
+}APQ Dimension Use Measure
+}APQ Escape Characters
+}APQ Execution Item
+}APQ Glossary Measure
+}APQ Groups
+}APQ HTML Character Entity
+}APQ Item Index
+}APQ Menu Link
+}APQ Menu Measure
+}APQ Menu Page
+}APQ Menu Profile
+}APQ Parameters
+}APQ Picklist Dimension Measure
+}APQ PickList Item
+}APQ PickList Validations
+}APQ Processes
+}APQ Process Execution Log Measure
+}APQ ProcessExit Code
+}APQ Process Parallelization Control Measure
+}APQ Process Parameter Matrix Measure
+}APQ Process Parameters
+}APQ Process Parameters Info Measure
+}APQ Process to Object Reference Measure
+}APQ Pulse ServerName
+}APQ Pulse Service Name
+}APQ Pulse User login Measure
+}APQ Pulse Workbook
+}APQ Pulse Workbook Path
+}APQ Reconciliation Cell Value Change Measure
+}APQ Reconciliation Cell Value Change Profile
+}APQ Reconciliation Check Extended Measure
+}APQ Reconciliation Check Measure
+}APQ Reconciliation Item
+}APQ Reconciliation Setup Measure
+}APQ Security Effective Permission Measure
+}APQ Security Level
+}APQ Security Manage Application Feeder Measure
+}APQ Security Manage Client Groups Measure
+}APQ Security Manage Element Access Measure
+}APQ Security Manage Element Security Groups Measure
+}APQ Security Manage Object Access Measure
+}APQ Security Permission Index
+}APQ Settings Measure
+}APQ Staging Control Parameter
+}APQ Staging Data Source
+}APQ Staging Dimension
+}APQ Staging Dimension Mapping Measure
+}APQ Time Date
+}APQ Time Date Lookup
+}APQ Time Day in Year
+}APQ Time Dimensions
+}APQ Time Minute
+}APQ Time Month
+}APQ Time Quarter
+}APQ Time Relative Time Lookup Measure
+}APQ Time Relative Time Periods
+}APQ Time Second
+}APQ Time Year
+}APQ Time Year-Month
+}APQ Time Year-Month Lookup
+}APQ Time Year-Week Lookup
+}APQ TM1 Objects
+}APQ TM1 Object Type
+}APQ TM1 Transaction Log Analysis Measure
+}APQ Universal View
+}APQ Universal View  Column
+}APQ Universal View  Data Measure
+}APQ Universal View  Dimension
+}APQ Universal View  Dimension Mapping Measure
+}APQ Universal View  Filter Measure
+}APQ Universal View  Measure
+}APQ Universal View  Row
+}APQ Update Frequency
+}APQ User Last Active Measure
+}Clients
+}Cubes
+}Cultures
+}Dimensions
+}ElementAttributes_}Clients
+}Groups
+}Processes

@@ -1,0 +1,10 @@
+﻿283,100
+284,"This Windows Server"
+11,20230512024331
+274,
+18,0
+275,140
+{StrToMember( "[}APQ Pulse ServerName].["+[}APQ Settings].([}APQ Parameters].[Windows Server Name],[}APQ Settings Measure].[String])+"]" ) }
+278,0
+281,0
+270,0

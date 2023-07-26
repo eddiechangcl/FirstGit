@@ -1,0 +1,219 @@
+﻿283,100
+284,"}APQ Dimension Attributes"
+11,20230515004909
+274,
+18,0
+275,
+278,0
+281,0
+270,210
+}APQ Dimension Attributes:}APQ Dimension Attributes:All C Elements
+}APQ Dimension Attributes:}APQ Dimension Attributes:All Elements
+}APQ Dimension Attributes:}APQ Dimension Attributes:All N Elements
+}APQ Dimension Attributes:}APQ Dimension Attributes:All N Elements code
+}APQ Dimension Attributes:}APQ Dimension Attributes:Currency
+}APQ Dimension Attributes:}APQ Dimension Attributes:Currency From
+}APQ Dimension Attributes:}APQ Dimension Attributes:Currency To
+}APQ Dimension Attributes:}APQ Dimension Attributes:Data Source GL
+}APQ Dimension Attributes:}APQ Dimension Attributes:Date
+}APQ Dimension Attributes:}APQ Dimension Attributes:Day in Month
+}APQ Dimension Attributes:}APQ Dimension Attributes:Day in Week
+}APQ Dimension Attributes:}APQ Dimension Attributes:Day in Year
+}APQ Dimension Attributes:}APQ Dimension Attributes:Default
+}APQ Dimension Attributes:}APQ Dimension Attributes:Default Member
+}APQ Dimension Attributes:}APQ Dimension Attributes:Demo Account GL
+}APQ Dimension Attributes:}APQ Dimension Attributes:Demo Account GL Plan
+}APQ Dimension Attributes:}APQ Dimension Attributes:Demo Customer
+}APQ Dimension Attributes:}APQ Dimension Attributes:Demo Entity
+}APQ Dimension Attributes:}APQ Dimension Attributes:Demo Product
+}APQ Dimension Attributes:}APQ Dimension Attributes:Demo Profit Center
+}APQ Dimension Attributes:}APQ Dimension Attributes:Employee
+}APQ Dimension Attributes:}APQ Dimension Attributes:FX Rate Type
+}APQ Dimension Attributes:}APQ Dimension Attributes:Line Item
+}APQ Dimension Attributes:}APQ Dimension Attributes:M Currency
+}APQ Dimension Attributes:}APQ Dimension Attributes:M Exchange Rate
+}APQ Dimension Attributes:}APQ Dimension Attributes:M FX Rate
+}APQ Dimension Attributes:}APQ Dimension Attributes:M GL Plan
+}APQ Dimension Attributes:}APQ Dimension Attributes:M GL Reporting
+}APQ Dimension Attributes:}APQ Dimension Attributes:M Manpower Reporting
+}APQ Dimension Attributes:}APQ Dimension Attributes:Month
+}APQ Dimension Attributes:}APQ Dimension Attributes:Month Fiscal
+}APQ Dimension Attributes:}APQ Dimension Attributes:M Reference
+}APQ Dimension Attributes:}APQ Dimension Attributes:M Sales Reporting
+}APQ Dimension Attributes:}APQ Dimension Attributes:M Sys Archive Parameter
+}APQ Dimension Attributes:}APQ Dimension Attributes:M Sys Archive Profile
+}APQ Dimension Attributes:}APQ Dimension Attributes:M Sys Menu
+}APQ Dimension Attributes:}APQ Dimension Attributes:M Sys Menu Application Entry
+}APQ Dimension Attributes:}APQ Dimension Attributes:M Sys Module Object
+}APQ Dimension Attributes:}APQ Dimension Attributes:M Sys Parameter
+}APQ Dimension Attributes:}APQ Dimension Attributes:M Sys Time Attribute
+}APQ Dimension Attributes:}APQ Dimension Attributes:M Sys Versioning Cube
+}APQ Dimension Attributes:}APQ Dimension Attributes:M Sys Versioning Log
+}APQ Dimension Attributes:}APQ Dimension Attributes:M Sys Workbench
+}APQ Dimension Attributes:}APQ Dimension Attributes:M Sys Workbench Task Dependency
+}APQ Dimension Attributes:}APQ Dimension Attributes:M Sys Workflow Cooling Period
+}APQ Dimension Attributes:}APQ Dimension Attributes:M UDC
+}APQ Dimension Attributes:}APQ Dimension Attributes:M Unit
+}APQ Dimension Attributes:}APQ Dimension Attributes:M Workflow
+}APQ Dimension Attributes:}APQ Dimension Attributes:Planning Year
+}APQ Dimension Attributes:}APQ Dimension Attributes:Profit Center
+}APQ Dimension Attributes:}APQ Dimension Attributes:Quarter
+}APQ Dimension Attributes:}APQ Dimension Attributes:Region
+}APQ Dimension Attributes:}APQ Dimension Attributes:Scale
+}APQ Dimension Attributes:}APQ Dimension Attributes:Scenario
+}APQ Dimension Attributes:}APQ Dimension Attributes:Sys Archive ID
+}APQ Dimension Attributes:}APQ Dimension Attributes:Sys Archive Parameter
+}APQ Dimension Attributes:}APQ Dimension Attributes:Sys Lookup Date
+}APQ Dimension Attributes:}APQ Dimension Attributes:Sys Lookup Month
+}APQ Dimension Attributes:}APQ Dimension Attributes:Sys Menu Application Entry
+}APQ Dimension Attributes:}APQ Dimension Attributes:Sys Menu Link
+}APQ Dimension Attributes:}APQ Dimension Attributes:Sys Menu Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:Sys Menu Page
+}APQ Dimension Attributes:}APQ Dimension Attributes:Sys Menu Page Column
+}APQ Dimension Attributes:}APQ Dimension Attributes:Sys Menu Page Row
+}APQ Dimension Attributes:}APQ Dimension Attributes:Sys Menu Parameter
+}APQ Dimension Attributes:}APQ Dimension Attributes:Sys Menu Profile
+}APQ Dimension Attributes:}APQ Dimension Attributes:Sys Module
+}APQ Dimension Attributes:}APQ Dimension Attributes:Sys Module Object Type
+}APQ Dimension Attributes:}APQ Dimension Attributes:Sys Parameter
+}APQ Dimension Attributes:}APQ Dimension Attributes:Sys Security Object Type
+}APQ Dimension Attributes:}APQ Dimension Attributes:Sys Versioning Module
+}APQ Dimension Attributes:}APQ Dimension Attributes:Sys Workbench Group
+}APQ Dimension Attributes:}APQ Dimension Attributes:Sys Workbench Priority
+}APQ Dimension Attributes:}APQ Dimension Attributes:Sys Workbench Step
+}APQ Dimension Attributes:}APQ Dimension Attributes:Sys Workflow
+}APQ Dimension Attributes:}APQ Dimension Attributes:Top Elements
+}APQ Dimension Attributes:}APQ Dimension Attributes:Training Day
+}APQ Dimension Attributes:}APQ Dimension Attributes:Training Task
+}APQ Dimension Attributes:}APQ Dimension Attributes:UDC
+}APQ Dimension Attributes:}APQ Dimension Attributes:Version
+}APQ Dimension Attributes:}APQ Dimension Attributes:Week
+}APQ Dimension Attributes:}APQ Dimension Attributes:Week Day
+}APQ Dimension Attributes:}APQ Dimension Attributes:Year
+}APQ Dimension Attributes:}APQ Dimension Attributes:Year Fiscal
+}APQ Dimension Attributes:}APQ Dimension Attributes:Year Month
+}APQ Dimension Attributes:}APQ Dimension Attributes:Year Week
+}APQ Dimension Attributes:}APQ Dimension Attributes:zFin Year-Month
+}APQ Dimension Attributes:}APQ Dimension Attributes:zTest Cust
+}APQ Dimension Attributes:}APQ Dimension Attributes:zTest NewTemplate
+}APQ Dimension Attributes:}APQ Dimension Attributes:zYear-Month
+}APQ Dimension Attributes:}APQ Dimension Attributes:zYear Last X
+}APQ Dimension Attributes:}APQ Dimension Attributes:zYear LTD
+}APQ Dimension Attributes:}APQ Dimension Attributes:zYear LTG
+}APQ Dimension Attributes:}APQ Dimension Attributes:zzTest
+}APQ Dimension Attributes:}APQ Dimension Attributes:}ApplicationEntries
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Application Activity Back Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Applications
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Application to Cube Reference Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Calculation Type
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ CAM NamespaceID
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Chore Info Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Chore Info Parameter
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Chores
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Clients
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Clients Consol
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Cube Last Updated by Process Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Cubes
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Cube Views
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Cube Views Management Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Cube Views Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Data Source Row
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Dimension Attribute Matrix Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Dimension Attributes Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Dimension Defaults Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Dimension Defaults Measure Type
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Dimension Definition Parameter
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Dimension Definition Source Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Dimension Elements
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Dimension Element Search Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Dimension Hierarchies
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Dimension Hierarchies Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Dimensions
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Dimension SemiDynamic Subsets Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Dimension Source
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Dimension Static Subsets And UDC Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Dimension Subsets
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Dimension Subsets Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Dimension Subset Use Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Dimension Use Index
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Dimension Use Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Escape Characters
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Execution Item
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Glossary Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Groups
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ HTML Character Entity
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Item Index
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Menu Link
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Menu Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Menu Page
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Menu Profile
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Parameters
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Picklist Dimension Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ PickList Item
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ PickList Validations
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Processes
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Process Execution Log Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ ProcessExit Code
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Process Parallelization Control Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Process Parameter Matrix Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Process Parameters
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Process Parameters Info Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Process to Object Reference Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Pulse ServerName
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Pulse Service Name
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Pulse User login Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Pulse Workbook
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Pulse Workbook Path
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Reconciliation Cell Value Change Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Reconciliation Cell Value Change Profile
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Reconciliation Check Extended Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Reconciliation Check Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Reconciliation Item
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Reconciliation Setup Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Security Effective Permission Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Security Level
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Security Manage Application Feeder Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Security Manage Client Groups Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Security Manage Element Access Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Security Manage Element Security Groups Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Security Manage Object Access Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Security Permission Index
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Settings Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Staging Control Parameter
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Staging Data Source
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Staging Dimension
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Staging Dimension Mapping Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Time Date
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Time Date Lookup
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Time Day in Year
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Time Dimensions
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Time Minute
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Time Month
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Time Quarter
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Time Relative Time Lookup Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Time Relative Time Periods
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Time Second
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Time Year
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Time Year-Month
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Time Year-Month Lookup
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Time Year-Week Lookup
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ TM1 Objects
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ TM1 Object Type
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ TM1 Transaction Log Analysis Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Universal View
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Universal View  Column
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Universal View  Data Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Universal View  Dimension
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Universal View  Dimension Mapping Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Universal View  Filter Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Universal View  Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Universal View  Row
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ Update Frequency
+}APQ Dimension Attributes:}APQ Dimension Attributes:}APQ User Last Active Measure
+}APQ Dimension Attributes:}APQ Dimension Attributes:}Clients
+}APQ Dimension Attributes:}APQ Dimension Attributes:}Cubes
+}APQ Dimension Attributes:}APQ Dimension Attributes:}Cultures
+}APQ Dimension Attributes:}APQ Dimension Attributes:}Dimensions
+}APQ Dimension Attributes:}APQ Dimension Attributes:}ElementAttributes_}Clients
+}APQ Dimension Attributes:}APQ Dimension Attributes:}Groups
+}APQ Dimension Attributes:}APQ Dimension Attributes:}Processes

@@ -1,0 +1,95 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+#SKIPCHECK;
+#FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-06-10 convert from Apliqo FPM
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Staging Dimension Mapping** maps data source columns to dimensions/dimension elements. This allows tabular data from any source
+# to be loaded to any cube.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+# Necessary to not have circular reference in the iteration rules on condition Mapping Type
+[ '}APQ Staging Dimension Mapping Measure' : 'Mapping Type' ] = S: 
+IF( TABDIM( DB( '}APQ Staging Dimension Mapping', !}APQ Staging Data Source, 'Dimension 1', 'Cube Name' ), DIMIX( '}APQ Staging Dimension', !}APQ Staging Dimension ) ) @<> '',
+    STET,
+    IF( DB( '}APQ Staging Dimension Mapping', !}APQ Staging Data Source, !}APQ Staging Dimension, 'Dimension Name' ) @= 'VALUE',
+        IF( DB('}APQ Staging Control', !}APQ Staging Data Source, 'Value Iteration', 'Numeric') > 1,
+            'Value Column',
+            'Value'
+        ),
+        ''
+    )
+);
+
+# Get the name of the target cube linked to the source
+[ '}APQ Staging Dimension Mapping Measure' : 'Cube Name', '}APQ Staging Dimension' : 'Dimension 1' ] = S:
+DB( '}APQ Staging Control', !}APQ Staging Data Source, 'Target cube', 'String' );
+
+[ '}APQ Staging Dimension Mapping Measure' : 'Cube Name' ] = S: '';
+
+# Get the name of the dimension
+[ '}APQ Staging Dimension Mapping Measure' : 'Dimension Name' ] = S:
+IF( TABDIM( DB( '}APQ Staging Dimension Mapping', !}APQ Staging Data Source, 'Dimension 1', 'Cube Name' ), DIMIX( '}APQ Staging Dimension', !}APQ Staging Dimension ) ) @<> '' ,
+    TABDIM( DB( '}APQ Staging Dimension Mapping', !}APQ Staging Data Source, 'Dimension 1', 'Cube Name' ), DIMIX( '}APQ Staging Dimension', !}APQ Staging Dimension ) ),
+    CONTINUE
+);
+
+# Dimension count + 1 = "VALUE"
+[ '}APQ Staging Dimension Mapping Measure' : 'Dimension Name' ] = S:
+IF( TABDIM( DB( '}APQ Staging Dimension Mapping', !}APQ Staging Data Source, 'Dimension 1', 'Cube Name' ), DIMIX( '}APQ Staging Dimension', !}APQ Staging Dimension ) ) @= '' & TABDIM( DB( '}APQ Staging Dimension Mapping', !}APQ Staging Data Source, 'Dimension 1', 'Cube Name' ), DIMIX( '}APQ Staging Dimension', !}APQ Staging Dimension )-1 ) @<> '',
+    'VALUE',
+    ''
+);
+
+# Special case attribute mapping measures
+[ '}APQ Staging Dimension Mapping Measure' : {'Mapping Attribute Dim','Mapping Attribute Name'} ] = S: 
+If( DB( '}APQ Staging Dimension Mapping', !}APQ Staging Data Source, !}APQ Staging Dimension, 'Mapping Type' ) @= 'Attribute',
+    STET,
+    ''
+);
+
+# Iteration rule : Fix, Variable and Value type are copied to all Mapping Value *
+[] = S:
+IF( ATTRN( '}APQ Staging Dimension Mapping Measure', !}APQ Staging Dimension Mapping Measure, 'Iteration Source Flag' ) = 1
+     & DB( '}APQ Staging Dimension Mapping', !}APQ Staging Data Source, !}APQ Staging Dimension, 'Mapping Type' ) @<> 'Variable Column'
+     & DB( '}APQ Staging Dimension Mapping', !}APQ Staging Data Source, !}APQ Staging Dimension, 'Mapping Type' ) @<> 'Value Column'
+     & DB( '}APQ Staging Dimension Mapping', !}APQ Staging Data Source, !}APQ Staging Dimension, 'Mapping Type' ) @<> '',
+    DB( '}APQ Staging Dimension Mapping', !}APQ Staging Data Source, !}APQ Staging Dimension, 'Mapping Value 1' ),
+    IF( DB( '}APQ Staging Dimension Mapping', !}APQ Staging Data Source, !}APQ Staging Dimension, 'Dimension Name' ) @= '',
+        '',
+        CONTINUE
+    )
+);
+
+# Specific rule for APQ C3
+# Forced NA mapping if BSEG * dim are not used
+# Get the name of the dimension
+[ '}APQ Staging Dimension Mapping Measure' : 'Mapping Value 1' ] = S:
+IF( DB( '}APQ C3 FIN BSEG Control', DB( '}APQ Staging Dimension Mapping', !}APQ Staging Data Source, 'Dimension 1', 'Cube Name' ), DB( '}APQ Staging Dimension Mapping', !}APQ Staging Data Source, !}APQ Staging Dimension, 'Dimension Name' ), 'Used', 'Final Value' ) @= 'No',
+    DB( '}APQ C3 FIN BSEG Control', DB( '}APQ Staging Dimension Mapping', !}APQ Staging Data Source, 'Dimension 1', 'Cube Name' ), DB( '}APQ Staging Dimension Mapping', !}APQ Staging Data Source, !}APQ Staging Dimension, 'Dimension Name' ), 'Input', 'Final Value' ),
+    CONTINUE
+);
+
+##############################################################################################################################
+FEEDERS;
+##############################################################################################################################
+
+
+##############################################################################################################################
+##~~    End Rule File    ~~##
+##############################################################################################################################

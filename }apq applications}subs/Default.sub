@@ -1,0 +1,98 @@
+﻿283,100
+284,"Default"
+11,20230515004942
+274,Caption_Default
+18,0
+275,
+278,0
+281,0
+270,89
+}applications
+00 Menu
+99 Admin
+99 Admin\Admin Dimension
+99 Admin\Admin Dimension\Dim Master Data
+99 Admin\Admin Dimension\Dim Master Data\Processes
+99 Admin\Admin Dimension\Dim Measure
+99 Admin\Admin Dimension\Dim Other
+99 Admin\Admin Dimension\Subset
+99 Admin\Admin Dimension\Subset\Semi Dynamic
+99 Admin\Admin Dimension\Subset\Static and UDC (TBD)
+99 Admin\Admin Dimension\Subset\Usage Stat
+99 Admin\Admin Dimension\TI Processes
+99 Admin\Admin Dimension\UDC
+99 Admin\Admin Menu
+99 Admin\Admin Menu\Cubes
+99 Admin\Admin Menu\Processes
+99 Admin\Admin Security
+99 Admin\Admin Security\Data Security
+99 Admin\Admin Security\Functional Security
+99 Admin\Admin Security\User Group Assignment
+99 Admin\Admin Versioning
+99 Admin\Admin Workbench
+99 Admin\Admin Workflow
+99 Admin\Admin Workflow\Cooling Period
+99 Admin\Admin Workflow\Cooling Period\Disable (Single WF Node)
+99 Admin\Admin Workflow\Cooling Period\Enable (Full WF Nodes)
+99 Admin\Admin Workflow\Workflow Status Update
+99 Admin\Sys Apliqode
+99 Admin\Sys Apliqode\0 Shortcuts
+99 Admin\Sys Apliqode\0 Shortcuts\1 Bedrock TI
+99 Admin\Sys Apliqode\0 Shortcuts\1 Bedrock TI\Cube
+99 Admin\Sys Apliqode\0 Shortcuts\1 Bedrock TI\Cube\View
+99 Admin\Sys Apliqode\0 Shortcuts\1 Bedrock TI\Dimension
+99 Admin\Sys Apliqode\0 Shortcuts\1 Bedrock TI\Dimension\Attribute
+99 Admin\Sys Apliqode\0 Shortcuts\1 Bedrock TI\Dimension\Element
+99 Admin\Sys Apliqode\0 Shortcuts\1 Bedrock TI\Dimension\Hierarchy
+99 Admin\Sys Apliqode\0 Shortcuts\1 Bedrock TI\Dimension\Subset
+99 Admin\Sys Apliqode\0 Shortcuts\1 Bedrock TI\Help
+99 Admin\Sys Apliqode\0 Shortcuts\1 Bedrock TI\Security
+99 Admin\Sys Apliqode\0 Shortcuts\1 Bedrock TI\System
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes
+99 Admin\Sys Apliqode\0 Shortcuts\3 APQ Dimensions
+99 Admin\Sys Apliqode\0 Shortcuts\4 APQ TI
+99 Admin\Sys Apliqode\1 Security
+99 Admin\Sys Apliqode\1 Security\1 General
+99 Admin\Sys Apliqode\1 Security\2 Element Security
+99 Admin\Sys Apliqode\1 Security\3 Cell Security
+99 Admin\Sys Apliqode\1 Security\4 Apliqode Framework security source
+99 Admin\Sys Apliqode\2 Housekeeping
+99 Admin\Sys Apliqode\3 Catalog Reference
+99 Admin\Sys Apliqode\3 Catalog Reference\0 APQ Glossary
+99 Admin\Sys Apliqode\3 Catalog Reference\1 User Info
+99 Admin\Sys Apliqode\3 Catalog Reference\2 Cube Info
+99 Admin\Sys Apliqode\3 Catalog Reference\3 Dimension Info
+99 Admin\Sys Apliqode\3 Catalog Reference\4 Process Info
+99 Admin\Sys Apliqode\3 Catalog Reference\5 Chore Info
+99 Admin\Sys Apliqode\3 Catalog Reference\6 Application Info
+99 Admin\Sys Apliqode\3 Catalog Reference\7 Pulse Info
+99 Admin\Sys Apliqode\4 TM1 Control Cubes
+99 Admin\Sys Apliqode\4 TM1 Control Cubes\1 TM1 PerfMon
+99 Admin\Sys Apliqode\4 TM1 Control Cubes\2 Properties Cubes
+99 Admin\Sys Apliqode\5 Reconciliation
+99 Admin\Sys Apliqode\6 Process Execution Item
+99 Admin\Sys Apliqode\7 Copy Views
+99 Admin\Sys Apliqode\8 Dimension Management
+99 Admin\Sys Environment
+99 Admin\Sys Maintenance
+99 Admin\Sys Maintenance\Archive
+99 Admin\Sys Maintenance\Archive\Processes
+99 Admin\Sys Maintenance\Archive\Processes\Archive Cube
+99 Admin\Sys Maintenance\Archive\Processes\Clear Source Data
+99 Admin\Sys Maintenance\Archive\Processes\Clone Cube View
+99 Admin\Sys Maintenance\Archive\Processes\Destroy Archive Objects
+99 Admin\Sys Maintenance\Archive\Processes\Initialization
+99 Admin\Sys Maintenance\Archive\Processes\Restore Data from Archive
+99 Admin\Sys Maintenance\Backup
+99 Admin\Sys Maintenance\Development
+99 Admin\Sys Maintenance\Development\Processes
+99 Admin\Sys Maintenance\Email
+99 Admin\Sys Maintenance\Housekeeping
+99 Admin\Sys Maintenance\Localization
+99 Admin\Sys Maintenance\Logging
+99 Admin\Sys Maintenance\Sync
+99 Admin\Sys Time
+99 Admin\Sys Time\Time Dim
+99 Admin\Sys Time\Time Dim\APQ Time Dim
+99 Admin\Sys Time\Time Dim Attributes
+99 Admin\Sys Time\Time Dim Relative Time Update

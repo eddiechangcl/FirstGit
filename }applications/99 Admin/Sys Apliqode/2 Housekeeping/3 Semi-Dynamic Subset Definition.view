@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=3 Semi-Dynamic Subset Definition
+ENTRYTYPE=view
+ENTRYREFERENCE=TM1:///VIEW/PUBLIC/}APQ Dimension SemiDynamic Subsets/Default

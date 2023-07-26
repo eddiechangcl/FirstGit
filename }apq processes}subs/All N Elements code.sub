@@ -1,0 +1,347 @@
+﻿283,100
+284,"All N Elements code"
+11,20230515004923
+274,
+18,0
+275,
+278,0
+281,0
+270,338
+_New_Process_Template
+APQ.Process.Execute
+Cub.EDU Training Plan.Copy Task From Other Employee
+Cub.Employee Training Plan.Date Infor Update
+Dennis_Cub.Sales Analysis.Copy to Next Cycle
+Dennis_Dimension Clone
+Dennis_Dimension Clone with attr
+Dennis_Dimension Clone with attr Caller
+Dennis_Step 1
+Dennis_Step 2.1 Bedrock
+Dennis_Step 2 Bedrock
+Dennis_Step 3.1 Modular_caller
+Dennis_Step 3 Modular
+Dim.Employee.Add New Employee
+Sys.Archive.Clear Source Data.Hustle
+Sys.Archive.Clear Source Data by Sys Archive ID
+Sys.Archive.Create Archived Objects by Sys Archive ID
+Sys.Archive.Create New Sys Archive ID
+Sys.Archive.Cube by Sys Archive ID
+Sys.Archive.Cubes.Hustle
+Sys.Archive.Destroy Archived Objects.Hustle
+Sys.Archive.Destroy Archived Objects by Sys Archive ID
+Sys.Archive.Export Cube Rules by Sys Archive ID
+Sys.Archive.Initialization.Caller
+Sys.Archive.Initialization.Create Attributes
+Sys.Archive.Restore Data.Hustle
+Sys.Archive.Restore Data by Sys Archive ID
+Sys.Archive.View.Clone
+Sys.Archive.View.Clone All
+Sys.Archive.View.Update.After Clone
+Sys.Archive.}Cubes.Update Attributes
+Sys.Cube.Annotation.Create
+Sys.Dim.Attribute.Copy.From Another Dimension
+Sys.Dim.Element.Rename
+Sys.Dim.Hierarchies.Copy.From Another Dimension
+Sys.Dim.Hierarchies.Sort.From Another Dimension Order
+Sys.Dim.Hierarchy.Unwind.Consolidation.Until Level 1
+Sys.Dim.UDC.Unwind
+Sys.Dim.UDC.Update
+Sys.Dim.UDC.Update.Caller
+Sys.Dim.UDC.Update.Caller.Update All UDC
+Sys.Localization.CaptionAsAlias
+Sys.Menu.Cube.Sys Menu.Page.Copy
+Sys.Menu.Cube.Sys Menu.Profile.Copy
+Sys.Menu.Cube.Sys Menu Application Entry.Reference.Update
+Sys.Menu.Cube.Sys Menu Application Entry.Reference.Update.Caller
+Sys.Menu.Cube.Sys Menu Application Entry.Reset.Entry.DisplayName
+Sys.Menu.Dim.Sys Menu Application Entry.Clean Empty C Elements
+Sys.Menu.Dim.Sys Menu Application Entry.Update from }ApplicationEntries
+Sys.Menu.Dim.Sys Menu Local Template.List.Caller
+Sys.Menu.Dim.Sys Menu Local Template.List.Update
+Sys.Menu.Dim.Sys Menu Profile.}Client Update
+Sys.Module.CleanUp
+Sys.Module.Uninstaller
+Sys.Server.Directory.List
+Sys.Server.ODBC.Test
+Sys.Server.Restart Windows Services.Task Scheduler
+Sys.Server.Sys Parameter.Update from tm1s.cfg
+Sys.Server.Temp Object.Housekeeping
+Sys.Server.}CubeProperties.Data.Load.MEASURE_DIMENSION
+Sys.Server.}CubeProperties.Data.Load.TIME_DIMENSION
+Sys.Sync.Cube.Data.Export.Caller
+Sys.Sync.Cube.Data.Import.Caller
+Sys.Sync.Cube.Data.ImportFromFile
+Sys.Sync.Cube.Data.ViewExportToFile
+Sys.Time.Attribute.Update
+Sys.Versioning.Caller
+Sys.Versioning.Cube
+Sys.Versioning.Cube.String Only
+Sys.Versioning.Log.Update
+Sys.Workbench.Copy
+Sys.Workbench.Task Dependency.Copy
+Sys.Workbench.Task Dependency.Update
+Sys.Workbench.UpdateStatus
+Sys.Workflow.Cooling Period.Update Status
+Sys.Workflow.Create
+Sys.Workflow.Delete
+Sys.Workflow.WF_.Update.Admin.Caller
+Sys.Workflow.WF_.Update Disable Cooling
+Sys.Workflow.WF_.Update Saved Status
+Sys.Workflow.WF_.Update Saved Status.OPEN
+Temp
+}APQ.Cub.CellComments.Update
+}APQ.Cub.CubeDependencyMap.Update
+}APQ.Cub.CubeViews.Update
+}APQ.Cub.Data.Archive
+}APQ.Cub.DimensionAttributes.Update
+}APQ.Cub.DimensionAttributes.Update.Localized
+}APQ.Cub.DimensionDefaults.Update
+}APQ.Cub.DimensionDefinitionSource.Load.Preview
+}APQ.Cub.DimensionSemiDynamicSubsets.Import
+}APQ.Cub.DimensionStaticSubsetsAndUDC.Import
+}APQ.Cub.DimensionSubsets.Update
+}APQ.Cub.DimensionSubsetUse.Update.0.Main
+}APQ.Cub.DimensionSubsetUse.Update.1.GenerateCmd
+}APQ.Cub.DimensionSubsetUse.Update.2.FromOutputFile
+}APQ.Cub.Glossary.Update.Description
+}APQ.Cub.Logging.Check
+}APQ.Cub.Picklist.Copy.UserSettings
+}APQ.Cub.ProcessExecutionLog.Export
+}APQ.Cub.ProcessExecutionTree.Update
+}APQ.Cub.ProcessParametersInfo.Update.0.Main
+}APQ.Cub.ProcessParametersInfo.Update.1.FindProcess
+}APQ.Cub.ProcessParametersInfo.Update.2.ReadProcess
+}APQ.Cub.ProcessToChoreReference.Update.0.Main
+}APQ.Cub.ProcessToChoreReference.Update.1.ReadChore
+}APQ.Cub.ProcessToObjectReference.Update.0.Main
+}APQ.Cub.ProcessToObjectReference.Update.1.ParseProcess
+}APQ.Cub.PulseUserLogin.LastLogin.Update
+}APQ.Cub.PulseUserLogin.Update
+}APQ.Cub.PulseWorkbookTracker.Update
+}APQ.Cub.PulseWorkbookTracker.Update.Weblog
+}APQ.Cub.Reconciliation.CellValueChange.Alert
+}APQ.Cub.ReconciliationCheck.Update.Static
+}APQ.Cub.SecurityManageObjectAccess.Update.DimFromCube
+}APQ.Cub.ServerMessageLogInfo.Update
+}APQ.Cub.Staging.LoadFromSource
+}APQ.Cub.Staging.LoadFromStaging
+}APQ.Cub.TM1TransactionLogAnalysis.Update
+}APQ.Cub.UniversalViewData.ProcessFeeders
+}APQ.Cub.UniversalViewData.UpdateFreeze
+}APQ.Cub.UserActivityLog.Update
+}APQ.Cub.UserLastActive.Update.0.Main
+}APQ.Cub.UserLastActive.Update.1.ReadUsrConLog
+}APQ.Cub.Vue.Cache
+}APQ.Cub.Vue.DefaultViews.Copy
+}APQ.Cub.Vue.Management
+}APQ.Cub.Vue.TIDatasourceDummy
+}APQ.CubAndDim.ViewsAndSubset.CopyGroup
+}APQ.CubAndDim.ViewsAndSubset.CopyUser
+}APQ.Cube.Data.Save
+}APQ.Dim.Alias.FillBlanks
+}APQ.Dim.Attr.Create
+}APQ.Dim.Attr.Definition.Setup
+}APQ.Dim.Attr.Definition.Update
+}APQ.Dim.Attr.Definition.Update.FromReferenceDim
+}APQ.Dim.Attr.Member_Caption.Update
+}APQ.Dim.Client.Clean
+}APQ.Dim.ControlDimensionCopies.Update
+}APQ.Dim.DataSourceRow.Update
+}APQ.Dim.Definition.Create.Dimension
+}APQ.Dim.Definition.Export.All
+}APQ.Dim.Definition.ExtractToFile
+}APQ.Dim.Definition.Load.Dimension
+}APQ.Dim.Definition.Load.Dimension.ByGroup
+}APQ.Dim.Definition.Load.Dimension.Step
+}APQ.Dim.DimensionElements.Update
+}APQ.Dim.DimensionSubsets.Clean
+}APQ.Dim.Element.SafeDelete.0.Main
+}APQ.Dim.Element.SafeDelete.1.TestCubeData
+}APQ.Dim.Hierarchy.Audit
+}APQ.Dim.Hierarchy.Copy
+}APQ.Dim.Maintenance.Options
+}APQ.Dim.ReconciliationItem.Update.Aliases
+}APQ.Dim.StagingDataSource.Add
+}APQ.Dim.Sub.Copy
+}APQ.Dim.Sub.DefaultSubsets.Copy
+}APQ.Dim.Sub.DimensionAttributeType.Update
+}APQ.Dim.Sub.SemiDynamicSubsets.Update
+}APQ.Dim.Sub.StandardSubsets.Update
+}APQ.Dim.Sub.StaticSubsets.Update
+}APQ.Dim.Time.RelativeTimeConsAndSubs.Update
+}APQ.Dim.Time.Update.Month.CalToFin.Conversion
+}APQ.Dim.TimeDimensions.Update
+}APQ.Dim.UDC.Flat.Update
+}APQ.Dim.UDC.Hier.Update
+}APQ.Dim.UniversalView.Copy
+}APQ.Dim.UniversalView.GetSubsetElements
+}APQ.Dim.UniversalViewGridDimension.Caption.Update
+}APQ.Dim.UniversalViewGridDimension.Update
+}APQ.ODBC.TestConnection
+}APQ.ODBC.TestQuery
+}APQ.Process.DoNothing
+}APQ.Process.Email.Send
+}APQ.Process.ExecuteCommand
+}APQ.Process.Item.Run
+}APQ.Process.Item.Run.Modified
+}APQ.Process.Parallelization.Run
+}APQ.Security.AssignClientGroups
+}APQ.Security.AssociateCAMIDToGroup
+}APQ.Security.Client.Copy
+}APQ.Security.Client.Create.CAMFromAD
+}APQ.Security.ClientGroups.ImportExport
+}APQ.Security.Elements.CreateGroups
+}APQ.Security.Elements.LoadAccessRights
+}APQ.Security.Group.Copy
+}APQ.Security.Objects.LoadAccessRights
+}APQ.Security.Update.0.Main
+}APQ.Server.Backup
+}APQ.Server.CubeDependency.Set
+}APQ.Server.MessageLog.Process
+}APQ.Server.Objects.Delete
+}APQ.Server.Restart
+}APQ.Server.Settings.ImportExport
+}bedrock.chore.execution.check
+}bedrock.cube.clone
+}bedrock.cube.create
+}bedrock.cube.data.clear
+}bedrock.cube.data.copy
+}bedrock.cube.data.copy.intercube
+}bedrock.cube.data.export
+}bedrock.cube.data.import
+}bedrock.cube.data.save
+}bedrock.cube.delete
+}bedrock.cube.dimension.add
+}bedrock.cube.dimension.delete
+}bedrock.cube.dimension.replace
+}bedrock.cube.rule.manage
+}bedrock.cube.rule.processfeeders
+}bedrock.cube.view.create
+}bedrock.cube.view.create.bymdx
+}bedrock.cube.view.delete
+}bedrock.cube.view.publish
+}bedrock.cube.viewandsubsets.create
+}bedrock.cube.viewandsubsets.delete
+}bedrock.dim.attr.create
+}bedrock.dim.attr.delete
+}bedrock.dim.attr.importfromfile
+}bedrock.dim.attr.swapalias
+}bedrock.dim.clone
+}bedrock.dim.delete
+}bedrock.hier.clone
+}bedrock.hier.consol.create.leaf
+}bedrock.hier.consol.delete
+}bedrock.hier.consol.flat.create
+}bedrock.hier.create
+}bedrock.hier.create.fromattribute
+}bedrock.hier.create.fromrollup
+}bedrock.hier.create.fromrollup.aliasswap
+}bedrock.hier.create.fromsubset
+}bedrock.hier.delete
+}bedrock.hier.element.create
+}bedrock.hier.element.delete
+}bedrock.hier.element.move
+}bedrock.hier.elements.validate
+}bedrock.hier.emptyconsols.delete
+}bedrock.hier.export
+}bedrock.hier.export.script
+}bedrock.hier.import
+}bedrock.hier.leaves.orphan.check
+}bedrock.hier.leaves.sync
+}bedrock.hier.sub.clone
+}bedrock.hier.sub.create
+}bedrock.hier.sub.create.all
+}bedrock.hier.sub.create.attribute.all
+}bedrock.hier.sub.create.attribute.leaf
+}bedrock.hier.sub.create.byelement
+}bedrock.hier.sub.create.bylevel
+}bedrock.hier.sub.create.bymdx
+}bedrock.hier.sub.create.consolidation.all
+}bedrock.hier.sub.create.consolidation.leaf
+}bedrock.hier.sub.create.leaf
+}bedrock.hier.sub.create.orphans
+}bedrock.hier.sub.create.toplevelhierarchy
+}bedrock.hier.sub.delete
+}bedrock.hier.sub.exclude
+}bedrock.hier.sub.exporttofile
+}bedrock.hier.unwind
+}bedrock.process.template
+}bedrock.security.client.clone
+}bedrock.security.client.create
+}bedrock.security.client.delete
+}bedrock.security.client.group.assign
+}bedrock.security.client.password.reset
+}bedrock.security.clientgroupsetup
+}bedrock.security.cube.cellsecurity.create
+}bedrock.security.cube.cellsecurity.destroy
+}bedrock.security.evaluate.mdx
+}bedrock.security.evaluate.mdx.private
+}bedrock.security.group.create
+}bedrock.security.group.delete
+}bedrock.security.object.assign
+}bedrock.security.refresh
+}bedrock.server.deleteallpersistentfeeders
+}bedrock.server.dir.backup
+}bedrock.server.dir.listcontents
+}bedrock.server.encrypt.directory
+}bedrock.server.encrypt.file
+}bedrock.server.executecommand
+}bedrock.server.localize
+}bedrock.server.logfile.delete
+}bedrock.server.savedataall
+}bedrock.server.util.string.validate
+}bedrock.server.wait
+}bedrock.server.writetomessagelog
+}Drill_Drill to All Comments (5)
+}Drill_Drill to All Comments (6)
+}Drill_Drill to All Comments (7)
+}Drill_Drill to All Comments (8)
+}Drill_drill to Application Entry Detail
+}Drill_drill to Application Security
+}Drill_drill to Application User Activity
+}Drill_drill to APQ Universal View source
+}Drill_Drill to Cell Comments (5)
+}Drill_Drill to Cell Comments (6)
+}Drill_Drill to Cell Comments (7)
+}Drill_Drill to Cell Comments (8)
+}Drill_drill to Chore Details
+}Drill_drill to Chore to Process Map
+}Drill_drill to Cube
+}Drill_drill to cubes using Dimension
+}Drill_Drill to Descendant Comments (5)
+}Drill_Drill to Descendant Comments (6)
+}Drill_Drill to Descendant Comments (7)
+}Drill_Drill to Descendant Comments (8)
+}Drill_drill to Dimension Attributes
+}Drill_drill to dimension preview in staging cube
+}Drill_drill to dimensions in Cube
+}Drill_drill to dimension source query (full)
+}Drill_drill to dimension source query (preview)
+}Drill_drill to groups conferring access rights
+}Drill_drill to groups conferring access rights (Applications)
+}Drill_drill to groups conferring access rights (Elements)
+}Drill_drill to Object Security
+}Drill_drill to Process Details
+}Drill_drill to process error log (2)
+}Drill_drill to process error log (6)
+}Drill_drill to Process Execution Item
+}Drill_drill to Process Last Run Details (2)
+}Drill_drill to Process Last Run Details (3)
+}Drill_drill to Process Last Run Details (4)
+}Drill_drill to Process to Chore Map
+}Drill_drill to Process Updating Cube
+}Drill_drill to Process Updating Dimension
+}Drill_drill to Pulse Documentation
+}Drill_drill to Reconciliation Rule
+}Drill_drill to Reconciliation Source
+}Drill_drill to Security Cube
+}Drill_drill to security cube entry
+}Drill_drill to SemiDynamic Subsets
+}src_clients_export
+}src_control
+}src_cube_export
+}src_dim_export
+}src_dim_export_data
+}src_import
+}src_save
+}src_stats_export

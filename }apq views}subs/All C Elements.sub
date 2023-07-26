@@ -1,0 +1,137 @@
+﻿283,100
+284,"All C Elements"
+11,20230515004941
+274,
+18,0
+275,
+278,0
+281,0
+270,128
+Total APQ Views
+Cube:EDU Employee Profile
+Cube:EDU Training Plan
+Cube:Employee Schedule
+Cube:FX Rate
+Cube:Public Holiday Reference
+Cube:Sys Archive Parameter
+Cube:Sys Archive Profile
+Cube:Sys Dimension UDC
+Cube:Sys Menu
+Cube:Sys Menu Parameter
+Cube:Sys Module Object
+Cube:Sys Parameter
+Cube:Sys Time Attribute
+Cube:Sys Versioning Cube
+Cube:Sys Versioning Log
+Cube:Sys Workbench
+Cube:Sys Workbench Task Dependency
+Cube:Sys Workflow Cooling Period
+Cube:}APQ Chore Info
+Cube:}APQ Cube Data Archive
+Cube:}APQ Cube Dependency
+Cube:}APQ Cube Dimension Dependency
+Cube:}APQ Cube Last Updated by Process
+Cube:}APQ Cube View Cache Control
+Cube:}APQ Cube Views
+Cube:}APQ Cube Views Management
+Cube:}APQ Dimension Attribute Definition
+Cube:}APQ Dimension Attribute Matrix
+Cube:}APQ Dimension Attributes
+Cube:}APQ Dimension Defaults
+Cube:}APQ Dimension Definition
+Cube:}APQ Dimension Definition Source
+Cube:}APQ Dimension Elements
+Cube:}APQ Dimension Element Search
+Cube:}APQ Dimension Hierarchies
+Cube:}APQ Dimension SemiDynamic Subsets
+Cube:}APQ Dimension Static Subsets And UDC
+Cube:}APQ Dimension Subsets
+Cube:}APQ Dimension Subset Use
+Cube:}APQ Dimension Use
+Cube:}APQ Glossary
+Cube:}APQ Picklist Dimension
+Cube:}APQ Picklist General
+Cube:}APQ Process Execution Item
+Cube:}APQ Process Execution Log
+Cube:}APQ Process Execution Tree
+Cube:}APQ Process Parallelization Control
+Cube:}APQ Process Parameter Matrix
+Cube:}APQ Process Parameters Info
+Cube:}APQ Process Response Message
+Cube:}APQ Process to Object Reference
+Cube:}APQ Pulse User Login
+Cube:}APQ Pulse Workbook Tracker
+Cube:}APQ Reconciliation Cell Value Change
+Cube:}APQ Reconciliation Check
+Cube:}APQ Reconciliation Setup
+Cube:}APQ Reconciliation Setup Detail
+Cube:}APQ Security Effective Client Application Folder Permissions
+Cube:}APQ Security Effective Client Element Permissions
+Cube:}APQ Security Effective Client Object Permissions
+Cube:}APQ Security Manage Client Groups
+Cube:}APQ Security Manage Element Access
+Cube:}APQ Security Manage Element Security Groups
+Cube:}APQ Security Manage Object Access
+Cube:}APQ Server Message Log Info
+Cube:}APQ Settings
+Cube:}APQ Staging
+Cube:}APQ Staging Dimension Mapping
+Cube:}APQ Time Month Conversion
+Cube:}APQ Time Relative Time Lookup
+Cube:}APQ TM1 Transaction Log Analysis
+Cube:}APQ Universal View Calculation
+Cube:}APQ Universal View Data
+Cube:}APQ Universal View Dimension Mapping
+Cube:}APQ Universal View Filter
+Cube:}APQ Universal View Format
+Cube:}APQ Universal View Source Mapping
+Cube:}APQ User Activity Log
+Cube:}APQ User Last Active
+Cube:}CellSecurity_}APQ Picklist Dimension
+Cube:}CellSecurity_}APQ Picklist General
+Cube:}CellSecurity_}APQ Process Response Message
+Cube:}ClientGroups
+Cube:}ClientProperties
+Cube:}ClientSettings
+Cube:}CubeAttributes
+Cube:}CubeProperties
+Cube:}CubeSecurity
+Cube:}DimensionAttributes
+Cube:}DimensionProperties
+Cube:}ElementAttributes_Currency From
+Cube:}ElementAttributes_M Reference
+Cube:}ElementAttributes_Sys Menu Profile
+Cube:}ElementAttributes_}APQ Applications
+Cube:}ElementAttributes_}APQ Chores
+Cube:}ElementAttributes_}APQ Cubes
+Cube:}ElementAttributes_}APQ Dimensions
+Cube:}ElementAttributes_}APQ Execution Item
+Cube:}ElementAttributes_}APQ Processes
+Cube:}ElementAttributes_}Clients
+Cube:}ElementSecurity_}APQ Applications
+Cube:}ElementSecurity_}APQ Cubes
+Cube:}ElementSecurity_}APQ Cube Views
+Cube:}ElementSecurity_}APQ Dimension Attribute Definition Measure
+Cube:}ElementSecurity_}APQ Dimensions
+Cube:}ElementSecurity_}APQ Dimension Subsets
+Cube:}HierarchyProperties
+Cube:}LocalizedCubeAttributes
+Cube:}LocalizedDimensionAttributes
+Cube:}LocalizedElementAttributes_Currency From
+Cube:}LocalizedElementAttributes_Date
+Cube:}LocalizedElementAttributes_Month
+Cube:}PickList_}APQ Process Execution Item
+Cube:}PickList_}APQ Process Parallelization Control
+Cube:}PickList_}APQ Process Parameters Info
+Cube:}PickList_}APQ Reconciliation Setup
+Cube:}PickList_}APQ Reconciliation Setup Detail
+Cube:}PickList_}APQ Settings
+Cube:}PickList_}APQ Time Relative Time Lookup
+Cube:}StatsByCube
+Cube:}StatsForServer
+Total views to investigate
+Bedrock views
+DataSource views
+Temp views
+ZeroOut views
+z views

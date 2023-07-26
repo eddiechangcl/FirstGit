@@ -1,0 +1,20 @@
+﻿283,100
+284,"APQ Chores"
+11,20230512024331
+274,
+18,0
+275,134
+{TM1SORT( {TM1FILTERBYPATTERN( {FILTER( {TM1SUBSETALL( [}APQ TM1 Objects] )}, [}APQ TM1 Objects].[IsChore] = "TRUE")}, "APQ*")}, ASC)}
+278,0
+281,0
+270,10
+APQ.Cub.UserActivityLog.Update
+APQ.Dim.ControlObjects.Copy
+APQ.Dim.DimensionElements.Update
+APQ.Framework.Update
+APQ.Server.Backup
+APQ.Server.CacheViews
+APQ.Server.CatalogObjectLinks
+APQ.Server.CubeDependency.Set
+APQ.Server.DailyMaintenanceSetup
+APQ.Server.SaveDataAll

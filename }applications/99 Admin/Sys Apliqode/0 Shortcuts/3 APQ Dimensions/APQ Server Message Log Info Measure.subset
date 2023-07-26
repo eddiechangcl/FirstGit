@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=APQ Server Message Log Info Measure
+ENTRYTYPE=subset
+ENTRYREFERENCE=TM1:///SUBSET/PUBLIC/}APQ Server Message Log Info Measure/Default

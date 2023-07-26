@@ -1,0 +1,10 @@
+﻿283,100
+284,"Sys Menu Level 1"
+11,00000000000000
+274,
+18,0
+275,114
+{FILTER( {TM1SUBSETALL( [Sys Menu Application Entry] )}, [Sys Menu Application Entry].[Menu ID Level] = 1.000000)}
+278,0
+281,0
+270,0

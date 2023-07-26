@@ -1,0 +1,5 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=Maintain Dimension Element Security
+ENTRYTYPE=blob
+ENTRYREFERENCE=TM1:///blob/PUBLIC/.\}Externals\Maintain Dimension Element Security.xlsx_20180313210742.xlsx
+REMOVEBLOBONDELETE=Yes

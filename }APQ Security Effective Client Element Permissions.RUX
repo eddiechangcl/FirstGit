@@ -1,0 +1,95 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+#SKIPCHECK;
+#FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2020-06-02 support for alternate hierarchies
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Security Effective Client Element Permissions** calculates via rule all effective dimension element permissions using the flat
+# **}APQ Dimension Elements** dimension in combination with **}APQ Dimension Hierarchies** to exclude elements not existing in the dimension. 
+#
+# This cube shows the effective element permissions for users to all dimension elements for dimensions where element security has been applied 
+# by the originating group or groups. This is a very useful capability for troubleshooting.  As the cube uses rules referencing the actual 
+# TM1 security cubes the cube is always up-to-date as long as the **}APQ Dimension Elements** dimension has been updated with the current set of 
+# elements in all dimensions where element security is applied.
+#
+# Note:
+# This is a lookup cube and so does not require SkipCheck or Feeders. Even though dimensionality and dimension size is large, only a small section of the cube
+# is ever queried at any one time and there is no consolidation needed.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+[ '}APQ Security Effective Permission Measure':'Value' ] = N:
+IF( DimIx( !}APQ Dimension Hierarchies, !}APQ Dimension Elements ) = 0 % DB( '}ClientGroups', !}APQ Clients, !}APQ Groups ) @<> !}APQ Groups,
+  0,
+  IF( !}APQ Groups @= 'ADMIN' % !}APQ Groups @= 'DataAdmin' % !}APQ Groups @= 'SecurityAdmin',
+    5,
+    IF( DB( '}APQ Security Effective Client Object Permissions', !}APQ Clients, 'Total APQ Groups', 'Dimension', AttrS( '}APQ Dimension Hierarchies', !}APQ Dimension Hierarchies, 'Dimension' ), 'Value' ) = 0,
+      0,
+      IF( DimIx( '}Cubes', '}ElementSecurity_' | AttrS( '}APQ Dimension Hierarchies', !}APQ Dimension Hierarchies, 'Dimension' ) ) = 0
+        & DB( '}APQ Security Effective Client Object Permissions', !}APQ Clients, !}APQ Groups, 'Dimension', AttrS( '}APQ Dimension Hierarchies', !}APQ Dimension Hierarchies, 'Dimension' ), 'Value' ) >= 1,
+        2,
+        IF( AttrS( '}APQ Dimension Hierarchies', !}APQ Dimension Hierarchies, 'Dimension' ) @= AttrS( '}APQ Dimension Hierarchies', !}APQ Dimension Hierarchies, 'Hierarchy' ), 
+          IF( DimIx( '}APQ Security Level', DB( '}ElementSecurity_' | AttrS( '}APQ Dimension Hierarchies', !}APQ Dimension Hierarchies, 'Dimension' ), !}APQ Dimension Elements, !}APQ Groups ) ) = 0,
+            0,
+            DimIx( '}APQ Security Level', DB( '}ElementSecurity_' | AttrS( '}APQ Dimension Hierarchies', !}APQ Dimension Hierarchies, 'Dimension' ), !}APQ Dimension Elements, !}APQ Groups ) ) -1
+          ),
+          IF( DimIx( '}APQ Security Level', DB( '}ElementSecurity_' | AttrS( '}APQ Dimension Hierarchies', !}APQ Dimension Hierarchies, 'Dimension' ), AttrS( '}APQ Dimension Hierarchies', !}APQ Dimension Hierarchies, 'Hierarchy' ):!}APQ Dimension Elements, !}APQ Groups ) ) = 0,
+            0,
+            DimIx( '}APQ Security Level', DB( '}ElementSecurity_' | AttrS( '}APQ Dimension Hierarchies', !}APQ Dimension Hierarchies, 'Dimension' ), AttrS( '}APQ Dimension Hierarchies', !}APQ Dimension Hierarchies, 'Hierarchy' ):!}APQ Dimension Elements, !}APQ Groups ) ) -1
+          )
+        )
+      )
+    )
+  )
+);
+C:
+IF( Scan( ':', !}APQ Dimension Hierarchies ) = 0,
+  DB( '}APQ Security Effective Client Element Permissions', !}APQ Clients, !}APQ Groups, !}APQ Dimension Hierarchies|':'|!}APQ Dimension Hierarchies, !}APQ Dimension Elements, !}APQ Security Effective Permission Measure),
+  IF( ElLev( '}APQ Clients', !}APQ Clients ) > 0,
+    0,
+    ConsolidatedMax( 0, '', !}APQ Clients, !}APQ Groups, !}APQ Dimension Hierarchies, !}APQ Dimension Elements, 'Value' )
+  )
+);
+
+[ '}APQ Security Effective Permission Measure':'String' ] = S: 
+If( IsLeaf = 1 & DB( '}ClientGroups', !}APQ Clients, !}APQ Groups ) @<> !}APQ Groups,
+    '',
+    Continue
+);
+
+[ '}APQ Security Effective Permission Measure':'String' ] = S:
+IF( DimIx( !}APQ Dimension Hierarchies, !}APQ Dimension Elements ) = 0,
+  '',
+  IF( [ '}APQ Security Effective Permission Measure':'Value' ] = 0,
+    'NONE',
+    AttrS( '}APQ Security Level',
+      DimNm( '}APQ Security Level',
+        DB( '}APQ Security Effective Client Element Permissions', !}APQ Clients, !}APQ Groups, !}APQ Dimension Hierarchies, !}APQ Dimension Elements, 'Value' ) + 1
+        ),
+      'Caption_Default'
+    )
+  )
+);
+
+#############################
+FEEDERS;
+#############################
+
+
+#############################
+##~~    End Rule File    ~~##
+#############################

@@ -1,0 +1,482 @@
+﻿FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+#SKIPCHECK;
+#FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2020-07-02 Fix LY Last Month, NY Next Month lookups
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Time Relative Time Lookup** is largelly maintained automatically via rules using TM1 time functions.  Manual data entry by 
+# a system administrator may be required to select alias display values for time dimensions or to effect an override of the system generated 
+# "current" or "last" time period if this needs to remain static for a given period for reporting purposes (e.g. month or quarter end). For 
+# custom added time dimensions depending on the dimension structure and naming of the elements it may be necessary to write some custom rules 
+# in this cube in order for the automated time maintenance process to work for a newly configured time dimension.
+#
+#The automated time dimension maintenance process is carried out by the process **}APQ.Dim.Time.RelativeTimeConsAndSubs.Update** which reads 
+# this cube as a data source and cross checks all dimensions defined in **}APQ Time Dimensions** whether they contain any of the relative time 
+# elements defined in **}APQ Relative Time Periods** (such as "Current Month", "Last Month", etc.).  For all cases where the relative time reporting 
+# element(s) exist the TI process can automatically maintain both a consolidation and a subset for the relative time period. The consolidations are 
+# maintained by default, subset creation must be switched on on a _per relative time period, per alternate hierarchy_ basis. The switch for subset creation 
+# is in this cube. The process should be scheduled to run on a daily basis in order to maintain all relative time reporting consolidations and subsets.
+#
+# Note:
+# As lookup cube only with strings and no consolidation there is no need for SkipCheck or Feeders.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+##############################################################################################################################
+# Asia Std Model Date Dim - 2021-02-20
+##############################################################################################################################
+
+[ '}APQ Time Dimensions':{'Year','Year Month'}, '}APQ Time Relative Time Periods':'Current Year', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:DB('Sys Parameter', 'Current Actual Year', 'Text');
+[ '}APQ Time Dimensions':{'Year','Year Month'}, '}APQ Time Relative Time Periods':'Last Year', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:DB('Sys Time Attribute', DB('}APQ Time Relative Time Lookup', !}APQ Time Dimensions, 'Current Year', 'Final Value'), 'T-1', 'yyyy-mm-dd');
+[ '}APQ Time Dimensions':{'Year','Year Month'}, '}APQ Time Relative Time Periods':'Next Year', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:DB('Sys Time Attribute', DB('}APQ Time Relative Time Lookup', !}APQ Time Dimensions, 'Current Year', 'Final Value'), 'T+1', 'yyyy-mm-dd');
+
+[ '}APQ Time Dimensions':{'Month'}, '}APQ Time Relative Time Periods':'Current Month', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:Subst(DB('Sys Parameter', 'Current Actual Month', 'Text'),2,2);
+[ '}APQ Time Dimensions':{'Month'}, '}APQ Time Relative Time Periods':'Last Month', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:AttrS (!}APQ Time Dimensions, DB('}APQ Time Relative Time Lookup', !}APQ Time Dimensions, 'Current Month', 'Final Value'), !}APQ Time Relative Time Periods);
+[ '}APQ Time Dimensions':{'Month'}, '}APQ Time Relative Time Periods':'Next Month', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:AttrS (!}APQ Time Dimensions, DB('}APQ Time Relative Time Lookup', !}APQ Time Dimensions, 'Current Month', 'Final Value'), !}APQ Time Relative Time Periods);
+[ '}APQ Time Dimensions':{'Month'}, '}APQ Time Relative Time Periods':'Current Month YTD', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:DB('}APQ Time Relative Time Lookup', !}APQ Time Dimensions, 'Current Month', 'Final Value') | ' YTD';
+[ '}APQ Time Dimensions':{'Month'}, '}APQ Time Relative Time Periods':'Last Month YTD', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:DB('}APQ Time Relative Time Lookup', !}APQ Time Dimensions, 'Last Month', 'Final Value') | ' YTD';
+
+[ '}APQ Time Dimensions':{'Week'}, '}APQ Time Relative Time Periods':'Current Week', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:DB('Sys Parameter', 'Current Actual Week', 'Text');
+[ '}APQ Time Dimensions':{'Week'}, '}APQ Time Relative Time Periods':'Last Week', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:AttrS (!}APQ Time Dimensions, DB('}APQ Time Relative Time Lookup', !}APQ Time Dimensions, 'Current Week', 'Final Value'), !}APQ Time Relative Time Periods);
+[ '}APQ Time Dimensions':{'Week'}, '}APQ Time Relative Time Periods':'Next Week', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:AttrS (!}APQ Time Dimensions, DB('}APQ Time Relative Time Lookup', !}APQ Time Dimensions, 'Current Week', 'Final Value'), !}APQ Time Relative Time Periods);
+[ '}APQ Time Dimensions':{'Week'}, '}APQ Time Relative Time Periods':'Current Week YTD', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:DB('}APQ Time Relative Time Lookup', !}APQ Time Dimensions, 'Current Week', 'Final Value') | ' YTD';
+[ '}APQ Time Dimensions':{'Week'}, '}APQ Time Relative Time Periods':'Last Week YTD', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:DB('}APQ Time Relative Time Lookup', !}APQ Time Dimensions, 'Last Week', 'Final Value') | ' YTD';
+
+[ '}APQ Time Dimensions':{'Day in Month'}, '}APQ Time Relative Time Periods':'Current Day', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:Subst(DB('Sys Parameter', 'System Date', 'Text'),9,2);
+[ '}APQ Time Dimensions':{'Day in Month'}, '}APQ Time Relative Time Periods':'Last Day', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:Subst(DB('Sys Time Attribute', DB('Sys Parameter', 'System Date', 'Text'), 'T-1', 'yyyy-mm-dd'), 9,2);
+[ '}APQ Time Dimensions':{'Day in Month'}, '}APQ Time Relative Time Periods':'Next Day', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:Subst(DB('Sys Time Attribute', DB('Sys Parameter', 'System Date', 'Text'), 'T+1', 'yyyy-mm-dd'), 9,2);
+
+[ '}APQ Time Dimensions':{'Day in Year'}, '}APQ Time Relative Time Periods':'Current Day', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:Subst(DB('Sys Parameter', 'System Date', 'Text'),6,5);
+[ '}APQ Time Dimensions':{'Day in Year'}, '}APQ Time Relative Time Periods':'Last Day', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:Subst(DB('Sys Time Attribute', DB('Sys Parameter', 'System Date', 'Text'), 'T-1', 'yyyy-mm-dd'), 6,5);
+[ '}APQ Time Dimensions':{'Day in Year'}, '}APQ Time Relative Time Periods':'Next Day', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:Subst(DB('Sys Time Attribute', DB('Sys Parameter', 'System Date', 'Text'), 'T+1', 'yyyy-mm-dd'), 6,5);
+
+[ '}APQ Time Dimensions':{'Year Month'}, '}APQ Time Relative Time Periods':'Current Month', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:DB('Sys Parameter', 'Current Actual Year', 'Text') | '-' | Subst(DB('Sys Parameter', 'Current Actual Month', 'Text'),2,2);
+[ '}APQ Time Dimensions':{'Year Month'}, '}APQ Time Relative Time Periods':'Last Month', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:DB('Sys Time Attribute', DB('Sys Parameter', 'Current Actual Year', 'Text') | '-' | Subst(DB('Sys Parameter', 'Current Actual Month', 'Text'),2,2), 'T-1', 'yyyy-mm-dd');
+[ '}APQ Time Dimensions':{'Year Month'}, '}APQ Time Relative Time Periods':'Next Month', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:DB('Sys Time Attribute', DB('Sys Parameter', 'Current Actual Year', 'Text') | '-' | Subst(DB('Sys Parameter', 'Current Actual Month', 'Text'),2,2), 'T+1', 'yyyy-mm-dd');
+
+[ '}APQ Time Dimensions':{'Year Month'}, '}APQ Time Relative Time Periods':'Current Quarter', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:
+DB('Sys Parameter', 'Current Actual Year', 'Text') | '-' | AttrS('Month',Subst(DB('Sys Parameter', 'Current Actual Month', 'Text'),2,2), 'Quarter');
+[ '}APQ Time Dimensions':{'Year Month'}, '}APQ Time Relative Time Periods':'Last Quarter', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:
+DB('Sys Time Attribute', DB('Sys Parameter', 'Current Actual Year', 'Text') | '-' | AttrS('Month',Subst(DB('Sys Parameter', 'Current Actual Month', 'Text'),2,2), 'Quarter'), 'T-1', 'yyyy-mm-dd');
+[ '}APQ Time Dimensions':{'Year Month'}, '}APQ Time Relative Time Periods':'Next Quarter', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:
+DB('Sys Time Attribute', DB('Sys Parameter', 'Current Actual Year', 'Text') | '-' | AttrS('Month',Subst(DB('Sys Parameter', 'Current Actual Month', 'Text'),2,2), 'Quarter'), 'T+1', 'yyyy-mm-dd');
+
+#[ '}APQ Time Dimensions':{'Date:Date'}, '}APQ Time Relative Time Periods':'Current Year', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:TimSt(Now, '\Y');
+#[ '}APQ Time Dimensions':{'Date:Date'}, '}APQ Time Relative Time Periods':'Last Year', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:DB('Sys Time Attribute', TimSt(Now, '\Y'), 'T-1', 'yyyy-mm-dd');
+#[ '}APQ Time Dimensions':{'Date:Date'}, '}APQ Time Relative Time Periods':'Next Year', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:DB('Sys Time Attribute', TimSt(Now, '\Y'), 'T+1', 'yyyy-mm-dd');
+#
+#[ '}APQ Time Dimensions':{'Date:Date'}, '}APQ Time Relative Time Periods':'Current Quarter', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:TimSt(Now, '\Y')|'-'|DB('Sys Time Attribute', TimSt(Now, '\Y-\m-\d'), 'T', 'Quarter');
+#[ '}APQ Time Dimensions':{'Date:Date'}, '}APQ Time Relative Time Periods':'Last Quarter', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:DB('Sys Time Attribute', TimSt(Now, '\Y')|'-'|DB('Sys Time Attribute', TimSt(Now, '\Y-\m-\d'), 'T', 'Quarter'), 'T-1', 'yyyy-mm-dd');
+#[ '}APQ Time Dimensions':{'Date:Date'}, '}APQ Time Relative Time Periods':'Next Quarter', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:DB('Sys Time Attribute', TimSt(Now, '\Y')|'-'|DB('Sys Time Attribute', TimSt(Now, '\Y-\m-\d'), 'T', 'Quarter'), 'T+1', 'yyyy-mm-dd');
+#
+#[ '}APQ Time Dimensions':{'Date:Date'}, '}APQ Time Relative Time Periods':'Current Month', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:TimSt(Now, '\Y-\m');
+#[ '}APQ Time Dimensions':{'Date:Date'}, '}APQ Time Relative Time Periods':'Last Month', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:DB('Sys Time Attribute', TimSt(Now, '\Y-\m'), 'T-1', 'yyyy-mm-dd');
+#[ '}APQ Time Dimensions':{'Date:Date'}, '}APQ Time Relative Time Periods':'Next Month', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:DB('Sys Time Attribute', TimSt(Now, '\Y-\m'), 'T+1', 'yyyy-mm-dd');
+#
+#[ '}APQ Time Dimensions':{'Date:Date'}, '}APQ Time Relative Time Periods':'Current Week', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:TimSt(Now, '\Y')|'-'|DB('Sys Time Attribute', TimSt( Now, '\Y-\m-\d' ), 'T', 'Week');
+#[ '}APQ Time Dimensions':{'Date:Date'}, '}APQ Time Relative Time Periods':'Last Week', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:DB('Sys Time Attribute', TimSt(Now, '\Y')|'-'|DB('Sys Time Attribute', TimSt(Now, '\Y-\m-\d'), 'T', 'Week'), 'T-1', 'yyyy-mm-dd');
+#[ '}APQ Time Dimensions':{'Date:Date'}, '}APQ Time Relative Time Periods':'Next Week', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:DB('Sys Time Attribute', TimSt(Now, '\Y')|'-'|DB('Sys Time Attribute', TimSt(Now, '\Y-\m-\d'), 'T', 'Week'), 'T+1', 'yyyy-mm-dd');
+#
+#[ '}APQ Time Dimensions':{'Date:Date'}, '}APQ Time Relative Time Periods':'Current Day', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:TimSt(Now, '\Y-\m-\d');
+#[ '}APQ Time Dimensions':{'Date:Date'}, '}APQ Time Relative Time Periods':'Last Day', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:DB('Sys Time Attribute', TimSt(Now, '\Y-\m-\d'), 'T-1', 'yyyy-mm-dd');
+#[ '}APQ Time Dimensions':{'Date:Date'}, '}APQ Time Relative Time Periods':'Next Day', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:DB('Sys Time Attribute', TimSt(Now, '\Y-\m-\d'), 'T+1', 'yyyy-mm-dd');
+#
+#############################
+# Stets & Overrides
+#############################
+
+# Artificial Total Dimensions node
+['}APQ Time Dimensions':'Total APQ Time Dimensions'] = S: '';
+
+# If the relative time consolidation doesn't exist then data entry (and rule derived value) not possible
+[ '}APQ Time Relative Time Lookup Measure':{'LookupValue','Override Value','Hierarchy','HierarchyUsed','Final Value','Alias','Final Alias Value','CreateSubset'} ] = S: 
+IF( [ '}APQ Time Relative Time Lookup Measure':'Exists in Dimension' ] = 0 % ElLev( '}APQ Time Relative Time Periods', !}APQ Time Relative Time Periods ) > 0,
+    '',
+    Continue
+);
+
+# Hierarchies
+[ '}APQ Time Relative Time Lookup Measure':'Hierarchy' ] = S: 
+If( ElLev( '}APQ Time Dimensions', !}APQ Time Dimensions ) = 0,
+    !}APQ Time Dimensions,
+    STET 
+);
+
+[ '}APQ Time Relative Time Lookup Measure':'HierarchyUsed' ] = S: 
+If( ElLev( '}APQ Time Relative Time Periods', !}APQ Time Relative Time Periods ) > 0,
+    '',
+    If( ElLev( '}APQ Time Dimensions', !}APQ Time Dimensions ) = 0,
+        !}APQ Time Dimensions,
+        If( DimIx( '}Dimensions',  DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, !}APQ Time Relative Time Periods, 'Hierarchy' ) ) = 0,
+            !}APQ Time Dimensions,
+            DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, !}APQ Time Relative Time Periods, 'Hierarchy' )
+        )
+    )
+);
+
+# If the hierarchy has the SAME template time dimension as its parent then inherit the value, else stet to allow for data entry at the leaf hierarchy level.
+[ '}APQ Time Relative Time Lookup Measure':{'LookupValue','Override Value','Alias','CreateSubset'} ] = S:
+IF( AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Analog' ) @= AttrS( '}APQ Time Dimensions', ElPar( '}APQ Time Dimensions', !}APQ Time Dimensions, 1 ), 'APQ Time Dim Analog' ), 
+    DB( '}APQ Time Relative Time Lookup', ElPar( '}APQ Time Dimensions', !}APQ Time Dimensions, 1 ), !}APQ Time Relative Time Periods, !}APQ Time Relative Time Lookup Measure ),
+    Continue
+);
+
+[ '}APQ Time Relative Time Lookup Measure':'Override Value' ] = S:
+IF( IsLeaf = 1,
+  STET,
+  CONTINUE
+);
+
+[ '}APQ Time Relative Time Lookup Measure':'Exists in Dimension' ] = N:
+IF( DimIx( !}APQ Time Dimensions, !}APQ Time Relative Time Periods ) > 0,
+  1,
+  0
+);
+
+[ '}APQ Time Relative Time Periods':{'Rollups APQ Time Relative Time Periods','Group Relative Year','Group Relative Quarter','Group Relative Month','Group Relative Day'} ] = S: '';
+
+[ '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:
+IF( [ '}APQ Time Relative Time Lookup Measure':'Exists in Dimension' ] = 0,
+  '',
+  CONTINUE
+);
+
+#############################
+# Current Year lookup from SubSt( Fin Year-Month, 1, 4 ) for fiscal period based time dimensions
+#############################
+
+[ '}APQ Time Relative Time Periods':'Current Year', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:
+### Replace text reference with appropriate dimension name for the model
+IF( !}APQ Time Dimensions @= 'APQ.Demo T Fin Year' % !}APQ Time Dimensions @= 'APQ.Demo T Fin Year-Period',
+   SubSt( DB( '}APQ Time Relative Time Lookup', 'APQ.Demo T Fin Year-Period', 'Current Month', 'Final Value' ), 1, 4 ),
+   Continue
+);
+
+#############################
+# Year lookup from system time for calendar based time dimensions
+#############################
+
+[ '}APQ Time Dimensions':{'}APQ Time Year','}APQ Time Year-Month','}APQ Time Date'}, '}APQ Time Relative Time Periods':'Current Year', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:
+TimSt( Now, '\Y' );
+
+[ '}APQ Time Relative Time Periods':'Current Year', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:
+IF( DimIx( '}ElementAttributes_' | !}APQ Time Dimensions, AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Alias' ) ) > 0,
+  AttrS( !}APQ Time Dimensions, DB( '}APQ Time Relative Time Lookup', AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Analog' ), !}APQ Time Relative Time Periods, 'Final Value' ), AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Alias' ) ),
+  IF( DimIx( !}APQ Time Dimensions, DB( '}APQ Time Relative Time Lookup', AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Analog' ), !}APQ Time Relative Time Periods, !}APQ Time Relative Time Lookup Measure ) ) > 0,
+    DB( '}APQ Time Relative Time Lookup', AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Analog' ), !}APQ Time Relative Time Periods, !}APQ Time Relative Time Lookup Measure ),
+    ''
+  )
+);
+
+[ '}APQ Time Relative Time Periods':{'Last Year','Next Year'}, '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:
+AttrS( '}APQ Time Year',
+  DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, 'Current Year', 'Final Value' ),
+  !}APQ Time Relative Time Periods
+);
+
+
+#############################
+# Quarter lookup from attributes
+#############################
+
+[ '}APQ Time Dimensions':{'}APQ Time Month','}APQ Time Quarter'}, '}APQ Time Relative Time Periods':'Current Quarter', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:
+AttrS( '}APQ Time Month', DB( '}APQ Time Relative Time Lookup', '}APQ Time Month', 'Current Month', 'Final Value' ), 'Quarter' );
+
+[ '}APQ Time Dimensions':{'}APQ Time Year-Month','}APQ Time Date'}, '}APQ Time Relative Time Periods':'Current Quarter', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:
+SubSt( DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, 'Current Year', 'Final Value' ), 1, 4 )
+ |'-'|
+DB( '}APQ Time Relative Time Lookup', '}APQ Time Quarter', 'Current Quarter', 'Final Value' );
+
+[ '}APQ Time Dimensions':'}APQ Time Day in Year', '}APQ Time Relative Time Periods':{'Current Quarter','Last Quarter','Next Quarter'}, '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:
+DB( '}APQ Time Relative Time Lookup', '}APQ Time Quarter', !}APQ Time Relative Time Periods, 'Final Value' );
+
+[ '}APQ Time Relative Time Periods':{'Current Quarter'}, '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:
+IF( DimIx( '}ElementAttributes_' | !}APQ Time Dimensions, AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Alias' ) ) > 0,
+  AttrS( !}APQ Time Dimensions, DB( '}APQ Time Relative Time Lookup', AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Analog' ), !}APQ Time Relative Time Periods, 'Final Value' ), AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Alias' ) ),
+  IF( DimIx( !}APQ Time Dimensions, DB( '}APQ Time Relative Time Lookup', AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Analog' ), !}APQ Time Relative Time Periods, !}APQ Time Relative Time Lookup Measure ) ) > 0,
+    DB( '}APQ Time Relative Time Lookup', AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Analog' ), !}APQ Time Relative Time Periods, !}APQ Time Relative Time Lookup Measure ),
+    ''
+  )
+);
+
+[ '}APQ Time Dimensions':'}APQ Time Year-Month', '}APQ Time Relative Time Periods':'LY Current Quarter', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:
+AttrS( '}APQ Time Year-Month', DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, 'Current Quarter', 'Final Value' ), 'Year-1' );
+
+[ '}APQ Time Dimensions':'}APQ Time Year-Month', '}APQ Time Relative Time Periods':'NY Current Quarter', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:
+AttrS( '}APQ Time Year-Month', DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, 'Current Quarter', 'Final Value' ), 'Year+1' );
+
+[ '}APQ Time Dimensions':{'}APQ Time Month','}APQ Time Quarter'}, '}APQ Time Relative Time Periods':{'Last Quarter','Next Quarter'}, '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:
+AttrS( '}APQ Time Quarter',
+  DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, 'Current Quarter', 'Final Value' ),
+  !}APQ Time Relative Time Periods
+);
+
+[ '}APQ Time Dimensions':{'}APQ Time Year-Month','}APQ Time Date'}, '}APQ Time Relative Time Periods':{'Last Quarter','Next Quarter'}, '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:
+SubSt( DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, 'Current Year', 'Final Value' ), 1, 4 )
+ |'-'|
+DB( '}APQ Time Relative Time Lookup', '}APQ Time Quarter', !}APQ Time Relative Time Periods, 'Final Value' );
+
+[ '}APQ Time Relative Time Periods':{'Last Quarter','Next Quarter'}, '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:
+IF( DimIx( '}ElementAttributes_' | !}APQ Time Dimensions, AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Alias' ) ) = 0,
+  DB( '}APQ Time Relative Time Lookup', AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Analog' ), !}APQ Time Relative Time Periods, 'Final Value' ),
+  AttrS( !}APQ Time Dimensions, DB( '}APQ Time Relative Time Lookup', AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Analog' ), !}APQ Time Relative Time Periods, 'Final Value' ), AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Alias' ) )
+);
+
+[ '}APQ Time Dimensions':{'}APQ Time Year-Month'}, '}APQ Time Relative Time Periods':{'LY Next Quarter','NY Next Quarter'}, '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:
+AttrS( !}APQ Time Dimensions,
+  DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, SubSt( !}APQ Time Relative Time Periods, 1, 2 ) | 'Current Quarter', 'Final Value' ),
+  'Month+3'
+);
+
+[ '}APQ Time Dimensions':{'}APQ Time Year-Month'}, '}APQ Time Relative Time Periods':{'LY Last Quarter','NY Last Quarter'}, '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:
+AttrS( !}APQ Time Dimensions,
+  DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, SubSt( !}APQ Time Relative Time Periods, 1, 2 ) | 'Current Quarter', 'Final Value' ),
+  'Month-3'
+);
+
+[ '}APQ Time Relative Time Periods':{'LY Last Quarter','LY Current Quarter','LY Next Quarter'}, '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:
+IF( DimIx( '}ElementAttributes_' | !}APQ Time Dimensions, AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Alias' ) ) > 0,
+  AttrS( !}APQ Time Dimensions, DB( '}APQ Time Relative Time Lookup', AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Analog' ), !}APQ Time Relative Time Periods, 'Final Value' ), AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Alias' ) ),
+  IF( DimIx( !}APQ Time Dimensions, DB( '}APQ Time Relative Time Lookup', AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Analog' ), !}APQ Time Relative Time Periods, !}APQ Time Relative Time Lookup Measure ) ) > 0,
+    DB( '}APQ Time Relative Time Lookup', AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Analog' ), !}APQ Time Relative Time Periods, !}APQ Time Relative Time Lookup Measure ),
+    ''
+  )
+);
+
+#############################
+# Month lookup from system time
+#############################
+
+[ '}APQ Time Dimensions':{'}APQ Time Year-Month','}APQ Time Date'}, '}APQ Time Relative Time Periods':'Current Month', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:
+TimSt( Now, '\Y-M\m' );
+[ '}APQ Time Dimensions':'}APQ Time Month', '}APQ Time Relative Time Periods':'Current Month', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:
+TimSt( Now, 'M\m' );
+
+[ '}APQ Time Dimensions':'}APQ Time Day in Year', '}APQ Time Relative Time Periods':{'Current Month','Last Month','Next Month'}, '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:
+DB( '}APQ Time Relative Time Lookup', '}APQ Time Month', !}APQ Time Relative Time Periods, 'Final Value' );
+
+[ '}APQ Time Dimensions':'}APQ Time Year-Month', '}APQ Time Relative Time Periods':'LY Current Month', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:
+AttrS( '}APQ Time Year-Month', DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, 'Current Month', 'Final Value' ), 'Month-12' );
+
+[ '}APQ Time Dimensions':'}APQ Time Year-Month', '}APQ Time Relative Time Periods':'NY Current Month', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:
+AttrS( '}APQ Time Year-Month', DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, 'Current Month', 'Final Value' ), 'Month+12' );
+
+[ '}APQ Time Relative Time Periods':{'Current Month','LY Current Month','NY Current Month'}, '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:
+IF( DimIx( '}ElementAttributes_' | !}APQ Time Dimensions, AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Alias' ) ) > 0,
+  AttrS( !}APQ Time Dimensions, DB( '}APQ Time Relative Time Lookup', AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Analog' ), !}APQ Time Relative Time Periods, 'Final Value' ), AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Alias' ) ),
+  IF( DimIx( !}APQ Time Dimensions, DB( '}APQ Time Relative Time Lookup', AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Analog' ), !}APQ Time Relative Time Periods, !}APQ Time Relative Time Lookup Measure ) ) > 0,
+    DB( '}APQ Time Relative Time Lookup', AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Analog' ), !}APQ Time Relative Time Periods, !}APQ Time Relative Time Lookup Measure ),
+    ''
+  )
+);
+
+[ '}APQ Time Dimensions':{'}APQ Time Year-Month'}, '}APQ Time Relative Time Periods':{'LY Last Month','LY Next Month','NY Last Month','NY Next Month'}, '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:
+AttrS( !}APQ Time Dimensions,
+  DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, SubSt( !}APQ Time Relative Time Periods, 1, 2 ) | 'Current Month', 'Final Value' ),
+  SubSt( !}APQ Time Relative Time Periods, 4, 10 )
+);
+
+[ '}APQ Time Relative Time Periods':{'Last Month','Next Month'}, '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:
+IF( AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Analog' ) @= '}APQ Time Day in Year', 
+  DB( '}APQ Time Relative Time Lookup', '}APQ Time Month', !}APQ Time Relative Time Periods, 'Final Value' ),
+  CONTINUE
+);
+
+[ '}APQ Time Relative Time Periods':{'Last Month','Next Month'}, '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:
+If( SubSt( !}APQ Time Dimensions, 1, 9 ) @= '}APQ Time' % AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Alias' ) @= '',
+    AttrS( 
+        AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Analog' ), 
+        DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, 'Current Month', 'Final Value' ),
+        !}APQ Time Relative Time Periods
+    ),
+    AttrS( 
+        AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Analog' ),
+        If( DimIx( AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Analog' ), DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, 'Current Month', 'Final Value' ) ) > 0,
+            DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, 'Current Month', 'Final Value' ),
+            AttrS( 
+                !}APQ Time Dimensions, 
+                DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, 'Current Month', 'Final Value' ), 
+                AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Alias' ) 
+            )
+        ),
+        !}APQ Time Relative Time Periods
+    )
+);
+
+[ '}APQ Time Relative Time Periods':{'NY Last Month','NY Next Month'}, '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:
+If( SubSt( !}APQ Time Dimensions, 1, 9 ) @= '}APQ Time' % AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Alias' ) @= '',
+    AttrS( 
+        AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Analog' ), 
+        DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, 'NY Current Month', 'Final Value' ),
+        SubSt( !}APQ Time Relative Time Periods, 4, 10 )
+    ),
+    AttrS( 
+        AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Analog' ),
+        If( DimIx( AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Analog' ), DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, 'NY Current Month', 'Final Value' ) ) > 0,
+            DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, 'NY Current Month', 'Final Value' ),
+            AttrS( 
+                !}APQ Time Dimensions, 
+                DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, 'NY Current Month', 'Final Value' ), 
+                AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Alias' ) 
+            )
+        ),
+        SubSt( !}APQ Time Relative Time Periods, 4, 10 )
+    )
+);
+
+[ '}APQ Time Relative Time Periods':{'LY Last Month','LY Next Month'}, '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:
+If( SubSt( !}APQ Time Dimensions, 1, 9 ) @= '}APQ Time' % AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Alias' ) @= '',
+    AttrS( 
+        AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Analog' ), 
+        DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, 'LY Current Month', 'Final Value' ),
+        SubSt( !}APQ Time Relative Time Periods, 4, 10 )
+    ),
+    AttrS( 
+        AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Analog' ),
+        If( DimIx( AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Analog' ), DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, 'LY Current Month', 'Final Value' ) ) > 0,
+            DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, 'LY Current Month', 'Final Value' ),
+            AttrS( 
+                !}APQ Time Dimensions, 
+                DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, 'LY Current Month', 'Final Value' ), 
+                AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Alias' ) 
+            )
+        ),
+        SubSt( !}APQ Time Relative Time Periods, 4, 10 )
+    )
+);
+
+#############################
+# Week lookup from attributes
+#############################
+
+[ '}APQ Time Dimensions':{'}APQ Time Date'}, '}APQ Time Relative Time Periods':'Current Week', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:
+AttrS( !}APQ Time Dimensions, DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, 'Current Day', 'Final Value' ), 'Year week' );
+
+[ '}APQ Time Dimensions':{'}APQ Time Date'}, '}APQ Time Relative Time Periods':{'Last Week','Next Week'}, '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:
+AttrS( '}APQ Time Year-Week Lookup', DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, 'Current Week', 'Final Value' ), !}APQ Time Relative Time Periods );
+
+#############################
+# Day lookup from system time
+#############################
+
+[ '}APQ Time Dimensions':{'}APQ Time Date'}, '}APQ Time Relative Time Periods':'Current Day', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:
+TimSt( Now, '\Y-\m-\d' );
+[ '}APQ Time Dimensions':'}APQ Time Day in Year', '}APQ Time Relative Time Periods':'Current Day', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:
+DimNm( '}APQ Time Day in Year', DimIx( '}APQ Time Day in Year', TimSt( Now, '\m-\d' ) ) );
+
+[ '}APQ Time Relative Time Periods':'Current Day', '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S: 
+IF( AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Analog' ) @= '}APQ Time Date' 
+  % AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Analog' ) @= '}APQ Time Day in Year', 
+  DB( '}APQ Time Relative Time Lookup', AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Analog' ), 'Current Day', 'Final Value' ),
+  CONTINUE
+);
+
+[ '}APQ Time Dimensions':'}APQ Time Day in Year', '}APQ Time Relative Time Periods':{'Last Day','Next Day'}, '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:
+DimNm( '}APQ Time Day in Year',
+  DimIx( '}APQ Time Day in Year',
+    SubSt(
+      AttrS( '}APQ Time Date Lookup',
+        TimSt( Now, '\Y' ) |'-'|
+        AttrS( !}APQ Time Dimensions, DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, 'Current Day', 'Final Value' ), 'MM-DD' ),
+        !}APQ Time Relative Time Periods
+      ),
+      6, 5
+    )
+  )
+);
+
+[ '}APQ Time Relative Time Periods':{'Last Day','Next Day'}, '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:
+AttrS( AttrS( '}APQ Time Dimensions', !}APQ Time Dimensions, 'APQ Time Dim Analog' ),
+  DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, 'Current Day', 'Final Value' ),
+  !}APQ Time Relative Time Periods
+);
+
+
+#############################
+# Generic lookup value catch
+#############################
+
+[ '}APQ Time Relative Time Lookup Measure':'Lookup Value' ] = S:
+IF(
+  DimIx( !}APQ Time Dimensions,
+    DB( '}APQ Time Relative Time Lookup',
+      !}APQ Time Dimensions, 
+      AttrS( '}APQ Time Relative Time Periods', !}APQ Time Relative Time Periods, 'Base Period' ),
+      'Final Value'
+    )
+  ) = 0,
+  '',
+  DB( '}APQ Time Relative Time Lookup',
+    !}APQ Time Dimensions,
+    AttrS( '}APQ Time Relative Time Periods', !}APQ Time Relative Time Periods, 'Base Period' ),
+    'Final Value'
+  ) |' '|
+  AttrS(  '}APQ Time Relative Time Periods', !}APQ Time Relative Time Periods, 'Relativity Measure' )
+);
+
+#############################
+# Generic final value check of override else lookup value
+#############################
+
+# If alternate hierarchies are used in time dimensions then not all elements will exist in the default hierarchy (but will exist in the dimension overall)
+# Therefore don't convert lookup or override value to principal name since would make empty. Will be handled correctly at leaf level.
+[ '}APQ Time Relative Time Lookup Measure':'Final Value' ] = S:
+IF( ElLev( '}APQ Time Dimensions', !}APQ Time Dimensions ) = 1,
+    IF( DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, !}APQ Time Relative Time Periods, 'Override Value' ) @= '',
+        DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, !}APQ Time Relative Time Periods, 'Lookup Value' ),
+        DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, !}APQ Time Relative Time Periods, 'Override Value' )
+    ),
+    IF(
+        DimIx( !}APQ Time Dimensions,
+            DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, !}APQ Time Relative Time Periods, 'Override Value' )
+        ) > 0,
+        DimNm( !}APQ Time Dimensions, DimIx( !}APQ Time Dimensions, DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, !}APQ Time Relative Time Periods, 'Override Value' ) ) ),
+        DimNm( !}APQ Time Dimensions, DimIx( !}APQ Time Dimensions, DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, !}APQ Time Relative Time Periods, 'Lookup Value' ) ) )
+    )
+);
+
+[ '}APQ Time Relative Time Lookup Measure':'Final Alias Value' ] = S:
+IF( DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, !}APQ Time Relative Time Periods, 'Alias' ) @= '',
+  DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, !}APQ Time Relative Time Periods, 'Final Value' ),
+  IF(
+    AttrS( DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, !}APQ Time Relative Time Periods, 'HierarchyUsed' ),
+      DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, !}APQ Time Relative Time Periods, 'Final Value' ),
+      DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, !}APQ Time Relative Time Periods, 'Alias' )
+    ) @= '',
+    DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, !}APQ Time Relative Time Periods, 'Final Value' ),
+    AttrS( DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, !}APQ Time Relative Time Periods, 'HierarchyUsed' ),
+      DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, !}APQ Time Relative Time Periods, 'Final Value' ),
+      DB( '}APQ Time Relative Time Lookup', !}APQ Time Dimensions, !}APQ Time Relative Time Periods, 'Alias' )
+    )
+  )
+);
+
+#############################
+FEEDERS;
+#############################
+
+##~~   Internal Cube Feeders
+#############################
+
+
+##~~   External Cube Feeders
+#############################
+
+
+#############################
+##~~    End Rule File    ~~##
+#############################

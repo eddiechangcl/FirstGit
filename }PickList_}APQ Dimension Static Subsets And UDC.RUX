@@ -1,0 +1,49 @@
+FORMAT==100
+##############################################################################################################################
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+#############################
+SKIPCHECK;
+#############################
+
+[ '}APQ Dimension Node Type':{'Static Subset','SemiDynamic Subset','Dynamic Subset'}, '}APQ Dimension Static Subsets And UDC Measure':'AliasToSet' ] = S:
+'Subset:' | '}ElementAttributes_' | !}APQ Dimensions | ':Alias Attributes';
+
+[ '}APQ Dimension Static Subsets And UDC Measure':'Regeneration Frequency' ] = S:
+'Subset:}APQ PickList Validations:PickList Daily-Weekly-Manual';
+
+[ '}APQ Dimension Static Subsets And UDC Measure':'Regeneration Day' ] = S:
+'Subset:}APQ PickList Validations:PickList Days';
+
+# Picklist for element name only for static subset & flat consol (not for hier consol as elements generated within the hier may be used in turn)
+[ '}APQ Dimension Node Type':{'Static Subset','Flat Consolidation'}, '}APQ Dimension Static Subsets And UDC Measure':'ElementName' ] = S:
+IF( ISLEAF = 0,
+    '',
+    IF( DimSiz( DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, !}APQ Item Index, 'Hierarchy' ) ) > 
+    DB( '}APQ Settings', 'Max subset size for PickList entry', 'Numeric' ),
+        '',
+        'Dimension:' | 
+        IF( Scan( ':', DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, !}APQ Item Index, 'Hierarchy' ) ) = 0,
+            !}APQ Dimensions,
+            SubSt( DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, !}APQ Item Index, 'Hierarchy' ), 1, Scan(':',DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, !}APQ Item Index, 'Hierarchy' )) - 1 ) |
+            '\' | SubSt( DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, !}APQ Item Index, 'Hierarchy' ), Scan(':',DB( '}APQ Dimension Static Subsets And UDC', !}APQ Dimensions, !}APQ Dimension Node Type, !}APQ Dimension Use Index, !}APQ Item Index, 'Hierarchy' )), 100 )
+        )
+    ) 
+);
+
+[ '}APQ Dimension Static Subsets And UDC Measure':'Hierarchy' ] = S:
+IF( DimIx( '}Dimensions', '}Hierarchies_' | !}APQ Dimensions ) = 0,
+    'Static::' | !}APQ Dimensions,
+    'Dimension:' | '}Hierarchies_' | !}APQ Dimensions
+);
+
+
+#############################
+##~~    End Rule File    ~~##
+#############################

@@ -1,0 +1,10 @@
+﻿283,100
+284,"Default"
+11,00000000000000
+274,Caption
+18,0
+275,75
+{DRILLDOWNMEMBER({[Date].[Date].[All Years]}, {[Date].[Date].[All Years]})}
+278,0
+281,0
+270,0

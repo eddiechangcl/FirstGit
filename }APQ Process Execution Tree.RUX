@@ -1,0 +1,96 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+SKIPCHECK;
+FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# Companion cube to **}APQ Process Execution Log** which is updated on demand. **}APQ Process Execution Tree** contains the same data
+# except that the storage is via unique process execution ID dimension which can be explored via alternate rollups as opposed to
+# multidimensional storage.
+#
+# Note: There are alternate drill-down paths for analysis of:
+# * User/Chore (WHO ran the process)
+# * Runtime (WHEN the process ran)
+# * Process (then by runtime)
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+[ '}APQ Process Execution Log Measure':'nProcessExecutionIndex' ]  = C: ConsolidatedMax( 2, '', !}APQ Process Execution Tree, !}APQ Process Execution Log Measure );
+
+[ '}APQ Process Execution Log Measure':'nProcessExecutionTotalCount' ]  = C: ConsolidatedMax( 2, '', !}APQ Process Execution Tree, !}APQ Process Execution Log Measure );
+
+[ '}APQ Process Execution Log Measure':'nProcessExecutionIntraDayIndex' ] = C: ConsolidatedMax( 2, '', !}APQ Process Execution Tree, !}APQ Process Execution Log Measure );
+
+[ '}APQ Process Execution Log Measure':'nProcessExecutionIntraDayCount' ] = C: ConsolidatedMax( 2, '', !}APQ Process Execution Tree, !}APQ Process Execution Log Measure );
+
+[ '}APQ Process Execution Log Measure':'nProcessExecutionTime' ] = N:
+IF( [ '}APQ Process Execution Log Measure':'nProcessFinishTime' ] < [ '}APQ Process Execution Log Measure':'nProcessStartTime' ],
+  0,
+  [ '}APQ Process Execution Log Measure':'nProcessFinishTime' ] - [ '}APQ Process Execution Log Measure':'nProcessStartTime' ]
+);
+
+[ '}APQ Process Execution Log Measure':'nAvgExecutionTimeSeconds' ] = C: [ '}APQ Process Execution Log Measure':'nProcessExecutionTimeSeconds' ] \  [ '}APQ Process Execution Log Measure':'nProcessExecutionTotalCount' ];
+
+[ '}APQ Process Execution Log Measure':'nAvgExecutionTimeMinutes' ] = C: [ '}APQ Process Execution Log Measure':'nProcessExecutionTimeMinutes' ] \  [ '}APQ Process Execution Log Measure':'nProcessExecutionTotalCount' ];
+
+[ '}APQ Process Execution Log Measure':'sProcessStartTime' ]  = S:
+IF( IsLeaf = 0 % [ '}APQ Process Execution Log Measure':'nProcessStartTime' ] = 0,
+  '',
+  TimSt( [ '}APQ Process Execution Log Measure':'nProcessStartTime' ], DB('}APQ Settings','Date Time format','String') )
+);
+
+[ '}APQ Process Execution Log Measure':'sProcessFinishTime' ]  = S:
+IF( IsLeaf = 0 % [ '}APQ Process Execution Log Measure':'nProcessFinishTime' ] = 0,
+  '',
+  TimSt( [ '}APQ Process Execution Log Measure':'nProcessFinishTime' ], DB('}APQ Settings','Date Time format','String') )
+);
+
+[ '}APQ Process Execution Log Measure':'sProcessExecutionTime' ]  = S:
+IF( [ '}APQ Process Execution Log Measure':'nProcessFinishTime' ] = 0,
+  '',
+  TimSt( [ '}APQ Process Execution Log Measure':'nProcessExecutionTime' ], DB('}APQ Settings','Time format','String') )
+);
+
+[ '}APQ Process Execution Log Measure':'sProcessReturnCode' ]  = S:
+IF( IsLeaf = 0 % [ '}APQ Process Execution Log Measure':'nProcessStartedFlag' ] = 0,
+  '',
+  IF( [ '}APQ Process Execution Log Measure':'nProcessReturnCode' ] > 0,
+    AttrS( '}APQ ProcessExit Code', Str( [ '}APQ Process Execution Log Measure':'nProcessReturnCode' ], 2, 0 ), 'Caption_Default' ),
+    IF( [ '}APQ Process Execution Log Measure':'nProcessCompletedFlag' ] = 1 & [ '}APQ Process Execution Log Measure':'nProcessReturnCode' ] = 0,
+      IF( [ '}APQ Process Execution Log Measure':'nTotalMinorErrorCount' ] = 0,
+        'ProcessExitNormal',
+        'ProcessExitMinorError'
+      ),
+      'ProcessExitByQuit'
+    )
+  )
+);
+
+#############################
+FEEDERS;
+#############################
+
+[ '}APQ Process Execution Log Measure':'nProcessStartTime' ] => [ '}APQ Process Execution Log Measure':'sProcessStartTime' ];
+
+[ '}APQ Process Execution Log Measure':'nProcessFinishTime' ] => [ '}APQ Process Execution Log Measure':'sProcessFinishTime' ], [ '}APQ Process Execution Log Measure':'sProcessExecutionTime' ],
+[ '}APQ Process Execution Log Measure':'nProcessExecutionTime' ];
+
+[ '}APQ Process Execution Log Measure':'nProcessReturnCode' ] => [ '}APQ Process Execution Log Measure':'sProcessReturnCode' ];
+
+#############################
+##~~   End  Rule File   ~~##
+#############################

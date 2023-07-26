@@ -1,0 +1,52 @@
+﻿283,100
+284,"M Sys Module Object - Caption"
+11,20201005064153
+274,
+18,0
+275,
+278,0
+281,0
+270,43
+Clean Flag
+Object Name
+File Name
+App Entry File
+App Template File
+App Http String
+Cube File
+Cube Rule File
+Cube Picklist Cube File
+Cube Picklist Cube Rule File
+Cube View Folder
+Dimension File
+Dimension Attribute Dimension File
+Dimension Attribute Cube File
+Dimension Attribute Cube Rule File
+Dimension Attribute Cube Picklist Cube File
+Dimension Attribute Cube Picklist Cube Rule File
+Dimension Localize Cube File
+Dimension Localize Cube Rule File
+Dimension Subset Folder
+Process File
+Chore File
+Object Count
+Control Object Count
+APQ Object Count
+App Entry is Valid
+App Folder 01
+App Folder 02
+App Folder 03
+App Folder 04
+App Folder 05
+App Folder 06
+App Folder 07
+App Folder 08
+App Entry is .cube
+App Entry is .dimension
+App Entry is .view
+App Entry is .subset
+App Entry is .process
+App Entry is .chore
+App Entry is .blob
+App Entry is .extr
+App Entry is folder

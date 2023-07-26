@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=04 Dimension Security
+ENTRYTYPE=view
+ENTRYREFERENCE=TM1:///VIEW/PUBLIC/}DimensionSecurity/Default

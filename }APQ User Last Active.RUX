@@ -1,0 +1,48 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+SKIPCHECK;
+FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ User Last Active** provides a "near real time" record of the last login or logout timestamp of each user on a TM1 instance. 
+# Usually this is for compliance purposes where inactive users must be noted and typically excluded from system access following a certain timeframe 
+# of no recorded login activity.  The cube is loaded by the process **}APQ.Cub.UserLastActive.Update.0.Main** which scans the usrcon.log file
+# for user login and logout activity. This process should be run once per day in order to keep the information in the cube up to date. 
+# As the use case for the cube is typically for compliance to identify users who have not logged in for e.g. 60 or 90 days the fact that the 
+# last access timestamp may be one day out of date depending on the timing of save data vs. scheduled process run should not be an issue. 
+# If the cube needs to be absolutely up to date manually run **}APQ.Cub.UserLastActive.Update.0.Main**. The process should take only a few seconds.
+#
+# Note: 
+# For this process and cube to work the **tm1s-log.properties** file must have an additional logger configured for TM1.Login. Without
+# this logger the usercon.log file will not be created and updated. The necessary logging configuration entries are provided in the template
+# CFG folder.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+[ '}APQ User Last Active Measure':'Days Since Last Activity' ] = N:
+DimIx( '}APQ Time Date Lookup', Today( 1 ) ) - DimIx( '}APQ Time Date Lookup', SubSt( DB( '}APQ User Last Active', !}APQ Clients, 'Last Login Ordinal' ), 1, 8 ) );
+
+#############################
+ FEEDERS;
+#############################
+
+[ '}APQ User Last Active Measure':'Last Login' ] => [ '}APQ User Last Active Measure':'Days Since Last Activity' ];
+
+#############################
+##~~    End Rule File    ~~##
+#############################
+

@@ -1,0 +1,5 @@
+﻿FORMAT==100
+FEEDSTRINGS;
+SKIPCHECK;
+['Menu Profile']=S:'Subset:Sys Menu Profile:Picklist_Menu Profile';
+['Language']=S:'static:en:zh-Hans:zh-Hant';

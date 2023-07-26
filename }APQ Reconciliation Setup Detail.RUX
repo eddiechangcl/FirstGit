@@ -1,0 +1,130 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+#SKIPCHECK;
+#FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Reconciliation Setup Detail** is part of the **Reconciliation Module** family of cubes which perform automated reconciliation checks
+# of inter- or intra- cube values.  An example of how to use and configure the Reconciliation Application is included in the Apliqode Framework Demo Applcation
+# using the **Sales Cube** family as an example.
+#
+# **}APQ Reconciliation Setup Detail** is the finalization for reconciliation items.
+# The initial setup occurs in **}APQ Reconciliation Setup** where each reconciliation item recieves a cube reference and description is entered.
+# In **}APQ Reconciliation Setup Detail** all dimension elements where the **Default Member** defined in **}APQ Dimension Defaults** _*will not be used*_
+# then these are defined (or the default overwritten).
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+# if item is not used skip
+[ '}APQ Reconciliation Setup Detail Measure':'Applicable' ] = N:
+IF( DIMIX( '}Cubes', DB( '}APQ Reconciliation Setup', !}APQ Reconciliation Item, 'Reference') ) = 0,
+  0,
+  IF( SUBST( !}APQ Reconciliation Item, 1, 1 ) @<> 'R',
+    0,
+    DB( '}APQ Dimension Use', DB( '}APQ Reconciliation Setup', !}APQ Reconciliation Item, 'Reference' ), !}APQ Dimensions, 'Is Used' )
+  )
+);
+
+# get the TabDim of the dimension in the cube to Totalow the view to be sorted in correct dimension order
+[ '}APQ Reconciliation Setup Detail Measure':'Cube Index' ] = N:
+IF( [ '}APQ Reconciliation Setup Detail Measure':'Applicable' ] = 1,
+  DB( '}APQ Dimension Use', DB( '}APQ Reconciliation Setup', !}APQ Reconciliation Item, 'Reference' ), !}APQ Dimensions, 'Position' ),
+  0
+);
+
+# Allow data entry for the hierarchy selection
+[ '}APQ Reconciliation Setup Detail Measure':'Hierarchy Selection' ] = S:
+IF( [ '}APQ Reconciliation Setup Detail Measure':'Applicable' ] = 1,
+  STET,
+  ''
+);
+
+# Determine the hierarchy to use
+[ '}APQ Reconciliation Setup Detail Measure':'DimensionHierarchy' ] = S:
+IF( [ '}APQ Reconciliation Setup Detail Measure':'Applicable' ] = 1,
+  IF( DB( '}APQ Reconciliation Setup Detail', !}APQ Reconciliation Item, !}APQ Dimensions, 'Hierarchy Selection' ) @= '',
+    !}APQ Dimensions,
+    DB( '}APQ Reconciliation Setup Detail', !}APQ Reconciliation Item, !}APQ Dimensions, 'Hierarchy Selection' )
+  ),
+  ''
+);
+
+# Determine the hierarchy to use
+[ '}APQ Reconciliation Setup Detail Measure':'Hierarchy' ] = S:
+IF( [ '}APQ Reconciliation Setup Detail Measure':'Applicable' ] = 1,
+  IF( DB( '}APQ Reconciliation Setup Detail', !}APQ Reconciliation Item, !}APQ Dimensions, 'Hierarchy Selection' ) @= ''
+    % DB( '}APQ Reconciliation Setup Detail', !}APQ Reconciliation Item, !}APQ Dimensions, 'Hierarchy Selection' ) @= !}APQ Dimensions,
+    !}APQ Dimensions,
+    AttrS( '}APQ Dimension Hierarchies', DB( '}APQ Reconciliation Setup Detail', !}APQ Reconciliation Item, !}APQ Dimensions, 'DimensionHierarchy' ), 'Hierarchy' )
+  ),
+  ''
+);
+
+# Pull Description over without the ID
+[ '}APQ Reconciliation Setup Detail Measure':'Description' ] = S:
+IF( [ '}APQ Reconciliation Setup Detail Measure':'Applicable' ] = 0,
+  '',
+  TRIM( SUBST( DB( '}APQ Reconciliation Setup', !}APQ Reconciliation Item, 'Long Description'), LONG(!}APQ Reconciliation Item)+2, 255 ) )
+);
+
+# pull default dimension element value
+[ '}APQ Reconciliation Setup Detail Measure':'Default_Member' ] = S:
+IF( [ '}APQ Reconciliation Setup Detail Measure':'Applicable' ] = 1,
+  DB( '}APQ Dimension Defaults', DB( '}APQ Reconciliation Setup Detail', !}APQ Reconciliation Item, !}APQ Dimensions, 'DimensionHierarchy' ), 'Default_Member', 'String' ),
+  ''
+);
+
+# Totalow overriding of default element to a reconciliation item specific one
+[ '}APQ Reconciliation Setup Detail Measure':'Default Override' ] = S:
+IF( [ '}APQ Reconciliation Setup Detail Measure':'Applicable' ] = 0,
+  '',
+  STET
+);
+
+[ '}APQ Reconciliation Setup Detail Measure':'Element Used' ] = S:
+IF( [ '}APQ Reconciliation Setup Detail Measure':'Applicable' ] = 0,
+  '',
+  IF(
+    DimIx(
+      DB( '}APQ Reconciliation Setup Detail', !}APQ Reconciliation Item, !}APQ Dimensions, 'DimensionHierarchy' ),
+      DB( '}APQ Reconciliation Setup Detail', !}APQ Reconciliation Item, !}APQ Dimensions, 'Default Override' )
+    ) > 0,
+    DimNm(
+      DB( '}APQ Reconciliation Setup Detail', !}APQ Reconciliation Item, !}APQ Dimensions, 'DimensionHierarchy' ),
+      DimIx(
+        DB( '}APQ Reconciliation Setup Detail', !}APQ Reconciliation Item, !}APQ Dimensions, 'DimensionHierarchy' ),
+        DB( '}APQ Reconciliation Setup Detail', !}APQ Reconciliation Item, !}APQ Dimensions, 'Default Override' )
+      )
+    ),
+    DB( '}APQ Reconciliation Setup Detail', !}APQ Reconciliation Item, !}APQ Dimensions, 'Default_Member' )
+  )
+);
+
+[ '}APQ Reconciliation Setup Detail Measure':'Use Hierarchy' ] = N:
+IF( Scan(':',  DB( '}APQ Reconciliation Setup Detail', !}APQ Reconciliation Item, !}APQ Dimensions, 'DimensionHierarchy' ) )>0,
+  1,
+  0
+);
+
+#############################
+#FEEDERS;
+#############################
+
+
+#############################
+##~~    End Rule File    ~~##
+#############################

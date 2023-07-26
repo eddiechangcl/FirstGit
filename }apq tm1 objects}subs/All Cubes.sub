@@ -1,0 +1,10 @@
+﻿283,100
+284,"All Cubes"
+11,00000000000000
+274,
+18,0
+275,166
+{TM1SORT( {FILTER( {TM1SUBSETALL( [}APQ TM1 Objects].[}APQ TM1 Objects] )}, [}APQ TM1 Objects].[}APQ TM1 Objects].CurrentMember.Properties("IsCube") = "TRUE")}, ASC)}
+278,0
+281,0
+270,0

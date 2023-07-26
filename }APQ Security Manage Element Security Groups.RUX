@@ -1,0 +1,118 @@
+﻿FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+SKIPCHECK;
+FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Security Manage Element Security Groups** allows standard groups for element security to be automatically created in bulk with
+# the correct security access. Via data entry in the cube the naming convention and types of groups to create are controlled.
+#
+# The groups are created and element security applied by running the **}APQ.Security.Elements.CreateGroups** process. 
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+[ '}APQ Security Manage Element Security Groups Measure':'Require Element Security' ] = N: STET;
+
+[ '}APQ Security Manage Element Security Groups Measure':'Auto Create Groups' ] = N:
+If( [ '}APQ Security Manage Element Security Groups Measure':'Require Element Security' ] = 1,
+    STET,
+    0
+);
+
+[ ] =  N:
+If( DimIx( '}APQ Dimensions', DB( '}APQ Security Manage Element Security Groups', !}APQ Dimensions, 'Managing Dimension 1' ) ) > 0 & DB( '}APQ Security Manage Element Security Groups', !}APQ Dimensions, 'Managing Dimension 1' ) @<> !}APQ Dimensions,
+    DB( '}APQ Security Manage Element Security Groups', DB( '}APQ Security Manage Element Security Groups', !}APQ Dimensions, 'Managing Dimension 1' ), !}APQ Security Manage Element Security Groups Measure ),
+    CONTINUE
+);
+[ ] =  S:
+If( Scan( 'Managing Dimension', !}APQ Security Manage Element Security Groups Measure ) = 1,
+    CONTINUE,
+    If( DimIx( '}APQ Dimensions', DB( '}APQ Security Manage Element Security Groups', !}APQ Dimensions, 'Managing Dimension 1' ) ) > 0 & DB( '}APQ Security Manage Element Security Groups', !}APQ Dimensions, 'Managing Dimension 1' ) @<> !}APQ Dimensions,
+        DB( '}APQ Security Manage Element Security Groups', DB( '}APQ Security Manage Element Security Groups', !}APQ Dimensions, 'Managing Dimension 1' ), !}APQ Security Manage Element Security Groups Measure ),
+        CONTINUE
+    )
+);
+
+[ ] = N:
+If( [ '}APQ Security Manage Element Security Groups Measure':'Auto Create Groups' ] = 1,
+    STET,
+    0
+);
+
+[ '}APQ Security Manage Element Security Groups Measure':'Sample Group Name' ] = S:
+If( [ '}APQ Security Manage Element Security Groups Measure':'Auto Create Groups' ] = 0,
+    '',
+    If( DB( '}APQ Security Manage Element Security Groups', !}APQ Dimensions, 'Group Name Prefix' ) @= '',
+        '',
+        DB( '}APQ Security Manage Element Security Groups', !}APQ Dimensions, 'Group Name Prefix' ) |
+        IF( DB( '}APQ Security Manage Element Security Groups', !}APQ Dimensions, 'Group Name Part Delimiter' ) @= '',
+            ':',
+            DB( '}APQ Security Manage Element Security Groups', !}APQ Dimensions, 'Group Name Part Delimiter' )
+        )
+    ) |
+    If( DB( '}APQ Security Manage Element Security Groups', !}APQ Dimensions, 'Exclude Dimension from Group Name' ) = 1,
+        '',
+        If( DB( '}APQ Security Manage Element Security Groups', !}APQ Dimensions, 'Dimension Attribute for Name' ) @= '',
+            !}APQ Dimensions,
+            If( AttrS( '}APQ Dimensions', !}APQ Dimensions, DB( '}APQ Security Manage Element Security Groups', !}APQ Dimensions, 'Dimension Attribute for Name' ) ) @= '',
+                !}APQ Dimensions,
+                AttrS( '}APQ Dimensions', !}APQ Dimensions, DB( '}APQ Security Manage Element Security Groups', !}APQ Dimensions, 'Dimension Attribute for Name' ) )
+            )
+        ) |
+        IF( DB( '}APQ Security Manage Element Security Groups', !}APQ Dimensions, 'Group Name Part Delimiter' ) @= '',
+            ':',
+            DB( '}APQ Security Manage Element Security Groups', !}APQ Dimensions, 'Group Name Part Delimiter' )
+        )
+    ) |
+    If( DB( '}APQ Security Manage Element Security Groups', !}APQ Dimensions, 'Element Attribute for Name' ) @= '',
+        DimNm( !}APQ Dimensions, 1 ),
+        If( AttrS( '}APQ Dimensions', DimNm( !}APQ Dimensions, 1 ), DB( '}APQ Security Manage Element Security Groups', !}APQ Dimensions, 'Element Attribute for Name' ) ) @= '',
+            DimNm( !}APQ Dimensions, 1 ),
+            AttrS( '}APQ Dimensions', DimNm( !}APQ Dimensions, 1 ), DB( '}APQ Security Manage Element Security Groups', !}APQ Dimensions, 'Element Attribute for Name' ) )
+        )
+    ) |
+    If( DB( '}APQ Security Manage Element Security Groups', !}APQ Dimensions, 'Create Point Only Groups for C Elements' ) = 1,
+        IF( DB( '}APQ Security Manage Element Security Groups', !}APQ Dimensions, 'Group Name Part Delimiter' ) @= '',
+            ':',
+            DB( '}APQ Security Manage Element Security Groups', !}APQ Dimensions, 'Group Name Part Delimiter' )
+        ) | 'REC',
+        ''
+    ) |
+    If( DB( '}APQ Security Manage Element Security Groups', !}APQ Dimensions, 'Create Read Only Groups' ) = 1,
+        IF( DB( '}APQ Security Manage Element Security Groups', !}APQ Dimensions, 'Group Name Part Delimiter' ) @= '',
+            ':',
+            DB( '}APQ Security Manage Element Security Groups', !}APQ Dimensions, 'Group Name Part Delimiter' )
+        ) | 'WRITE',
+        ''
+    )
+);
+
+[ ] = S:
+If( [ '}APQ Security Manage Element Security Groups Measure':'Auto Create Groups' ] = 1,
+    STET,
+    ''
+);
+
+
+#############################
+FEEDERS;
+#############################
+
+
+#############################
+### END
+#############################

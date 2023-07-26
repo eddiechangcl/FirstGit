@@ -1,0 +1,28 @@
+FORMAT==100
+##############################################################################################################################
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+#############################
+SKIPCHECK;
+#############################
+
+[ '}APQ Item Index':'Total Items', '}APQ Process Parameters':'Total APQ Process Parameters', '}APQ Execution Item Measure':'RunSerial' ] = S: 'Static:YES:NO:';
+
+[ '}APQ Process Parameters':'Total APQ Process Parameters', '}APQ Execution Item Measure':{'IsDisabled','ExitOnerror'} ] = S: 'Static:YES:NO:';
+
+[ '}APQ Process Parameters':'Total APQ Process Parameters', '}APQ Execution Item Measure':'ProcessName' ] = S:
+IF( DB( '}APQ Dimension Subsets', '}APQ Processes\' | DB( '}APQ Settings', 'Std All N Elements', 'String' ), 'Element Count' ) <= DB( '}APQ Settings', 'Max subset size for PickList entry', 'Numeric' ),
+   'Dimension:}Processes',
+   STET
+);
+
+
+#############################
+##~~    End Rule File    ~~##
+#############################

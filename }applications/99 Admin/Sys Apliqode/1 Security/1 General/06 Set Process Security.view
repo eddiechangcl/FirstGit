@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=06 Set Process Security
+ENTRYTYPE=view
+ENTRYREFERENCE=TM1:///VIEW/PUBLIC/}APQ Security Manage Object Access/Set Process Security

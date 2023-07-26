@@ -1,0 +1,45 @@
+﻿283,100
+284,"Default"
+11,00000000000000
+274,
+18,0
+275,
+278,0
+281,0
+270,36
+Total APQ Views
+Cube: Sales Cube
+Cube: Sales Cube 2
+Cube: Sales Summary
+Cube: }ApplicationSecurity
+Cube: }APQ Application Activity Log
+Cube: }APQ Application Entries
+Cube: }APQ Chore Info
+Cube: }APQ Cube Dependency
+Cube: }APQ Cube Views
+Cube: }APQ Dimension Attributes
+Cube: }APQ Process Execution Log
+Cube: }APQ Process Parameters Info
+Cube: }APQ Process to Object Reference
+Cube: }APQ Security Effective Client Application Folder Permissions
+Cube: }APQ Security Effective Client Element Permissions
+Cube: }APQ Security Effective Client Object Permissions
+Cube: }CellAnnotations_Sales Cube
+Cube: }CellAnnotations_Sales Summary
+Cube: }ChoreSecurity
+Cube: }ClientGroups
+Cube: }ClientProperties
+Cube: }ClientSettings
+Cube: }CubeProperties
+Cube: }CubeSecurity
+Cube: }DimensionAttributes
+Cube: }DimensionProperties
+Cube: }DimensionSecurity
+Cube: }ElementAttributes_Customer
+Cube: }ElementAttributes_}Clients
+Cube: }ElementSecurity_Customer
+Cube: }HierarchyProperties
+Cube: }PickList_}APQ Settings
+Cube: }ProcessSecurity
+Cube: }StatsByCube
+Cube: }StatsForServer

@@ -1,0 +1,58 @@
+﻿FORMAT==100
+FEEDSTRINGS;
+SKIPCHECK;
+
+##############################################################################################################
+### CWA Std. Model  version 3.00
+### Copyright © 2020, Cubewise (Hong Kong) Ltd. All rights reserved.
+### This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+### and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+### you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+### or display any part, in any form, or by any means.
+##############################################################################################################
+
+
+##############################################################################################################
+###~~~    Start Rule File    ~~~###
+
+### Using Current User Specific Language
+[{'en','zh-Hant','zh-Hans'}]=S:
+IF (ATTRS('}Clients', TM1USER(), 'Language') @='en'
+    , STET
+, IF (ATTRS('}Clients', TM1USER(), 'Language') @<>''
+      , DB('}ElementAttributes_Data Source GL', !Data Source GL, !}ElementAttributes_Data Source GL | ' ' | ATTRS('}Clients', TM1USER(), 'Language'))
+      , DB('}ElementAttributes_Data Source GL', !Data Source GL, !}ElementAttributes_Data Source GL | ' ' | !}Cultures)
+));
+
+
+### Copy Languages
+['zh']=S:DB('}LocalizedElementAttributes_Data Source GL', !Data Source GL, 'zh-Hans', !}ElementAttributes_Data Source GL);
+
+['zh-CN']=S:DB('}LocalizedElementAttributes_Data Source GL', !Data Source GL, 'zh-Hans', !}ElementAttributes_Data Source GL);
+['zh-SG']=S:DB('}LocalizedElementAttributes_Data Source GL', !Data Source GL, 'zh-Hans', !}ElementAttributes_Data Source GL);
+
+['zh-HK']=S:DB('}LocalizedElementAttributes_Data Source GL', !Data Source GL, 'zh-Hant', !}ElementAttributes_Data Source GL);
+['zh-TW']=S:DB('}LocalizedElementAttributes_Data Source GL', !Data Source GL, 'zh-Hant', !}ElementAttributes_Data Source GL);
+['zh-MO']=S:DB('}LocalizedElementAttributes_Data Source GL', !Data Source GL, 'zh-Hant', !}ElementAttributes_Data Source GL);
+
+
+##############################################################################################################
+FEEDERS;
+##############################################################################################################
+
+#############################
+###  Internal Cube Feeders
+
+
+
+
+#############################
+###  External Cube Feeders
+
+
+
+
+##############################################################################################################
+###    End Rule File    ~~##
+
+

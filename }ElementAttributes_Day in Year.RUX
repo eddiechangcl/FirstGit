@@ -1,0 +1,289 @@
+﻿FORMAT==100
+FEEDSTRINGS;
+SKIPCHECK;
+
+##############################################################################################################
+### CWA Std. Model  version 3.00
+### Copyright © 2020, Cubewise (Hong Kong) Ltd. All rights reserved.
+### This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+### and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+### you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+### or display any part, in any form, or by any means.
+##############################################################################################################
+
+
+##############################################################################################################
+###~~~    Start Rule File    ~~~###
+
+['Caption']=S:
+
+### Using Current User Specific Language
+IF (ATTRS('}Clients', TM1USER(), 'Language') @='en'
+    , STET
+, IF (ATTRS('}Clients', TM1USER(), 'Language') @<>''
+    , DB('}ElementAttributes_Day in Year', !Day in Year, 'Caption ' | ATTRS('}Clients', TM1USER(), 'Language'))
+
+    ### Using Instance Primary Language
+    ,IF (DB('Sys Parameter', 'Primary Language', 'Text') @='en'
+        , STET
+    ,IF (DB('Sys Parameter', 'Primary Language', 'Text') @<>''
+        , DB('}ElementAttributes_Day in Year', !Day in Year, 'Caption ' | DB('Sys Parameter', 'Primary Language', 'Text'))
+
+        ### Using UI Settings
+        , STET
+))));
+
+#### Alias Population
+
+## Caption zh-Hans
+['All Days',{'Caption zh-Hans'}]=S:'全年';
+['All Days by M',{'Caption zh-Hans'}]=S:'全年 按月';
+['All Days by FY',{'Caption zh-Hans'}]=S:'全财年 按月';
+
+['All Days by Q',{'Caption zh-Hans'}]=S:'全年 按季';
+['Q1',{'Caption zh-Hans'}]=S:'一季度';
+['Q2',{'Caption zh-Hans'}]=S:'二季度';
+['Q3',{'Caption zh-Hans'}]=S:'三季度';
+['Q4',{'Caption zh-Hans'}]=S:'四季度';
+
+['All Days by H',{'Caption zh-Hans'}]=S:'全年 按半年';
+['H1',{'Caption zh-Hans'}]=S:'上半年';
+['H2',{'Caption zh-Hans'}]=S:'下半年';
+
+['All Days by MTD',{'Caption zh-Hans'}]=S:'日 月累计';
+['All Days by MTG',{'Caption zh-Hans'}]=S:'日 月剩余';
+
+['All Months YTD',{'Caption zh-Hans'}]=S:'月 年累计';
+['All Months YTG',{'Caption zh-Hans'}]=S:'月 年剩余';
+
+['All Months FYTD',{'Caption zh-Hans'}]=S:'月 财年累计';
+['All Months FYTG',{'Caption zh-Hans'}]=S:'月 财年剩余';
+
+['D000',{'Caption zh-Hans'}]=S:'全年数';
+
+['All Days in Year',{'Caption zh-Hans'}]=S:'全年日';
+
+[{'Caption zh-Hans'}]=S:
+IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='D'
+    , SUBST(!Day in Year, 1, 2) |'月'| SUBST(!Day in Year, 4, 2) | '日'
+,IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='D MTD'
+    , SUBST(!Day in Year, 1, 2) |'月'|  SUBST(!Day in Year, 4, 2) | '日 月累计'
+,IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='D MTG'
+    , SUBST(!Day in Year, 1, 2) |'月'|  SUBST(!Day in Year, 4, 2) | '日 月剩余'
+    
+,IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M'
+    , SUBST(!Day in Year, 1, 2) |'月'
+,IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M YTD'
+    , SUBST(!Day in Year, 1, 2) | '月 年累计'
+,IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M YTG'
+    , SUBST(!Day in Year, 1, 2) | '月 年剩余'
+,IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M FYTD'
+    , SUBST(!Day in Year, 1, 2) | '月 财年累计'
+,IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M FYTG'
+    , SUBST(!Day in Year, 1, 2) | '月 财年剩余'
+    , CONTINUE
+))))))));
+
+
+## Caption zh-Hant
+['All Days',{'Caption zh-Hant'}]=S:'全年';
+['All Days by M',{'Caption zh-Hant'}]=S:'全年 按月';
+['All Days by FY',{'Caption zh-Hant'}]=S:'全財年 按月';
+
+['All Days by Q',{'Caption zh-Hant'}]=S:'全年 按季';
+['Q1',{'Caption zh-Hant'}]=S:'一季度';
+['Q2',{'Caption zh-Hant'}]=S:'二季度';
+['Q3',{'Caption zh-Hant'}]=S:'三季度';
+['Q4',{'Caption zh-Hant'}]=S:'四季度';
+
+['All Days by H',{'Caption zh-Hant'}]=S:'全年 按半年';
+['H1',{'Caption zh-Hant'}]=S:'上半年';
+['H2',{'Caption zh-Hant'}]=S:'下半年';
+
+['All Days by MTD',{'Caption zh-Hant'}]=S:'日 月纍計';
+['All Days by MTG',{'Caption zh-Hant'}]=S:'日 月剩餘';
+
+['All Months YTD',{'Caption zh-Hant'}]=S:'月 年纍計';
+['All Months YTG',{'Caption zh-Hant'}]=S:'月 年剩餘';
+
+['All Months FYTD',{'Caption zh-Hant'}]=S:'月 财年纍計';
+['All Months FYTG',{'Caption zh-Hant'}]=S:'月 财年剩餘';
+
+['D000',{'Caption zh-Hant'}]=S:'全年數';
+
+['All Days in Year',{'Caption zh-Hant'}]=S:'全年日';
+
+[{'Caption zh-Hant'}]=S:
+IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='D'
+    , SUBST(!Day in Year, 1, 2) |'月'| SUBST(!Day in Year, 4, 2) | '日'
+,IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='D MTD'
+    , SUBST(!Day in Year, 1, 2) |'月'|  SUBST(!Day in Year, 4, 2) | '日 月纍計'
+,IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='D MTG'
+    , SUBST(!Day in Year, 1, 2) |'月'|  SUBST(!Day in Year, 4, 2) | '日 月剩餘'
+    
+,IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M'
+    , SUBST(!Day in Year, 1, 2) |'月'
+,IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M YTD'
+    , SUBST(!Day in Year, 1, 2) | '月 年纍計'
+,IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M YTG'
+    , SUBST(!Day in Year, 1, 2) | '月 年剩餘'
+,IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M FYTD'
+    , SUBST(!Day in Year, 1, 2) | '月 財年纍計'
+,IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M FYTG'
+    , SUBST(!Day in Year, 1, 2) | '月 財年剩餘'
+    , CONTINUE
+))))))));
+
+
+
+
+## Description
+[{'Description'}]=S:
+DB('}ElementAttributes_Day in Year', !Day in Year, 'mmm dd');
+
+[{'mmdd'}]=S:
+IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='D'
+    , SUBST(!Day in Year, 1, 2) | SUBST(!Day in Year, 4, 2)
+,IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='D MTD'
+    , SUBST(!Day in Year, 1, 2) | SUBST(!Day in Year, 4, 2) | ' MTD'
+,IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='D MTG'
+    , SUBST(!Day in Year, 1, 2) | SUBST(!Day in Year, 4, 2) | ' MTG'
+    , CONTINUE
+)));
+
+[{'M00 D00'}]=S:
+IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='D'
+    , 'M' | SUBST(!Day in Year, 1, 2) | ' D' | SUBST(!Day in Year, 4, 2)
+,IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='D MTD'
+    , 'M' | SUBST(!Day in Year, 1, 2) | ' D' | SUBST(!Day in Year, 4, 2) | ' MTD'
+,IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='D MTG'
+    , 'M' | SUBST(!Day in Year, 1, 2) | ' D' | SUBST(!Day in Year, 4, 2) | ' MTG'
+
+,IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M'
+    , 'M' | SUBST(!Day in Year, 1, 2)
+,IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M YTD'
+    , 'M' | SUBST(!Day in Year, 1, 2) | ' YTD'
+,IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M YTG'
+    , 'M' | SUBST(!Day in Year, 1, 2) | ' YTG'
+,IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M FYTD'
+    , 'M' | SUBST(!Day in Year, 1, 2) | ' FYTD'
+,IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M FYTG'
+    , 'M' | SUBST(!Day in Year, 1, 2) | ' FYTG'
+    , CONTINUE
+))))))));
+
+[{'mmm dd'}]=S:
+IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='D'
+    , CAPIT(TIMST(DAYNO('2015-' | SUBST(!Day in Year, 1, 2) | '-01'), '\M')) | ' ' | SUBST(!Day in Year, 4, 2)
+,IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='D MTD'
+    , CAPIT(TIMST(DAYNO('2015-' | SUBST(!Day in Year, 1, 2) | '-01'), '\M')) | ' ' | SUBST(!Day in Year, 4, 2) | ' MTD'
+,IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='D MTG'
+    , CAPIT(TIMST(DAYNO('2015-' | SUBST(!Day in Year, 1, 2) | '-01'), '\M')) | ' ' | SUBST(!Day in Year, 4, 2) | ' MTG'
+
+,IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M'
+    , CAPIT(TIMST(DAYNO('2015-' | SUBST(!Day in Year, 1, 2) | '-01'), '\M'))
+,IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M YTD'
+    , CAPIT(TIMST(DAYNO('2015-' | SUBST(!Day in Year, 1, 2) | '-01'), '\M')) | ' YTD'
+,IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M YTG'
+    , CAPIT(TIMST(DAYNO('2015-' | SUBST(!Day in Year, 1, 2) | '-01'), '\M')) | ' YTG'
+,IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M FYTD'
+    , CAPIT(TIMST(DAYNO('2015-' | SUBST(!Day in Year, 1, 2) | '-01'), '\M')) | ' FYTD'
+,IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M FYTG'
+    , CAPIT(TIMST(DAYNO('2015-' | SUBST(!Day in Year, 1, 2) | '-01'), '\M')) | ' FYTG'
+    , CONTINUE
+))))))));
+
+[{'dd mmm'}]=S:
+IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='D'
+    , SUBST(!Day in Year, 4, 2)  | ' ' | CAPIT(TIMST(DAYNO('2015-' | SUBST(!Day in Year, 1, 2) | '-01'), '\M'))
+,IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='D MTD'
+    , SUBST(!Day in Year, 4, 2)  | ' ' | CAPIT(TIMST(DAYNO('2015-' | SUBST(!Day in Year, 1, 2) | '-01'), '\M')) | ' MTD'
+,IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='D MTG'
+    , SUBST(!Day in Year, 4, 2)  | ' ' | CAPIT(TIMST(DAYNO('2015-' | SUBST(!Day in Year, 1, 2) | '-01'), '\M')) | ' MTG'
+
+,IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M'
+    , CAPIT(TIMST(DAYNO('2015-' | SUBST(!Day in Year, 1, 2) | '-01'), '\M'))
+,IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M YTD'
+    , CAPIT(TIMST(DAYNO('2015-' | SUBST(!Day in Year, 1, 2) | '-01'), '\M')) | ' YTD'
+,IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M YTG'
+    , CAPIT(TIMST(DAYNO('2015-' | SUBST(!Day in Year, 1, 2) | '-01'), '\M')) | ' YTG'
+,IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M FYTD'
+    , CAPIT(TIMST(DAYNO('2015-' | SUBST(!Day in Year, 1, 2) | '-01'), '\M')) | ' FYTD'
+,IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M FYTG'
+    , CAPIT(TIMST(DAYNO('2015-' | SUBST(!Day in Year, 1, 2) | '-01'), '\M')) | ' FYTG'
+    , CONTINUE
+))))))));
+
+### Month Attr
+[{'Month'}]=S:
+IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='D'
+    % DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='D MTD'
+    % DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='D MTG'
+    % DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M'
+    % DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M YTD'
+    % DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M YTG'
+    % DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M FYTD'
+    % DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M FYTG'
+    , SUBST(!Day in Year, 1, 2)
+    , CONTINUE
+);
+
+[{'Month M00'}]=S:
+IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='D'
+    % DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='D MTD'
+    % DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='D MTG'
+    % DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M'
+    % DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M YTD'
+    % DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M YTG'
+    % DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M FYTD'
+    % DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M FYTG'
+    , 'M' | SUBST(!Day in Year, 1, 2)
+    , CONTINUE
+);
+
+[{'Month mmm'}]=S:
+IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='D'
+    % DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='D MTD'
+    % DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='D MTG'
+    % DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M'
+    % DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M YTD'
+    % DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M YTG'
+    % DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M FYTD'
+    % DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M FYTG'
+    , CAPIT(TIMST(DAYNO('2015-' | SUBST(!Day in Year, 1, 2) | '-01'), '\M')) 
+    , CONTINUE
+);
+
+[{'Quarter'}]=S:
+IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='D'
+    % DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='D MTD'
+    % DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='D MTG'
+    % DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M'
+    % DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M YTD'
+    % DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M YTG'
+    % DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M FYTD'
+    % DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='M FYTG'
+    % DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='Q'
+    , 'Q' | STR(['Quarter Index'],1,0)
+    , CONTINUE
+);
+
+
+### Day Attr
+[{'Day'}]=S:
+IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='D'
+    % DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='D MTD'
+    % DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='D MTG'
+    , SUBST(!Day in Year, 4, 2)
+    , CONTINUE
+);
+
+[{'Day D00'}]=S:
+IF (DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='D'
+    % DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='D MTD'
+    % DB('}ElementAttributes_Day in Year', !Day in Year, 'El Type') @='D MTG'
+    , 'D' | SUBST(!Day in Year, 4, 2)
+    , CONTINUE
+);
+
+FEEDERS;

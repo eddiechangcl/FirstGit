@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=Application Entry Mapping
+ENTRYTYPE=view
+ENTRYREFERENCE=TM1:///VIEW/PUBLIC/}APQ Application Entries/Default

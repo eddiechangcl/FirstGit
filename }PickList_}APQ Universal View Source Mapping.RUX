@@ -1,0 +1,25 @@
+FORMAT==100
+##############################################################################################################################
+# APLIQODE FRAMEWORK
+# Copyright  2017, Apliqo AG. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+
+# SELECT CUBE
+[ '}APQ Universal View Source Mapping Measure':{'CubeEntry','CubeOverride'} ] = S: 
+IF( DimSiz( '}Cubes' ) > DB( '}APQ Settings', 'Max subset size for PickList entry', 'Numeric' ),
+    '',
+    'Dimension:}Cubes' 
+);
+
+# ENFORCE SECURITY & MultiPartCaption
+[ '}APQ Universal View Source Mapping Measure':{'MultiPartCaptionEntry', 'MultiPartCaptionOverride', 'EnforceSecurityEntry','EnforceSecurityOverride'} ] = S: 'Static::Y:N';
+
+# SELECT FORMATTING DIMENSION
+[ '}APQ Universal View Source Mapping Measure':{'FormatDimEntry','FormatDimOverride'} ] = S: 'Static::Row:Column:Measure:Custom';
+
+# SET DEFAULT NUMBER FORMAT (For use if dimension format should be empty)
+[ '}APQ Universal View Source Mapping Measure':{'DefaultFormatEntry','DefaultFormatOverride'} ] = S: 'Dimension:}APQ Number Format';

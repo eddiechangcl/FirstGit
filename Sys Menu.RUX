@@ -1,0 +1,314 @@
+﻿FORMAT==100
+FEEDSTRINGS;
+SKIPCHECK;
+
+##############################################################################################################
+### CWA Std. Model  version 3.00
+### Copyright © 2012~2020, Cubewise (Hong Kong) Ltd. All rights reserved.
+### This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+### and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+### you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+### or display any part, in any form, or by any means.
+##############################################################################################################
+
+##############################################################################################################
+###~~~    Start Rule File    ~~~###
+
+### 1. Style Profile =>
+### 2. Default App Entry for all pages, auto genearted
+### 3. Default Client, copy from "Default App Entry", if choose using auto
+### 4. Individual Client, if choose using default client
+
+##########################################################
+### Apply Client Profile - Language Related
+##########################################################
+
+### Page Title
+[{'Page Title'}]= S:
+IF ( !Sys Menu Profile @= 'Default Application Entry'
+    , CONTINUE
+    , IF (ATTRS ('Sys Menu Profile', !Sys Menu Profile, 'Menu Profile') @='Manual'
+            , CONTINUE
+            , IF ( ELISANC ('Sys Menu Profile', 'All Clients',!Sys Menu Profile) > 0
+	 , DB('Sys Menu', ATTRS ('Sys Menu Profile', !Sys Menu Profile, 'Menu Profile'),!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column
+                        ,!M Sys Menu | ' ' | AttrS ('Sys Menu Profile', !Sys Menu Profile, 'Language'))
+                 , CONTINUE
+                 )
+            )
+);
+
+### Page Path
+['Page Path','Default Page']=S:STET;
+
+['Page Path','Home Page']=S:'>> '| UPPER(DB('Sys Menu',!Sys Menu Profile, !Sys Menu Page, !Sys Menu Page Row,!Sys Menu Page Column,'Page Title'));
+
+['Page Path','Favorite Page']=S:
+              DB('Sys Menu',!Sys Menu Profile,'Home Page',!Sys Menu Page Row,!Sys Menu Page Column,'Page Path') | ' > ' | UPPER(DB('Sys Menu',!Sys Menu Profile,'Favorite Page',!Sys Menu Page Row,!Sys Menu Page Column,'Page Title'));
+['Page Path','Recent Page']=S:
+              DB('Sys Menu',!Sys Menu Profile,'Home Page',!Sys Menu Page Row,!Sys Menu Page Column,'Page Path') | ' > ' | UPPER(DB('Sys Menu',!Sys Menu Profile,'Recent Page',!Sys Menu Page Row,!Sys Menu Page Column,'Page Title'));
+
+['Page Path']=S:
+        IF ( ELISANC('Sys Menu Page', 'Home Page', !Sys Menu Page) = 1
+              & DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Page Status') @='Enabled'
+             , DB('Sys Menu',!Sys Menu Profile, ELPAR('Sys Menu Page', !Sys Menu Page, 1),!Sys Menu Page Row,!Sys Menu Page Column,'Page Path')
+                    | ' > '
+                    | UPPER (DB('Sys Menu',!Sys Menu Profile, !Sys Menu Page, !Sys Menu Page Row,!Sys Menu Page Column,'Page Title'))
+             , STET
+    );
+
+### Page Path
+['Button Name']=S:
+        IF ( DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button Type') @=''
+             , CONTINUE
+             , IF ( DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button Type') @='Page'
+                         , DB('Sys Menu',!Sys Menu Profile
+                                     , DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button ID')
+                                     , 'Default Row','Default Column','Page Title' | ' ' | AttrS ('Sys Menu Profile', !Sys Menu Profile, 'Language'))
+                         , IF ( DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button Type') @='Template'
+                                  % DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button Type') @='View'
+                                  % DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button Type') @='Entry'
+                                              , DB( 'Sys Menu Application Entry'
+                                                       , DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button ID')
+                                                       , 'Entry Display Name' | ' ' | AttrS ('Sys Menu Profile', !Sys Menu Profile, 'Language'))
+                                              , IF ( DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button Type') @='Link'
+                                                         , DB( 'Sys Menu Link'
+                                                              , DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button ID')
+                                                              , 'Entry Display Name' | ' ' | AttrS ('Sys Menu Profile', !Sys Menu Profile, 'Language'))
+                                                              , IF ( DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button Type') @='Workflow'
+                                                                    , AttrS('Sys Workflow', DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button ID'), 'Description')
+                                                         	, CONTINUE
+				          )
+                                                      )
+
+                          )
+                 )
+         );
+
+
+##########################################################
+### Apply Client Profile
+##########################################################
+
+[]= S:
+IF ( !Sys Menu Profile @= 'Default Application Entry'
+    , CONTINUE
+    , IF (ATTRS ('Sys Menu Profile', !Sys Menu Profile, 'Menu Profile') @='Manual'
+            , CONTINUE
+            , IF ( ELISANC ('Sys Menu Profile', 'All Clients',!Sys Menu Profile) > 0 & !Sys Menu Page @<> 'Favorite Page'
+	 , DB('Sys Menu', ATTRS ('Sys Menu Profile', !Sys Menu Profile, 'Menu Profile'),!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,!M Sys Menu)
+                 , CONTINUE
+                 )
+            )
+);
+
+
+### Auto Generated Page Settings - Sys Menu Profile = Default Application Entry
+
+# Page Detail
+['Page Sheet Name','Default Application Entry','Favorite Page']=S:'PF';
+['Page Sheet Name','Default Application Entry','Recent Page']=S:'PR';
+['Page Status','Default Application Entry','Favorite Page']=S:'Enabled';
+['Page Status','Default Application Entry','Recent Page']=S:'Enabled';
+
+['Page Status','Default Application Entry']=S:
+    IF (
+         ## test if the Applicaiton Folder exist or enabled for menu page?
+         DIMIX ('Sys Menu Application Entry', !Sys Menu Page ) = 0
+
+         ## test if the Sys Menu Applicaiton Entry is the bottom level?
+        %  ELLEV('Sys Menu Application Entry', !Sys Menu Page ) =0
+
+         , STET
+         , 'Enabled'
+    );
+
+['Page Sheet Name','Default Application Entry','Home Page']=S:'P0';
+['Page Sheet Name','Default Application Entry']=S:
+    IF (DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Page Status') @='Enabled'
+         , 'P' | SUBST(DB('Sys Menu Application Entry', !Sys Menu Page,'Page ID'),6,255)
+         , STET
+);
+
+['Page URL','Default Application Entry']=S:
+    IF (DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Page Status') @='Enabled'
+        , '#'
+           | DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,'Default Row','Default Column','Page Sheet Name')
+           | 'S'
+           | SUBST(DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,'Default Row','Default Column','Page Style'), 8, 1)
+           | '!A1'
+        , STET
+    );
+
+['Page Title','Default Application Entry','Default Page']=S:STET;
+['Page Title','Default Application Entry','Favorite Page']=S:STET;
+['Page Title','Default Application Entry','Recent Page']=S:STET;
+
+['Page Title','Default Application Entry']=S:
+    IF (DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Page Status') @='Enabled'
+        , ''
+           |  DB('Sys Menu Application Entry', !Sys Menu Page,'Entry Display Name')
+        , STET
+    );
+
+
+# Page Button Detail
+#['Button Type','Default Application Entry','Default Page' ]= S:STET;
+#['Button Type','Default Application Entry','Default Column' ]= S:STET;
+#['Button Type','Default Application Entry']=S:
+#          IF ( DB('Sys Menu', DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,'Default Row','Default Column','Page Style')
+#                          ,'Default Page',!Sys Menu Page Row,!Sys Menu Page Column,'Button Type') @=''
+#                   , ''
+#                   , DB('Sys Menu', DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,'Default Row','Default Column','Page Style')
+#                          ,'Default Page',!Sys Menu Page Row,!Sys Menu Page Column,'Button Type')
+#             );
+
+#######################################################
+['Page Sheet Name','Favorite Page']=S:'PF';
+['Page Sheet Name','Recent Page']=S:'PR';
+
+['Page Sheet Name','Home Page']=S:'P0';
+['Page Sheet Name']=S:
+    IF (DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Page Status') @='Enabled'
+         , 'P' | SUBST(!Sys Menu Page,6,255)
+         , STET
+);
+
+['Page URL']=S:
+    IF (DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Page Status') @='Enabled'
+        , '#'
+           | DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,'Default Row','Default Column','Page Sheet Name')
+           | 'S'
+           | SUBST(DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,'Default Row','Default Column','Page Style'), 8, 1)
+           | '!A1'
+        , STET
+    );
+
+['Favorite Page','Default Row','Default Column','Page URL Parent Page']=S:
+DB('Sys Menu',!Sys Menu Profile, 'Home Page',!Sys Menu Page Row,!Sys Menu Page Column,'Page URL');
+
+['Page URL Parent Page']=S:
+    IF (DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Page Status') @='Enabled'
+                & DB('Sys Menu',!Sys Menu Profile, ELPAR ('Sys Menu Page', !Sys Menu Page,1),!Sys Menu Page Row,!Sys Menu Page Column,'Page Status') @='Enabled'
+        , DB('Sys Menu',!Sys Menu Profile, ELPAR ('Sys Menu Page', !Sys Menu Page,1),!Sys Menu Page Row,!Sys Menu Page Column,'Page URL')
+        , STET
+    );
+
+
+### Page Title
+['Page Title','Default Page']=S:CONTINUE;
+
+['Page Title']=S:DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page
+                                     , 'Default Row','Default Column','Page Title' | ' ' | AttrS ('Sys Menu Profile', !Sys Menu Profile, 'Language'));
+
+### Page Button Name (based on Button ID/Type)
+['Button Name','Default Page']=S:STET;
+['Button Name']=S:
+        IF ( DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button Type') @=''
+             , CONTINUE
+             , IF ( DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button Type') @='Page'
+                         , DB('Sys Menu',!Sys Menu Profile
+                                     , DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button ID')
+                                     , 'Default Row','Default Column','Page Title' | ' ' | AttrS ('Sys Menu Profile', !Sys Menu Profile, 'Language'))
+                         , IF ( DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button Type') @='Template'
+                                  % DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button Type') @='View'
+                                  % DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button Type') @='Entry'
+                                              , DB( 'Sys Menu Application Entry'
+                                                       , DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button ID')
+                                                       , 'Entry Display Name' | ' ' | AttrS ('Sys Menu Profile', !Sys Menu Profile, 'Language'))
+                                              , IF ( DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button Type') @='Link'
+                                                         , DB( 'Sys Menu Link'
+                                                              , DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button ID')
+                                                              , 'Entry Display Name' | ' ' | AttrS ('Sys Menu Profile', !Sys Menu Profile, 'Language'))
+                                                              , IF ( DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button Type') @='Workflow'
+                                                                    , AttrS('Sys Workflow', DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button ID'), 'Description')
+                                                         	, STET
+				          )
+                                                      )
+
+                          )
+                 )
+         );
+
+
+### Button Hyperlink Name (based on Button ID/Type)
+['Button Hyperlink','Default Page']=S:STET;
+['Button Hyperlink']=S:
+        IF ( DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button Type') @=''
+             , CONTINUE
+             , IF ( DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button Type') @='Page'
+                         , DB('Sys Menu',!Sys Menu Profile
+                                     , DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button ID')
+                                     , 'Default Row','Default Column','Page URL')
+                         , IF ( DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button Type') @='Template'
+                                  % DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button Type') @='View'
+                                  % DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button Type') @='Entry'
+                                  % DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button Type') @='URL'
+                                              , DB( 'Sys Menu Application Entry'
+                                                       , DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button ID')
+                                                       , 'Entry URL')
+                                              , IF ( DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button Type') @='Link'
+                                                         , DB( 'Sys Menu Link'
+                                                              , DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button ID')
+                                                              , 'Entry URL')
+                                                         ,  IF ( DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button Type') @='Hyperlink'
+                                                                 , DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button ID')
+                                                                 ,  IF ( DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button Type') @='Workflow'
+                                                                        , DB('Sys Menu Application Entry',DB('Sys Menu Parameter','Workflow Application','String Value'),'Entry URL Websheet API') | '&Title_Sys%20Workflow=' | DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Button ID')
+                                                                        , CONTINUE
+					)
+                                                                )
+                                                      )
+                          )
+                 )
+         );
+
+
+### Count
+['Count - Page Enabled']=N:
+IF (DB('Sys Menu',!Sys Menu Profile,!Sys Menu Page,!Sys Menu Page Row,!Sys Menu Page Column,'Page Status') @='Enabled'
+     ,1,0);
+
+### Page Settings - All Clients
+
+
+
+
+
+##############################################################################################################
+FEEDERS;
+##############################################################################################################
+
+#########################################################
+###  Internal Cube Feeders
+
+['All Profiles'] => ['All Clients'];
+['Default Application Entry'] => ['All Clients'];
+['Default Application Entry'] => ['All Profiles'];
+['Default Application Entry'] => ['Default Client'];
+
+['Page Status']=>['Page URL'],['Page Title'],['Page Style'],['Count - Page Enabled'];
+
+['Feeder','Default Row','Default Column','Default Page']=>
+       DB('Sys Menu',!Sys Menu Profile,'Home Page','All Rows','All Columns','Page Status')
+       , DB('Sys Menu',!Sys Menu Profile,'Home Page','All Rows','All Columns','Page Title')
+       , DB('Sys Menu',!Sys Menu Profile,'Home Page','All Rows','All Columns','Page Path')
+       , DB('Sys Menu',!Sys Menu Profile,'Home Page','All Rows','All Columns','Page Sheet Name')
+       , DB('Sys Menu',!Sys Menu Profile,'Home Page','All Rows','All Columns','Page URL')
+       , DB('Sys Menu',!Sys Menu Profile,'Home Page','All Rows','All Columns','Button Type')
+       , DB('Sys Menu',!Sys Menu Profile,'Home Page','All Rows','All Columns','Button Name')
+       , DB('Sys Menu',!Sys Menu Profile,'Home Page','All Rows','All Columns','Button Hyperlink')
+
+;
+
+
+
+
+
+#########################################################
+###  External Cube Feeders
+
+
+
+
+##############################################################################################################
+###    End Rule File    ~~##

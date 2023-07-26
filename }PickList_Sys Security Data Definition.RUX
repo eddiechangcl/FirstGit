@@ -1,0 +1,11 @@
+﻿FORMAT==100
+['Create Group','Text'] = S: 'static::✓';
+['Require Security','Text'] = S: 'static::✓';
+
+[{'Managing Dimension 001','Managing Dimension 002','Managing Dimension 003'},'Text'] = S: 'dimension:}Dimensions';
+['Alias For Groups','Text'] = S: 'dimension:}ElementAttributes_' | !}Dimensions;
+['Only C Level Element','Text'] = S: 'static::Y:N';
+['Create READ WRITE Groups','Text'] = S: 'static::Y:N';
+['Create READ WRITE N Level','Text'] = S: 'static::Y:N';
+['Security Refresh','Text'] = S: 'static::Y:N';
+['Clear Security Cube','Text'] = S: 'static::Y:N';

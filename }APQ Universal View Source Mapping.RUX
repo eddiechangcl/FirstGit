@@ -1,0 +1,184 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+SKIPCHECK;
+FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-05-20  Embedded into Apliqode Framework from Apliqo FPM
+##############################################################################################################################
+#Region @DOC
+# This cube is the first step in configuring a new data source for the Universal View module. All that is required is to select a source cube. 
+# However, it is also recommended to enter a brief caption to describe the view, the caption is used to automatically build an alias in the 
+# **}APQ Universal View** dimension.
+#
+# Note:
+# The universal view module allows views to be grouped under a parent view. This is mostly to minimize data entry and make the application 
+# more responsive by leveraging inheritance. However, it also allows for sub-view values to be aggregated if desired using normal TM1 consolidation.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+#Region : Mapping rules
+
+[ '}APQ Universal View':'All Views', '}APQ Universal View Source Mapping Measure':'Caption' ] = S: STET;
+
+# MultiPartCaption
+[ '}APQ Universal View Source Mapping Measure':'MultiPartCaptionOverride' ] = S: STET;
+
+[ '}APQ Universal View':'All Views', '}APQ Universal View Source Mapping Measure':'MultiPartCaptionEntry' ] = S: STET;
+
+[ '}APQ Universal View Source Mapping Measure':'MultiPartCaptionEntry' ] = S:
+IF( DB( '}APQ Universal View Source Mapping', ElPar( '}APQ Universal View', !}APQ Universal View, 1 ), 'MultiPartCaption' ) @= '',
+    STET,
+    DB( '}APQ Universal View Source Mapping', ElPar( '}APQ Universal View', !}APQ Universal View, 1 ), 'MultiPartCaption' )
+);
+
+[ '}APQ Universal View Source Mapping Measure':'MultiPartCaption' ] = S:
+IF( DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'MultiPartCaptionOverride' ) @<> '',
+   DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'MultiPartCaptionOverride' ),
+   DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'MultiPartCaptionEntry' )
+);
+
+# EnforceSecurity
+[ '}APQ Universal View Source Mapping Measure':'EnforceSecurityOverride' ] = S: STET;
+
+[ '}APQ Universal View':'All Views', '}APQ Universal View Source Mapping Measure':'EnforceSecurityEntry' ] = S: STET;
+
+[ '}APQ Universal View':'All Views', '}APQ Universal View Source Mapping Measure':'EnforceSecurity' ] = S: DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'EnforceSecurityEntry' );
+
+[ '}APQ Universal View Source Mapping Measure':'EnforceSecurityEntry' ] = S:
+IF( DB( '}APQ Universal View Source Mapping', ElPar( '}APQ Universal View', !}APQ Universal View, 1 ), 'EnforceSecurity' ) @= '',
+    STET,
+    DB( '}APQ Universal View Source Mapping', ElPar( '}APQ Universal View', !}APQ Universal View, 1 ), 'EnforceSecurity' )
+);
+
+[ '}APQ Universal View Source Mapping Measure':'EnforceSecurity' ] = S:
+IF( DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'EnforceSecurityOverride' ) @<> '',
+    DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'EnforceSecurityOverride' ),
+    DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'EnforceSecurityEntry' )
+);
+
+# Make "All Views" blank
+[ '}APQ Universal View':'All Views' ] = S: '';
+
+# Cube
+[ '}APQ Universal View Source Mapping Measure':'CubeOverride' ] = S: STET;
+
+[ '}APQ Universal View Source Mapping Measure':'CubeEntry' ] = S:
+IF( ElIsPar( '}APQ Universal View', 'All Views', !}APQ Universal View ) = 1,
+   STET,
+   DB( '}APQ Universal View Source Mapping', ElPar( '}APQ Universal View', !}APQ Universal View, 1 ), 'Cube' )
+);
+
+[ '}APQ Universal View Source Mapping Measure':'Cube' ] = S:
+IF( DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'CubeOverride' ) @<> '',
+   DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'CubeOverride' ),
+   DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'CubeEntry' )
+);
+
+# DefaultFormat
+[ '}APQ Universal View Source Mapping Measure':'DefaultFormatOverride' ] = S: STET;
+
+[ '}APQ Universal View Source Mapping Measure':'DefaultFormatEntry' ] = S:
+IF( ElIsPar( '}APQ Universal View', 'All Views', !}APQ Universal View ) = 1,
+   STET,
+   DB( '}APQ Universal View Source Mapping', ElPar( '}APQ Universal View', !}APQ Universal View, 1 ), 'DefaultFormat' )
+);
+
+[ '}APQ Universal View Source Mapping Measure':'DefaultFormat' ] = S:
+IF( DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'DefaultFormatOverride' ) @<> '',
+   DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'DefaultFormatOverride' ),
+   DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'DefaultFormatEntry' )
+);
+
+# FormatDim
+[ '}APQ Universal View Source Mapping Measure':'FormatDimOverride' ] = S: STET;
+
+[ '}APQ Universal View Source Mapping Measure':'FormatDimEntry' ] = S:
+IF( ElIsPar( '}APQ Universal View', 'All Views', !}APQ Universal View ) = 1,
+   STET,
+   DB( '}APQ Universal View Source Mapping', ElPar( '}APQ Universal View', !}APQ Universal View, 1 ), 'FormatDimEntry' )
+);
+
+[ '}APQ Universal View Source Mapping Measure':'FormatDim' ] = S:
+IF( DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'FormatDimOverride' ) @<> '',
+   DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'FormatDimOverride' ),
+   DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'FormatDimEntry' )
+);
+
+# DimCount
+[ '}APQ Universal View Source Mapping Measure':'DimCount' ] =
+DB( '}APQ Dimension Use', DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'Cube' ), 'Total APQ Dimensions', 'Is Used' );
+
+# Row, Column & Measure Dims
+[ '}APQ Universal View Source Mapping Measure':{'RowDim','ColumnDim','MeasureDim'} ] = S:
+IF( DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'Cube' ) @= '',
+   '',
+   CONTINUE
+);
+
+[ '}APQ Universal View Source Mapping Measure':{'RowDim','ColumnDim','MeasureDim'} ] = S:
+IF( ElLev( '}APQ Universal View', !}APQ Universal View ) >= 1,
+   DB( '}APQ Universal View Source Mapping', ElComp( '}APQ Universal View', !}APQ Universal View, 1 ), !}APQ Universal View Source Mapping Measure ),
+   CONTINUE
+);
+
+[ '}APQ Universal View Source Mapping Measure':'RowDim' ] = S:
+'D' | IF( DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, 'All Dimensions', 'RowDimID' ) >= 10, '', '0' ) | Trim( Str( DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, 'All Dimensions', 'RowDimID' ), 2, 0 ) );
+
+[ '}APQ Universal View Source Mapping Measure':'ColumnDim' ] = S:
+'D' | IF( DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, 'All Dimensions', 'ColumnDimID' ) >= 10, '', '0' ) | Trim( Str( DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, 'All Dimensions', 'ColumnDimID' ), 2, 0 ) );
+
+[ '}APQ Universal View Source Mapping Measure':'MeasureDim' ] = S:
+'D' | IF( DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, 'All Dimensions', 'MeasureDimID' ) >= 10, '', '0' ) | Trim( Str( DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, 'All Dimensions', 'MeasureDimID' ), 2, 0 ) );
+
+[ '}APQ Universal View Source Mapping Measure':'RowDimName' ] = S:
+TabDim(
+   DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'Cube' ),
+   DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, 'All Dimensions', 'RowDimID' )
+);
+
+[ '}APQ Universal View Source Mapping Measure':'ColumnDimName' ] = S:
+TabDim(
+   DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'Cube' ),
+   DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, 'All Dimensions', 'ColumnDimID' )
+);
+
+[ '}APQ Universal View Source Mapping Measure':'MeasureDimName' ] = S:
+TabDim(
+   DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'Cube' ),
+   DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, 'All Dimensions', 'MeasureDimID' )
+);
+
+#EndRegion
+
+##############################################################################################################################
+#Region : Feeders
+FEEDERS;
+##############################################################################################################################
+
+# Internal cube feeders
+##################
+
+# None
+
+# External inter-cube feeders
+##################
+
+# None
+
+#EndRegion
+
+##############################################################################################################################
+##~~    End Rule File    ~~##
+##############################################################################################################################

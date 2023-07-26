@@ -1,0 +1,164 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+#SKIPCHECK;
+#FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ PickList Dimension** if added as a reference to websheets can be used as a standard functionality to allow users to select
+# a dimension element via a DBR PickList as a replacement for a SUBNM selection.  Alternatively this cube can be referenced on a "user settings page" 
+# where users select their default preferences for dimension element selection and other websheets reference this cube in order to pre-populate 
+# title/filter SUBNMs with the user's default value for the dimension.
+#
+# The functionality of this cube could easily be extended or modified to include other application/implementation specific picklists 
+# or alter picklists from the standard options on a dimension by dimension basis.
+#
+# Note:
+# * All users must have write access to this cube. (Element security is set such that users only have write access to their user and users 
+#   only see the dimensions to which they have at least read access.)
+# * This is a lookup cube with limited dimensionality and so does not require SkipCheck or Feeders.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+# Same named hierarchies
+[ ] = S:
+IF( ElLev( '}APQ Dimension Hierarchies', !}APQ Dimension Hierarchies ) > 0,
+    Continue,
+    IF( SubSt( !}APQ Dimension Hierarchies, 1, Scan( ':', !}APQ Dimension Hierarchies ) - 1 ) @= SubSt( !}APQ Dimension Hierarchies, Scan( ':', !}APQ Dimension Hierarchies ) + 1, Scan( ':', !}APQ Dimension Hierarchies ) - 1 ),
+        DB( '}APQ Picklist Dimension', !}APQ Clients, SubSt( !}APQ Dimension Hierarchies, 1, Scan( ':', !}APQ Dimension Hierarchies ) - 1 ), !}APQ Picklist Dimension Measure ),
+        Continue
+    )
+);
+
+# Control the subsets to use for the picklists : override the default user entry is always stet
+[ '}APQ Picklist Dimension Measure':{'Subset N Override','Subset C Override','Subset Plan Override','Subset Report Override','Subset Min Override','Subset Max Override'} ] = S: STET;
+
+# Control the subsets to use for the picklists : STET for defaul user otherwise look up default user entry
+[ '}APQ Picklist Dimension Measure':{'Subset N'} ] = S:
+IF( !}APQ Clients @= DB( '}APQ Settings', 'Default User', 'String' ),
+   STET,
+   IF( DB( '}APQ Picklist Dimension', DB( '}APQ Settings', 'Default User', 'String' ), !}APQ Dimension Hierarchies, !}APQ Picklist Dimension Measure ) @<> '',
+      DB( '}APQ Picklist Dimension', DB( '}APQ Settings', 'Default User', 'String' ), !}APQ Dimension Hierarchies, !}APQ Picklist Dimension Measure ),
+      DB( '}APQ Settings', 'Std All N Elements', 'String' )
+   )
+);
+
+# Control the subsets to use for the picklists : STET for defaul user otherwise look up default user entry
+[ '}APQ Picklist Dimension Measure':{'Subset Plan'} ] = S:
+IF( !}APQ Clients @= DB( '}APQ Settings', 'Default User', 'String' ),
+   STET,
+   IF( DB( '}APQ Picklist Dimension', DB( '}APQ Settings', 'Default User', 'String' ), !}APQ Dimension Hierarchies, !}APQ Picklist Dimension Measure ) @<> '',
+      DB( '}APQ Picklist Dimension', DB( '}APQ Settings', 'Default User', 'String' ), !}APQ Dimension Hierarchies, !}APQ Picklist Dimension Measure ),
+      DB( '}APQ Settings', 'Std Planning Picklist', 'String' )
+   )
+);
+
+# Control the subsets to use for the picklists : STET for defaul user otherwise look up default user entry
+[ '}APQ Picklist Dimension Measure':{'Subset C'} ] = S:
+IF( !}APQ Clients @= DB( '}APQ Settings', 'Default User', 'String' ),
+   STET,
+   IF( DB( '}APQ Picklist Dimension', DB( '}APQ Settings', 'Default User', 'String' ), !}APQ Dimension Hierarchies, !}APQ Picklist Dimension Measure ) @<> '',
+      DB( '}APQ Picklist Dimension', DB( '}APQ Settings', 'Default User', 'String' ), !}APQ Dimension Hierarchies, !}APQ Picklist Dimension Measure ),
+      DB( '}APQ Settings', 'Std All C Elements', 'String' )
+   )
+);
+
+# Control the subsets to use for the picklists : STET for defaul user otherwise look up default user entry
+[ '}APQ Picklist Dimension Measure':{'Subset Report','Subset Min','Subset Max'} ] = S:
+IF( !}APQ Clients @= DB( '}APQ Settings', 'Default User', 'String' ),
+   STET,
+   IF( DB( '}APQ Picklist Dimension', DB( '}APQ Settings', 'Default User', 'String' ), !}APQ Dimension Hierarchies, !}APQ Picklist Dimension Measure ) @<> '',
+      DB( '}APQ Picklist Dimension', DB( '}APQ Settings', 'Default User', 'String' ), !}APQ Dimension Hierarchies, !}APQ Picklist Dimension Measure ),
+      DB( '}APQ Settings', 'Std Reporting Picklist', 'String' )
+   )
+);
+
+# Control the subsets to use for the picklists : For the final result take either default entry or override
+[ '}APQ Picklist Dimension Measure':{'Subset N Final','Subset C Final','Subset Plan Final','Subset Report Final','Subset Min Final','Subset Max Final'} ] = S:
+IF( !}APQ Clients @<> DB( '}APQ Settings', 'Default User', 'String' ),
+   Continue,
+   IF( DB( '}APQ Picklist Dimension', !}APQ Clients, !}APQ Dimension Hierarchies, 'Subset' | AttrS( '}APQ Picklist Dimension Measure', !}APQ Picklist Dimension Measure, 'Type' ) ) @<> '',
+      DB( '}APQ Picklist Dimension', !}APQ Clients, !}APQ Dimension Hierarchies, 'Subset' | AttrS( '}APQ Picklist Dimension Measure', !}APQ Picklist Dimension Measure, 'Type' ) ),
+      IF( AttrS( '}APQ Picklist Dimension Measure', !}APQ Picklist Dimension Measure, 'Type' ) @= 'N' % AttrS( '}APQ Picklist Dimension Measure', !}APQ Picklist Dimension Measure, 'Type' ) @= 'Plan',
+         DB( '}APQ Settings', 'Std All N Elements', 'String' ),
+         IF( AttrS( '}APQ Picklist Dimension Measure', !}APQ Picklist Dimension Measure, 'Type' ) @= 'C' % AttrS( '}APQ Picklist Dimension Measure', !}APQ Picklist Dimension Measure, 'Type' ) @= 'Report',
+            DB( '}APQ Settings', 'Std All C Elements', 'String' ),
+            ''
+         )
+      )
+   )
+);
+
+[ '}APQ Picklist Dimension Measure':{'Subset N Final','Subset C Final','Subset Plan Final','Subset Report Final','Subset Min Final','Subset Max Final'} ] = S:
+IF( DB( '}APQ Picklist Dimension', !}APQ Clients, !}APQ Dimension Hierarchies, 'Subset' | AttrS( '}APQ Picklist Dimension Measure', !}APQ Picklist Dimension Measure, 'Type' ) | 'Override' ) @= '',
+   DB( '}APQ Picklist Dimension', !}APQ Clients, !}APQ Dimension Hierarchies, 'Subset' | AttrS( '}APQ Picklist Dimension Measure', !}APQ Picklist Dimension Measure, 'Type' ) ),
+   DB( '}APQ Picklist Dimension', !}APQ Clients, !}APQ Dimension Hierarchies, 'Subset' | AttrS( '}APQ Picklist Dimension Measure', !}APQ Picklist Dimension Measure, 'Type' ) | 'Override' )
+);
+
+# Get Default C selection from Default_Member in Dimension Defaults cube
+[ '}APQ Picklist Dimension Measure':{'Default C Selection','Default C','Default Report Selection','Default Report'} ] = S:
+IF( !}APQ Clients @= DB( '}APQ Settings', 'Default User', 'String' ),
+  DB( '}APQ Dimension Defaults', !}APQ Dimension Hierarchies, 'Default_Member', 'String' ),
+  CONTINUE
+);
+
+[ '}APQ Picklist Dimension Measure':{'Default Min','Default Max'} ] = S:
+IF( !}APQ Clients @= DB( '}APQ Settings', 'Default User', 'String' ),
+  DimNm( !}APQ Dimension Hierarchies, DimIx( !}APQ Dimension Hierarchies, DB( '}APQ Picklist Dimension', !}APQ Clients, !}APQ Dimension Hierarchies, !}APQ Picklist Dimension Measure | ' Selection' ) ) ),
+  IF( DimIx( !}APQ Dimension Hierarchies, DB( '}APQ Picklist Dimension', !}APQ Clients, !}APQ Dimension Hierarchies, !}APQ Picklist Dimension Measure | ' Selection' ) ) > 0,
+    DB( '}APQ Picklist Dimension', !}APQ Clients, !}APQ Dimension Hierarchies, !}APQ Picklist Dimension Measure | ' Selection' ),
+    DB( '}APQ Picklist Dimension', DB( '}APQ Settings', 'Default User', 'String' ), !}APQ Dimension Hierarchies, !}APQ Picklist Dimension Measure )
+  )
+);
+
+[ '}APQ Picklist Dimension Measure':{'Default C','Default Report'} ] = S:
+IF( DimIx( !}APQ Dimension Hierarchies, DB( '}APQ Picklist Dimension', !}APQ Clients, !}APQ Dimension Hierarchies, !}APQ Picklist Dimension Measure | ' Selection' ) ) > 0,
+  DB( '}APQ Picklist Dimension', !}APQ Clients, !}APQ Dimension Hierarchies, !}APQ Picklist Dimension Measure | ' Selection' ),
+  DB( '}APQ Dimension Defaults', !}APQ Dimension Hierarchies, 'Default_Member', 'String' )
+);
+
+[ '}APQ Picklist Dimension Measure':{'Default Plan'} ] = S:
+IF( !}APQ Clients @= DB( '}APQ Settings', 'Default User', 'String' ),
+  Continue,
+  IF( DimIx( !}APQ Dimension Hierarchies, DB( '}APQ Picklist Dimension', !}APQ Clients, !}APQ Dimension Hierarchies, !}APQ Picklist Dimension Measure | ' Selection' ) ) > 0,
+    DimNm( !}APQ Dimension Hierarchies, DimIx( !}APQ Dimension Hierarchies, DB( '}APQ Picklist Dimension', !}APQ Clients, !}APQ Dimension Hierarchies, !}APQ Picklist Dimension Measure | ' Selection' ) ) ),
+    DB( '}APQ Picklist Dimension', DB( '}APQ Settings', 'Default User', 'String' ), !}APQ Dimension Hierarchies, !}APQ Picklist Dimension Measure )
+  )
+);
+
+[ '}APQ Picklist Dimension Measure':{'Default N','Default Plan'} ] = S:
+IF( !}APQ Clients @= DB( '}APQ Settings', 'Default User', 'String' ),
+  DimNm( !}APQ Dimension Hierarchies, DimIx( !}APQ Dimension Hierarchies, DB( '}APQ Picklist Dimension', !}APQ Clients, !}APQ Dimension Hierarchies, !}APQ Picklist Dimension Measure | ' Selection' ) ) ),
+  IF( DimIx( !}APQ Dimension Hierarchies, DB( '}APQ Picklist Dimension', !}APQ Clients, !}APQ Dimension Hierarchies, !}APQ Picklist Dimension Measure | ' Selection' ) ) > 0,
+    DimNm( !}APQ Dimension Hierarchies, DimIx( !}APQ Dimension Hierarchies, DB( '}APQ Picklist Dimension', !}APQ Clients, !}APQ Dimension Hierarchies, !}APQ Picklist Dimension Measure | ' Selection' ) ) ),
+    DB( '}APQ Picklist Dimension', DB( '}APQ Settings', 'Default User', 'String' ), !}APQ Dimension Hierarchies, !}APQ Picklist Dimension Measure )
+  )
+);
+
+[ '}APQ Picklist Dimension Measure':{'Navigation N','Navigation C','Navigation Plan','Navigation Report','Navigation Min','Navigation Max'} ] = S:
+IF( DimIx( !}APQ Dimension Hierarchies, DB( '}APQ Picklist Dimension', !}APQ Clients, !}APQ Dimension Hierarchies, 'Current ' | AttrS( '}APQ Picklist Dimension Measure', !}APQ Picklist Dimension Measure, 'Type' ) | ' Selection' ) ) > 0,
+  DimNm( !}APQ Dimension Hierarchies, DimIx( !}APQ Dimension Hierarchies, DB( '}APQ Picklist Dimension', !}APQ Clients, !}APQ Dimension Hierarchies, 'Current' | SubSt( !}APQ Picklist Dimension Measure, 11, 20 ) | ' Selection' ) ) ),
+  DB( '}APQ Picklist Dimension', !}APQ Clients, !}APQ Dimension Hierarchies, 'Default ' | AttrS( '}APQ Picklist Dimension Measure', !}APQ Picklist Dimension Measure, 'Type' ) )
+);
+
+#############################
+#FEEDERS;
+#############################
+
+
+#############################
+##~~   End  Rule File   ~~##
+#############################

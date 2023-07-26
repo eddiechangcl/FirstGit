@@ -1,0 +1,238 @@
+﻿FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+#SKIPCHECK;
+#FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# **}APQ Settings** is the central parameter lookup cube for system values for Apliqode Framework.  This cube is referenced heavily in all
+# Prolog declarations of each framework TI process to obtain system values all from a central repository. (Change once, change globally everywhere!)
+# Custom model-specific processes should also pull system parameter values from this cube. If the provided _TI process templates_ have been used
+# then this should be a standard development practice.
+#
+# Warning:
+# Values in this cube MUST be customised for every implementation to ensure proper functioning of the framework.
+# E.g. data directory location, debug location, location of Hustle & RunTI, etc.
+#
+# Note:
+# Custom or model specific parameters can also be added to do away with the need to have an additional "SYS Parameters" cube on the system.
+# **}APQ Parameters** is the defacto _measure_ dimension for the cube.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+########################################################
+# Asia Standard Model: Copying Sys Environment Parameters from Sys Parameter Cube
+########################################################
+
+['Windows Server Name','String']=S:DB('Sys Parameter','Windows Server Name','Text');
+['TM1 Admin Host','String']=S:DB('Sys Parameter','Admin Host','Text');
+['TM1Web URL','String']=S:DB('Sys Parameter','TM1 Web URL','Text');
+['TM1 Server Name','String']=S:DB('Sys Parameter','TM1 Server Name','Text');
+['Windows Service Name','String']=S:DB('Sys Parameter','TM1 Server Name','Text');
+['Use CAM','String']=S:DB('Sys Parameter','Use CAM','Text');
+
+['Location: Instance','String']=S:DB('Sys Parameter','TM1 Instance Directory','Text');
+['Location: Framework','String']=S:DB('Sys Parameter','TM1 Data Directory','Text');
+['Location: Data Dir','String']=S:DB('Sys Parameter','TM1 Data Directory','Text');
+['Location: Export','String']=S:DB('Sys Parameter','Export Folder','Text');
+['Location: Debugging','String']=S:DB('Sys Parameter','TM1 Logging Directory','Text') | '\Debug';
+['Location: Source Data','String']=S:DB('Sys Parameter','TM1 Source Data Directory','Text') ;
+['Location: Backup','String']=S:DB('Sys Parameter','TM1 Instance Directory','Text') | '\backup';
+['Location: Scripts','String']=S:DB('Sys Parameter','TM1 Instance Directory','Text') | '\script\batch';
+['Location: 7Zip','String']=S:DB('Sys Parameter','7zip.exe Path','Text');
+['Location: Hustle','String']=S:DB('Sys Parameter','Hustle.exe Path','Text');
+['Location: Hustle Path','String']=S:SubSt(DB('Sys Parameter','Hustle.exe Path','Text'), 1, LONG(DB('Sys Parameter','Hustle.exe Path','Text')) - 11);
+['Location: TM1RunTI','String']=S:DB('Sys Parameter','TM1RunTI.exe Path','Text');
+['Location: Blat','String']=S:DB('Sys Parameter','7zip.exe Path','Text');
+
+['smtp server:port','String']=S:DB('Sys Parameter','SMTP Server','Text') | ':' | DB('Sys Parameter','SMTP Port','Text');
+['smtp User','String']=S:DB('Sys Parameter','Mail Credential Username','Text');
+['smtp Pwd','String']=S:DB('Sys Parameter','Mail Credential Password','Text');
+
+
+########################################################
+
+# Location Parameters
+# If marked true on numeric measure then take path to Location:Instance as base and concatenate to root
+[ '}APQ Parameters':'Location: Data Dir', '}APQ Settings Measure':'String' ] = S:
+If( [ '}APQ Settings Measure':'Numeric' ] = 1,
+    DB('}APQ Settings', 'Location: Instance', 'String' )
+    | If( SubSt( DB('}APQ Settings', 'Location: Instance', 'String' ), Long( DB('}APQ Settings', 'Location: Instance', 'String' ) ), 1 ) @= '\', '', '\' )
+    | 'Data',
+    STET
+);
+[ '}APQ Parameters':'Location: Framework', '}APQ Settings Measure':'String' ] = S:
+If( [ '}APQ Settings Measure':'Numeric' ] = 1,
+    DB('}APQ Settings', 'Location: Instance', 'String' )
+    | If( SubSt( DB('}APQ Settings', 'Location: Instance', 'String' ), Long( DB('}APQ Settings', 'Location: Instance', 'String' ) ), 1 ) @= '\', '', '\' )
+    | 'Data.APQ',
+    STET
+);
+[ '}APQ Parameters':'Location: Backup', '}APQ Settings Measure':'String' ] = S:
+If( [ '}APQ Settings Measure':'Numeric' ] = 1,
+    DB('}APQ Settings', 'Location: Instance', 'String' )
+    | If( SubSt( DB('}APQ Settings', 'Location: Instance', 'String' ), Long( DB('}APQ Settings', 'Location: Instance', 'String' ) ), 1 ) @= '\', '', '\' )
+    | 'Backup',
+    STET
+);
+[ '}APQ Parameters':'Location: Debugging', '}APQ Settings Measure':'String' ] = S:
+If( [ '}APQ Settings Measure':'Numeric' ] = 1,
+    DB('}APQ Settings', 'Location: Instance', 'String' )
+    | If( SubSt( DB('}APQ Settings', 'Location: Instance', 'String' ), Long( DB('}APQ Settings', 'Location: Instance', 'String' ) ), 1 ) @= '\', '', '\' )
+    | 'Log\Debug',
+    STET
+);
+[ '}APQ Parameters':'Location: Scripts', '}APQ Settings Measure':'String' ] = S:
+If( [ '}APQ Settings Measure':'Numeric' ] = 1,
+    DB('}APQ Settings', 'Location: Instance', 'String' )
+    | If( SubSt( DB('}APQ Settings', 'Location: Instance', 'String' ), Long( DB('}APQ Settings', 'Location: Instance', 'String' ) ), 1 ) @= '\', '', '\' )
+    | 'Batch',
+    STET
+);
+[ '}APQ Parameters':'Location: Source Data', '}APQ Settings Measure':'String' ] = S:
+If( [ '}APQ Settings Measure':'Numeric' ] = 1,
+    DB('}APQ Settings', 'Location: Instance', 'String' )
+    | If( SubSt( DB('}APQ Settings', 'Location: Instance', 'String' ), Long( DB('}APQ Settings', 'Location: Instance', 'String' ) ), 1 ) @= '\', '', '\' )
+    | 'SourceData',
+    STET
+);
+[ '}APQ Parameters':'Location: Export', '}APQ Settings Measure':'String' ] = S:
+If( [ '}APQ Settings Measure':'Numeric' ] = 1,
+    DB('}APQ Settings', 'Location: Instance', 'String' )
+    | If( SubSt( DB('}APQ Settings', 'Location: Instance', 'String' ), Long( DB('}APQ Settings', 'Location: Instance', 'String' ) ), 1 ) @= '\', '', '\' )
+    | 'Export',
+    STET
+);
+[ '}APQ Parameters':'Location: Hustle Path', '}APQ Settings Measure':'String' ] = S:
+If( [ '}APQ Settings Measure':'Numeric' ] = 1,
+    DB('}APQ Settings', 'Location: Scripts', 'String' ),
+    STET
+);
+[ '}APQ Parameters':'Location: TM1RunTI Config', '}APQ Settings Measure':'String' ] = S:
+If( [ '}APQ Settings Measure':'Numeric' ] = 1,
+    DB('}APQ Settings', 'Location: Scripts', 'String' ) | '\TM1RunTIConfig.ini',
+    STET
+);
+
+# Time Parameters (calendar)
+[ '}APQ Parameters':'Current Day', '}APQ Settings Measure':'String' ] = S: TimSt( Now, DB('}APQ Settings','Date format','String') );
+
+[ '}APQ Parameters':'Last Day', '}APQ Settings Measure':'String' ] = S: TimSt( Now - 1, DB('}APQ Settings','Date format','String') );
+
+[ '}APQ Parameters':'Current Day in Month', '}APQ Settings Measure':'String' ] = S: TimSt( Now, '\D' );
+
+[ '}APQ Parameters':'Local System Time', '}APQ Settings Measure':'String' ] = S: Time();
+
+[ '}APQ Parameters':'GMT System Time', '}APQ Settings Measure':'String' ] = S: TimSt( Now - ( Numbr( DB( '}APQ Settings', 'GMT Time Shift Hours', !}APQ Settings Measure ) ) / 24), '\h:\i' );
+
+[ '}APQ Parameters':'Current Year-Month', '}APQ Settings Measure':'String' ] = S: DB( '}APQ Time Relative Time Lookup', DB( '}APQ Settings', 'Year-Month Dimension', !}APQ Settings Measure ), 'Current Month', 'Final Value' );
+
+[ '}APQ Parameters':'Last Year-Month', '}APQ Settings Measure':'String' ] = S: DB( '}APQ Time Relative Time Lookup', DB( '}APQ Settings', 'Year-Month Dimension', !}APQ Settings Measure ), 'Last Month', 'Final Value' );
+
+[ '}APQ Parameters':'Next Year-Month', '}APQ Settings Measure':'String' ] = S: DB( '}APQ Time Relative Time Lookup', DB( '}APQ Settings', 'Year-Month Dimension', !}APQ Settings Measure ), 'Next Month', 'Final Value' );
+
+[ '}APQ Parameters':'Current Year-Month Index', '}APQ Settings Measure':'Numeric' ] = N: DimIx( '}APQ Time Year-Month Lookup', DB( '}APQ Time Relative Time Lookup', DB( '}APQ Settings', 'Year-Month Dimension', 'String' ), 'Current Month', 'Final Value' ) );
+[ '}APQ Parameters':'Current Year-Month Index', '}APQ Settings Measure':'String' ] = S: Trim( Str( [ '}APQ Settings Measure':'Numeric' ], 4, 0 ) );
+
+[ '}APQ Parameters':'Current Year', '}APQ Settings Measure':'String' ] = S: DB( '}APQ Time Relative Time Lookup', DB( '}APQ Settings', 'Year Dimension', !}APQ Settings Measure ), 'Current Year', 'Final Value' );
+
+[ '}APQ Parameters':'Last Year', '}APQ Settings Measure':'String' ] = S:  DB( '}APQ Time Relative Time Lookup', DB( '}APQ Settings', 'Year Dimension', !}APQ Settings Measure ), 'Last Year', 'Final Value' );
+
+[ '}APQ Parameters':'Next Year', '}APQ Settings Measure':'String' ] = S:  DB( '}APQ Time Relative Time Lookup', DB( '}APQ Settings', 'Year Dimension', !}APQ Settings Measure ), 'Next Year', 'Final Value' );
+
+[ '}APQ Parameters':'Current Month', '}APQ Settings Measure':'String' ] = S:  DB( '}APQ Time Relative Time Lookup', DB( '}APQ Settings', 'Month Dimension', !}APQ Settings Measure ), 'Current Month', 'Final Value' );
+
+[ '}APQ Parameters':'Last Month', '}APQ Settings Measure':'String' ] = S: DB( '}APQ Time Relative Time Lookup', DB( '}APQ Settings', 'Month Dimension', !}APQ Settings Measure ), 'Last Month', 'Final Value' );
+
+[ '}APQ Parameters':'Next Month', '}APQ Settings Measure':'String' ] = S: DB( '}APQ Time Relative Time Lookup', DB( '}APQ Settings', 'Month Dimension', !}APQ Settings Measure ), 'Next Month', 'Final Value' );
+
+# Time Parameters (financial)
+[ '}APQ Parameters':'Current Year-Month Fin', '}APQ Settings Measure':'String' ] = S: DB( '}APQ Time Relative Time Lookup', DB( '}APQ Settings', 'Fin Year-Month Dimension', !}APQ Settings Measure ), 'Current Month', 'Final Value' );
+
+[ '}APQ Parameters':'Last Year-Month Fin', '}APQ Settings Measure':'String' ] = S: DB( '}APQ Time Relative Time Lookup', DB( '}APQ Settings', 'Fin Year-Month Dimension', !}APQ Settings Measure ), 'Last Month', 'Final Value' );
+
+[ '}APQ Parameters':'Next Year-Month Fin', '}APQ Settings Measure':'String' ] = S: DB( '}APQ Time Relative Time Lookup', DB( '}APQ Settings', 'Fin Year-Month Dimension', !}APQ Settings Measure ), 'Next Month', 'Final Value' );
+
+[ '}APQ Parameters':'Current Year-Month Index Fin', '}APQ Settings Measure':'Numeric' ] = N: DimIx( '}APQ Time Year-Month Lookup', DB( '}APQ Time Relative Time Lookup', DB( '}APQ Settings', 'Fin Year-Month Dimension', 'String' ), 'Current Month', 'Final Value' ) );
+[ '}APQ Parameters':'Current Year-Month Index Fin', '}APQ Settings Measure':'String' ] = S: Trim( Str( [ '}APQ Settings Measure':'Numeric' ], 4, 0 ) );
+
+[ '}APQ Parameters':'Current Year Fin', '}APQ Settings Measure':'String' ] = S: DB( '}APQ Time Relative Time Lookup', DB( '}APQ Settings', 'Fin Year Dimension', !}APQ Settings Measure ), 'Current Year', 'Final Value' );
+
+[ '}APQ Parameters':'Last Year Fin', '}APQ Settings Measure':'String' ] = S:  DB( '}APQ Time Relative Time Lookup', DB( '}APQ Settings', 'Fin Year Dimension', !}APQ Settings Measure ), 'Last Year', 'Final Value' );
+
+[ '}APQ Parameters':'Next Year Fin', '}APQ Settings Measure':'String' ] = S:  DB( '}APQ Time Relative Time Lookup', DB( '}APQ Settings', 'Fin Year Dimension', !}APQ Settings Measure ), 'Next Year', 'Final Value' );
+
+[ '}APQ Parameters':'Current Month Fin', '}APQ Settings Measure':'String' ] = S:  DB( '}APQ Time Relative Time Lookup', DB( '}APQ Settings', 'Fin Month Dimension', !}APQ Settings Measure ), 'Current Month', 'Final Value' );
+
+[ '}APQ Parameters':'Last Month Fin', '}APQ Settings Measure':'String' ] = S: DB( '}APQ Time Relative Time Lookup', DB( '}APQ Settings', 'Fin Month Dimension', !}APQ Settings Measure ), 'Last Month', 'Final Value' );
+
+[ '}APQ Parameters':'Next Month Fin', '}APQ Settings Measure':'String' ] = S: DB( '}APQ Time Relative Time Lookup', DB( '}APQ Settings', 'Fin Month Dimension', !}APQ Settings Measure ), 'Next Month', 'Final Value' );
+
+# Control params
+[ '}APQ Parameters':{'Max CPUs','Max dimension size for subset info refresh','Max dimension size for std subset refresh','Max dimension size for element copy','Max subsets per dimension','Max subset size for PickList entry','Max sec for SemiDynamic subset refresh'}, '}APQ Settings Measure':'Numeric' ] = N:
+Numbr( DB( '}APQ Settings', !}APQ Parameters, 'String' ) );
+
+[ '}APQ Parameters':{'Enforce Process Security','Preserve Deleted Users','Create Std Subsets in Alternate Hierarchies'}, '}APQ Settings Measure':'String' ] = S:
+IF( [ '}APQ Settings Measure':'Numeric' ] > 0,
+   'TRUE',
+   'FALSE'
+);
+
+# Customer
+[ '}APQ Parameters':{'Customer Name','Customer Key'}, '}APQ Settings Measure':'Numeric' ] = N: Sign( Code( DB( '}APQ Settings', !}APQ Parameters, 'String' ), 1 ) );
+
+# Apliqode Version
+[ '}APQ Parameters':'Apliqode Version', '}APQ Settings Measure':'String' ] = S: DimNm( '}APQ Version', 1 );
+
+# Numeric Version Conversion
+[ '}APQ Parameters':{'Apliqode Version','Pulse Version','TM1 Version'}, '}APQ Settings Measure':'Numeric' ] = N:
+IF( Scan( '.', DB( '}APQ Settings', !}APQ Parameters, 'String' ) ) = 0,
+   Numbr( DB( '}APQ Settings', !}APQ Parameters, 'String' ) ),
+   IF( Scan( '.', SubSt( DB( '}APQ Settings', !}APQ Parameters, 'String' ), Scan( '.', DB( '}APQ Settings', !}APQ Parameters, 'String' ) ) + 1, 20 ) ) = 0,
+      Numbr( DB( '}APQ Settings', !}APQ Parameters, 'String' ) ),
+      IF( Scan( '.', SubSt( DB( '}APQ Settings', !}APQ Parameters, 'String' ), Scan( '.', DB( '}APQ Settings', !}APQ Parameters, 'String' ) ) + Scan( '.', SubSt( DB( '}APQ Settings', !}APQ Parameters, 'String' ), Scan( '.', DB( '}APQ Settings', !}APQ Parameters, 'String' ) ) + 1, 20 ) ) + 2, 20 ) ) = 0,
+         Numbr(
+            SubSt( DB( '}APQ Settings', !}APQ Parameters, 'String' ), 1, Scan( '.', DB( '}APQ Settings', !}APQ Parameters, 'String' ) ) ) |
+            SubSt( DB( '}APQ Settings', !}APQ Parameters, 'String' ), Scan( '.', DB( '}APQ Settings', !}APQ Parameters, 'String' ) ) + 1, Scan( '.', SubSt( DB( '}APQ Settings', !}APQ Parameters, 'String' ), Scan( '.', DB( '}APQ Settings', !}APQ Parameters, 'String' ) ) + 1, 20 ) ) - 1 ) |
+            SubSt( DB( '}APQ Settings', !}APQ Parameters, 'String' ), Scan( '.', DB( '}APQ Settings', !}APQ Parameters, 'String' ) ) + Scan( '.', SubSt( DB( '}APQ Settings', !}APQ Parameters, 'String' ), Scan( '.', DB( '}APQ Settings', !}APQ Parameters, 'String' ) ) + 1, 20 ) ) + 1, 20 )
+         ),
+         # checking for more than 2 dots in version number just gets too tedious
+         Undef
+      )
+   )
+);
+
+# Grouping Nodes
+[ '}APQ Settings Measure':'String' ] = S:
+IF( ElLev( '}APQ Parameters', !}APQ Parameters ) = 0,
+  STET,
+  IF( !}APQ Parameters @= 'Total Parameters',
+    '',
+    Str( ElCompN( '}APQ Parameters', !}APQ Parameters ), 2, 0 ) | ' parameters'
+  )
+);
+
+# Numeric count for num params
+[ '}APQ Settings Measure':'Numeric' ] = C: ElCompN( '}APQ Parameters', !}APQ Parameters );
+
+
+############
+# FEEDERS;
+############
+
+
+#############################
+##~~    End Rule File    ~~##
+#############################

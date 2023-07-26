@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=User Last Login by Day
+ENTRYTYPE=view
+ENTRYREFERENCE=TM1:///VIEW/PUBLIC/}APQ User Last Active/Default

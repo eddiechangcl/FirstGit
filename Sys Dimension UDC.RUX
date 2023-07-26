@@ -1,0 +1,163 @@
+﻿FORMAT==100
+FEEDSTRINGS;
+SKIPCHECK;
+
+##############################################################################################################
+### CWA Std. Model  version 3.00
+### Copyright © 2012~2020, Cubewise (Hong Kong) Ltd. All rights reserved.
+### This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+### and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+### you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+### or display any part, in any form, or by any means.
+##############################################################################################################
+
+##############################################################################################################
+###~~~    Start Rule File    ~~~###
+
+
+['C1 Desc'] = S:DB('Sys Dimension UDC', !UDC Dimension, !UDC, !Line Item, 'C1');
+
+[{'P1','P2','P3','P4','P5','P6','P7','P8','P9'},'All Line Items']=S:STET;
+
+[{'P1','P2','P3','P4','P5','P6','P7','P8','P9'}]=S:
+IF(DB('Sys Dimension UDC', !UDC Dimension, !UDC, !Line Item, !M UDC | ' Desc') @=''
+      , CONTINUE
+      , '#' | SUBST(!UDC, 4,2) | FILL ('.', DB('Sys Dimension UDC', !UDC Dimension, !UDC, !Line Item, !M UDC | ' Gen'))
+            | DB('Sys Dimension UDC', !UDC Dimension, !UDC, !Line Item, !M UDC | ' Desc')
+);
+
+['C1W']=S:IF (DB('Sys Dimension UDC', !UDC Dimension, !UDC, !Line Item, 'C1 Desc') @= '', '', CONTINUE);
+[{'P1W','P2W','P3W','P4W','P5W','P6W','P7W','P8W','P9W'}]=S:
+IF (DB('Sys Dimension UDC', !UDC Dimension, !UDC, !Line Item, SubSt(!M UDC, 1, 2) | ' Desc') @= '', '', CONTINUE);
+
+['All Levels'] = C: ['P9 Level'];
+['All Gens'] = C: ['P1 Gen'];
+
+['P1 Level']=N:
+IF(DB('Sys Dimension UDC', !UDC Dimension, !UDC, !Line Item, 'P1 Desc') @=''
+        , CONTINUE
+        , 1
+);
+
+['P2 Level']=N:
+IF(DB('Sys Dimension UDC', !UDC Dimension, !UDC, !Line Item, 'P2 Desc') @=''
+        , ['P1 Level']
+        , ['P1 Level']+1
+);
+
+['P3 Level']=N:
+IF(DB('Sys Dimension UDC', !UDC Dimension, !UDC, !Line Item, 'P3 Desc') @=''
+        , ['P2 Level']
+        , ['P2 Level']+1
+);
+
+['P4 Level']=N:
+IF(DB('Sys Dimension UDC', !UDC Dimension, !UDC, !Line Item, 'P4 Desc') @=''
+        , ['P3 Level']
+        , ['P3 Level']+1
+);
+
+['P5 Level']=N:
+IF(DB('Sys Dimension UDC', !UDC Dimension, !UDC, !Line Item, 'P5 Desc') @=''
+        , ['P4 Level']
+        , ['P4 Level']+1
+);
+
+['P6 Level']=N:
+IF(DB('Sys Dimension UDC', !UDC Dimension, !UDC, !Line Item, 'P6 Desc') @=''
+        , ['P5 Level']
+        , ['P5 Level']+1
+);
+
+['P7 Level']=N:
+IF(DB('Sys Dimension UDC', !UDC Dimension, !UDC, !Line Item, 'P7 Desc') @=''
+        , ['P6 Level']
+        , ['P6 Level']+1
+);
+
+['P8 Level']=N:
+IF(DB('Sys Dimension UDC', !UDC Dimension, !UDC, !Line Item, 'P8 Desc') @=''
+        , ['P7 Level']
+        , ['P7 Level']+1
+);
+
+['P9 Level']=N:
+IF(DB('Sys Dimension UDC', !UDC Dimension, !UDC, !Line Item, 'P9 Desc') @=''
+        , ['P8 Level']
+        , ['P8 Level']+1
+);
+
+
+['P9 Gen']=N:
+IF(DB('Sys Dimension UDC', !UDC Dimension, !UDC, !Line Item, 'P9 Desc') @=''
+        , CONTINUE
+        , 1
+);
+
+['P8 Gen']=N:
+IF(DB('Sys Dimension UDC', !UDC Dimension, !UDC, !Line Item, 'P8 Desc') @=''
+        , ['P9 Gen']
+        , ['P9 Gen']+1
+);
+
+['P7 Gen']=N:
+IF(DB('Sys Dimension UDC', !UDC Dimension, !UDC, !Line Item, 'P7 Desc') @=''
+        , ['P8 Gen']
+        , ['P8 Gen']+1
+);
+
+['P6 Gen']=N:
+IF(DB('Sys Dimension UDC', !UDC Dimension, !UDC, !Line Item, 'P6 Desc') @=''
+        , ['P7 Gen']
+        , ['P7 Gen']+1
+);
+
+['P5 Gen']=N:
+IF(DB('Sys Dimension UDC', !UDC Dimension, !UDC, !Line Item, 'P5 Desc') @=''
+        , ['P6 Gen']
+        , ['P6 Gen']+1
+);
+
+['P4 Gen']=N:
+IF(DB('Sys Dimension UDC', !UDC Dimension, !UDC, !Line Item, 'P4 Desc') @=''
+        , ['P5 Gen']
+        , ['P5 Gen']+1
+);
+
+['P3 Gen']=N:
+IF(DB('Sys Dimension UDC', !UDC Dimension, !UDC, !Line Item, 'P3 Desc') @=''
+        , ['P4 Gen']
+        , ['P4 Gen']+1
+);
+
+['P2 Gen']=N:
+IF(DB('Sys Dimension UDC', !UDC Dimension, !UDC, !Line Item, 'P2 Desc') @=''
+        , ['P3 Gen']
+        , ['P3 Gen']+1
+);
+
+['P1 Gen']=N:
+IF(DB('Sys Dimension UDC', !UDC Dimension, !UDC, !Line Item, 'P1 Desc') @=''
+        , ['P2 Gen']
+        , ['P2 Gen']+1
+);
+
+
+
+##############################################################################################################
+FEEDERS;
+##############################################################################################################
+
+#########################################################
+###  Internal Cube Feeders
+['C1']=>['All Levels'],['All Gens'],['P1'],['P2'],['P3'],['P4'],['P5'],['P6'],['P7'],['P8'],['P9'];
+
+
+#########################################################
+###  External Cube Feeders
+
+
+
+
+##############################################################################################################
+###    End Rule File    ~~##

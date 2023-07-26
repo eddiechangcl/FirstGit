@@ -1,0 +1,5 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=CopyPrivateViewSubset
+ENTRYTYPE=blob
+ENTRYREFERENCE=TM1:///blob/PUBLIC/.\}Externals\CopyPrivateViewSubsetv2.2.xlsx_20160721150602.xlsx
+REMOVEBLOBONDELETE=Yes

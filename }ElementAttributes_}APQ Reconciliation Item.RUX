@@ -1,0 +1,81 @@
+FORMAT==100
+##############################################################################################################################
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+
+##~~  Copyright Cubewise Services AG
+#############################
+##~~   Start Rule File   ~~##
+#############################
+#SKIPCHECK;
+#FEEDSTRINGS;
+#############################
+
+# For reconciliation items Cube=Reference
+[ '}ElementAttributes_}APQ Reconciliation Item':'Cube' ] = S:
+IF( SubSt( !}APQ Reconciliation Item, 1, 1 ) @= 'R',
+  DB( '}APQ Reconciliation Setup', !}APQ Reconciliation Item, 'Reference' ),
+  ''
+);
+
+# For Comparison Items pull through the Reference & Comparison from the mapping cube
+[ '}ElementAttributes_}APQ Reconciliation Item':'Reference' ] = S:
+IF( ElLev( '}APQ Reconciliation Item', !}APQ Reconciliation Item ) = 0,
+  IF( SubSt( !}APQ Reconciliation Item, 1, 1 ) @= 'C',
+    DimNm( '}APQ Reconciliation Item', DimIx( '}APQ Reconciliation Item', DB( '}APQ Reconciliation Setup', !}APQ Reconciliation Item, !}ElementAttributes_}APQ Reconciliation Item ) ) ),
+    DB( '}APQ Reconciliation Setup', !}APQ Reconciliation Item, !}ElementAttributes_}APQ Reconciliation Item )
+  ),
+  ''
+);
+
+# For Comparison Items pull through the Reference & Comparison from the mapping cube
+[ '}ElementAttributes_}APQ Reconciliation Item':'Comparison' ] = S:
+IF( SubSt( !}APQ Reconciliation Item, 1, 1 ) @= 'C' & ElLev( '}APQ Reconciliation Item', !}APQ Reconciliation Item ) = 0,
+  DimNm( '}APQ Reconciliation Item', DimIx( '}APQ Reconciliation Item', DB( '}APQ Reconciliation Setup', !}APQ Reconciliation Item, !}ElementAttributes_}APQ Reconciliation Item ) ) ),
+  ''
+);
+
+# derive element coordinates for the generic DB() references : Hierarchies
+[ '}ElementAttributes_}APQ Reconciliation Item':{'H1','H2','H3','H4','H5','H6','H7','H8','H9','H10','H11','H12','H13','H14','H15',
+  'H16','H17','H18','H19','H20','H21','H22','H23','H24','H25','H26','H27','H28','H29','H30'}
+] = S:
+IF( AttrS( '}APQ Reconciliation Item', !}APQ Reconciliation Item, 'Cube' ) @= '',
+  '',
+  DB( '}APQ Reconciliation Setup Detail', !}APQ Reconciliation Item,
+    TabDim(
+      AttrS( '}APQ Reconciliation Item', !}APQ Reconciliation Item, 'Cube' ),
+      Numbr( SubSt( !}ElementAttributes_}APQ Reconciliation Item, 2, 2 ) )
+    ),
+    'Hierarchy'
+  )
+);
+
+# derive element coordinates for the generic DB() references : element IDs
+[ '}ElementAttributes_}APQ Reconciliation Item':{'E1','E2','E3','E4','E5','E6','E7','E8','E9','E10','E11','E12','E13','E14','E15',
+  'E16','E17','E18','E19','E20','E21','E22','E23','E24','E25','E26','E27','E28','E29','E30'}
+] = S:
+IF( AttrS( '}APQ Reconciliation Item', !}APQ Reconciliation Item, 'Cube' ) @= '',
+  '',
+  DB( '}APQ Reconciliation Setup Detail', !}APQ Reconciliation Item,
+    TabDim(
+      AttrS( '}APQ Reconciliation Item', !}APQ Reconciliation Item, 'Cube' ),
+      Numbr( SubSt( !}ElementAttributes_}APQ Reconciliation Item, 2, 2 ) )
+    ),
+    'Element Used'
+  )
+);
+
+
+#############################
+#FEEDERS;
+#############################
+
+
+#############################
+##~~    End Rule File    ~~##
+#############################

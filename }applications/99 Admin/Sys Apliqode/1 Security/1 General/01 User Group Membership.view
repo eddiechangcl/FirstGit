@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=01 User Group Membership
+ENTRYTYPE=view
+ENTRYREFERENCE=TM1:///VIEW/PUBLIC/}ClientGroups/Default

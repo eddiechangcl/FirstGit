@@ -1,0 +1,59 @@
+FORMAT==100
+##############################################################################################################################
+# APLIQODE FRAMEWORK
+# Copyright  2017, Apliqo AG. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+
+# TOGGLE SUBSET
+[ '}APQ Universal View Calculation Measure':'Toggle Subset' ] = S: 'Static:Free Entry:All Elements:PickList - Set Calculation Variable';
+
+# CALC METHOD
+[ '}APQ Universal View Calculation Measure':{'CalcMethod Entry','CalcMethod Override'} ] = S: 'Subset:}APQ Calculation Type:Universal View Calcs';
+
+# VIEW
+[ '}APQ Universal View Row':'All Rows', '}APQ Universal View Column':'All Columns', '}APQ Universal View Measure':'All Measures', '}APQ Universal View Calculation Measure':{'A Entry','A Override','B Entry','B Override','C Entry','C Override','D Entry','D Override'} ] = S:
+IF( DB('}APQ Universal View Calculation',!}APQ Universal View,!}APQ Universal View Row,!}APQ Universal View Column,!}APQ Universal View Measure,'Toggle Subset') @= 'Free Entry'
+	% DB('}APQ Universal View Calculation',!}APQ Universal View,!}APQ Universal View Row,!}APQ Universal View Column,!}APQ Universal View Measure,'Toggle Subset') @='',
+	STET,
+    IF( DB('}APQ Dimension Subsets', '}APQ Universal View\'| DB('}APQ Universal View Calculation',!}APQ Universal View,!}APQ Universal View Row,!}APQ Universal View Column,!}APQ Universal View Measure,'Toggle Subset'), 'Element Count' ) > DB( '}APQ Settings', 'Max subset size for PickList entry', 'Numeric' ),
+        '',
+        'Subset:}APQ Universal View:' | DB('}APQ Universal View Calculation',!}APQ Universal View,!}APQ Universal View Row,!}APQ Universal View Column,!}APQ Universal View Measure,'Toggle Subset')
+    )
+);
+
+# ROW
+[ '}APQ Universal View Column':'All Columns', '}APQ Universal View Measure':'All Measures', '}APQ Universal View Calculation Measure':{'A Entry','A Override','B Entry','B Override','C Entry','C Override','D Entry','D Override'} ] = S:
+IF( DB('}APQ Universal View Calculation',!}APQ Universal View,!}APQ Universal View Row,!}APQ Universal View Column,!}APQ Universal View Measure,'Toggle Subset') @= 'Free Entry'
+	% DB('}APQ Universal View Calculation',!}APQ Universal View,!}APQ Universal View Row,!}APQ Universal View Column,!}APQ Universal View Measure,'Toggle Subset') @='',
+	STET,
+    IF( DB('}APQ Dimension Subsets', '}APQ Universal View Row\'| DB('}APQ Universal View Calculation',!}APQ Universal View,!}APQ Universal View Row,!}APQ Universal View Column,!}APQ Universal View Measure,'Toggle Subset'), 'Element Count' ) > DB( '}APQ Settings', 'Max subset size for PickList entry', 'Numeric' ),
+        '',
+        'Subset:}APQ Universal View Row:' | DB('}APQ Universal View Calculation',!}APQ Universal View,!}APQ Universal View Row,!}APQ Universal View Column,!}APQ Universal View Measure,'Toggle Subset')
+    )
+);
+
+# COLUMN
+[ '}APQ Universal View Row':'All Rows', '}APQ Universal View Measure':'All Measures', '}APQ Universal View Calculation Measure':{'A Entry','A Override','B Entry','B Override','C Entry','C Override','D Entry','D Override'} ] = S:
+IF( DB('}APQ Universal View Calculation',!}APQ Universal View,!}APQ Universal View Row,!}APQ Universal View Column,!}APQ Universal View Measure,'Toggle Subset') @= 'Free Entry'
+	% DB('}APQ Universal View Calculation',!}APQ Universal View,!}APQ Universal View Row,!}APQ Universal View Column,!}APQ Universal View Measure,'Toggle Subset') @='',
+	STET,
+    IF( DB('}APQ Dimension Subsets', '}APQ Universal View Column\'| DB('}APQ Universal View Calculation',!}APQ Universal View,!}APQ Universal View Row,!}APQ Universal View Column,!}APQ Universal View Measure,'Toggle Subset'), 'Element Count' ) > DB( '}APQ Settings', 'Max subset size for PickList entry', 'Numeric' ),
+        '',
+        'Subset:}APQ Universal View Column:' | DB('}APQ Universal View Calculation',!}APQ Universal View,!}APQ Universal View Row,!}APQ Universal View Column,!}APQ Universal View Measure,'Toggle Subset')
+    )
+);
+
+# MEASURE
+[ '}APQ Universal View Row':'All Rows', '}APQ Universal View Column':'All Columns', '}APQ Universal View Calculation Measure':{'A Entry','A Override','B Entry','B Override','C Entry','C Override','D Entry','D Override'} ] = S:
+IF( DB('}APQ Universal View Calculation',!}APQ Universal View,!}APQ Universal View Row,!}APQ Universal View Column,!}APQ Universal View Measure,'Toggle Subset') @= 'Free Entry'
+	% DB('}APQ Universal View Calculation',!}APQ Universal View,!}APQ Universal View Row,!}APQ Universal View Column,!}APQ Universal View Measure,'Toggle Subset') @='',
+	STET,
+    IF( DB('}APQ Dimension Subsets', '}APQ Universal View Measure\'| DB('}APQ Universal View Calculation',!}APQ Universal View,!}APQ Universal View Row,!}APQ Universal View Column,!}APQ Universal View Measure,'Toggle Subset'), 'Element Count' ) > DB( '}APQ Settings', 'Max subset size for PickList entry', 'Numeric' ),
+        '',
+        'Subset:}APQ Universal View Measure:' | DB('}APQ Universal View Calculation',!}APQ Universal View,!}APQ Universal View Row,!}APQ Universal View Column,!}APQ Universal View Measure,'Toggle Subset')
+    )
+);

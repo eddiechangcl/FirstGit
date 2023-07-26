@@ -1,0 +1,66 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+SKIPCHECK;
+FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Cube Data Archive** is used to store the file name and a defined "slice filter" (in defined bedrock sFilter) format
+# of cube view slices which have been or should be archived.  The archive procedure is very simple using standard bedrock processes to
+# first export the defined slice as CSV and then clear the exported cube area if the clear option is set to true.
+#
+# Note:
+# The exported CSV files can be reimported at any time again using standard bedrock process.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+[ '}APQ Cube Data Archive Measure':'FileName' ] = S:
+IF( DB( '}APQ Cube Data Archive', !}APQ Cubes, !}APQ Item Index, 'ArchiveName' ) @= '',
+   '',
+   !}APQ Cubes |'.'| DB( '}APQ Cube Data Archive', !}APQ Cubes, !}APQ Item Index, 'ArchiveName' ) | '.csv'
+);
+
+[ '}APQ Cube Data Archive Measure':'ExportFile' ] = S:
+IF( DB( '}APQ Cube Data Archive', !}APQ Cubes, !}APQ Item Index, 'ArchiveName' ) @= '',
+   '',
+   DB( '}APQ Settings', 'Location: Export', 'String' ) |
+   IF( SubSt( DB( '}APQ Settings', 'Location: Export', 'String' ), Long( DB( '}APQ Settings', 'Location: Export', 'String' ) ), 1 ) @= '\', '', '\' ) |
+   !}APQ Cubes |'.'|
+   DB( '}APQ Cube Data Archive', !}APQ Cubes, !}APQ Item Index, 'ArchiveName' ) |
+   IF( SubSt( DB( '}APQ Cube Data Archive', !}APQ Cubes, !}APQ Item Index, 'ArchiveName' ), Long( DB( '}APQ Cube Data Archive', !}APQ Cubes, !}APQ Item Index, 'ArchiveName' ) ) - 3, 4 ) @= '.csv',
+      '',
+      '.csv'
+   )
+);
+
+[ '}APQ Cube Data Archive Measure':'ArchiveTimestamp' ] = S:
+IF( [ '}APQ Cube Data Archive Measure':'nTimestamp' ] = 0,
+   '',
+   TimSt( [ '}APQ Cube Data Archive Measure':'nTimestamp' ], DB('}APQ Settings','Date Time format','String') )
+);
+
+#############################
+ FEEDERS;
+#############################
+
+[ '}APQ Cube Data Archive Measure':'nTimestamp' ] => [ '}APQ Cube Data Archive Measure':'ArchiveTimestamp' ];
+
+[ '}APQ Cube Data Archive Measure':{'ArchiveName','Filter'} ] => [ '}APQ Cube Data Archive Measure':'FileName' ], [ '}APQ Cube Data Archive Measure':'ExportFile' ];
+
+#############################
+##~~    End Rule File    ~~##
+#############################
+

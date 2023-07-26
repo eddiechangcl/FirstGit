@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=ClientSettings
+ENTRYTYPE=view
+ENTRYREFERENCE=TM1:///VIEW/PUBLIC/}ClientSettings/Default

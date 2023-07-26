@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=APQ TM1 Transaction Log Analysis Measure
+ENTRYTYPE=subset
+ENTRYREFERENCE=TM1:///SUBSET/PUBLIC/}APQ TM1 Transaction Log Analysis Measure/Default

@@ -1,0 +1,150 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+SKIPCHECK;
+FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Cube Views Management** allows admin or power users to define multiple user views per cube via picklist assisted text data entry.
+# The defined views can then be automatically created via the TI process **}APQ.Cub.Vue.Management**. This can be quite helpful to allow non-admin
+# users to create public views. Or in scenarios where views need to be transported between servers.
+#
+# Note:
+# * In order to allow power users to use the public view creation functionality _users must have write access to this cube_.
+# * Element security is set automatically such that users only see the cubes and views to which they have access.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+# Exceptions for Default Row & Column dimensions
+['}APQ Item Index':'Total Items', '}APQ Cube Views Management Measure':{'Default Column Dim','Default Row Dim'}] = S: STET;
+['}APQ Cube Views Management Measure':{'Default Column Dim','Default Row Dim'}] = S: '';
+
+# Lock consolidated cells
+[ ] = S:
+IF(ISLEAF=0 & !}APQ Cube Views Management Measure @<> 'IsUsedCount',
+  '',
+  Continue
+);
+
+# STET the view name
+[ '}APQ Cube Views Management Measure':{'View Name', 'View Type', 'MDX'} ] = S: STET;
+
+# STET LastConstruct
+[ '}APQ Cube Views Management Measure':'LastConstructTime' ] = S:
+IF( ['}APQ Cube Views Management Measure':'IsUsedCount'] = 1,
+  STET,
+  Continue
+);
+
+# Count the views created
+['}APQ Cube Views Management Measure':'IsUsedCount'] = N:
+IF(DB('}APQ Cube Views Management',!}APQ Cubes,!}APQ Item Index,'View Name') @<> '',
+  1,
+  0
+);
+
+# Force to define the view name first
+[ ] = S:
+IF( ['}APQ Cube Views Management Measure':'IsUsedCount'] = 0,
+  '',
+  Continue
+);
+
+# Once the above checks have been done, the Delete Zeroes can be STET
+['}APQ Cube Views Management Measure':{'Delete Zeroes On Columns','Delete Zeroes On Rows'}] = S: STET;
+
+# Show the dimension name
+[ ] = S:
+IF( ISLEAF=1 & ATTRS('}APQ Cube Views Management Measure',!}APQ Cube Views Management Measure,'Type') @= 'Dimension Reference',
+  IF(['IsUsedCount']=1,
+    TabDim(!}APQ Cubes, Numbr( SUBST(!}APQ Cube Views Management Measure,LONG('Dim')+1,2))),
+    Continue),
+  Continue
+ );
+
+# Lock the unused dimension
+[ ] = S:
+IF( ISLEAF=1 & DB('}APQ Cube Views Management',!}APQ Cubes,!}APQ Item Index,ATTRS('}APQ Cube Views Management Measure',!}APQ Cube Views Management Measure,'Group')|' Name')@= '',
+  '',Continue);
+
+# No position for title
+[ ] = S:
+IF( ISLEAF=1 & ATTRS('}APQ Cube Views Management Measure',!}APQ Cube Views Management Measure,'Type') @= 'Stacked Position',
+  IF(ELLEV('}APQ Item Index',!}APQ Item Index)=0 & ['IsUsedCount']=1 & DB('}APQ Cube Views Management',!}APQ Cubes,!}APQ Item Index,ATTRS('}APQ Cube Views Management Measure',!}APQ Cube Views Management Measure,'Group')|' Position')@='Title',
+    'No position for title',
+    Continue),
+  Continue
+);
+
+#Error Checking (Check if Total subsets has been defined)
+[ ] = N:
+IF(ATTRS('}APQ Cube Views Management Measure',!}APQ Cube Views Management Measure,'Type') @= 'Subset Error',
+  IF (DB('}APQ Cube Views Management',!}APQ Cubes,!}APQ Item Index,ATTRS('}APQ Cube Views Management Measure',!}APQ Cube Views Management Measure,'Group')|' Name')@<>''
+  & DB('}APQ Cube Views Management',!}APQ Cubes,!}APQ Item Index,ATTRS('}APQ Cube Views Management Measure',!}APQ Cube Views Management Measure,'Group')|' Subset')@='',
+    1,
+    0
+  ),
+  Continue
+);
+
+#Count dimensions
+[ ] = N:
+IF(ATTRS('}APQ Cube Views Management Measure',!}APQ Cube Views Management Measure,'Type') @= 'Dim Count',
+  IF (DB('}APQ Cube Views Management',!}APQ Cubes,!}APQ Item Index,ATTRS('}APQ Cube Views Management Measure',!}APQ Cube Views Management Measure,'Group')|' Name')@<>'',
+    1,
+    0
+  ),
+  Continue
+);
+
+#
+[ ] = S:
+IF( ISLEAF=1 & ATTRS('}APQ Cube Views Management Measure',!}APQ Cube Views Management Measure,'Type') @= 'Title Element',
+  IF(ELLEV('}APQ Item Index',!}APQ Item Index)=0 & ['IsUsedCount']=1 & DB('}APQ Cube Views Management',!}APQ Cubes,!}APQ Item Index,ATTRS('}APQ Cube Views Management Measure',!}APQ Cube Views Management Measure,'Group')|' Position')@<>'Title',
+    'Total Subset elements',
+    Continue
+  ),
+  Continue
+);
+
+
+#############################
+FEEDERS;
+#############################
+
+['}APQ Cube Views Management Measure':'View Name'] => ['}APQ Cube Views Management Measure':'IsUsedCount'];
+
+['}APQ Cube Views Management Measure':'IsUsedCount'] => ['}APQ Cube Views Management Measure':'Dim01 Name'];
+
+#Feeder for the dimension names
+[ ] => DB('}APQ Cube Views Management',!}APQ Cubes,!}APQ Item Index,ATTRS('}APQ Cube Views Management Measure',!}APQ Cube Views Management Measure,'Next Element Feeder'));
+
+# Feeder for the error checking
+[ ] => DB(
+  IF(ATTRS('}APQ Cube Views Management Measure',!}APQ Cube Views Management Measure,'Type')@='Dimension Reference',
+     '}APQ Cube Views Management',''),
+  !}APQ Cubes,!}APQ Item Index,ATTRS('}APQ Cube Views Management Measure',!}APQ Cube Views Management Measure,'Group')|' Subset Undefined');
+
+# Feeder for the dimension count
+[ ] => DB(
+  IF(ATTRS('}APQ Cube Views Management Measure',!}APQ Cube Views Management Measure,'Type')@='Dimension Reference',
+     '}APQ Cube Views Management',''),
+  !}APQ Cubes,!}APQ Item Index,ATTRS('}APQ Cube Views Management Measure',!}APQ Cube Views Management Measure,'Group')|' Count');
+
+
+#############################
+##~~    End Rule File    ~~##
+#############################

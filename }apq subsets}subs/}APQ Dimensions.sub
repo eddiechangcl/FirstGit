@@ -1,0 +1,136 @@
+﻿283,100
+284,"}APQ Dimensions"
+11,20230515004909
+274,
+18,0
+275,
+278,0
+281,0
+270,127
+All APQ Dimensions
+All C Elements
+All Elements
+All end user dimensions
+All N Elements
+All N Elements code
+All real dimensions
+All Real Dimensions (excl. APQ)
+ALTERNATE HIERARCHIES
+Default
+Default Member
+Dimensions without cubes
+Dimensions without cubes (excl. control obj.)
+ELEMENT SECURITY
+Top Elements
+}Cube_APQ.Demo Sales Cube
+}Cube_APQ.Demo Sales Cube 2
+}Cube_APQ.Demo Sales Reconciliation Check Extended
+}Cube_APQ.Demo Sales Summary
+}Cube_Demo GL Plan
+}Cube_Demo GL Reporting
+}Cube_Demo Manpower Reporting
+}Cube_Demo Sales Reporting
+}Cube_Demo Sales Reporting by Date
+}Cube_Demo Sales Reporting by Week
+}Cube_EDU Employee Profile
+}Cube_EDU Training Plan
+}Cube_Employee Schedule
+}Cube_Exchange Rate
+}Cube_FX Rate
+}Cube_Public Holiday Reference
+}Cube_Sys Archive Parameter
+}Cube_Sys Archive Profile
+}Cube_Sys Definition Day Attribute
+}Cube_Sys Definition Month Attribute
+}Cube_Sys Definition UDC
+}Cube_Sys Definition Week Attribute
+}Cube_Sys Dimension UDC
+}Cube_Sys Lookup Date
+}Cube_Sys Lookup Year Month
+}Cube_Sys Lookup Year Week
+}Cube_Sys Menu
+}Cube_Sys Menu Application Entry
+}Cube_Sys Menu Link
+}Cube_Sys Menu Parameter
+}Cube_Sys Module Object
+}Cube_Sys Parameter
+}Cube_Sys Time Attribute
+}Cube_Sys Versioning Cube
+}Cube_Sys Versioning Log
+}Cube_Sys Workbench
+}Cube_Sys Workbench Task Dependency
+}Cube_Sys Workflow Cooling Period
+}Cube_Sys Workflow Demo Annual Budget
+}Cube_Sys Workflow Sales Forecast
+}Cube_test
+}Cube_}APQ Application Activity Back
+}Cube_}APQ Application Activity Log
+}Cube_}APQ Application Entries
+}Cube_}APQ Application to Cube Reference
+}Cube_}APQ Chore Info
+}Cube_}APQ Cube Data Archive
+}Cube_}APQ Cube Dependency
+}Cube_}APQ Cube Dimension Dependency
+}Cube_}APQ Cube Last Updated by Process
+}Cube_}APQ Cube View Cache Control
+}Cube_}APQ Cube Views
+}Cube_}APQ Cube Views Management
+}Cube_}APQ Dimension Attribute Definition
+}Cube_}APQ Dimension Attribute Matrix
+}Cube_}APQ Dimension Attributes
+}Cube_}APQ Dimension Defaults
+}Cube_}APQ Dimension Definition
+}Cube_}APQ Dimension Definition Source
+}Cube_}APQ Dimension Elements
+}Cube_}APQ Dimension Element Search
+}Cube_}APQ Dimension Hierarchies
+}Cube_}APQ Dimension SemiDynamic Subsets
+}Cube_}APQ Dimension Static Subsets And UDC
+}Cube_}APQ Dimension Subsets
+}Cube_}APQ Dimension Subset Use
+}Cube_}APQ Dimension Use
+}Cube_}APQ Glossary
+}Cube_}APQ Menu
+}Cube_}APQ Menu Link
+}Cube_}APQ Menu User Preference
+}Cube_}APQ Picklist Dimension
+}Cube_}APQ Picklist General
+}Cube_}APQ Process Execution Item
+}Cube_}APQ Process Execution Log
+}Cube_}APQ Process Execution Tree
+}Cube_}APQ Process Parallelization Control
+}Cube_}APQ Process Parameter Matrix
+}Cube_}APQ Process Parameters Info
+}Cube_}APQ Process Response Message
+}Cube_}APQ Process to Object Reference
+}Cube_}APQ Pulse User Login
+}Cube_}APQ Pulse Workbook Tracker
+}Cube_}APQ Reconciliation Cell Value Change
+}Cube_}APQ Reconciliation Check
+}Cube_}APQ Reconciliation Setup
+}Cube_}APQ Reconciliation Setup Detail
+}Cube_}APQ Security Effective Client Application Folder Permissions
+}Cube_}APQ Security Effective Client Element Permissions
+}Cube_}APQ Security Effective Client Object Permissions
+}Cube_}APQ Security Manage Application Feeder
+}Cube_}APQ Security Manage Client Groups
+}Cube_}APQ Security Manage Element Access
+}Cube_}APQ Security Manage Element Security Groups
+}Cube_}APQ Security Manage Object Access
+}Cube_}APQ Server Message Log Info
+}Cube_}APQ Settings
+}Cube_}APQ Staging
+}Cube_}APQ Staging Control
+}Cube_}APQ Staging Dimension Mapping
+}Cube_}APQ Time Date Lookup
+}Cube_}APQ Time Month Conversion
+}Cube_}APQ Time Relative Time Lookup
+}Cube_}APQ TM1 Transaction Log Analysis
+}Cube_}APQ Universal View Calculation
+}Cube_}APQ Universal View Data
+}Cube_}APQ Universal View Dimension Mapping
+}Cube_}APQ Universal View Filter
+}Cube_}APQ Universal View Format
+}Cube_}APQ Universal View Source Mapping
+}Cube_}APQ User Activity Log
+}Cube_}APQ User Last Active

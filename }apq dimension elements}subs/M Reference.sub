@@ -1,0 +1,377 @@
+﻿283,100
+284,"M Reference"
+11,20201005064153
+274,
+18,0
+275,
+278,0
+281,0
+270,368
+Zero
+Base Period
+BUD
+vs BUD
+vs BUD (%)
+Hit Rate (%)
+LM
+MoM
+MoM (%)
+LY
+YoY
+vs LY (%)
+YTD
+YTD BUD
+vs YTD BUD
+QTR
+LQ
+QoQ
+QoQ (%)
+Q1
+Q2
+Q3
+Q4
+Q-1
+Q-2
+Q-3
+Q-4
+Q-5
+Q-6
+Q-7
+Q-8
+Q-9
+Q-10
+Q-11
+Q-12
+4Q TTL
+8Q TTL
+4Q Avg
+8Q Avg
+12Q TTL
+12Q Avg
+WK FCST
+W01 F
+W02 F
+W03 F
+W04 F
+W05 F
+W06 F
+W07 F
+W08 F
+W09 F
+W10 F
+W11 F
+W12 F
+W13 F
+W14 F
+W15 F
+W16 F
+W17 F
+W18 F
+W19 F
+W20 F
+W21 F
+W22 F
+W23 F
+W24 F
+W25 F
+W26 F
+W27 F
+W28 F
+W29 F
+W30 F
+W31 F
+W32 F
+W33 F
+W34 F
+W35 F
+W36 F
+W37 F
+W38 F
+W39 F
+W40 F
+W41 F
+W42 F
+W43 F
+W44 F
+W45 F
+W46 F
+W47 F
+W48 F
+W49 F
+W50 F
+W51 F
+W52 F
+W53 F
+vs WK FCST
+vs W01 F
+vs W02 F
+vs W03 F
+vs W04 F
+vs W05 F
+vs W06 F
+vs W07 F
+vs W08 F
+vs W09 F
+vs W10 F
+vs W11 F
+vs W12 F
+vs W13 F
+vs W14 F
+vs W15 F
+vs W16 F
+vs W17 F
+vs W18 F
+vs W19 F
+vs W20 F
+vs W21 F
+vs W22 F
+vs W23 F
+vs W24 F
+vs W25 F
+vs W26 F
+vs W27 F
+vs W28 F
+vs W29 F
+vs W30 F
+vs W31 F
+vs W32 F
+vs W33 F
+vs W34 F
+vs W35 F
+vs W36 F
+vs W37 F
+vs W38 F
+vs W39 F
+vs W40 F
+vs W41 F
+vs W42 F
+vs W43 F
+vs W44 F
+vs W45 F
+vs W46 F
+vs W47 F
+vs W48 F
+vs W49 F
+vs W50 F
+vs W51 F
+vs W52 F
+vs W53 F
+WK FCST YoY
+W01 F YoY
+W02 F YoY
+W03 F YoY
+W04 F YoY
+W05 F YoY
+W06 F YoY
+W07 F YoY
+W08 F YoY
+W09 F YoY
+W10 F YoY
+W11 F YoY
+W12 F YoY
+W13 F YoY
+W14 F YoY
+W15 F YoY
+W16 F YoY
+W17 F YoY
+W18 F YoY
+W19 F YoY
+W20 F YoY
+W21 F YoY
+W22 F YoY
+W23 F YoY
+W24 F YoY
+W25 F YoY
+W26 F YoY
+W27 F YoY
+W28 F YoY
+W29 F YoY
+W30 F YoY
+W31 F YoY
+W32 F YoY
+W33 F YoY
+W34 F YoY
+W35 F YoY
+W36 F YoY
+W37 F YoY
+W38 F YoY
+W39 F YoY
+W40 F YoY
+W41 F YoY
+W42 F YoY
+W43 F YoY
+W44 F YoY
+W45 F YoY
+W46 F YoY
+W47 F YoY
+W48 F YoY
+W49 F YoY
+W50 F YoY
+W51 F YoY
+W52 F YoY
+W53 F YoY
+WK FCST WoW
+W01 F WoW
+W02 F WoW
+W03 F WoW
+W04 F WoW
+W05 F WoW
+W06 F WoW
+W07 F WoW
+W08 F WoW
+W09 F WoW
+W10 F WoW
+W11 F WoW
+W12 F WoW
+W13 F WoW
+W14 F WoW
+W15 F WoW
+W16 F WoW
+W17 F WoW
+W18 F WoW
+W19 F WoW
+W20 F WoW
+W21 F WoW
+W22 F WoW
+W23 F WoW
+W24 F WoW
+W25 F WoW
+W26 F WoW
+W27 F WoW
+W28 F WoW
+W29 F WoW
+W30 F WoW
+W31 F WoW
+W32 F WoW
+W33 F WoW
+W34 F WoW
+W35 F WoW
+W36 F WoW
+W37 F WoW
+W38 F WoW
+W39 F WoW
+W40 F WoW
+W41 F WoW
+W42 F WoW
+W43 F WoW
+W44 F WoW
+W45 F WoW
+W46 F WoW
+W47 F WoW
+W48 F WoW
+W49 F WoW
+W50 F WoW
+W51 F WoW
+W52 F WoW
+W53 F WoW
+WK FCST WoW (%)
+W01 F WoW (%)
+W02 F WoW (%)
+W03 F WoW (%)
+W04 F WoW (%)
+W05 F WoW (%)
+W06 F WoW (%)
+W07 F WoW (%)
+W08 F WoW (%)
+W09 F WoW (%)
+W10 F WoW (%)
+W11 F WoW (%)
+W12 F WoW (%)
+W13 F WoW (%)
+W14 F WoW (%)
+W15 F WoW (%)
+W16 F WoW (%)
+W17 F WoW (%)
+W18 F WoW (%)
+W19 F WoW (%)
+W20 F WoW (%)
+W21 F WoW (%)
+W22 F WoW (%)
+W23 F WoW (%)
+W24 F WoW (%)
+W25 F WoW (%)
+W26 F WoW (%)
+W27 F WoW (%)
+W28 F WoW (%)
+W29 F WoW (%)
+W30 F WoW (%)
+W31 F WoW (%)
+W32 F WoW (%)
+W33 F WoW (%)
+W34 F WoW (%)
+W35 F WoW (%)
+W36 F WoW (%)
+W37 F WoW (%)
+W38 F WoW (%)
+W39 F WoW (%)
+W40 F WoW (%)
+W41 F WoW (%)
+W42 F WoW (%)
+W43 F WoW (%)
+W44 F WoW (%)
+W45 F WoW (%)
+W46 F WoW (%)
+W47 F WoW (%)
+W48 F WoW (%)
+W49 F WoW (%)
+W50 F WoW (%)
+W51 F WoW (%)
+W52 F WoW (%)
+W53 F WoW (%)
+WK FCST vs BUD
+W01 F vs BUD
+W02 F vs BUD
+W03 F vs BUD
+W04 F vs BUD
+W05 F vs BUD
+W06 F vs BUD
+W07 F vs BUD
+W08 F vs BUD
+W09 F vs BUD
+W10 F vs BUD
+W11 F vs BUD
+W12 F vs BUD
+W13 F vs BUD
+W14 F vs BUD
+W15 F vs BUD
+W16 F vs BUD
+W17 F vs BUD
+W18 F vs BUD
+W19 F vs BUD
+W20 F vs BUD
+W21 F vs BUD
+W22 F vs BUD
+W23 F vs BUD
+W24 F vs BUD
+W25 F vs BUD
+W26 F vs BUD
+W27 F vs BUD
+W28 F vs BUD
+W29 F vs BUD
+W30 F vs BUD
+W31 F vs BUD
+W32 F vs BUD
+W33 F vs BUD
+W34 F vs BUD
+W35 F vs BUD
+W36 F vs BUD
+W37 F vs BUD
+W38 F vs BUD
+W39 F vs BUD
+W40 F vs BUD
+W41 F vs BUD
+W42 F vs BUD
+W43 F vs BUD
+W44 F vs BUD
+W45 F vs BUD
+W46 F vs BUD
+W47 F vs BUD
+W48 F vs BUD
+W49 F vs BUD
+W50 F vs BUD
+W51 F vs BUD
+W52 F vs BUD
+W53 F vs BUD
+Feeder_LY
+Feeder_FCST
+Feeder_BUD

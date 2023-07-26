@@ -1,0 +1,5 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=Workflow Setting
+ENTRYTYPE=blob
+ENTRYREFERENCE=TM1:///blob/PUBLIC/.\}Externals\sys_workflow_control_v2.1.xlsx
+REMOVEBLOBONDELETE=Yes

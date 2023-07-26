@@ -1,0 +1,5 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=Attribute Maintenance
+ENTRYTYPE=blob
+ENTRYREFERENCE=TM1:///blob/PUBLIC/.\}Externals\Attribute Framework.xlsx_20160829201521.xlsx
+REMOVEBLOBONDELETE=Yes

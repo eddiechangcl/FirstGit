@@ -1,0 +1,10 @@
+﻿283,100
+284,"All Application Root Folders"
+11,20230512024331
+274,
+18,0
+275,356
+{EXCEPT( {TM1SORTBYINDEX( {FILTER( {FILTER( {TM1SUBSETALL( [}APQ TM1 Objects].[}APQ TM1 Objects] )}, [}APQ TM1 Objects].[}APQ TM1 Objects].CurrentMember.Properties("IsApp") = "TRUE")}, INSTR( 1, [}APQ TM1 Objects].[}APQ TM1 Objects].CurrentMember.Properties("MEMBER_NAME"), "\", 1 ) = 0 )}, ASC)}, {[}APQ TM1 Objects].[}APQ TM1 Objects].[}Applications]} )}
+278,0
+281,0
+270,0

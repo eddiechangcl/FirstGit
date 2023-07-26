@@ -1,0 +1,12 @@
+﻿FORMAT==100
+#Region System
+FEEDSTRINGS;
+SKIPCHECK;
+#EndRegion
+
+
+[ 'TASK COMPLETE SELECTION' ] = S: 'static::✓' ;
+
+[ 'Page Jump Type' ] = S: 'Static::Hyperlink:Application' ;
+
+[ 'Applications' ] = S: 'Subset:}ApplicationEntries:PickList_Workbench_Applications' ;

@@ -1,0 +1,28 @@
+FORMAT==100
+##############################################################################################################################
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+SKIPCHECK;
+#############################
+
+[ '}APQ Reconciliation Setup Measure':'IsStatic' ] = S: 'Static:1:0';
+
+[ '}APQ Reconciliation Setup Measure':'Reference' ] = S:
+IF( SUBST( !}APQ Reconciliation Item, 1, 1 ) @= 'R' & DB( ' }APQ Reconciliation Setup', !}APQ Reconciliation Item, 'IsStatic' ) = 1,
+    STET,
+    IF( SUBST( !}APQ Reconciliation Item, 1, 1 ) @= 'R' & DB( '}APQ Dimension Subsets', '}APQ Cubes\' | DB( '}APQ Settings', 'Std All Elements', 'String' ), 'Element Count' ) <= DB( '}APQ Settings', 'Max subset size for PickList entry', 'Numeric' ),
+        'Subset:}APQ Cubes:' | DB( '}APQ Settings', 'Std All N Elements', 'String' ),
+        CONTINUE
+    )
+);
+
+[ '}APQ Reconciliation Setup Measure':{'Reference', 'Comparison'} ] = S:
+IF( SUBST( !}APQ Reconciliation Item, 1, 1 ) @= 'C',
+   'Subset:}APQ Reconciliation Item:Items Used',
+   CONTINUE
+);

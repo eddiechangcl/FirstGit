@@ -1,0 +1,217 @@
+﻿283,100
+284,"All N Elements code"
+11,20230515004922
+274,
+18,0
+275,
+278,0
+281,0
+270,208
+Group
+Dimension To Build
+Hierarchy To Build
+Amend Dimension To build
+Automatically Create Top Node
+Automatically create NA Element
+Automatically Create Dummy N Elements to Level
+Group Orphan N Elements
+Launch Standard Subset Updates
+Launch Subset Framework Updates
+Launch Attribute Framework updates
+Delete Orphan C Elements
+Launch a custom process BEFORE step 1
+Launch a custom process AFTER final step
+Launch another dimension
+Comment
+Component Sort Type
+Component Sort Sense
+Element Sort Type
+Element Sort Sense
+Dimension Delete All Elements
+Delete And Recreate All Attributes
+Unwind Consolidation List
+Unwind Consolidation List Separator
+Unwind Recursively
+Last Update Start Time
+Last Update End Time
+Last Update Duration
+Last Update Record Count
+User
+Error File
+Step disabled
+CSV File Name
+CSV File Folder
+ODBC Source
+SQL Query
+Source Cube
+Source Dimension Name
+Source Subset Name
+MDX Expression
+Delete Source Dimension After Clone
+Source Hierarchy
+Attribute Name
+Top Node Name
+Prefix Attribute
+Suffix Attribute
+Skip Blank Attribute
+Unallocated Node
+Process Name
+Parameter Array
+Parameter Delimiter
+Parameter Start Value
+Load Attrs First To Framework
+Attribute 1 Locale
+Attribute 1 Type
+Attribute 1 Code Concatenation
+Attribute 2 Locale
+Attribute 2 Type
+Attribute 2 Code Concatenation
+Attribute 3 Locale
+Attribute 3 Type
+Attribute 3 Code Concatenation
+Attribute 4 Locale
+Attribute 4 Type
+Attribute 4 Code Concatenation
+Attribute 5 Locale
+Attribute 5 Type
+Attribute 5 Code Concatenation
+Attribute 6 Locale
+Attribute 6 Type
+Attribute 6 Code Concatenation
+Attribute 7 Locale
+Attribute 7 Type
+Attribute 7 Code Concatenation
+Attribute 8 Locale
+Attribute 8 Type
+Attribute 8 Code Concatenation
+Attribute 9 Locale
+Attribute 9 Type
+Attribute 9 Code Concatenation
+Attribute 10 Locale
+Attribute 10 Type
+Attribute 10 Code Concatenation
+Attribute 11 Locale
+Attribute 11 Type
+Attribute 11 Code Concatenation
+Attribute 12 Locale
+Attribute 12 Type
+Attribute 12 Code Concatenation
+Attribute 13 Locale
+Attribute 13 Type
+Attribute 13 Code Concatenation
+Attribute 14 Locale
+Attribute 14 Type
+Attribute 14 Code Concatenation
+Attribute 15 Locale
+Attribute 15 Type
+Attribute 15 Code Concatenation
+Attribute 16 Locale
+Attribute 16 Type
+Attribute 16 Code Concatenation
+Attribute 17 Locale
+Attribute 17 Type
+Attribute 17 Code Concatenation
+Attribute 18 Locale
+Attribute 18 Type
+Attribute 18 Code Concatenation
+Attribute 19 Locale
+Attribute 19 Type
+Attribute 19 Code Concatenation
+Attribute 20 Locale
+Attribute 20 Type
+Attribute 20 Code Concatenation
+Attribute 21 Locale
+Attribute 21 Type
+Attribute 21 Code Concatenation
+Attribute 22 Locale
+Attribute 22 Type
+Attribute 22 Code Concatenation
+Attribute 23 Locale
+Attribute 23 Type
+Attribute 23 Code Concatenation
+Attribute 24 Locale
+Attribute 24 Type
+Attribute 24 Code Concatenation
+Attribute 25 Locale
+Attribute 25 Type
+Attribute 25 Code Concatenation
+Attribute 26 Locale
+Attribute 26 Type
+Attribute 26 Code Concatenation
+Attribute 27 Locale
+Attribute 27 Type
+Attribute 27 Code Concatenation
+Attribute 28 Locale
+Attribute 28 Type
+Attribute 28 Code Concatenation
+Attribute 29 Locale
+Attribute 29 Type
+Attribute 29 Code Concatenation
+Attribute 30 Locale
+Attribute 30 Type
+Attribute 30 Code Concatenation
+Attribute 31 Locale
+Attribute 31 Type
+Attribute 31 Code Concatenation
+Attribute 32 Locale
+Attribute 32 Type
+Attribute 32 Code Concatenation
+Attribute 33 Locale
+Attribute 33 Type
+Attribute 33 Code Concatenation
+Attribute 34 Locale
+Attribute 34 Type
+Attribute 34 Code Concatenation
+Attribute 35 Locale
+Attribute 35 Type
+Attribute 35 Code Concatenation
+Attribute 36 Locale
+Attribute 36 Type
+Attribute 36 Code Concatenation
+Attribute 37 Locale
+Attribute 37 Type
+Attribute 37 Code Concatenation
+Attribute 38 Locale
+Attribute 38 Type
+Attribute 38 Code Concatenation
+Attribute 39 Locale
+Attribute 39 Type
+Attribute 39 Code Concatenation
+Attribute 40 Locale
+Attribute 40 Type
+Attribute 40 Code Concatenation
+Allow alias in place of element names
+Allow N to C element type conversion
+Template Type
+Attribute 41 Locale
+Attribute 41 Type
+Attribute 42 Locale
+Attribute 42 Type
+Attribute 43 Locale
+Attribute 43 Type
+Attribute 44 Locale
+Attribute 44 Type
+Attribute 45 Locale
+Attribute 45 Type
+Attribute 46 Locale
+Attribute 46 Type
+Attribute 47 Locale
+Attribute 47 Type
+Attribute 48 Locale
+Attribute 48 Type
+Attribute 49 Locale
+Attribute 49 Type
+Attribute 50 Locale
+Attribute 50 Type
+Attribute 42 Code Concatenation
+Attribute 41 Code Concatenation
+Attribute 43 Code Concatenation
+Attribute 44 Code Concatenation
+Attribute 45 Code Concatenation
+Attribute 46 Code Concatenation
+Attribute 47 Code Concatenation
+Attribute 48 Code Concatenation
+Attribute 49 Code Concatenation
+Attribute 50 Code Concatenation
+Full element security refresh (including automatic group creation)
+Element security refresh for preconfigured groups

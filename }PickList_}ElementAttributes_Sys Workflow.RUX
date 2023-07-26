@@ -1,0 +1,10 @@
+﻿FORMAT==100
+#Region System
+FEEDSTRINGS;
+SKIPCHECK;
+#EndRegion
+['Planning Unit Alias','Value'] = S: 'dimension:}ElementAttributes_' | DB('}ElementAttributes_Sys Workflow',!Sys Workflow,'Planning Unit Dimension');
+['Planning Unit Root Element','Value'] = S: 'dimension:' | DB('}ElementAttributes_Sys Workflow',!Sys Workflow,'Planning Unit Dimension');
+['Planning Application','Value'] = S: 'subset:}ApplicationEntries:Default';
+['Reviewer Application','Value'] = S: 'subset:}ApplicationEntries:Default';
+['Require Approval','Value'] = S: 'static::✓' ;

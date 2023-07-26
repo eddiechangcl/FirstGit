@@ -1,0 +1,80 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+SKIPCHECK;
+FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Process to Object Reference** is an in TM1 augmentation to the relationships feature of Pulse. This cube is updated 
+# by the processes **}APQ.Cub.ProcessToObjectReference.Update.0.Main** which reads the contents of all .pro files searching for CellPut, 
+# DimensionElement, AttrPut and ProcessExecute function references and updates the respective Process to cube, dimension and process links.
+# The process **}APQ.Cub.ProcessToChoreReference.Update.0.Main** reads the contents of all .cho files and updates the process to chore 
+# relationships.
+#
+# This cube can be very useful for impact analysis to determine which processes act on which TM1 objects via a means which is very quick
+# and easy to use and adaptible for reporting in Excel or TM1 Web for documentation purposes.
+#
+# Note: 
+# It is important to set the "SKIPMAP" attribute to True for cubes, dimensions, processes which should not have their TM1 model links 
+# mapped due to interacting with large numbers of other objects such as **}APQ Settings** or **}APQ Process Execution Log**.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+[ '}APQ TM1 Object Type':'Cube', '}APQ Process to Object Reference Measure':'Object Last Time Updated' ] = S:
+DB('}APQ Cube Last Updated by Process', !}APQ TM1 Objects, 'sLastTimeUpdate' );
+
+[ '}APQ TM1 Object Type':'Dimension', '}APQ Process to Object Reference Measure':'Object Last Time Updated' ] = S:
+IF( DB( '}DimensionProperties', !}APQ TM1 Objects, 'LAST_TIME_UPDATED' ) @= '',
+  '',
+  SubSt( DB( '}DimensionProperties', !}APQ TM1 Objects, 'LAST_TIME_UPDATED' ), 1, 4 )
+  |'-'|
+  SubSt( DB( '}DimensionProperties', !}APQ TM1 Objects, 'LAST_TIME_UPDATED' ), 5, 2 )
+  |'-'|
+  SubSt( DB( '}DimensionProperties', !}APQ TM1 Objects, 'LAST_TIME_UPDATED' ), 7, 2 )
+  |' '|
+  SubSt( DB( '}DimensionProperties', !}APQ TM1 Objects, 'LAST_TIME_UPDATED' ), 9, 2 )
+  |':'|
+  SubSt( DB( '}DimensionProperties', !}APQ TM1 Objects, 'LAST_TIME_UPDATED' ), 11, 2 )
+  |':'|
+  SubSt( DB( '}DimensionProperties', !}APQ TM1 Objects, 'LAST_TIME_UPDATED' ), 13, 2 )
+);
+
+[ '}APQ TM1 Object Type':{'Cube','Dimension','Process','Chore'}, '}APQ Process to Object Reference Measure':'Process Start Time' ] = S:
+DB( '}APQ Process Execution Log', ElComp('}APQ Time Year', 'Current Year', 1), 'D000', 'Total Day Entry', 'Last Entry', !}APQ Processes, 'sProcessStartTime' );
+
+[ '}APQ TM1 Object Type':{'Cube','Dimension','Process','Chore'}, '}APQ Process to Object Reference Measure':'Process Finish Time' ] = S:
+DB( '}APQ Process Execution Log', ElComp('}APQ Time Year', 'Current Year', 1), 'D000', 'Total Day Entry', 'Last Entry', !}APQ Processes, 'sProcessFinishTime' );
+
+[ '}APQ TM1 Object Type':'Chore', '}APQ Process to Object Reference Measure':'Object Last Time Updated' ] = S:
+SubSt( DB( '}APQ Server Message Log Info', 'Chore', !}APQ TM1 Objects, 'DateTime' ), 1, 19 );
+
+#############################
+FEEDERS;
+#############################
+
+[ '}APQ TM1 Object Type':{'Cube','Dimension','Chore'}, '}APQ Process to Object Reference Measure':'Is Used' ] =>
+[ '}APQ Process to Object Reference Measure':'Object Last Time Updated' ],
+[ '}APQ Process to Object Reference Measure':'Process Start Time' ],
+[ '}APQ Process to Object Reference Measure':'Process Finish Time' ];
+
+[ '}APQ TM1 Object Type':'Process', '}APQ Process to Object Reference Measure':'Is Used' ] =>
+[ '}APQ Process to Object Reference Measure':'Process Start Time' ],
+[ '}APQ Process to Object Reference Measure':'Process Finish Time' ];
+
+#############################
+##~~    End Rule File    ~~##
+#############################
+

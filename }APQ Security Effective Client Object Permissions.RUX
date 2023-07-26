@@ -1,0 +1,105 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+#SKIPCHECK;
+#FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Security Effective Client Object Permissions** calculates via rule all effective object permissions using the flat 
+# **}APQ TM1 Objects** dimension conbined with **}APQ Groups** (which includes a "total Groups" element) annd numberic representation of
+# TM1 security level and the ConsolidatedMax function. 
+#
+# This cube shows the _**effective permission**_ for users to all cubes, dimension, processes, chores and applications. This is a feature
+# which is critically missing from TM1 natively.  This allows an administrator to see the security access level in effect for a user and
+# to trace the access level back to the originating group or groups.  This is a very useful capability for troubleshooting.  As the cube 
+# uses rules referencing the actual TM1 security cubes the cube is always up-to-date as long as the **}APQ TM1 Objects** dimension is up to date.
+# (Which would usually be the case as the **}APQ.Dim.ControlDimensionCopies.Update** process is the first thing to set up.)
+#
+# Note:
+# This is a lookup cube with limited dimensionality and so does not require SkipCheck or Feeders.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+# Exception for SecurityAdmin group (#0157)
+[ '}APQ TM1 Object Type':'Dimension', '}APQ Groups':'SecurityAdmin', '}APQ Security Effective Permission Measure':'Value' ] = N: 
+IF( !}APQ Groups @<> DB( '}ClientGroups', !}APQ Clients, !}APQ Groups )  % DimIx( '}Dimensions', !}APQ TM1 Objects ) = 0,
+  0,
+  1
+);
+[ '}APQ TM1 Object Type':'Cube', '}APQ Groups':'SecurityAdmin', '}APQ Security Effective Permission Measure':'Value' ] = N: 
+IF( !}APQ Groups @<> DB( '}ClientGroups', !}APQ Clients, !}APQ Groups )  % DimIx( '}Cubes', !}APQ TM1 Objects ) = 0,
+  0,
+  IF( SubSt( !}APQ TM1 Objects, 1, 17 ) @= '}ElementSecurity_' % SubSt( !}APQ TM1 Objects, 1, 14 ) @= '}CellSecurity_' % !}APQ TM1 Objects @= '}ClientGroups' % !}APQ TM1 Objects @= '}ApplicationSecurity' % !}APQ TM1 Objects @= '}ChoreSecurity' % !}APQ TM1 Objects @= '}CubeSecurity' % !}APQ TM1 Objects @= '}DimensionSecurity' % !}APQ TM1 Objects @= '}ProcessSecurity',
+    5,
+    0
+  )
+);
+[ '}APQ Groups':'SecurityAdmin', '}APQ Security Effective Permission Measure':'Value' ] = N: 0;
+  
+# Generic rule for cubes, dimensions, processes, chores
+# Exception for Application security since EMPTY in application security is READ vs. Total other security objects is NONE
+[ '}APQ TM1 Object Type':{'Application','Cube','Dimension','Chore','Process'}, '}APQ Security Effective Permission Measure':'Value' ] = N:
+IF( !}APQ Groups @<> DB( '}ClientGroups', !}APQ Clients, !}APQ Groups )  % DimIx( AttrS( '}APQ TM1 Object Type', !}APQ TM1 Object Type, 'SysObjNm' ), !}APQ TM1 Objects ) = 0,
+  0,
+  IF( !}APQ Groups @= 'ADMIN' % !}APQ Groups @= 'DataAdmin',
+    5,
+    IF( DimIx( '}APQ Security Level', DB( AttrS( '}APQ TM1 Object Type', !}APQ TM1 Object Type, 'SysSecObjNm' ), !}APQ TM1 Objects, !}APQ Groups ) ) = 0,
+      IF( !}APQ TM1 Object Type @= 'Application', 1, 0 ),
+      DimIx( '}APQ Security Level', DB( AttrS( '}APQ TM1 Object Type', !}APQ TM1 Object Type, 'SysSecObjNm' ), !}APQ TM1 Objects, !}APQ Groups ) ) -1
+    )
+  )
+);
+C:
+IF( ElLev( '}APQ Clients', !}APQ Clients ) > 0 % ElLev( '}APQ TM1 Objects', !}APQ TM1 Objects ) > 0,
+  0,
+  ConsolidatedMax( 0, '', !}APQ Clients, !}APQ Groups, !}APQ TM1 Object Type, !}APQ TM1 Objects, 'Value' )
+);
+
+# Set Total other combinations to 0 (=not valid)
+[ '}APQ Security Effective Permission Measure':'Value' ] = N: 0;
+
+[ '}APQ Security Effective Permission Measure':'String' ] = S: 
+If( IsLeaf = 1 & DB( '}ClientGroups', !}APQ Clients, !}APQ Groups ) @<> !}APQ Groups,
+    '',
+    Continue
+);
+
+[ '}APQ Security Effective Permission Measure':'String' ] = S:
+IF( ElLev( '}APQ Clients', !}APQ Clients ) > 0 % ElLev( '}APQ TM1 Object Type', !}APQ TM1 Object Type ) > 0 % ElLev( '}APQ TM1 Objects', !}APQ TM1 Objects ) > 0,
+  '',
+  IF( DimIx( AttrS( '}APQ TM1 Object Type', !}APQ TM1 Object Type, 'SysObjNm' ), !}APQ TM1 Objects ) = 0,
+    '',
+    IF( [ '}APQ Security Effective Permission Measure':'Value' ] = 0,
+      'NONE',
+      AttrS( '}APQ Security Level',
+        DimNm( '}APQ Security Level',
+          DB( '}APQ Security Effective Client Object  Permissions', !}APQ Clients, !}APQ Groups, !}APQ TM1 Object Type, !}APQ TM1 Objects, 'Value' ) + 1
+         ),
+        'Caption_Default'
+      )
+    )
+  )
+);
+
+#############################
+FEEDERS;
+#############################
+
+
+#############################
+##~~    End Rule File    ~~##
+#############################
+

@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=01 Assign Client to Group
+ENTRYTYPE=view
+ENTRYREFERENCE=TM1:///VIEW/PUBLIC/}APQ Security Manage Client Groups/Assign Client to Group

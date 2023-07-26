@@ -1,0 +1,120 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+SKIPCHECK;
+FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-05-20  Embedded into Apliqode Framework from Apliqo FPM
+##############################################################################################################################
+#Region @DOC
+# The **}APQ Universal View Format** cube serves 2 purposes:
+#   1. Allows a custom number format to be defined on a cell-by-cell basis either on a whole of view level or for individual rows, columns or measures to override the format that would otherwise be inherited to the cell.
+#   2. Allows the user configuring the view to see the number format which will be applied to the cell in the Apliqo UX.
+#
+# Note:
+# The selection of "Custom" for FormatDim in **}APQ Universal View Source Mapping** is not necessary as CustomFormat entry will anyway override row, column or measure formatting if entered.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+#Region : Column & Row Headers
+
+# Bring through Caption of rows, columns & measure to make setting the format easier (in the case of custom) and otherwise to make visual inspection easier
+
+[ '}APQ Universal View Row':{'All Rows','S R0001'}, '}APQ Universal View Column':{'All Columns','S C0001'} ] = S: AttrS( '}APQ Universal View Measure', !}APQ Universal View Measure, 'Caption' | !}APQ Universal View );
+
+[ '}APQ Universal View Row':{'All Rows','S R0001'} ] = S: AttrS( '}APQ Universal View Column', !}APQ Universal View Column, 'Caption' | !}APQ Universal View );
+
+[ '}APQ Universal View Column':{'All Columns','S C0001'} ] = S: AttrS( '}APQ Universal View Row', !}APQ Universal View Row, 'Caption' | !}APQ Universal View );
+
+#EndRegion
+
+#Region : Mapping rules
+
+# Pull through default view format from single cell entry in view source mapping
+[ '}APQ Universal View Format Measure':'DefaultFormat' ] = S: DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'DefaultFormat' );
+
+# Pull through row element format from the source row dimension
+[ '}APQ Universal View Format Measure':'RowFormat' ] = S:
+AttrS(
+   DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'RowDimName' ),
+   DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'RowDim' ), 'E' | SubSt( !}APQ Universal View Row, 2, 4 ) ),
+   'Format'
+);
+
+# Pull through column element format from the source column dimension
+[ '}APQ Universal View Format Measure':'ColumnFormat' ] = S:
+AttrS(
+   DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'ColumnDimName' ),
+   DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'ColumnDim' ), 'E' | SubSt( !}APQ Universal View Column, 2, 4 ) ),
+   'Format'
+);
+
+# Pull through measure element format from the source measure dimension
+[ '}APQ Universal View Format Measure':'MeasureFormat' ] = S:
+AttrS(
+   DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'MeasureDimName' ),
+   DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'MeasureDim' ), 'E' | SubSt( !}APQ Universal View Measure, 2, 4 ) ),
+   'Format'
+);
+
+# For custom format stet data entry for parent views, otherwise inherit from parent
+[ '}APQ Universal View Format Measure':'CustomFormat' ] = S:
+IF( ElPar( '}APQ Universal View', !}APQ Universal View, 1 ) @= 'All Views',
+   STET,
+   DB( '}APQ Universal View Format', ElPar( '}APQ Universal View', !}APQ Universal View, 1 ), !}APQ Universal View Row, !}APQ Universal View Column, !}APQ Universal View Measure, !}APQ Universal View Format Measure )
+);
+
+# Selected format: display choice of either row, column or measure format. If custom entered then this overrides
+[ '}APQ Universal View Format Measure':'SelectedFormat' ] = S:
+IF( DB( '}APQ Universal View Format', !}APQ Universal View, !}APQ Universal View Row, !}APQ Universal View Column, !}APQ Universal View Measure, 'CustomFormat' ) @<> '',
+   DB( '}APQ Universal View Format', !}APQ Universal View, !}APQ Universal View Row, !}APQ Universal View Column, !}APQ Universal View Measure, 'CustomFormat' ),
+   IF( DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'FormatDim' ) @= 'Row',
+      DB( '}APQ Universal View Format', !}APQ Universal View, !}APQ Universal View Row, !}APQ Universal View Column, !}APQ Universal View Measure, 'RowFormat' ),
+      IF( DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'FormatDim' ) @= 'Column',
+         DB( '}APQ Universal View Format', !}APQ Universal View, !}APQ Universal View Row, !}APQ Universal View Column, !}APQ Universal View Measure, 'ColumnFormat' ),
+         IF( DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'FormatDim' ) @= 'Measure',
+            DB( '}APQ Universal View Format', !}APQ Universal View, !}APQ Universal View Row, !}APQ Universal View Column, !}APQ Universal View Measure, 'MeasureFormat' ),
+            DB( '}APQ Universal View Format', !}APQ Universal View, !}APQ Universal View Row, !}APQ Universal View Column, !}APQ Universal View Measure, 'CustomFormat' )
+         )
+      )
+   )
+);
+
+# Final format to apply to view: If selected format is blank use the default, otherwise the selection
+[ '}APQ Universal View Format Measure':'FinalFormat' ] = S:
+IF( DB( '}APQ Universal View Format', !}APQ Universal View, !}APQ Universal View Row, !}APQ Universal View Column, !}APQ Universal View Measure, 'SelectedFormat' ) @<> '',
+   DB( '}APQ Universal View Format', !}APQ Universal View, !}APQ Universal View Row, !}APQ Universal View Column, !}APQ Universal View Measure, 'SelectedFormat' ),
+   DB( '}APQ Universal View Format', !}APQ Universal View, !}APQ Universal View Row, !}APQ Universal View Column, !}APQ Universal View Measure, 'DefaultFormat' )
+);
+
+#EndRegion
+
+##############################################################################################################################
+#Region : Feeders
+FEEDERS;
+##############################################################################################################################
+
+# Internal cube feeders
+##################
+
+
+# External inter-cube feeders
+##################
+
+
+#EndRegion
+
+##############################################################################################################################
+##~~    End Rule File    ~~##
+##############################################################################################################################

@@ -1,0 +1,10 @@
+﻿283,100
+284,"Element Security - All dimension level groups"
+11,00000000000000
+274,
+18,0
+275,216
+{TM1FILTERBYPATTERN( {[}APQ Groups].[}APQ Groups].[Total APQ Element Security Groups].Children}, "*ALL*" )}+{TM1FILTERBYPATTERN( {[}APQ Groups].[}APQ Groups].[Total APQ Element Security Groups].Children}, "*ROOT*" )}
+278,0
+281,0
+270,0

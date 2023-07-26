@@ -1,0 +1,10 @@
+﻿283,100
+284,"Relative Time - Next Day"
+11,20190618043034
+274,
+18,0
+275,142
+{StrToMember( "[}APQ Time Date Lookup].["+[}APQ Settings].([}APQ Parameters].[Current Day],[}APQ Settings Measure].[String])+"]" ).NextMember}
+278,0
+281,0
+270,0

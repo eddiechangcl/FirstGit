@@ -1,0 +1,17 @@
+FORMAT==100
+##############################################################################################################################
+# APLIQODE FRAMEWORK
+# Copyright 2016, Apliqo AG. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+SKIPCHECK;
+#############################
+
+[ '}APQ Universal View Security Access Measure':{'SecurityLevel','SecurityOverride'} ] = S: 'Subset:}APQ Security Level:PickList Element Security';
+
+#############################
+##~~    End Rule File    ~~##
+#############################

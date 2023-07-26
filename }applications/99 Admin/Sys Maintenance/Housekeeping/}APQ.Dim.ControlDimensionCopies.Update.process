@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=}APQ.Dim.ControlDimensionCopies.Update
+ENTRYTYPE=process
+ENTRYREFERENCE=TM1:///PROCESS/PUBLIC/}APQ.Dim.ControlDimensionCopies.Update

@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=APQ TM1 Transaction Log Analysis
+ENTRYTYPE=view
+ENTRYREFERENCE=TM1:///VIEW/PUBLIC/}APQ TM1 Transaction Log Analysis/Default

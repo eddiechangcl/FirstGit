@@ -1,0 +1,32 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+SKIPCHECK;
+FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Dimension Attribute Matrix** is automatically compiled by the process **}APQ.Cub.DimensionAttributes.Update**. All available
+# attribute names in all possible dimensions are added to a single flat list dimension **}APQ Dimension Attributes** and combined with a simple
+# Measure dimension containing elements **IsUsed** and **Type**.  This allows easy comparison and reporting to see which dimensions contain a 
+# given attribute of the same name and whether a similarly named attribute has a consistent type between dimensions.
+#
+# This can be quite helpful when evaluating a model for consistency, fow example consistent application of aliases per dimension of the same
+# name or naming convention.
+# 
+# Note:
+# This cube does not contain rules.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################

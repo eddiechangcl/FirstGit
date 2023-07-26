@@ -1,0 +1,161 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+SKIPCHECK;
+FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-05-20  Embedded into Apliqode Framework from Apliqo FPM
+##############################################################################################################################
+#Region @DOC
+# The **}APQ Universal View Filter** cube includes a user dimension. This is used to store the user's filter selections where these are different from the defined default values.
+# Element IDs of all fixed, row, column and measure dimensions are fixed and defined in advance in the **}APQ Universal View Dimension Mapping** cube. 
+# However, at runtime the end user must have the ability to change the view context for all dimensions defined as filter, moreover when one user changes a filter 
+# this should affect their view context only and not all users. Therefore filter selections need to be captured at a per user level.
+#
+# Note:
+# The Universal View module functions without users having to enter anything in the filter cube. In the absence of any entry the pre-defined default values from the dimension mapping cube will be used.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+#Region : Mapping rules
+
+[ '}APQ Universal View Dimension':'All Dimensions', '}APQ Universal View Filter Measure':'Dimension' ] = S:
+DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'Cube' );
+
+[ '}APQ Universal View Dimension':'All Dimensions' ] = S: '';
+
+[ '}APQ Universal View Filter Measure':'Dimension' ] = S:
+TabDim( DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'Cube' ), Numbr( !}APQ Universal View Dimension ) );
+
+[ '}APQ Universal View Filter Measure':'ParentViewDimID' ] = S:
+IF( TabDim( DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'Cube' ), Numbr( !}APQ Universal View Dimension ) ) @= '',
+   '',
+   IF( ElPar( '}APQ Universal View', !}APQ Universal View, 1 ) @= 'All Views',
+      !}APQ Universal View Dimension,
+      CONTINUE
+   )
+);
+
+[ '}APQ Universal View Filter Measure':'ParentViewDimID' ] = S:
+IF( DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'Cube' ) @= DB( '}APQ Universal View Source Mapping', ElPar( '}APQ Universal View', !}APQ Universal View, 1 ), 'Cube' ),
+   !}APQ Universal View Dimension,
+   IF( DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'Dimension' ) @= DB( '}APQ Universal View Dimension Mapping', ElPar( '}APQ Universal View', !}APQ Universal View, 1 ), !}APQ Universal View Dimension, 'Dimension' ),
+      !}APQ Universal View Dimension,
+      DimNm( '}APQ Universal View Dimension', DimIx( '}APQ Universal View Dimension', 'D' | Str(
+         DB( '}APQ Dimension Use',
+            DB( '}APQ Universal View Source Mapping', ElPar( '}APQ Universal View', !}APQ Universal View, 1 ), 'Cube' ),
+            DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'Dimension' ),
+            'Position'
+         ),
+         2, 0
+      ) ) )
+   )
+);
+
+[ '}APQ Universal View Filter Measure':'Function' ] = S:
+DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, !}APQ Universal View Filter Measure );
+
+[ '}APQ Universal View Filter Measure':'SubsetEntry' ] = S:
+DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'Subset' );
+
+[ '}APQ Universal View Filter Measure':'ElementEntry' ] = S:
+IF( ElPar( '}APQ Universal View', !}APQ Universal View, 1 ) @= 'All Views',
+   DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'Element' ),
+   IF( !}APQ Universal View Dimension @= DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'ParentViewDimID' ),
+      DB( '}APQ Universal View Filter', !}APQ Clients, ElPar( '}APQ Universal View', !}APQ Universal View, 1 ), !}APQ Universal View Dimension, 'Element' ),
+      IF( DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'ParentViewDimID' ) @= '',
+         DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'Element' ),
+         DB( '}APQ Universal View Filter', !}APQ Clients, ElPar( '}APQ Universal View', !}APQ Universal View, 1 ),
+            DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'ParentViewDimID' ), 'Element'
+         )
+      )
+   )
+);
+
+[ '}APQ Universal View Filter Measure':{'SubsetOverride','ElementOverride'} ] = S:
+IF( DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'Function' ) @<> 'Filter',
+   '',
+   STET
+);
+
+[ '}APQ Universal View Filter Measure':{'Subset','Element'} ] = S:
+IF( DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'Function' ) @<> 'Filter',
+   DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, !}APQ Universal View Filter Measure ),
+   IF( DB( '}APQ Universal View Filter', !}APQ Clients, !}APQ Universal View, !}APQ Universal View Dimension, !}APQ Universal View Filter Measure | 'Override' ) @<> '',
+      DB( '}APQ Universal View Filter', !}APQ Clients, !}APQ Universal View, !}APQ Universal View Dimension, !}APQ Universal View Filter Measure | 'Override' ),
+      DB( '}APQ Universal View Filter', !}APQ Clients, !}APQ Universal View, !}APQ Universal View Dimension, !}APQ Universal View Filter Measure | 'Entry' )
+   )
+);
+
+[ '}APQ Universal View Dimension':'All Dimensions', '}APQ Universal View Filter Measure':'IsInvalid' ] = C: ConsolidateChildren( '}APQ Universal View Dimension' );
+
+[ '}APQ Universal View Filter Measure':'IsInvalid' ] =
+IF( DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'Dimension' ) @= '',
+   0,
+   IF( DimIx( DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'Dimension' ), DB( '}APQ Universal View Filter', !}APQ Clients, !}APQ Universal View, !}APQ Universal View Dimension, 'Element' ) ) = 0,
+      1,
+      0
+   )
+);
+
+[ '}APQ Universal View Dimension':'All Dimensions', '}APQ Universal View Filter Measure':'SecurityAccess' ] =
+[ '}APQ Universal View Dimension':'D01' ] * [ '}APQ Universal View Dimension':'D02' ] * [ '}APQ Universal View Dimension':'D03' ] * [ '}APQ Universal View Dimension':'D04' ] *
+[ '}APQ Universal View Dimension':'D05' ] * [ '}APQ Universal View Dimension':'D06' ] * [ '}APQ Universal View Dimension':'D07' ] * [ '}APQ Universal View Dimension':'D08' ] *
+[ '}APQ Universal View Dimension':'D09' ] * [ '}APQ Universal View Dimension':'D10' ] * [ '}APQ Universal View Dimension':'D11' ] * [ '}APQ Universal View Dimension':'D12' ] *
+[ '}APQ Universal View Dimension':'D13' ] * [ '}APQ Universal View Dimension':'D14' ] * [ '}APQ Universal View Dimension':'D15' ] * [ '}APQ Universal View Dimension':'D16' ] *
+[ '}APQ Universal View Dimension':'D17' ] * [ '}APQ Universal View Dimension':'D18' ] * [ '}APQ Universal View Dimension':'D19' ] * [ '}APQ Universal View Dimension':'D20' ] *
+[ '}APQ Universal View Dimension':'D21' ] * [ '}APQ Universal View Dimension':'D22' ] * [ '}APQ Universal View Dimension':'D23' ] * [ '}APQ Universal View Dimension':'D24' ] *
+[ '}APQ Universal View Dimension':'D25' ] * [ '}APQ Universal View Dimension':'D26' ] * [ '}APQ Universal View Dimension':'D27' ] * [ '}APQ Universal View Dimension':'D28' ] *
+[ '}APQ Universal View Dimension':'D29' ] * [ '}APQ Universal View Dimension':'D30' ];
+
+[ '}APQ Universal View Filter Measure':'SecurityAccess' ] =
+IF( DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'Dimension' ) @= '',
+   1,
+   IF(  DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'Function' ) @<> 'Filter'
+      & DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'Function' ) @<> 'Fixed',
+      1,
+      IF( DimIx( '}Cubes', '}ElementSecurity_' | DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'Dimension' ) ) = 0,
+         1,
+         IF( DimIx( '}APQ Dimension Elements', DB( '}APQ Universal View Filter', !}APQ Clients, !}APQ Universal View, !}APQ Universal View Dimension, 'Element' ) ) = 0,
+            1,
+            Sign( DB( '}APQ Security Effective Client Element Permissions', !}APQ Clients, 'Total APQ Groups',
+               DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'Dimension' ),
+               DB( '}APQ Universal View Filter', !}APQ Clients, !}APQ Universal View, !}APQ Universal View Dimension, 'Element' ),
+               'Value'
+            ) )
+         )
+      )
+   )
+);
+
+#EndRegion
+
+##############################################################################################################################
+#Region : Feeders
+FEEDERS;
+##############################################################################################################################
+
+# Internal cube feeders
+##################
+
+
+# External inter-cube feeders
+##################
+
+
+#EndRegion
+
+##############################################################################################################################
+##~~    End Rule File    ~~##
+##############################################################################################################################

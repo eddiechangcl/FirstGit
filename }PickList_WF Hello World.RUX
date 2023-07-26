@@ -1,0 +1,2 @@
+﻿FORMAT==100
+['Status'] = S:If (AttrS('Sys Workflow', 'WF Hello World', 'Require Approval') @= '✓', 'static:OPEN:SUBMITTED:APPROVED:REOPEN', 'static:OPEN:SUBMITTED:REOPEN');

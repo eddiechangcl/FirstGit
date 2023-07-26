@@ -1,0 +1,554 @@
+﻿283,100
+284,"}APQ Dimension Subsets"
+11,20230515004909
+274,
+18,0
+275,
+278,0
+281,0
+270,545
+}APQ Dimension Subsets:}APQ Dimension Subsets:All C Elements
+}APQ Dimension Subsets:}APQ Dimension Subsets:All Elements
+}APQ Dimension Subsets:}APQ Dimension Subsets:All N Elements
+}APQ Dimension Subsets:}APQ Dimension Subsets:All N Elements code
+}APQ Dimension Subsets:}APQ Dimension Subsets:APQ.Demo Customer
+}APQ Dimension Subsets:}APQ Dimension Subsets:apq.demo customer_Clone
+}APQ Dimension Subsets:}APQ Dimension Subsets:APQ.Demo Product
+}APQ Dimension Subsets:}APQ Dimension Subsets:APQ.Demo Sales Cube Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:APQ.Demo Sales Cube Version
+}APQ Dimension Subsets:}APQ Dimension Subsets:APQ.Demo T Day in Year
+}APQ Dimension Subsets:}APQ Dimension Subsets:APQ.Demo Test
+}APQ Dimension Subsets:}APQ Dimension Subsets:APQ.Demo T Fin Period
+}APQ Dimension Subsets:}APQ Dimension Subsets:APQ.Demo T Fin Year
+}APQ Dimension Subsets:}APQ Dimension Subsets:APQ.Demo T Fin Year-Period
+}APQ Dimension Subsets:}APQ Dimension Subsets:APQ.Demo T Month
+}APQ Dimension Subsets:}APQ Dimension Subsets:APQ.Demo T Quarter
+}APQ Dimension Subsets:}APQ Dimension Subsets:APQ.Demo T Year
+}APQ Dimension Subsets:}APQ Dimension Subsets:APQ.Demo T Year-Month
+}APQ Dimension Subsets:}APQ Dimension Subsets:Currency
+}APQ Dimension Subsets:}APQ Dimension Subsets:Currency From
+}APQ Dimension Subsets:}APQ Dimension Subsets:Currency To
+}APQ Dimension Subsets:}APQ Dimension Subsets:Data Source GL
+}APQ Dimension Subsets:}APQ Dimension Subsets:Data Source GL Plan
+}APQ Dimension Subsets:}APQ Dimension Subsets:Data Source Sales
+}APQ Dimension Subsets:}APQ Dimension Subsets:Date
+}APQ Dimension Subsets:}APQ Dimension Subsets:Day in Month
+}APQ Dimension Subsets:}APQ Dimension Subsets:Day in Week
+}APQ Dimension Subsets:}APQ Dimension Subsets:Day in Year
+}APQ Dimension Subsets:}APQ Dimension Subsets:Default
+}APQ Dimension Subsets:}APQ Dimension Subsets:Default Member
+}APQ Dimension Subsets:}APQ Dimension Subsets:Demo Account GL
+}APQ Dimension Subsets:}APQ Dimension Subsets:Demo Account GL Plan
+}APQ Dimension Subsets:}APQ Dimension Subsets:Demo Account Sales
+}APQ Dimension Subsets:}APQ Dimension Subsets:Demo Customer
+}APQ Dimension Subsets:}APQ Dimension Subsets:Demo Entity
+}APQ Dimension Subsets:}APQ Dimension Subsets:Demo Inter Company
+}APQ Dimension Subsets:}APQ Dimension Subsets:Demo Product
+}APQ Dimension Subsets:}APQ Dimension Subsets:Demo Profit Center
+}APQ Dimension Subsets:}APQ Dimension Subsets:Employee
+}APQ Dimension Subsets:}APQ Dimension Subsets:Empty Subsets
+}APQ Dimension Subsets:}APQ Dimension Subsets:Exchange Rate Type
+}APQ Dimension Subsets:}APQ Dimension Subsets:FX Rate Type
+}APQ Dimension Subsets:}APQ Dimension Subsets:Line Item
+}APQ Dimension Subsets:}APQ Dimension Subsets:Manpower Title
+}APQ Dimension Subsets:}APQ Dimension Subsets:M Currency
+}APQ Dimension Subsets:}APQ Dimension Subsets:M EDU Employee Profile
+}APQ Dimension Subsets:}APQ Dimension Subsets:M Employee Schedule
+}APQ Dimension Subsets:}APQ Dimension Subsets:M Employee Training Plan
+}APQ Dimension Subsets:}APQ Dimension Subsets:M Employee Working Day
+}APQ Dimension Subsets:}APQ Dimension Subsets:M Exchange Rate
+}APQ Dimension Subsets:}APQ Dimension Subsets:M FX Rate
+}APQ Dimension Subsets:}APQ Dimension Subsets:M GL Plan
+}APQ Dimension Subsets:}APQ Dimension Subsets:M GL Reporting
+}APQ Dimension Subsets:}APQ Dimension Subsets:M Manpower Reporting
+}APQ Dimension Subsets:}APQ Dimension Subsets:Month
+}APQ Dimension Subsets:}APQ Dimension Subsets:Month Fiscal
+}APQ Dimension Subsets:}APQ Dimension Subsets:M Public Holiday Reference
+}APQ Dimension Subsets:}APQ Dimension Subsets:M Reference
+}APQ Dimension Subsets:}APQ Dimension Subsets:M Sales Reporting
+}APQ Dimension Subsets:}APQ Dimension Subsets:M Sys Archive Parameter
+}APQ Dimension Subsets:}APQ Dimension Subsets:M Sys Archive Profile
+}APQ Dimension Subsets:}APQ Dimension Subsets:M Sys Definition Day Attribute
+}APQ Dimension Subsets:}APQ Dimension Subsets:M Sys Definition Month Attribute
+}APQ Dimension Subsets:}APQ Dimension Subsets:M Sys Definition Week Attribute
+}APQ Dimension Subsets:}APQ Dimension Subsets:M Sys Menu
+}APQ Dimension Subsets:}APQ Dimension Subsets:M Sys Menu Application Entry
+}APQ Dimension Subsets:}APQ Dimension Subsets:M Sys Menu Link
+}APQ Dimension Subsets:}APQ Dimension Subsets:M Sys Menu Parameter
+}APQ Dimension Subsets:}APQ Dimension Subsets:M Sys Module Object
+}APQ Dimension Subsets:}APQ Dimension Subsets:M Sys Parameter
+}APQ Dimension Subsets:}APQ Dimension Subsets:M Sys Time Attribute
+}APQ Dimension Subsets:}APQ Dimension Subsets:M Sys Versioning Cube
+}APQ Dimension Subsets:}APQ Dimension Subsets:M Sys Versioning Log
+}APQ Dimension Subsets:}APQ Dimension Subsets:M Sys Workbench
+}APQ Dimension Subsets:}APQ Dimension Subsets:M Sys Workbench Task Dependency
+}APQ Dimension Subsets:}APQ Dimension Subsets:M Sys Workflow Cooling Period
+}APQ Dimension Subsets:}APQ Dimension Subsets:M UDC
+}APQ Dimension Subsets:}APQ Dimension Subsets:M Unit
+}APQ Dimension Subsets:}APQ Dimension Subsets:M Workflow
+}APQ Dimension Subsets:}APQ Dimension Subsets:Planning Year
+}APQ Dimension Subsets:}APQ Dimension Subsets:Profit Center
+}APQ Dimension Subsets:}APQ Dimension Subsets:Quarter
+}APQ Dimension Subsets:}APQ Dimension Subsets:Region
+}APQ Dimension Subsets:}APQ Dimension Subsets:Scale
+}APQ Dimension Subsets:}APQ Dimension Subsets:Scenario
+}APQ Dimension Subsets:}APQ Dimension Subsets:Schedule Type
+}APQ Dimension Subsets:}APQ Dimension Subsets:Schedule Week
+}APQ Dimension Subsets:}APQ Dimension Subsets:S Employee Schedule
+}APQ Dimension Subsets:}APQ Dimension Subsets:Sys Archive ID
+}APQ Dimension Subsets:}APQ Dimension Subsets:Sys Archive Parameter
+}APQ Dimension Subsets:}APQ Dimension Subsets:Sys Lookup Date
+}APQ Dimension Subsets:}APQ Dimension Subsets:Sys Lookup Date Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:Sys Lookup Month
+}APQ Dimension Subsets:}APQ Dimension Subsets:Sys Lookup Year
+}APQ Dimension Subsets:}APQ Dimension Subsets:Sys Lookup Year Fiscal
+}APQ Dimension Subsets:}APQ Dimension Subsets:Sys Lookup Year Month
+}APQ Dimension Subsets:}APQ Dimension Subsets:Sys Lookup Year Month Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:Sys Lookup Year Quarter
+}APQ Dimension Subsets:}APQ Dimension Subsets:Sys Lookup Year Week
+}APQ Dimension Subsets:}APQ Dimension Subsets:Sys Lookup Year Week Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:Sys Menu Application Entry
+}APQ Dimension Subsets:}APQ Dimension Subsets:Sys Menu Group
+}APQ Dimension Subsets:}APQ Dimension Subsets:Sys Menu Link
+}APQ Dimension Subsets:}APQ Dimension Subsets:Sys Menu Link Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:Sys Menu Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:Sys Menu Page
+}APQ Dimension Subsets:}APQ Dimension Subsets:Sys Menu Page Column
+}APQ Dimension Subsets:}APQ Dimension Subsets:Sys Menu Page Pattern
+}APQ Dimension Subsets:}APQ Dimension Subsets:Sys Menu Page Row
+}APQ Dimension Subsets:}APQ Dimension Subsets:Sys Menu Parameter
+}APQ Dimension Subsets:}APQ Dimension Subsets:Sys Menu Profile
+}APQ Dimension Subsets:}APQ Dimension Subsets:Sys Module
+}APQ Dimension Subsets:}APQ Dimension Subsets:Sys Module Object Type
+}APQ Dimension Subsets:}APQ Dimension Subsets:Sys Parameter
+}APQ Dimension Subsets:}APQ Dimension Subsets:Sys Security Access Right
+}APQ Dimension Subsets:}APQ Dimension Subsets:Sys Security Data Parameter
+}APQ Dimension Subsets:}APQ Dimension Subsets:Sys Security Group
+}APQ Dimension Subsets:}APQ Dimension Subsets:Sys Security Object Type
+}APQ Dimension Subsets:}APQ Dimension Subsets:Sys Versioning Module
+}APQ Dimension Subsets:}APQ Dimension Subsets:Sys Workbench Group
+}APQ Dimension Subsets:}APQ Dimension Subsets:Sys Workbench Priority
+}APQ Dimension Subsets:}APQ Dimension Subsets:Sys Workbench Step
+}APQ Dimension Subsets:}APQ Dimension Subsets:Sys Workflow
+}APQ Dimension Subsets:}APQ Dimension Subsets:Time Deviation
+}APQ Dimension Subsets:}APQ Dimension Subsets:Top Elements
+}APQ Dimension Subsets:}APQ Dimension Subsets:Training Day
+}APQ Dimension Subsets:}APQ Dimension Subsets:Training Task
+}APQ Dimension Subsets:}APQ Dimension Subsets:UDC
+}APQ Dimension Subsets:}APQ Dimension Subsets:UDC Dimension
+}APQ Dimension Subsets:}APQ Dimension Subsets:Version
+}APQ Dimension Subsets:}APQ Dimension Subsets:Week
+}APQ Dimension Subsets:}APQ Dimension Subsets:Week Day
+}APQ Dimension Subsets:}APQ Dimension Subsets:Year
+}APQ Dimension Subsets:}APQ Dimension Subsets:Year Fiscal
+}APQ Dimension Subsets:}APQ Dimension Subsets:Year Month
+}APQ Dimension Subsets:}APQ Dimension Subsets:Year Month Index
+}APQ Dimension Subsets:}APQ Dimension Subsets:Year Week
+}APQ Dimension Subsets:}APQ Dimension Subsets:Year Week Index
+}APQ Dimension Subsets:}APQ Dimension Subsets:}Annotation_ApplicationID
+}APQ Dimension Subsets:}APQ Dimension Subsets:}AnnotationAppContextFacets
+}APQ Dimension Subsets:}APQ Dimension Subsets:}AnnotationMeasures
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ApplicationEntries
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ApplicationParameters
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Application Activity Back Alias
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Application Activity Back Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Application Activity Log Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Application Entries Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Applications
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Application to Cube Reference Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Calculation Type
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ CAM NamespaceID
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Cell Comment Index
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Cell Comment Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Chore Info Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Chore Info Parameter
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Chores
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Clients
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Clients Consol
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Cube Data Archive Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Cube Dependency Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Cube Last Updated by Process Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Cubes
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Cubes Dependent
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Cube View Cache Control Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Cube Views
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Cube Views Management Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Cube Views Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Data Source Row
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Dimension Attribute Definition Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Dimension Attribute Matrix Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Dimension Attributes
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Dimension Attributes Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Dimension Defaults Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Dimension Defaults Measure Type
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Dimension Definition Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Dimension Definition Parameter
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Dimension Definition Source Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Dimension Elements
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Dimension Element Search Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Dimension Elements Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Dimension Hierarchies
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Dimension Hierarchies Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Dimension Node Type
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Dimensions
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Dimension SemiDynamic Subsets Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Dimension Source
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Dimension Static Subsets And UDC Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Dimension Subsets
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Dimension Subsets Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Dimension Subset Use Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Dimension Use Index
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Dimension Use Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Escape Characters
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Execution Item
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Execution Item Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Glossary Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Groups
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ HTML Character Entity
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Item Index
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Menu Link
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Menu Link Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Menu Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Menu Page
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Menu Page Column
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Menu Page Row
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Menu Profile
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Menu User Preference Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Number Format
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Parameters
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Picklist Dimension Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Picklist General Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ PickList Item
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ PickList Validations
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Processes
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Process Execution Log Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Process Execution Tree
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ ProcessExit Code
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Process Parallelization Control Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Process Parameter Matrix Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Process Parameter Name
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Process Parameters
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Process Parameters Info Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Process Response Message Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Process to Object Reference Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Pulse ServerName
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Pulse Service Name
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Pulse User login Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Pulse Workbook
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Pulse Workbook Clients
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Pulse Workbook Path
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Pulse Workbook Tracker Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Reconciliation Cell Value Change Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Reconciliation Cell Value Change Profile
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Reconciliation Check Extended Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Reconciliation Check Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Reconciliation Item
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Reconciliation Setup Detail Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Reconciliation Setup Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Security Effective Permission Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Security Level
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Security Manage Application Feeder Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Security Manage Client Groups Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Security Manage Element Access Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Security Manage Element Security Groups Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Security Manage Object Access Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Security Permission Index
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Server Message Log Info Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Settings Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Staging Control Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Staging Control Parameter
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Staging Data Source
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Staging Dimension
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Staging Dimension Mapping Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Staging Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Staging Variable Name
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Subsets
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Time Date
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Time Date Lookup
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Time Date Lookup Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Time Day in Year
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Time Dimensions
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Time Info Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Time Minute
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Time Month
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Time Month Conversion Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Time Month Simple
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Time Parameters
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Time Period
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Time Quarter
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Time Relative Time Lookup Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Time Relative Time Periods
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Time Second
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Time Year
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Time Year-Month
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Time Year-Month Lookup
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Time Year-Week Lookup
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ TM1 Objects
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ TM1 Object Type
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ TM1 Transaction Log Analysis Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ TM1 Transaction Logs
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Universal View
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Universal View  Calculation Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Universal View  Column
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Universal View  Data Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Universal View  Dimension
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Universal View  Dimension Mapping Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Universal View  Filter Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Universal View  Format Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Universal View  Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Universal View  Row
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Universal View  Source Mapping Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Update Frequency
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ User Activity Log Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ User Last Active Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Version
+}APQ Dimension Subsets:}APQ Dimension Subsets:}APQ Views
+}APQ Dimension Subsets:}APQ Dimension Subsets:}CAMAssociatedGroups
+}APQ Dimension Subsets:}APQ Dimension Subsets:}Chores
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ClientProperties
+}APQ Dimension Subsets:}APQ Dimension Subsets:}Clients
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ClientSettings
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ConnectionProperties
+}APQ Dimension Subsets:}APQ Dimension Subsets:}Connections
+}APQ Dimension Subsets:}APQ Dimension Subsets:}CubeAttributes
+}APQ Dimension Subsets:}APQ Dimension Subsets:}CubeDrillString
+}APQ Dimension Subsets:}APQ Dimension Subsets:}Cube Functions
+}APQ Dimension Subsets:}APQ Dimension Subsets:}CubeProperties
+}APQ Dimension Subsets:}APQ Dimension Subsets:}Cubes
+}APQ Dimension Subsets:}APQ Dimension Subsets:}CubeSecurityProperties
+}APQ Dimension Subsets:}APQ Dimension Subsets:}Cultures
+}APQ Dimension Subsets:}APQ Dimension Subsets:}DeployedLinkRecord
+}APQ Dimension Subsets:}APQ Dimension Subsets:}DimensionAttributes
+}APQ Dimension Subsets:}APQ Dimension Subsets:}DimensionFormatAttributes
+}APQ Dimension Subsets:}APQ Dimension Subsets:}DimensionFormatItems
+}APQ Dimension Subsets:}APQ Dimension Subsets:}DimensionProperties
+}APQ Dimension Subsets:}APQ Dimension Subsets:}Dimensions
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_APQ.Demo Customer
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_apq.demo customer_Clone
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_APQ.Demo Product
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_APQ.Demo Sales Cube Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_APQ.Demo Sales Cube Version
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_APQ.Demo T Day in Year
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_APQ.Demo Test
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_APQ.Demo T Fin Period
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_APQ.Demo T Fin Year
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_APQ.Demo T Fin Year-Period
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_APQ.Demo T Month
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_APQ.Demo T Quarter
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_APQ.Demo T Year
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_APQ.Demo T Year-Month
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Currency
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Currency From
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Currency To
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Data Source GL
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Date
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Day in Month
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Day in Week
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Day in Year
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Demo Account GL
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Demo Account GL Plan
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Demo Customer
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Demo Entity
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Demo Product
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Demo Profit Center
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Employee
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_FX Rate Type
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Line Item
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_M Currency
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_M Exchange Rate
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_M FX Rate
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_M GL Plan
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_M GL Reporting
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_M Manpower Reporting
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Month
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Month Fiscal
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_M Reference
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_M Sales Reporting
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_M Sys Archive Parameter
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_M Sys Archive Profile
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_M Sys Menu
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_M Sys Menu Application Entry
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_M Sys Module Object
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_M Sys Parameter
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_M Sys Time Attribute
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_M Sys Versioning Cube
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_M Sys Versioning Log
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_M Sys Workbench
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_M Sys Workbench Task Dependency
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_M Sys Workflow Cooling Period
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_M UDC
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_M Unit
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_M Workflow
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Planning Year
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Product
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Product Category
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Profit Center
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Quarter
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Region
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Scale
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Scenario
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Sys Archive ID
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Sys Archive Parameter
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Sys Lookup Date
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Sys Lookup Month
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Sys Menu Application Entry
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Sys Menu Link
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Sys Menu Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Sys Menu Page
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Sys Menu Page Column
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Sys Menu Page Row
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Sys Menu Parameter
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Sys Menu Profile
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Sys Module
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Sys Module Object Type
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Sys Parameter
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Sys Security Object Type
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Sys Versioning Module
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Sys Workbench Group
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Sys Workbench Priority
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Sys Workbench Step
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Sys Workflow
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Training Day
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Training Task
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_UDC
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Version
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Week
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Week Day
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Year
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Year Fiscal
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Year Month
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_Year Week
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}ApplicationEntries
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Application Activity Back Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Applications
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Application to Cube Reference Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Calculation Type
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ CAM NamespaceID
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Chore Info Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Chore Info Parameter
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Chores
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Clients
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Clients Consol
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Cube Last Updated by Process Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Cubes
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Cube Views
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Cube Views Management Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Cube Views Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Data Source Row
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Dimension Attribute Matrix Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Dimension Attributes Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Dimension Defaults Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Dimension Defaults Measure Type
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Dimension Definition Parameter
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Dimension Definition Source Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Dimension Elements
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Dimension Element Search Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Dimension Hierarchies
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Dimension Hierarchies Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Dimensions
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Dimension SemiDynamic Subsets Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Dimension Source
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Dimension Static Subsets And UDC Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Dimension Subsets
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Dimension Subsets Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Dimension Subset Use Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Dimension Use Index
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Dimension Use Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Escape Characters
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Execution Item
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Glossary Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Groups
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ HTML Character Entity
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Item Index
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Menu Link
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Menu Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Menu Page
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Menu Profile
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Parameters
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Picklist Dimension Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ PickList Item
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ PickList Validations
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Processes
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Process Execution Log Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ ProcessExit Code
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Process Parallelization Control Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Process Parameter Matrix Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Process Parameters
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Process Parameters Info Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Process to Object Reference Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Pulse ServerName
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Pulse Service Name
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Pulse User login Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Pulse Workbook
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Pulse Workbook Path
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Reconciliation Cell Value Change Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Reconciliation Cell Value Change Profile
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Reconciliation Check Extended Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Reconciliation Check Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Reconciliation Item
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Reconciliation Setup Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Security Effective Permission Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Security Level
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Security Manage Application Feeder Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Security Manage Client Groups Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Security Manage Element Access Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Security Manage Element Security Groups Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Security Manage Object Access Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Security Permission Index
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Settings Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Staging Control Parameter
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Staging Data Source
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Staging Dimension
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Staging Dimension Mapping Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Time Date
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Time Date Lookup
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Time Day in Year
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Time Dimensions
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Time Minute
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Time Month
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Time Quarter
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Time Relative Time Lookup Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Time Relative Time Periods
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Time Second
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Time Year
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Time Year-Month
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Time Year-Month Lookup
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Time Year-Week Lookup
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ TM1 Objects
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ TM1 Object Type
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ TM1 Transaction Log Analysis Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Universal View
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Universal View  Column
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Universal View  Data Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Universal View  Dimension
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Universal View  Dimension Mapping Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Universal View  Filter Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Universal View  Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Universal View  Row
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ Update Frequency
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}APQ User Last Active Measure
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}Clients
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}Cubes
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}Cultures
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}Dimensions
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}ElementAttributes_}Clients
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}Groups
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementAttributes_}Processes
+}APQ Dimension Subsets:}APQ Dimension Subsets:}ElementProperties
+}APQ Dimension Subsets:}APQ Dimension Subsets:}Features
+}APQ Dimension Subsets:}APQ Dimension Subsets:}Groups
+}APQ Dimension Subsets:}APQ Dimension Subsets:}HierarchyProperties
+}APQ Dimension Subsets:}APQ Dimension Subsets:}Hold
+}APQ Dimension Subsets:}APQ Dimension Subsets:}LineNumber
+}APQ Dimension Subsets:}APQ Dimension Subsets:}PerfClients
+}APQ Dimension Subsets:}APQ Dimension Subsets:}PerfCubes
+}APQ Dimension Subsets:}APQ Dimension Subsets:}Permissions
+}APQ Dimension Subsets:}APQ Dimension Subsets:}PickList
+}APQ Dimension Subsets:}APQ Dimension Subsets:}Processes
+}APQ Dimension Subsets:}APQ Dimension Subsets:}RuleStats
+}APQ Dimension Subsets:}APQ Dimension Subsets:}SecurityOverlay
+}APQ Dimension Subsets:}APQ Dimension Subsets:}StatsByProcess
+}APQ Dimension Subsets:}APQ Dimension Subsets:}StatsStatsByClient
+}APQ Dimension Subsets:}APQ Dimension Subsets:}StatsStatsByCube
+}APQ Dimension Subsets:}APQ Dimension Subsets:}StatsStatsByCubeByClient
+}APQ Dimension Subsets:}APQ Dimension Subsets:}StatsStatsForServer

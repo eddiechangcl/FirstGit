@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=02 Set Application Security
+ENTRYTYPE=view
+ENTRYREFERENCE=TM1:///VIEW/PUBLIC/}APQ Security Manage Object Access/Set Application Security

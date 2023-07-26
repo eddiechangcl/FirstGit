@@ -1,0 +1,238 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+SKIPCHECK;
+FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+# LAST UPDATE:  2020-01-24 element security refresh
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Dimension Definition** stores information on the mapping of dimension data sources (CSV, ODBC, Cube, Dimension, Process) for maintaining
+# dimensions using a standard format and consistent framework which is loaded by process **}APQ.Dim.Definition.Load...**
+#
+# This allows for a standard modular approach to define & maintain TM1 dimensions which is easily extended to additional dimensions with no additional
+# coding.  All that is needed is for the selected datasource to conform to the defined apliqode framework standard (in terms of columns for element
+# definition, parent definition & attribute definition).
+#
+# When configuring dimensions in this cube:
+# * **Global Dimension Parameters** are defined at the **Total Item** level (Group, Dimension ID, Sort Order, Unwinding) as these parameters
+#   are independent of data source and need only be defined once
+# * **Source Type** & **Attribute** parameters are defined at the ITEM level as these are specific to a data source
+# * **Dimension Update** parameters are informational and are entered by TI
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+# Stepper status: for UI Purpose, update the cube from Apliqo UX so we know for a given dimension which screen to go to
+[ '}APQ Dimension Definition Measure':'StepperStatus' ] = S: STET;
+
+# Pull through description of what each parameter does
+[ '}APQ Dimension Definition Measure':'Description' ] = S: AttrS( '}APQ Dimension Definition Parameter', !}APQ Dimension Definition Parameter, 'Description' );
+
+# For same named hierarchy do the input at dimension level
+[ '}APQ Dimension Definition Measure':{'Description','String'} ] = S:
+IF( ElLev( '}APQ Dimension Hierarchies', !}APQ Dimension Hierarchies ) > 0,
+    CONTINUE,
+    IF( SubSt( !}APQ Dimension Hierarchies, 1, Scan( ':', !}APQ Dimension Hierarchies ) - 1 ) @<> SubSt( !}APQ Dimension Hierarchies, Scan( ':', !}APQ Dimension Hierarchies ) + 1, Long(!}APQ Dimension Hierarchies) ),
+        CONTINUE,
+        DB( '}APQ Dimension Definition', SubSt( !}APQ Dimension Hierarchies, 1, Scan( ':', !}APQ Dimension Hierarchies ) - 1 ), !}APQ Item Index , !}APQ Dimension Definition Parameter , !}APQ Dimension Definition Measure )
+    ) 
+);
+
+# No rules to apply to the consolidated element and the comments
+[ '}APQ Dimension Hierarchies':'Total APQ Dimensions' ] = STET;
+[ '}APQ Dimension Definition Parameter':'Comment', '}APQ Dimension Definition Measure':'String' ] = STET;
+
+[ '}APQ Dimension Definition Parameter':'Dimension To Build', '}APQ Dimension Definition Measure':'Count' ] = N:
+IF( DB( '}APQ Dimension Definition', !}APQ Dimension Hierarchies, !}APQ Item Index, 'Source Type', 'String' ) @<> '' & DB( '}APQ Dimension Definition', !}APQ Dimension Hierarchies, !}APQ Item Index, 'Step disabled', 'String' ) @<> 'Y',
+   1,
+   0
+);
+C: 
+IF( ElLev( '}APQ Dimension Hierarchies', !}APQ Dimension Hierarchies ) = 1,
+    DB( '}APQ Dimension Definition', !}APQ Dimension Hierarchies|':'|!}APQ Dimension Hierarchies, !}APQ Item Index, !}APQ Dimension Definition Parameter, !}APQ Dimension Definition Measure ),
+    STET
+);
+
+[ '}APQ Dimension Definition Measure':'Count' ] = N:
+IF( DB( '}APQ Dimension Definition', !}APQ Dimension Hierarchies, !}APQ Item Index, !}APQ Dimension Definition Parameter, 'String' ) @<> '',
+   1,
+   0
+);
+
+# Global parameters to disable for hierarchies
+[ '}APQ Item Index':'Total Items', '}APQ Dimension Definition Parameter':{'Delete And Recreate All Attributes'}, '}APQ Dimension Definition Measure':'String' ] = S: 
+IF( Scan( ':', !}APQ Dimension Hierarchies ) > 0,
+    'N',
+    STET
+);
+
+[ '}APQ Item Index':'Total Items', '}APQ Dimension Definition Parameter':{'Launch another dimension'}, '}APQ Dimension Definition Measure':'String' ] = S: 
+IF( Scan( ':', !}APQ Dimension Hierarchies ) > 0,
+    '',
+    STET
+);
+
+# Special cases for Leaves hierarchy
+[ '}APQ Item Index':'Total Items', '}APQ Dimension Definition Parameter':{'Dimension Unwind','Automatically Create Top Node','Automatically Create Dummy N Elements','Group Orphan N Elements','Delete Orphan C Elements'}, '}APQ Dimension Definition Measure':'String' ] = S: 
+IF( Scan( ':Leaves', !}APQ Dimension Hierarchies ) > 0,
+    'N',
+    STET
+);
+
+# Manage the dimension name:
+# Write the dimension to build on the "dimension to build" parameter if not the selected dimension as default value
+[ '}APQ Item Index':'Total Items', '}APQ Dimension Definition Parameter':'Dimension To Build' ]= S:
+IF( DB('}APQ Dimension Definition', !}APQ Dimension Hierarchies, !}APQ Item Index, 'Amend Dimension To build', !}APQ Dimension Definition Measure ) @<> 'Y',
+	!}APQ Dimension Hierarchies,
+	STET
+);
+
+[ '}APQ Dimension Definition Parameter':'Dimension To Build' ] = S:
+IF( DB('}APQ Dimension Definition', !}APQ Dimension Hierarchies, !}APQ Item Index, 'Source Type', !}APQ Dimension Definition Measure ) @= '',
+	'',
+	Continue
+);
+
+[ '}APQ Dimension Definition Parameter':'Dimension To Build' ] = S:
+IF( !}APQ Item Index @='0001',
+	IF( DB('}APQ Dimension Definition', !}APQ Dimension Hierarchies, 'Total Items', 'Dimension To Build', 'Count' ) >= 2,
+		'}Temp_' | 
+		IF( ElLev( '}APQ Dimension Hierarchies', !}APQ Dimension Hierarchies ) > 0,
+		    DB('}APQ Dimension Definition', !}APQ Dimension Hierarchies, 'Total Items', !}APQ Dimension Definition Parameter, !}APQ Dimension Definition Measure ),
+    		SubSt(
+    		    DB('}APQ Dimension Definition', !}APQ Dimension Hierarchies, 'Total Items', !}APQ Dimension Definition Parameter, !}APQ Dimension Definition Measure ),
+    		    1, 
+    		    Scan( ':', DB('}APQ Dimension Definition', !}APQ Dimension Hierarchies, 'Total Items', !}APQ Dimension Definition Parameter, !}APQ Dimension Definition Measure ) ) - 1
+    		)
+    		|'_'|
+    		SubSt(
+    		    DB('}APQ Dimension Definition', !}APQ Dimension Hierarchies, 'Total Items', !}APQ Dimension Definition Parameter, !}APQ Dimension Definition Measure ),
+    		    Scan( ':', DB('}APQ Dimension Definition', !}APQ Dimension Hierarchies, 'Total Items', !}APQ Dimension Definition Parameter, !}APQ Dimension Definition Measure ) ) + 1,
+    		    100
+    		)
+        ),
+        DB('}APQ Dimension Definition', !}APQ Dimension Hierarchies, 'Total Items', !}APQ Dimension Definition Parameter, !}APQ Dimension Definition Measure )
+	),
+	'}Temp_' | 
+	IF( ElLev( '}APQ Dimension Hierarchies', !}APQ Dimension Hierarchies ) > 0,
+	    DB('}APQ Dimension Definition', !}APQ Dimension Hierarchies, 'Total Items', !}APQ Dimension Definition Parameter, !}APQ Dimension Definition Measure ),
+		SubSt(
+		    DB('}APQ Dimension Definition', !}APQ Dimension Hierarchies, 'Total Items', !}APQ Dimension Definition Parameter, !}APQ Dimension Definition Measure ),
+		    1, 
+		    Scan( ':', DB('}APQ Dimension Definition', !}APQ Dimension Hierarchies, 'Total Items', !}APQ Dimension Definition Parameter, !}APQ Dimension Definition Measure ) ) - 1
+		)
+		|'_'|
+		SubSt(
+		    DB('}APQ Dimension Definition', !}APQ Dimension Hierarchies, 'Total Items', !}APQ Dimension Definition Parameter, !}APQ Dimension Definition Measure ),
+		    Scan( ':', DB('}APQ Dimension Definition', !}APQ Dimension Hierarchies, 'Total Items', !}APQ Dimension Definition Parameter, !}APQ Dimension Definition Measure ) ) + 1,
+		    100
+		)
+    )
+);
+
+[ '}APQ Dimension Definition Parameter':'Hierarchy To Build' , '}APQ Dimension Definition Measure':'String'] = S:
+IF( DB('}APQ Dimension Definition', !}APQ Dimension Hierarchies, !}APQ Item Index, 'Dimension to Build', !}APQ Dimension Definition Measure) @<>'',
+  IF ( Scan(':', DB('}APQ Dimension Definition', !}APQ Dimension Hierarchies, !}APQ Item Index, 'Dimension to Build', !}APQ Dimension Definition Measure) ) >0,
+    Subst(DB('}APQ Dimension Definition', !}APQ Dimension Hierarchies, !}APQ Item Index, 'Dimension to Build', !}APQ Dimension Definition Measure), 
+      Scan(':', DB('}APQ Dimension Definition', !}APQ Dimension Hierarchies, !}APQ Item Index, 'Dimension to Build', !}APQ Dimension Definition Measure) ) +1, 
+      999),
+    DB('}APQ Dimension Definition', !}APQ Dimension Hierarchies, !}APQ Item Index, 'Dimension to Build', !}APQ Dimension Definition Measure)
+  ),
+  ''
+);
+
+# Element security
+[ '}APQ Dimension Definition Parameter':'Full element security refresh (including automatic group creation)' , '}APQ Dimension Definition Measure':'String'] = S: 
+If( DB( '}APQ Dimension Definition', !}APQ Dimension Hierarchies, !}APQ Item Index, 'Update Element Security', !}APQ Dimension Definition Measure ) @= 'Y',
+    STET,
+    ''
+);
+[ '}APQ Dimension Definition Parameter':'Element security refresh for preconfigured groups' , '}APQ Dimension Definition Measure':'String'] = S: 
+If( DB( '}APQ Dimension Definition', !}APQ Dimension Hierarchies, !}APQ Item Index, 'Update Element Security', !}APQ Dimension Definition Measure ) @= 'Y'
+    & DB( '}APQ Dimension Definition', !}APQ Dimension Hierarchies, !}APQ Item Index, 'Full element security refresh (including automatic group creation)', !}APQ Dimension Definition Measure ) @<> 'Y',
+    STET,
+    ''
+);
+
+# Pre-processing or post-processing custom process
+[ '}APQ Item Index':{'0001','0002','0003'}, '}APQ Dimension Definition Parameter':{'Launch a custom process BEFORE step 1','Launch a custom process AFTER final step'}, '}APQ Dimension Definition Measure':'String' ] = S: 
+If( DimIx( '}Processes', DB( '}APQ Dimension Definition', !}APQ Dimension Hierarchies, 'Total Items', !}APQ Dimension Definition Parameter, !}APQ Dimension Definition Measure ) ) > 0,
+    STET,
+    CONTINUE
+);
+
+# Secure the unused cells
+[ ] = S: IF (!}APQ Item Index @<> 'Total Items' & ELISANC('}APQ Dimension Definition Parameter','Global Dimension Parameter', !}APQ Dimension Definition Parameter) = 1,'',Continue);
+
+#Manage Sorting
+[ '}APQ Item Index':'Total Items', '}APQ Dimension Definition Parameter':{'Component Sort Type','Component Sort Sense','Element Sort Type','Element Sort Sense'} ] = S:
+IF( DB('}APQ Dimension Definition', !}APQ Dimension Hierarchies, !}APQ Item Index,'Dimension Sort Order', !}APQ Dimension Definition Measure )@='Y',STET,'');
+
+#Disable data entry against "Total Items" for detail parameters entered against specific step.
+[ '}APQ Item Index':'Total Items', '}APQ Dimension Definition Parameter':'Detail Dimension Parameter' ] = S: '## Entered at step ##';
+[ '}APQ Item Index':'Total Items' ] = S:
+IF( ElIsAnc( '}APQ Dimension Definition Parameter', 'Detail Dimension Parameter', !}APQ Dimension Definition Parameter ) = 1,
+	'',
+	CONTINUE
+);
+
+# Manage the folder for CSV
+# If you want to remove the global folder for dimensions, comment this rule. You'll be able to select a specific folder for each dimension
+[ '}APQ Dimension Definition Parameter':'CSV File Folder', '}APQ Dimension Definition Measure':'String' ] = S:
+IF( DB( '}APQ Dimension Definition', !}APQ Dimension Hierarchies, !}APQ Item Index, 'Source Type','String') @= 'CSV',
+   IF( DB( '}APQ Dimension Definition','Total APQ Dimensions','Total Items','CSV File Folder','String') @= '',
+      DB( '}APQ Settings', 'Location: Source Data', 'String' ),
+      DB( '}APQ Dimension Definition','Total APQ Dimensions','Total Items','CSV File Folder','String')
+   ),
+   ''
+);
+
+# Release the write ability according to the 'SourceType'
+[ '}APQ Dimension Definition Measure':'String' ] = S: IF(ElIsAnc( '}APQ Dimension Definition Parameter', 'Source Type', !}APQ Dimension Definition Parameter ) = 1,
+	IF(DB('}APQ Dimension Definition', !}APQ Dimension Hierarchies, !}APQ Item Index,'SourceType','String')@= !}APQ Dimension Definition Parameter, '## Use children to setup the source ##',
+		IF(ELISANC('}APQ Dimension Definition Parameter', DB('}APQ Dimension Definition', !}APQ Dimension Hierarchies, !}APQ Item Index,'SourceType','String'), !}APQ Dimension Definition Parameter )=1,	Continue,'')),
+		Continue);
+
+[ '}APQ Dimension Definition Parameter':'Source Cube', '}APQ Dimension Definition Measure':'String' ] = S: '}APQ Dimension Definition Source';
+
+# Manage the unwind parameter
+[  '}APQ Dimension Definition Measure':'String' ] = S: IF( ElIsAnc( '}APQ Dimension Definition Parameter', 'Dimension Unwind', !}APQ Dimension Definition Parameter )=1,
+	IF(DB('}APQ Dimension Definition', !}APQ Dimension Hierarchies, !}APQ Item Index,'Dimension Unwind','String')@<>'Y',
+		'',
+		Continue),Continue);
+
+# Prevent to enter data on certain cell
+[  '}APQ Dimension Definition Measure':'String' ] = S: IF( ElIsPar('}APQ Dimension Definition Parameter', 'Alias', !}APQ Dimension Definition Parameter )=1,'',Continue);
+
+
+[ '}APQ Dimension Definition Measure':'String' ] = S: IF( Scan( ' Concatenation Type',  !}APQ Dimension Definition Parameter ) <> 0,
+	IF(DB('}APQ Dimension Definition', !}APQ Dimension Hierarchies, !}APQ Item Index,SUBST( !}APQ Dimension Definition Parameter,1,6)|' Include Element', 'String' ) @<> 'Y',
+		'',
+		Continue),
+	Continue);
+
+
+#############################
+FEEDERS;
+#############################
+
+[ '}APQ Item Index':'Total Items', '}APQ Dimension Definition Parameter':'Amend Dimension To build' ] => [ '}APQ Dimension Definition Parameter':'Dimension To Build' ];
+[ '}APQ Dimension Definition Parameter':'Dimension To Build', '}APQ Dimension Definition Measure':'String'] => [ '}APQ Dimension Definition Parameter':'Hierarchy To Build'];
+[ '}APQ Dimension Definition Parameter':'Source Type' ] => [ '}APQ Dimension Definition Parameter':'Dimension To Build' ], [ '}APQ Dimension Definition Parameter':'CSV File Folder' ];
+[ '}APQ Dimension Definition Measure':'String' ] => [ '}APQ Dimension Definition Measure':'Count' ];
+
+#############################
+##~~   End  Rule File   ~~##
+#############################

@@ -1,0 +1,199 @@
+﻿283,100
+284,"Dimensions with Last Update Timestamp"
+11,20230512024332
+274,
+18,0
+275,230
+{FILTER(   {[}APQ TM1 Objects].[All Dimensions]},   [}DimensionProperties].( StrToMember( "[}Dimensions].["+[}APQ TM1 Objects].CurrentMember.Properties("MEMBER_NAME")+"]" ), [}DimensionProperties].[LAST_TIME_UPDATED] ) <> "" )}
+278,0
+281,0
+270,189
+}Annotation_ApplicationID
+}AnnotationAppContextFacets
+}AnnotationMeasures
+}ApplicationEntries
+}ApplicationParameters
+}APQ Applications
+}APQ CAM NamespaceID
+}APQ Cell Comment Index
+}APQ Cell Comment Measure
+}APQ Chore Info Measure
+}APQ Chore Info Parameter
+}APQ Chores
+}APQ Clients
+}APQ Cube Dependency Measure
+}APQ Cube Last Updated by Process Measure
+}APQ Cubes
+}APQ Cubes Dependent
+}APQ Cube View Cache Control Measure
+}APQ Cube Views
+}APQ Cube Views Management Measure
+}APQ Cube Views Measure
+}APQ Data Source Row
+}APQ Dimension Attribute Definition Measure
+}APQ Dimension Attribute Matrix Measure
+}APQ Dimension Attributes
+}APQ Dimension Attributes Measure
+}APQ Dimension Defaults Measure
+}APQ Dimension Definition Measure
+}APQ Dimension Definition Parameter
+}APQ Dimension Definition Source Measure
+}APQ Dimension Elements
+}APQ Dimension Element Search Measure
+}APQ Dimension Elements Measure
+}APQ Dimension Node Type
+}APQ Dimensions
+}APQ Dimension SemiDynamic Subsets Measure
+}APQ Dimension Static Subsets And UDC Measure
+}APQ Dimension Subsets
+}APQ Dimension Subsets Measure
+}APQ Dimension Use Index
+}APQ Dimension Use Measure
+}APQ Escape Characters
+}APQ Execution Item
+}APQ Execution Item Measure
+}APQ Glossary Measure
+}APQ Groups
+}APQ HTML Character Entity
+}APQ Item Index
+}APQ Parameters
+}APQ Picklist Dimension Measure
+}APQ Picklist General Measure
+}APQ PickList Item
+}APQ PickList Validations
+}APQ Processes
+}APQ Process Execution Log Measure
+}APQ Process Execution Tree
+}APQ ProcessExit Code
+}APQ Process Parallelization Control Measure
+}APQ Process Parameters
+}APQ Process Parameters Info Measure
+}APQ Process Response Message Measure
+}APQ Process to Object Reference Measure
+}APQ Reconciliation Check Extended Measure
+}APQ Reconciliation Check Measure
+}APQ Reconciliation Item
+}APQ Reconciliation Setup Detail Measure
+}APQ Reconciliation Setup Measure
+}APQ Security Effective Permission Measure
+}APQ Security Level
+}APQ Server Message Log Info Measure
+}APQ Settings Measure
+}APQ Subsets
+}APQ Time Date Lookup
+}APQ Time Day in Year
+}APQ Time Dimensions
+}APQ Time Minute
+}APQ Time Month
+}APQ Time Quarter
+}APQ Time Relative Time Lookup Measure
+}APQ Time Relative Time Periods
+}APQ Time Second
+}APQ Time Year
+}APQ Time Year-Month
+}APQ Time Year-Month Lookup
+}APQ TM1 Objects
+}APQ TM1 Object Type
+}APQ TM1 Transaction Log Analysis Measure
+}APQ TM1 Transaction Logs
+}APQ Update Frequency
+}APQ User Activity Log Measure
+}APQ User Last Active Measure
+}APQ Views
+}CAMAssociatedGroups
+}Chores
+}ClientProperties
+}Clients
+}ClientSettings
+}ConnectionProperties
+}Connections
+}CubeDrillString
+}Cube Functions
+}CubeProperties
+}Cubes
+}CubeSecurityProperties
+}Cultures
+}DeployedLinkRecord
+}DimensionAttributes
+}DimensionFormatAttributes
+}DimensionFormatItems
+}DimensionProperties
+}Dimensions
+}ElementAttributes_}APQ Applications
+}ElementAttributes_}APQ CAM NamespaceID
+}ElementAttributes_}APQ Chore Info Parameter
+}ElementAttributes_}APQ Chores
+}ElementAttributes_}APQ Clients
+}ElementAttributes_}APQ Cube Last Updated by Process Measure
+}ElementAttributes_}APQ Cubes
+}ElementAttributes_}APQ Cube Views
+}ElementAttributes_}APQ Cube Views Management Measure
+}ElementAttributes_}APQ Cube Views Measure
+}ElementAttributes_}APQ Dimension Attribute Matrix Measure
+}ElementAttributes_}APQ Dimension Attributes Measure
+}ElementAttributes_}APQ Dimension Definition Parameter
+}ElementAttributes_}APQ Dimension Definition Source Measure
+}ElementAttributes_}APQ Dimension Element Search Measure
+}ElementAttributes_}APQ Dimensions
+}ElementAttributes_}APQ Dimension SemiDynamic Subsets Measure
+}ElementAttributes_}APQ Dimension Static Subsets And UDC Measure
+}ElementAttributes_}APQ Dimension Subsets
+}ElementAttributes_}APQ Dimension Subsets Measure
+}ElementAttributes_}APQ Dimension Use Measure
+}ElementAttributes_}APQ Escape Characters
+}ElementAttributes_}APQ Execution Item
+}ElementAttributes_}APQ Glossary Measure
+}ElementAttributes_}APQ Groups
+}ElementAttributes_}APQ HTML Character Entity
+}ElementAttributes_}APQ Item Index
+}ElementAttributes_}APQ Parameters
+}ElementAttributes_}APQ PickList Item
+}ElementAttributes_}APQ Processes
+}ElementAttributes_}APQ Process Execution Log Measure
+}ElementAttributes_}APQ ProcessExit Code
+}ElementAttributes_}APQ Process Parallelization Control Measure
+}ElementAttributes_}APQ Process to Object Reference Measure
+}ElementAttributes_}APQ Reconciliation Check Extended Measure
+}ElementAttributes_}APQ Reconciliation Check Measure
+}ElementAttributes_}APQ Reconciliation Item
+}ElementAttributes_}APQ Security Level
+}ElementAttributes_}APQ Time Date Lookup
+}ElementAttributes_}APQ Time Day in Year
+}ElementAttributes_}APQ Time Dimensions
+}ElementAttributes_}APQ Time Minute
+}ElementAttributes_}APQ Time Month
+}ElementAttributes_}APQ Time Quarter
+}ElementAttributes_}APQ Time Relative Time Periods
+}ElementAttributes_}APQ Time Second
+}ElementAttributes_}APQ Time Year
+}ElementAttributes_}APQ Time Year-Month
+}ElementAttributes_}APQ Time Year-Month Lookup
+}ElementAttributes_}APQ TM1 Objects
+}ElementAttributes_}APQ TM1 Object Type
+}ElementAttributes_}APQ TM1 Transaction Log Analysis Measure
+}ElementAttributes_}APQ Update Frequency
+}ElementAttributes_}APQ User Last Active Measure
+}ElementAttributes_}Clients
+}ElementAttributes_}Cubes
+}ElementAttributes_}Cultures
+}ElementAttributes_}Dimensions
+}ElementAttributes_}Groups
+}ElementAttributes_}Processes
+}ElementProperties
+}Features
+}Groups
+}Hierarchies
+}HierarchyProperties
+}Hold
+}PerfClients
+}PerfCubes
+}Permissions
+}PickList
+}Processes
+}SecurityOverlay
+}StatsByProcess
+}StatsStatsByClient
+}StatsStatsByCube
+}StatsStatsByCubeByClient
+}StatsStatsForServer
+}TimeIntervals

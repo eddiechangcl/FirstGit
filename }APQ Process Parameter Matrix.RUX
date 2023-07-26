@@ -1,0 +1,41 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+SKIPCHECK;
+FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-10-02 create cube
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Process Parameter Matrix** is automatically compiled by the process **}APQ.Cub.ProcessParametersInfo.Update.0.Main**
+# by reading the contents of all the .pro files in the data directory and compiling into the cube the parameters of each process, 
+# their type and the default value. This lookup cube allows a quick check to see which parameters exist in which processes.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+[ '}APQ Process Parameter Matrix Measure':'ParameterExists' ] = N: Sign( [ '}APQ Process Parameter Matrix Measure':'ParameterIndex' ] );
+
+[ '}APQ Process Parameter Matrix Measure':{'Type','sDefaultValue','Prompt'} ] = S: 
+DB( '}APQ Process Parameters Info', !}APQ Processes, 'P' | Trim( Str( [ '}APQ Process Parameter Matrix Measure':'ParameterIndex' ], 2, 0 ) ), !}APQ Process Parameter Matrix Measure );
+
+#############################
+FEEDERS;
+#############################
+
+[ '}APQ Process Parameter Matrix Measure':'ParameterIndex' ] => [ '}APQ Process Parameter Matrix Measure':'ParameterExists' ], [ '}APQ Process Parameter Matrix Measure':'Type' ], [ '}APQ Process Parameter Matrix Measure':'sDefaultValue' ], [ '}APQ Process Parameter Matrix Measure':'Prompt' ];
+
+
+#############################
+##~~    End Rule File    ~~##
+#############################

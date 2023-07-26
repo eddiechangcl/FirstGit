@@ -1,0 +1,21 @@
+﻿283,100
+284,"All N Elements code"
+11,20230515004922
+274,
+18,0
+275,
+278,0
+281,0
+270,12
+APQ.Cub.UserActivityLog.Update
+APQ.Dim.ControlObjects.Copy
+APQ.Dim.DimensionElements.Update
+APQ.Dim.Sub.SemiDynamicSubsets.Update
+APQ.Framework.Update
+APQ.Server.Backup
+APQ.Server.CacheViews
+APQ.Server.CatalogObjectLinks
+APQ.Server.CubeDependency.Set
+APQ.Server.DailyMaintenanceSetup
+APQ.Server.SaveDataAll
+Sys.Server.Sys Parameter.Update from tm1s.cfg

@@ -1,0 +1,136 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+#SKIPCHECK;
+#FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-06-10 convert from APliqo FPM
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Staging Control** maps the data source and stores paramaters which affect data source processing.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+# Numeric measures 
+[ '}APQ Staging Control Parameter':{'Load Staging cube','Load Target cube','Load From Staging','Export before load','Value Iteration','Number of Row','HeaderRec','Skip0','SkipCons','SkipRule','Target Last Update Record Count','Staging Last Update Record Count'}, '}APQ Staging Control Measure' : 'Numeric' ] = N: 
+Numbr(DB('}APQ Staging Control', !}APQ Staging Data Source, !}APQ Staging Control Parameter, 'String'));
+
+# Block non relevant crosses
+[ '}APQ Staging Control Measure' : 'Numeric' ] = N: 0;
+
+#Stet for dimension source preview
+[ '}APQ Staging Data Source':'Dimension Preview', '}APQ Staging Control Parameter':{'Target Cube','Value Iteration'}, '}APQ Staging Control Measure':'String' ] = S: STET;
+
+#Dimension source preview specific case
+[ '}APQ Staging Data Source':'Dimension Preview', '}APQ Staging Control Parameter':'Type Source', '}APQ Staging Control Measure':'String' ] = S:
+DB( '}APQ Dimension Definition',
+   DB( '}APQ Staging Control', !}APQ Staging Data Source, 'Target cube', !}APQ Staging Control Measure ),
+   DB( '}APQ Staging Control', !}APQ Staging Data Source, 'Value Iteration', !}APQ Staging Control Measure ),
+   'Source Type', 'String'
+);
+
+#Dimension source preview specific case
+[ '}APQ Staging Data Source':'Dimension Preview', '}APQ Staging Control Parameter':'Name Source', '}APQ Staging Control Measure':'String' ] = S:
+DB( '}APQ Dimension Definition',
+   DB( '}APQ Staging Control', !}APQ Staging Data Source, 'Target cube', !}APQ Staging Control Measure ),
+   DB( '}APQ Staging Control', !}APQ Staging Data Source, 'Value Iteration', !}APQ Staging Control Measure ),
+   ElComp( '}APQ Dimension Definition Parameter', DB( '}APQ Staging Control', !}APQ Staging Data Source, 'Type Source', !}APQ Staging Control Measure ), 1 ),
+   'String'
+);
+
+#Dimension source preview specific case
+[ '}APQ Staging Data Source':'Dimension Preview', '}APQ Staging Control Parameter':'Query', '}APQ Staging Control Measure':'String' ] = S:
+DB( '}APQ Dimension Definition',
+   DB( '}APQ Staging Control', !}APQ Staging Data Source, 'Target cube', !}APQ Staging Control Measure ),
+   DB( '}APQ Staging Control', !}APQ Staging Data Source, 'Value Iteration', !}APQ Staging Control Measure ),
+   'SQL Query', 'String'
+);
+
+#Dimension source preview specific case
+[ '}APQ Staging Data Source':'Dimension Preview', '}APQ Staging Control Parameter':'Path Source', '}APQ Staging Control Measure':'String' ] = S:
+DB( '}APQ Dimension Definition',
+   DB( '}APQ Staging Control', !}APQ Staging Data Source, 'Target cube', !}APQ Staging Control Measure ),
+   DB( '}APQ Staging Control', !}APQ Staging Data Source, 'Value Iteration', !}APQ Staging Control Measure ),
+   'CSV File Folder', 'String'
+);
+
+#Dimension source preview specific case
+[ '}APQ Staging Data Source':'Dimension Preview', '}APQ Staging Control Parameter':'Delimiter ASCII', '}APQ Staging Control Measure':'String' ] = S:
+DB( '}APQ Settings', 'DatasourceASCIIDelimiter', 'String' );
+
+#Dimension source preview specific case
+[ '}APQ Staging Data Source':'Dimension Preview', '}APQ Staging Control Parameter':'Filter', '}APQ Staging Control Measure':'String' ] = S:
+'}APQ Dimensions:' | DB( '}APQ Staging Control', !}APQ Staging Data Source, 'Target cube', !}APQ Staging Control Measure );
+
+#Dimension source preview specific case
+[ '}APQ Staging Data Source':'Dimension Preview', '}APQ Staging Control Parameter':'DelimiterDim', '}APQ Staging Control Measure':'String' ] = S:
+IF( DB('}APQ Settings', 'pDimDelim', 'String' ) @= '',
+    ':',
+    DB('}APQ Settings', 'pDimDelim', 'String' )
+);
+
+[ '}APQ Staging Data Source':'Dimension Preview', '}APQ Staging Control Parameter':'DelimiterFirstElem', '}APQ Staging Control Measure':'String' ] = S: 
+IF( DB('}APQ Settings', 'pEleStartDelim', 'String' ) @= '',
+    ':',
+    DB('}APQ Settings', 'pEleStartDelim', 'String' )
+);
+
+[ '}APQ Staging Data Source':'Dimension Preview', '}APQ Staging Control Parameter':'DelimiterElem', '}APQ Staging Control Measure':'String' ] = S:
+IF( DB('}APQ Settings', 'pEleDelim', 'String' ) @= '',
+    ':',
+    DB('}APQ Settings', 'pEleDelim', 'String' )
+);
+
+[ '}APQ Staging Data Source':'Dimension Preview', '}APQ Staging Control Parameter':{'Skip0','SkipCons','SkipRule'}, '}APQ Staging Control Measure':'String' ] = S: '1';
+
+#Type of the source is derivatived by }APQ Staging Data Source
+[ '}APQ Staging Control Parameter' : 'Type Source', '}APQ Staging Control Measure' : 'String' ] = S:
+IF( ELLEV ( '}APQ Staging Data Source', !}APQ Staging Data Source ) = 0,
+   ELPAR( '}APQ Staging Data Source', !}APQ Staging Data Source, 1),
+   CONTINUE
+);
+
+#ODBC Source user and password
+[ '}APQ Staging Control Parameter':'User Source', '}APQ Staging Control Measure':'String' ] = S:
+DB( '}APQ Settings', DB( '}APQ Staging Control', !}APQ Staging Data Source, 'Name Source', !}APQ Staging Control Measure ) |' User', 'String' );
+
+[ '}APQ Staging Control Parameter':'Password Source', '}APQ Staging Control Measure':'String' ] = S:
+DB( '}APQ Settings', DB( '}APQ Staging Control', !}APQ Staging Data Source, 'Name Source', !}APQ Staging Control Measure ) |' Pwd', 'String' );
+
+#parameters only available if name of the source is not empty
+[ '}APQ Staging Control Measure' : 'String' ] =S:
+IF(  !}APQ Staging Control Parameter @<> 'Name Source',
+   IF(DB('}APQ Staging Control',!}APQ Staging Data Source,'Name Source','String') @= '',
+       '',
+      CONTINUE
+   ),
+   CONTINUE
+);
+
+# Specific parameters are available regarding the type of the source
+[ '}APQ Staging Control Measure' : { 'String' } ] =S:
+IF(  ELISANC( '}APQ Staging Control Parameter', 'Specific ' | ELPAR( '}APQ Staging Data Source', !}APQ Staging Data Source, 1 ),  !}APQ Staging Control Parameter ) = 0
+     & ATTRN ( '}APQ Staging Control Parameter', !}APQ Staging Control Parameter, 'Block' ) =1,
+    '',
+   CONTINUE
+);
+
+##############################################################################################################################
+FEEDERS;
+##############################################################################################################################
+
+
+##############################################################################################################################
+##~~    End Rule File    ~~##
+##############################################################################################################################

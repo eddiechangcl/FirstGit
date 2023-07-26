@@ -1,0 +1,23 @@
+﻿FORMAT==100
+#Region System
+FEEDSTRINGS;
+SKIPCHECK;
+#EndRegion
+['Auto Menu']=S:
+    IF (DB('Sys Menu Application Entry',!Sys Menu Application Entry,'Auto Menu') @= '√'
+            , 'Y'
+            , ''
+         );
+
+['Entry Type']=S:DB('Sys Menu Application Entry',!Sys Menu Application Entry,'Entry Type');
+
+#['Menu ID']=S:DB('Sys Menu Application Entry',!Sys Menu Application Entry,'Menu ID');
+#['Menu ID Level']=S:DB('Sys Menu Application Entry',!Sys Menu Application Entry,'Menu ID Level');
+#['Menu ID Level 1']=S:DB('Sys Menu Application Entry',!Sys Menu Application Entry,'Menu ID Level 1');
+#['Menu ID Level 2']=S:DB('Sys Menu Application Entry',!Sys Menu Application Entry,'Menu ID Level 2');
+#['Menu ID Level 3']=S:DB('Sys Menu Application Entry',!Sys Menu Application Entry,'Menu ID Level 3');
+
+['Page ID']=S:DB('Sys Menu Application Entry',!Sys Menu Application Entry,'Page ID');
+
+
+

@@ -1,0 +1,48 @@
+﻿FORMAT==100
+FEEDSTRINGS;
+SKIPCHECK;
+
+##############################################################################################################
+### CWA Std. Model  version 3.00
+### Copyright © 2020, Cubewise (Hong Kong) Ltd. All rights reserved.
+### This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+### and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+### you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+### or display any part, in any form, or by any means.
+##############################################################################################################
+
+
+##############################################################################################################
+###~~~    Start Rule File    ~~~###
+
+['Caption']=S:
+
+### Using Current User Specific Language
+IF (ATTRS('}Clients', TM1USER(), 'Language') @='en'
+    , STET
+, IF (ATTRS('}Clients', TM1USER(), 'Language') @<>''
+    , DB('}ElementAttributes_Date', !Date, 'Caption ' | ATTRS('}Clients', TM1USER(), 'Language'))
+
+    ### Using Instance Primary Language
+    ,IF (DB('Sys Parameter', 'Primary Language', 'Text') @='en'
+        , STET
+    ,IF (DB('Sys Parameter', 'Primary Language', 'Text') @<>''
+        , DB('}ElementAttributes_Date', !Date, 'Caption ' | DB('Sys Parameter', 'Primary Language', 'Text'))
+
+        ### Using UI Settings
+        , STET
+))));
+
+
+['Description']=S:DB('Sys Time Attribute', !Date, 'T', 'yyyy mmm dd');
+
+[{'El Type','Caption zh-Hans','Caption zh-Hant','Julian Date','yyyy M00 dd','yyyy mmm dd','yyyymmdd'
+  ,'Day in Month','Day in Year','Year','Quarter','Month','Week','Day','First Day','Last Day'}]=S:
+DB('Sys Time Attribute', !Date, 'T', !}ElementAttributes_Date);
+
+['DayNO'] = N: DB('Sys Time Attribute', !Date, 'T', 'DayNO');
+
+['Label (Wrapping)'] = S: !Date | '<br>' | DB('Sys Time Attribute', !Date, 'T', 'Day in Week');
+
+FEEDERS;
+

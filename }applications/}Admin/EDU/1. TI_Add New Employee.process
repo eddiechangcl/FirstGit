@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=1. TI_Add New Employee
+ENTRYTYPE=process
+ENTRYREFERENCE=TM1:///PROCESS/PUBLIC/Dim.Employee.Add New Employee

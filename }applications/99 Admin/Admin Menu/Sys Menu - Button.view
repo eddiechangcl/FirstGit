@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=Sys Menu - Button
+ENTRYTYPE=view
+ENTRYREFERENCE=TM1:///VIEW/PUBLIC/Sys Menu/Sys Menu - Button

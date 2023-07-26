@@ -1,0 +1,20 @@
+﻿283,100
+284,"}APQ Security Manage Object Access"
+11,20230515004909
+274,
+18,0
+275,
+278,0
+281,0
+270,11
+Default
+Set Application Security 1. Root
+Set Application Security 2. All
+Set Chore Security 1. Global Level
+Set Chore Security 2. Object Level
+Set Cube Security 1. Global Level
+Set Cube Security 2. Object Level
+Set Dimension Security 1. Global Level
+Set Dimension Security 2. Object Level
+Set Process Security 1. Global Level
+Set Process Security 2. Object Level

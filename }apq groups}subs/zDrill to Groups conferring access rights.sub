@@ -1,0 +1,10 @@
+﻿283,100
+284,"zDrill to Groups conferring access rights"
+11,20200918193026
+274,
+18,0
+275,584
+{[}APQ Groups].[Total APQ Groups]}+{Order({Filter(TM1FilterByLevel(TM1SubsetAll([}APQ Groups]),0),[}APQ Security Effective Client Element Permissions].([}APQ Clients].[X],[}APQ Groups].CurrentMember,[}APQ Dimension Hierarchies].[APQ.Demo Customer],[}APQ Dimension Elements].[00365],[}APQ Security Effective Permission Measure].[Value])>0)},[}APQ Security Effective Client Element Permissions].([}APQ Clients].[X],[}APQ Groups].CurrentMember,[}APQ Dimension Hierarchies].[APQ.Demo Customer],[}APQ Dimension Elements].[00365],[}APQ Security Effective Permission Measure].[Value]),DESC)}
+278,0
+281,0
+270,0

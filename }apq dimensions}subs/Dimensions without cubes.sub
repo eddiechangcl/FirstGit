@@ -1,0 +1,40 @@
+﻿283,100
+284,"Dimensions without cubes"
+11,20230515004943
+274,
+18,0
+275,
+278,0
+281,0
+270,31
+Data Source Sales
+Demo Inter Company
+M Employee Working Day
+Sys Lookup Date
+Sys Lookup Year
+Sys Lookup Year Fiscal
+Sys Lookup Year Month
+Sys Lookup Year Quarter
+Sys Lookup Year Week
+}AnnotationAppContextFacets
+}AnnotationMeasures
+}Annotation_ApplicationID
+}ApplicationParameters
+}APQ Cell Comment Index
+}APQ Cell Comment Measure
+}APQ Number Format
+}APQ Subsets
+}APQ Version
+}APQ Views
+}ConnectionProperties
+}Connections
+}DeployedLinkRecord
+}DimensionFormatAttributes
+}DimensionFormatItems
+}ElementAttributes_Employee
+}ElementAttributes_Week Day
+}ElementAttributes_}Dimensions
+}ElementAttributes_}Processes
+}ElementProperties
+}Hold
+}SecurityOverlay

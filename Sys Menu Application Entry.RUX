@@ -1,0 +1,41 @@
+﻿FORMAT==100
+FEEDSTRINGS;
+SKIPCHECK;
+
+##############################################################################################################
+### CWA Std. Model  version 3.00
+### Copyright © 2012~2020, Cubewise (Hong Kong) Ltd. All rights reserved.
+### This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+### and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+### you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+### or display any part, in any form, or by any means.
+##############################################################################################################
+
+##############################################################################################################
+###~~~    Start Rule File    ~~~###
+
+['}Applications', 'Page ID']=S:'Home Page';
+['Page ID']=S:
+   IF ( DB('Sys Menu Application Entry',!Sys Menu Application Entry,'Auto Menu') @='√'
+                  & ELLEV ('Sys Menu Application Entry',!Sys Menu Application Entry) >0
+           , 'Page ' | DB('Sys Menu Application Entry',!Sys Menu Application Entry,'Page ID Level 1')
+             | IF (DB('Sys Menu Application Entry',!Sys Menu Application Entry,'Page ID Level 2') @=''
+                     ,''
+                     , '.' | DB('Sys Menu Application Entry',!Sys Menu Application Entry,'Page ID Level 2')
+                          | IF (DB('Sys Menu Application Entry',!Sys Menu Application Entry,'Page ID Level 3') @=''
+                                    ,''
+                                    , '.' | DB('Sys Menu Application Entry',!Sys Menu Application Entry,'Page ID Level 3')
+                            ))
+
+           , ''
+       );
+
+
+#########################################################
+###  External Cube Feeders
+
+
+
+
+##############################################################################################################
+###    End Rule File    ~~##

@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=APQ Process Execution Item
+ENTRYTYPE=view
+ENTRYREFERENCE=TM1:///VIEW/PUBLIC/}APQ Process Execution Item/Default

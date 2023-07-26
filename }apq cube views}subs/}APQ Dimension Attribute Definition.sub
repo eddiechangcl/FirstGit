@@ -1,0 +1,86 @@
+﻿283,100
+284,"}APQ Dimension Attribute Definition"
+11,20230515004909
+274,
+18,0
+275,
+278,0
+281,0
+270,77
+}APQ Dimension Attribute Definition\APQ.Demo Customer
+}APQ Dimension Attribute Definition\APQ.Demo Test
+}APQ Dimension Attribute Definition\APQ.Demo T Month
+}APQ Dimension Attribute Definition\APQ.Demo T Quarter
+}APQ Dimension Attribute Definition\Currency From
+}APQ Dimension Attribute Definition\Currency To
+}APQ Dimension Attribute Definition\Data Source GL
+}APQ Dimension Attribute Definition\Date
+}APQ Dimension Attribute Definition\Day in Month
+}APQ Dimension Attribute Definition\Day in Week
+}APQ Dimension Attribute Definition\Day in Year
+}APQ Dimension Attribute Definition\Demo Account GL
+}APQ Dimension Attribute Definition\Demo Account GL Plan
+}APQ Dimension Attribute Definition\Demo Customer
+}APQ Dimension Attribute Definition\Demo Entity
+}APQ Dimension Attribute Definition\Demo Product
+}APQ Dimension Attribute Definition\Demo Profit Center
+}APQ Dimension Attribute Definition\FX Rate Type
+}APQ Dimension Attribute Definition\Line Item
+}APQ Dimension Attribute Definition\M Currency
+}APQ Dimension Attribute Definition\M FX Rate
+}APQ Dimension Attribute Definition\M GL Plan
+}APQ Dimension Attribute Definition\M GL Reporting
+}APQ Dimension Attribute Definition\M Manpower Reporting
+}APQ Dimension Attribute Definition\Month
+}APQ Dimension Attribute Definition\M Reference
+}APQ Dimension Attribute Definition\M Sales Reporting
+}APQ Dimension Attribute Definition\M Sys Archive Parameter
+}APQ Dimension Attribute Definition\M Sys Archive Profile
+}APQ Dimension Attribute Definition\M Sys Menu
+}APQ Dimension Attribute Definition\M Sys Menu Application Entry
+}APQ Dimension Attribute Definition\M Sys Module Object
+}APQ Dimension Attribute Definition\M Sys Parameter
+}APQ Dimension Attribute Definition\M Sys Time Attribute
+}APQ Dimension Attribute Definition\M Sys Versioning Cube
+}APQ Dimension Attribute Definition\M Sys Versioning Log
+}APQ Dimension Attribute Definition\M Sys Workbench
+}APQ Dimension Attribute Definition\M Sys Workbench Task Dependency
+}APQ Dimension Attribute Definition\M Sys Workflow Cooling Period
+}APQ Dimension Attribute Definition\M UDC
+}APQ Dimension Attribute Definition\M Unit
+}APQ Dimension Attribute Definition\M Workflow
+}APQ Dimension Attribute Definition\Planning Year
+}APQ Dimension Attribute Definition\Product
+}APQ Dimension Attribute Definition\Product Category
+}APQ Dimension Attribute Definition\Quarter
+}APQ Dimension Attribute Definition\Scale
+}APQ Dimension Attribute Definition\Scenario
+}APQ Dimension Attribute Definition\Sys Archive ID
+}APQ Dimension Attribute Definition\Sys Archive Parameter
+}APQ Dimension Attribute Definition\Sys Menu Application Entry
+}APQ Dimension Attribute Definition\Sys Menu Link
+}APQ Dimension Attribute Definition\Sys Menu Page
+}APQ Dimension Attribute Definition\Sys Menu Page Column
+}APQ Dimension Attribute Definition\Sys Menu Page Row
+}APQ Dimension Attribute Definition\Sys Menu Parameter
+}APQ Dimension Attribute Definition\Sys Menu Profile
+}APQ Dimension Attribute Definition\Sys Module
+}APQ Dimension Attribute Definition\Sys Module Object Type
+}APQ Dimension Attribute Definition\Sys Parameter
+}APQ Dimension Attribute Definition\Sys Versioning Module
+}APQ Dimension Attribute Definition\Sys Workbench Group
+}APQ Dimension Attribute Definition\Sys Workbench Priority
+}APQ Dimension Attribute Definition\Sys Workbench Step
+}APQ Dimension Attribute Definition\Sys Workflow
+}APQ Dimension Attribute Definition\UDC
+}APQ Dimension Attribute Definition\Version
+}APQ Dimension Attribute Definition\Week
+}APQ Dimension Attribute Definition\Year
+}APQ Dimension Attribute Definition\Year Fiscal
+}APQ Dimension Attribute Definition\Year Month
+}APQ Dimension Attribute Definition\Year Week
+}APQ Dimension Attribute Definition\}APQ Applications
+}APQ Dimension Attribute Definition\}APQ Cubes
+}APQ Dimension Attribute Definition\}APQ Cube Views
+}APQ Dimension Attribute Definition\}APQ Dimensions
+}APQ Dimension Attribute Definition\}APQ Dimension Subsets

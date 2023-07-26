@@ -1,0 +1,10 @@
+﻿283,100
+284,"Default Settings User"
+11,20230512024330
+274,
+18,0
+275,132
+{StrToMember( "[}APQ Clients Consol].["+[}APQ Settings].([}APQ Parameters].[Default User],[}APQ Settings Measure].[String])+"]" ) }
+278,0
+281,0
+270,0

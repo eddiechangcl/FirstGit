@@ -1,0 +1,10 @@
+﻿283,100
+284,"All Parameters"
+11,20230512024331
+274,
+18,0
+275,78
+{TM1DRILLDOWNMEMBER( {[}APQ Parameters].[Total Parameters]}, ALL, RECURSIVE )}
+278,0
+281,0
+270,0

@@ -1,0 +1,143 @@
+﻿283,100
+284,"Default"
+11,00000000000000
+274,
+18,0
+275,
+278,0
+281,0
+270,134
+Total APQ Cubes Dependent
+}APQ Chore Info
+}APQ Cube Dependency
+}APQ Cube Dimension Dependency
+}APQ Cube Last Updated by Process
+}APQ Cube View Cache Control
+}APQ Cube Views
+}APQ Cube Views Management
+}APQ Dimension Attribute Matrix
+}APQ Dimension Attributes
+}APQ Dimension Defaults
+}APQ Dimension Elements
+}APQ Dimension SemiDynamic Subsets
+}APQ Dimension Static Subsets And UDC
+}APQ Dimension Subsets
+}APQ Dimension Use
+}APQ Glossary
+}APQ Picklist Dimension
+}APQ Picklist General
+}APQ Process Execution Item
+}APQ Process Execution Log
+}APQ Process Execution Tree
+}APQ Process Parallelization Control
+}APQ Process Parameters Info
+}APQ Process Response Message
+}APQ Process to Object Reference
+}APQ Reconciliation Check
+}APQ Reconciliation Setup
+}APQ Reconciliation Setup Detail
+}APQ Security Effective Client Application Folder Permissions
+}APQ Security Effective Client Element Permissions
+}APQ Security Effective Client Object Permissions
+}APQ Server Message Log Info
+}APQ Settings
+}APQ Time Relative Time Lookup
+}APQ TM1 Transaction Log Analysis
+}APQ User Activity Log
+}APQ User Last Active
+}Capabilities
+}CellSecurity_}APQ Picklist Dimension
+}CellSecurity_}APQ Picklist General
+}CellSecurity_}APQ Process Response Message
+}ClientCAMAssociatedGroups
+}ClientGroups
+}ClientProperties
+}ClientSettings
+}CubeDrill_}APQ Cube Last Updated by Process
+}CubeDrill_}APQ Glossary
+}CubeDrill_}APQ Process to Object Reference
+}CubeDrill_}APQ Security Effective Client Application Folder Permissions
+}CubeDrill_}APQ Security Effective Client Element Permissions
+}CubeDrill_}APQ Security Effective Client Object Permissions
+}CubeProperties
+}CubeSecurity
+}CubeSecurityProperties
+}DimensionAttributes
+}DimensionProperties
+}ElementAttributes_}APQ Applications
+}ElementAttributes_}APQ Chore Info Parameter
+}ElementAttributes_}APQ Chores
+}ElementAttributes_}APQ Clients
+}ElementAttributes_}APQ Cube Last Updated by Process Measure
+}ElementAttributes_}APQ Cubes
+}ElementAttributes_}APQ Cube Views
+}ElementAttributes_}APQ Cube Views Management Measure
+}ElementAttributes_}APQ Dimension Attribute Matrix Measure
+}ElementAttributes_}APQ Dimensions
+}ElementAttributes_}APQ Dimension SemiDynamic Subsets Measure
+}ElementAttributes_}APQ Dimension Static Subsets And UDC Measure
+}ElementAttributes_}APQ Dimension Subsets
+}ElementAttributes_}APQ Dimension Subsets Measure
+}ElementAttributes_}APQ Escape Characters
+}ElementAttributes_}APQ Execution Item
+}ElementAttributes_}APQ Glossary Measure
+}ElementAttributes_}APQ Groups
+}ElementAttributes_}APQ HTML Character Entity
+}ElementAttributes_}APQ Item Index
+}ElementAttributes_}APQ Parameters
+}ElementAttributes_}APQ PickList Item
+}ElementAttributes_}APQ Processes
+}ElementAttributes_}APQ Process Execution Log Measure
+}ElementAttributes_}APQ ProcessExit Code
+}ElementAttributes_}APQ Process Parallelization Control Measure
+}ElementAttributes_}APQ Process to Object Reference Measure
+}ElementAttributes_}APQ Reconciliation Check Extended Measure
+}ElementAttributes_}APQ Reconciliation Check Measure
+}ElementAttributes_}APQ Reconciliation Item
+}ElementAttributes_}APQ Security Level
+}ElementAttributes_}APQ Time Date Lookup
+}ElementAttributes_}APQ Time Day in Year
+}ElementAttributes_}APQ Time Dimensions
+}ElementAttributes_}APQ Time Minute
+}ElementAttributes_}APQ Time Month
+}ElementAttributes_}APQ Time Quarter
+}ElementAttributes_}APQ Time Relative Time Periods
+}ElementAttributes_}APQ Time Second
+}ElementAttributes_}APQ Time Year
+}ElementAttributes_}APQ Time Year-Month
+}ElementAttributes_}APQ Time Year-Month Lookup
+}ElementAttributes_}APQ TM1 Objects
+}ElementAttributes_}APQ TM1 Object Type
+}ElementAttributes_}APQ TM1 Transaction Log Analysis Measure
+}ElementAttributes_}APQ Update Frequency
+}ElementAttributes_}APQ User Last Active Measure
+}ElementAttributes_}Clients
+}ElementAttributes_}Cubes
+}ElementAttributes_}Cultures
+}ElementAttributes_}Groups
+}ElementSecurity_}APQ Applications
+}ElementSecurity_}APQ Cubes
+}ElementSecurity_}APQ Cube Views
+}ElementSecurity_}APQ Dimensions
+}ElementSecurity_}APQ Dimension Subsets
+}HierarchyProperties
+}PickList_}APQ Cube View Cache Control
+}PickList_}APQ Cube Views Management
+}PickList_}APQ Dimension Defaults
+}PickList_}APQ Dimension SemiDynamic Subsets
+}PickList_}APQ Dimension Static Subsets And UDC
+}PickList_}APQ Picklist Dimension
+}PickList_}APQ Picklist General
+}PickList_}APQ Process Execution Item
+}PickList_}APQ Process Parallelization Control
+}PickList_}APQ Process Parameters Info
+}PickList_}APQ Reconciliation Setup
+}PickList_}APQ Reconciliation Setup Detail
+}PickList_}APQ Settings
+}PickList_}APQ Time Relative Time Lookup
+}StatsByChore
+}StatsByClient
+}StatsByCube
+}StatsByCubeByClient
+}StatsByProcess
+}StatsForServer

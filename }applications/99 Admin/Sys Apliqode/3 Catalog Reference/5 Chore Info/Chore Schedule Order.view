@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=Chore Schedule Order
+ENTRYTYPE=view
+ENTRYREFERENCE=TM1:///VIEW/PUBLIC/}APQ Chore Info/Chore Schedule Order

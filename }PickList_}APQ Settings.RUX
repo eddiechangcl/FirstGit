@@ -1,0 +1,29 @@
+FORMAT==100
+##############################################################################################################################
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+SKIPCHECK;
+#############################
+
+# For Numeric
+[ '}APQ Settings Measure':'Numeric', '}PickList':'Value' ] = S:
+IF( ISLEAF = 1 ,
+   'Static::1:0',
+   CONTINUE
+);
+
+# For Y/N selections
+[ '}APQ Parameters':{'smtp use SSL','smtp use PowerShell', 'Email: Send Notifications'}, '}APQ Settings Measure':'String', '}PickList':'Value' ] = S: 'Static::Y:N';
+
+# For time dimensions
+[ '}APQ Parameters':{'Year Dimension','Month Dimension','Year-Month Dimension','Fin Year Dimension','Fin Month Dimension','Fin Year-Month Dimension'}, '}APQ Settings Measure':'String', '}PickList':'Value' ] = S:
+'Subset:}APQ Time Dimensions:PickList - Framework Dimensions';
+
+#############################
+##~~    End Rule File    ~~##
+#############################

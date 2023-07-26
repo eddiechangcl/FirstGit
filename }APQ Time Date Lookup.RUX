@@ -1,0 +1,37 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+#SKIPCHECK;
+#FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# This cube stores lookup values for the **}APQ Time Date** dimension and can be used to customize hierachies in time dimensions when running 
+# the time dimension maintenance functions via the process **}APQ.Dim.Time.Caller**.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+['}APQ Time Date Lookup Measure':'Final Working Day'] = N: 
+IF( ATTRS('}APQ Time Date', !}APQ Time Date, 'Week Day') @= 'Sat' % ATTRS('}APQ Time Date', !}APQ Time Date, 'Week Day') @= 'Sun',
+    0,
+    ['Working Day'] - ['Public Holiday']
+);
+
+['}APQ Time Date Lookup Measure':'Month - Final'] = S: 
+IF( DB('}APQ Time Date Lookup', !}APQ Time Date, 'Month - Override') @<> '', 
+    DB('}APQ Time Date Lookup', !}APQ Time Date, 'Month - Override'), 
+    DB('}APQ Time Date Lookup', !}APQ Time Date, 'Month - TI') 
+);
+

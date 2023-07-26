@@ -1,0 +1,56 @@
+FORMAT==100
+##############################################################################################################################
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+#############################
+SKIPCHECK;
+#############################
+
+## Picklist Generation Parametization
+#############################
+
+[ '}APQ Picklist General Measure':'Dimension' ] = S:
+IF( DB( '}APQ Dimension Subsets', '}APQ Dimensions\All Real Dimensions', 'Element Count' ) <= DB( '}APQ Settings', 'Max subset size for PickList entry', 'Numeric' ),
+   'Subset:}APQ Dimensions:All Real Dimensions',
+   STET
+);
+
+[ '}APQ Picklist General Measure':'Subset' ] = S:
+IF( DB( '}APQ Dimension Subsets', '}APQ Subsets\' | DB( '}APQ Picklist General', !}APQ Clients, !}APQ PickList Item, 'Dimension' ), 'Element Count' ) <= DB( '}APQ Settings', 'Max subset size for PickList entry', 'Numeric' ),
+   IF( DB( '}APQ Settings', 'TM1 Version', 'Numeric' ) > 11,
+      'Dimension:}Subsets_',
+      'Subset:}APQ Subsets:'
+   ) | DB( '}APQ Picklist General', !}APQ Clients, !}APQ PickList Item, 'Dimension' ),
+   STET
+);
+
+[ '}APQ Picklist General Measure':'Display Alias' ] = S:
+'Subset:}ElementAttributes_' | DB( '}APQ Picklist General', !}APQ Clients, !}APQ PickList Item, 'Dimension' ) | ': Alias Attributes';
+
+
+## For any PickList Items that are not handled by the generic case enter specific rule.
+#############################
+
+# 1/
+
+
+# 2/
+
+
+# 3/
+
+## Generic PickList by pulling the picklist
+#############################
+
+[ '}APQ Picklist General Measure':'Item Selection' ] = S:
+DB( '}APQ Picklist General', DB( '}APQ Settings', 'Default User', 'String' ), !}APQ PickList Item, 'Item PickList' );
+
+#############################
+##~~    End Rule File    ~~##
+#############################

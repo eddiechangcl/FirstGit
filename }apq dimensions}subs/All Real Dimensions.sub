@@ -1,0 +1,10 @@
+﻿283,100
+284,"All Real Dimensions"
+11,00000000000000
+274,
+18,0
+275,416
+{EXCEPT( {EXCEPT( {EXCEPT( {EXCEPT( {TM1FILTERBYLEVEL( {TM1SUBSETALL( [}APQ Dimensions] )}, 0 )}, {TM1FILTERBYPATTERN( {TM1SUBSETALL( [}APQ Dimensions] )}, "}ElementAttributes_*")} )}, {TM1FILTERBYPATTERN( {TM1SUBSETALL( [}APQ Dimensions] )}, "}Hierarchies_*")} )}, {TM1FILTERBYPATTERN( {TM1SUBSETALL( [}APQ Dimensions] )}, "}Subsets_*")} )}, {TM1FILTERBYPATTERN( {TM1SUBSETALL( [}APQ Dimensions] )}, "}Views_*")} )}
+278,0
+281,0
+270,0

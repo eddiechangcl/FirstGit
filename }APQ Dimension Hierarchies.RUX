@@ -1,0 +1,60 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+#SKIPCHECK;
+#FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Dimension Hierarchies** is a companion to the dimension of the same name is completely rule-driven so is always up-to-date
+# as long as the process **}APQ.Dim.ControlDimensionCopies.Update** has run and the **}APQ Dimension Hierarchies** dimension is complete.
+# 
+# The cube identifies:
+# * dimensions having alternate hierarchies
+# * count of alternate hierarchies per dimension
+# * dimensions without any alternate hierarchy
+#
+# Note:
+# As this is a small lookup cube of limited dimensionality there is no requirement for SkipCheck or Feeders.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+[ '}APQ Dimension Hierarchies Measure':'AlternateHierarchyCount' ] = N: 
+IF( SubSt( !}APQ Dimension Hierarchies, Scan( ':', !}APQ Dimension Hierarchies ) + 1, Long( !}APQ Dimension Hierarchies ) ) @= ElPar( '}APQ Dimension Hierarchies', !}APQ Dimension Hierarchies, 1 ),
+    0,
+    1
+);
+
+[ '}APQ Dimension Hierarchies Measure':'HasAlternateHierarchy' ] = N: 
+IF( SubSt( !}APQ Dimension Hierarchies, Scan( ':', !}APQ Dimension Hierarchies ) + 1, Long( !}APQ Dimension Hierarchies ) ) @= ElPar( '}APQ Dimension Hierarchies', !}APQ Dimension Hierarchies, 1 ),
+    Sign( DB('}APQ Dimension Hierarchies', ElPar( '}APQ Dimension Hierarchies', !}APQ Dimension Hierarchies, 1 ), 'AlternateHierarchyCount' ) ),
+    0
+);
+
+[ '}APQ Dimension Hierarchies Measure':'NoAlternateHierarchy' ] = N: 
+IF( SubSt( !}APQ Dimension Hierarchies, Scan( ':', !}APQ Dimension Hierarchies ) + 1, Long( !}APQ Dimension Hierarchies ) ) @= ElPar( '}APQ Dimension Hierarchies', !}APQ Dimension Hierarchies, 1 ),
+    Sign( Abs( [ '}APQ Dimension Hierarchies Measure':'HasAlternateHierarchy' ] - 1 ) ),
+    0
+);
+
+#############################
+#FEEDERS;
+#############################
+
+
+#############################
+##~~   End  Rule File   ~~##
+#############################
+

@@ -1,0 +1,86 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+SKIPCHECK;
+FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Chore Info** is automatically compiled by the process **}APQ.Cub.ProcessToChoreReference.Update.0.Main** by reading the contents
+# of all the .cho files in the data directory and compiling into the cube the properties of each chore such as active, frequency, start time, 
+# multiple commit mode as well as the list of processes in the chore and the order in which they execute as well as the parameters 
+# entered for each process in the chore. Additional information captured by the same process is also entered in the cube **}APQ Process to Object Reference**.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+[ '}APQ Chore Info Parameter':'ScheduleTimeGMT', '}APQ Chore Info Measure':'Param Value' ] = S:
+SubSt( DB( '}APQ Chore Info', !}APQ Chores, 'StartTimestamp', 'Param Value' ), 9, 2 ) | ':' |
+SubSt( DB( '}APQ Chore Info', !}APQ Chores, 'StartTimestamp', 'Param Value' ), 11, 2 ) | ':' |
+SubSt( DB( '}APQ Chore Info', !}APQ Chores, 'StartTimestamp', 'Param Value' ), 13, 2 );
+
+[ '}APQ Chore Info Parameter':'ScheduleTimeLocal', '}APQ Chore Info Measure':'Param Value' ] = S:
+TimSt( ( AttrN( '}APQ Time Date Lookup', SubSt( DB( '}APQ Chore Info', !}APQ Chores, 'StartTimestamp', 'Param Value' ), 1, 8 ), 'Idx_TM1_N' )
+  + ( Numbr( SubSt( DB( '}APQ Chore Info', !}APQ Chores, 'StartTimestamp', 'Param Value' ), 9, 2 ) ) / 24 )
+  + ( Numbr( SubSt( DB( '}APQ Chore Info', !}APQ Chores, 'StartTimestamp', 'Param Value' ), 11, 2 ) ) / 1440 )
+  + ( Numbr( SubSt( DB( '}APQ Chore Info', !}APQ Chores, 'StartTimestamp', 'Param Value' ), 13, 2 ) ) / 86400 )
+  + ( Numbr( DB( '}APQ Settings', 'GMT Time Shift Hours', 'String' ) ) / 24 ) ),
+  '\h:\i:\s'
+);
+
+[ '}APQ Chore Info Parameter':'Frequency Days', '}APQ Chore Info Measure':'Param Value' ] = S:
+IF( Numbr( SubSt( DB( '}APQ Chore Info', !}APQ Chores, 'ScheduleFrequency', !}APQ Chore Info Measure ), 1, 3 ) ) = 0,
+  '',
+  Trim( Str( Numbr( SubSt( DB( '}APQ Chore Info', !}APQ Chores, 'ScheduleFrequency', !}APQ Chore Info Measure ), 1, 3 ) ), 3, 0 ) )
+);
+
+[ '}APQ Chore Info Parameter':'Frequency Hours', '}APQ Chore Info Measure':'Param Value' ] = S:
+IF( Numbr( SubSt( DB( '}APQ Chore Info', !}APQ Chores, 'ScheduleFrequency', !}APQ Chore Info Measure ), 4, 2 ) ) = 0,
+  '',
+  Trim( Str( Numbr( SubSt( DB( '}APQ Chore Info', !}APQ Chores, 'ScheduleFrequency', !}APQ Chore Info Measure ), 4, 2) ), 2, 0 ) )
+);
+
+[ '}APQ Chore Info Parameter':'Frequency Minutes', '}APQ Chore Info Measure':'Param Value' ] = S:
+IF( Numbr( SubSt( DB( '}APQ Chore Info', !}APQ Chores, 'ScheduleFrequency', !}APQ Chore Info Measure ), 6, 2) ) = 0,
+  '',
+  Trim( Str( Numbr( SubSt( DB( '}APQ Chore Info', !}APQ Chores, 'ScheduleFrequency', !}APQ Chore Info Measure ), 6, 2 ) ), 2, 0 ) )
+);
+
+[ '}APQ Chore Info Parameter':'Frequency Seconds', '}APQ Chore Info Measure':'Param Value' ] = S:
+IF( Numbr( SubSt( DB( '}APQ Chore Info', !}APQ Chores, 'ScheduleFrequency', !}APQ Chore Info Measure ), 8, 2 ) ) = 0,
+  '',
+  Trim( Str( Numbr( SubSt( DB( '}APQ Chore Info', !}APQ Chores, 'ScheduleFrequency', !}APQ Chore Info Measure ), 8, 2 ) ), 2, 0 ) )
+);
+
+[ '}APQ Chore Info Measure':{'P1','P2','P3','P4','P5','P6','P7','P8','P9','P10','P11','P12','P13','P14','P15','P16','P17','P18','P19','P20'} ] = S:
+DB('}APQ Process Parameters Info', DB( '}APQ Chore Info', !}APQ Chores, !}APQ Chore Info Parameter, 'Param Value' ), !}APQ Chore Info Measure, 'Parameter' );
+
+
+#############################
+FEEDERS;
+#############################
+
+[ '}APQ Chore Info Parameter':'ScheduleFrequency', '}APQ Chore Info Measure':'Param Value' ] =>
+[ '}APQ Chore Info Parameter':'Frequency Days' ], [ '}APQ Chore Info Parameter':'Frequency Hours' ], [ '}APQ Chore Info Parameter':'Frequency Minutes' ], [ '}APQ Chore Info Parameter':'Frequency Seconds' ],
+[ '}APQ Chore Info Parameter':'ScheduleTimeGMT' ],[ '}APQ Chore Info Parameter':'ScheduleTimeLocal' ];
+
+[ '}APQ Chore Info Measure':{'P1 Value','P2 Value','P3 Value','P4 Value','P5 Value','P6 Value','P7 Value','P8 Value','P9 Value','P10 Value','P11 Value','P12 Value','P13 Value','P14 Value',
+  'P15 Value','P16 Value','P17 Value','P18 Value','P19 Value','P20 Value'} ] =>
+DB( '}APQ Chore Info', !}APQ Chores, !}APQ Chore Info Parameter, SubSt( !}APQ Chore Info Measure, 1, 3 ) );
+
+#############################
+##~~    End Rule File    ~~##
+#############################
+
+

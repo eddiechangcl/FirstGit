@@ -1,0 +1,14 @@
+FORMAT==100
+['Value'] = S:
+IF( SUBST(!}APQ Reconciliation Item, 1, 1) @= 'C' & ELLEV('}APQ Reconciliation Item', !}APQ Reconciliation Item)=0,
+	'drill to Reconciliation Rule',
+	CONTINUE
+);
+
+
+['Value'] = S:
+IF( SUBST(!}APQ Reconciliation Item, 1, 1) @= 'R' & ELLEV('}APQ Reconciliation Item', !}APQ Reconciliation Item)=0
+	& DB('}APQ Reconciliation Setup Detail',!}APQ Reconciliation Item,'Total APQ Dimensions','Use Hierarchy')=0 ,
+	'drill to Reconciliation Source',
+	''
+);

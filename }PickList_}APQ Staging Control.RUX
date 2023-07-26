@@ -1,0 +1,47 @@
+FORMAT==100
+##############################################################################################################################
+# APLIQODE FRAMEWORK version 2.03
+# Copyright 2016, Apliqo AG. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+
+#############################
+##~~   Start Rule File   ~~##
+#############################
+
+
+[ '}APQ Staging Control Parameter': {'Load Staging cube','Load Target cube','Load From Staging','Export before load','Skip0','SkipCons','SkipRule'},'}APQ Staging Control Measure' : 'String', '}PickList':'Value' ] = S:
+'Static::0:1';
+
+[ '}APQ Staging Control Parameter': {'Value Iteration'},'}APQ Staging Control Measure' : 'String', '}PickList':'Value' ] = S:
+'Static::1:2:3:4:5:6:7:8:9:10:11:12:13:14:15:16:17:18:19:20';
+
+[ '}APQ Staging Control Parameter': {'Header Rec'},'}APQ Staging Control Measure' : 'String', '}PickList':'Value' ] = S:
+'Static::0:1:2:3:4:5:6:7:8:9:10:11:12:13:14:15:16:17:18:19:20';
+
+[ '}APQ Staging Control Parameter': {'Type Source' }, '}APQ Staging Control Measure' : 'String', '}PickList':'Value' ] = S:
+'Static::CSV:ODBC:Cube:Process';
+
+[ '}APQ Staging Data Source':'Dimension Preview', '}APQ Staging Control Parameter': {'Target cube' }, '}APQ Staging Control Measure' : 'String', '}PickList':'Value' ] = S:
+'Subset:}APQ Dimensions:All Real Dimensions';
+
+[ '}APQ Staging Control Parameter': {'Target cube' }, '}APQ Staging Control Measure' : 'String', '}PickList':'Value' ] = S:
+'Dimension:}Cubes';
+
+[ '}APQ Staging Control Parameter': {'Name Source' }, '}APQ Staging Control Measure' : 'String', '}PickList':'Value' ] = S:
+IF( DB( '}APQ Staging Control', !}APQ Staging Data Source, 'Type Source', !}APQ Staging Control Measure ) @= 'Cube',
+   'Dimension:}Cubes',
+   IF( DB( '}APQ Staging Control', !}APQ Staging Data Source, 'Type Source', !}APQ Staging Control Measure ) @= 'ODBC',
+    'Subset:}APQ Parameters:PickList - ODBC Sources',
+    CONTINUE
+  )
+);
+
+[ '}APQ Staging Control Parameter': {'Status Staging', 'Status Target' }, '}APQ Staging Control Measure' : 'String', '}PickList':'Value' ] = S:
+'Subset:}APQ PickList Validations:PickList Checklist';
+
+[ '}APQ Staging Control Parameter':{ 'Process Name' },' }APQ Staging Control Measure':'String', '}PickList':'Value' ]= S:
+'Dimension:}Processes';

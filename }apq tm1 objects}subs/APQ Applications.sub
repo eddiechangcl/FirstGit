@@ -1,0 +1,10 @@
+﻿283,100
+284,"APQ Applications"
+11,20200918193024
+274,
+18,0
+275,120
+{TM1FILTERBYPATTERN( {FILTER( {TM1SUBSETALL( [}APQ TM1 Objects] )}, [}APQ TM1 Objects].[IsApp] = "TRUE")}, "Apliqode*")}
+278,0
+281,0
+270,0

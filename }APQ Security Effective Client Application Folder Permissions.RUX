@@ -1,0 +1,49 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+#SKIPCHECK;
+#FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Security Effective Client Application Folder Permissions** is an augmentation to **}APQ Security Effective Client Object Permissions** 
+# where all the user effective permissions are calculated (and transferred to this cube via rule). There is no additional information in this cube, however by substituting the structured 
+# **}APQ Applications** dimension for the flat **}APQ TM1 Objects** dimension means that the Application folder permissions can be browsed in a more natural 
+# and intuitive way using the folder structure of the **}APQ Applications** dimension.
+#
+# This cube shows the effective permission for users to all application folders and application entries which is a feature critically missing from TM1 natively. 
+# This allows an administrator to see the security access level in effect for a user as the cummulative result of all group memberships and to trace the 
+# access level back to the originating group or groups.
+#
+# Note:
+# This is a lookup cube with limited dimensionality and so does not require SkipCheck or Feeders.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+[ '}APQ Security Effective Permission Measure':'Value' ] =
+DB( '}APQ Security Effective Client Object Permissions', !}APQ Clients, !}APQ Groups, 'Application', !}APQ Applications, !}APQ Security Effective Permission Measure );
+
+[ '}APQ Security Effective Permission Measure':'String' ] = S:
+DB( '}APQ Security Effective Client Object Permissions', !}APQ Clients, !}APQ Groups, 'Application', !}APQ Applications, !}APQ Security Effective Permission Measure );
+
+#############################
+FEEDERS;
+#############################
+
+
+#############################
+##~~    End Rule File    ~~##
+#############################
+

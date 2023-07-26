@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=DimensionProperties
+ENTRYTYPE=view
+ENTRYREFERENCE=TM1:///VIEW/PUBLIC/}DimensionProperties/Default

@@ -1,0 +1,39 @@
+FORMAT==100
+##############################################################################################################################
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+#############################
+#SKIPCHECK;
+#FEEDSTRINGS;
+#############################
+
+# Description from Default User input
+[ '}ElementAttributes_}APQ PickList Item':'Description' ] = S:
+DB( '}APQ Picklist General', DB( '}APQ Settings', 'Default User', 'String' ), !}APQ PickList Item, 'Item Description' );
+
+# Caption from Default User input
+[ '}ElementAttributes_}APQ PickList Item':'Caption' ] = S:
+DB( '}APQ Picklist General', DB( '}APQ Settings', 'Default User', 'String' ), !}APQ PickList Item, 'Caption' );
+
+# Code and Description
+[ '}ElementAttributes_}APQ PickList Item':'Code and Description' ] = S:
+IF( AttrS( '}APQ PickList Item', !}APQ PickList Item, 'Description' ) @= '',
+  !}APQ PickList Item,
+  AttrS( '}APQ PickList Item', !}APQ PickList Item, 'Idx0' ) |' - '| AttrS( '}APQ PickList Item', !}APQ PickList Item, 'Description' )
+);
+
+
+#############################
+#FEEDERS;
+#############################
+
+
+#############################
+##~~    End Rule File    ~~##
+#############################

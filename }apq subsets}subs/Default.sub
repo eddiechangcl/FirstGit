@@ -1,0 +1,11 @@
+﻿283,100
+284,"Default"
+11,20230512024331
+274,
+18,0
+275,117
+{TM1FILTERBYLEVEL( {TM1DRILLDOWNMEMBER( {[}APQ Subsets].[}APQ Subsets].[Total APQ Subsets]}, ALL, RECURSIVE )}, 1,2)}
+278,0
+281,0
+270,1
+Total APQ Subsets

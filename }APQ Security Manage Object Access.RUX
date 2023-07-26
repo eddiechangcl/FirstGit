@@ -1,0 +1,248 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+SKIPCHECK;
+FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Security Manage Object Permissions** allows security for all TM1 objects (applications, chores, cubes, dimensions, processes)
+# to be managed all in the one place.
+#
+# A useful feature of managing  object security via this cube is that permissions can be temporarily set to inactive. This can be helpful for
+# troubleshooting and for business process which require switching off and on of access.
+#
+# The permissions entered in this cube are applied by running the **}APQ.Security.Objects.LoadAccessRights** process.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+[ '}APQ Security Permission Index':'Total Permissions', '}APQ Security Manage Object Access Measure':'Permission Level' ] = S:
+If( ElLev( '}APQ Groups', !}APQ Groups ) + ElLev( '}APQ TM1 Object Type', !}APQ TM1 Object Type ) + ElLev( '}APQ TM1 Objects', !}APQ TM1 Objects ) = 0,
+    AttrS( '}APQ Security Level', Str( [ '}APQ Security Manage Object Access Measure':'Permission Numeric' ], 1, 0 ), 'Caption_Default' ),
+    ''
+);
+
+[ '}APQ Security Permission Index':'Total Permissions' ] = S: '';
+
+[ '}APQ Security Permission Index':'All Permissions', '}APQ Security Manage Object Access Measure':'Permission Type' ] = S: '';
+
+[ '}APQ Security Manage Object Access Measure':'IsObject' ] = N:
+SIGN( DimIx( AttrS( '}APQ TM1 Object Type', !}APQ TM1 Object Type, 'SysObjNm' ), !}APQ TM1 Objects ) );
+
+[ '}APQ Security Permission Index':'All Permissions', '}APQ Security Manage Object Access Measure':'Current Permission Level' ] = S:
+IF( DimIx( AttrS( '}APQ TM1 Object Type', !}APQ TM1 Object Type, 'SysObjNm' ), !}APQ TM1 Objects ) = 0,
+    '',
+    DB( AttrS( '}APQ TM1 Object Type', !}APQ TM1 Object Type, 'SysSecObjNm' ), !}APQ TM1 Objects, !}APQ Groups )
+);
+
+[ '}APQ Security Manage Object Access Measure':'Current Permission Level' ] = S:
+IF( DimIx( AttrS( '}APQ TM1 Object Type', !}APQ TM1 Object Type, 'SysObjNm' ), !}APQ TM1 Objects ) = 0,
+    '',
+    IF( [ '}APQ Security Manage Object Access Measure':'Permission Numeric' ] = 0,
+        '',
+        DB( AttrS( '}APQ TM1 Object Type', !}APQ TM1 Object Type, 'SysSecObjNm' ), !}APQ TM1 Objects, !}APQ Groups )
+    )
+);
+
+# Validation: for application folders NONE access must be explicitly NONE not blank
+[ '}APQ TM1 Object Type':'Application', '}APQ Security Permission Index':'All Permissions', '}APQ Security Manage Object Access Measure':'Current Permission Validation' ] = N:
+IF( DimIx( AttrS( '}APQ TM1 Object Type', !}APQ TM1 Object Type, 'SysObjNm' ), !}APQ TM1 Objects ) = 0,
+    0,
+    IF( DB( AttrS( '}APQ TM1 Object Type', !}APQ TM1 Object Type, 'SysSecObjNm' ), !}APQ TM1 Objects, !}APQ Groups ) @= DB( '}APQ Security Manage Object Access', !}APQ Groups, !}APQ TM1 Object Type, !}APQ Security Permission Index, !}APQ TM1 Objects, 'Permission Level' ),
+        0,
+        1
+    )
+);
+
+[ '}APQ TM1 Object Type':'Application', '}APQ Security Manage Object Access Measure':'Current Permission Validation' ] = N:
+IF( DimIx( AttrS( '}APQ TM1 Object Type', !}APQ TM1 Object Type, 'SysObjNm' ), !}APQ TM1 Objects ) = 0,
+    0,
+    IF( Long( DB( '}APQ Security Manage Object Access', !}APQ Groups, !}APQ TM1 Object Type, !}APQ Security Permission Index, !}APQ TM1 Objects, 'Permission Level' ) ) + Long( DB( '}APQ Security Manage Object Access', !}APQ Groups, !}APQ TM1 Object Type, !}APQ Security Permission Index, !}APQ TM1 Objects, 'Current Permission Level' ) ) = 0,
+        0,
+        IF( DB( AttrS( '}APQ TM1 Object Type', !}APQ TM1 Object Type, 'SysSecObjNm' ), !}APQ TM1 Objects, !}APQ Groups ) @= DB( '}APQ Security Manage Object Access', !}APQ Groups, !}APQ TM1 Object Type, !}APQ Security Permission Index, !}APQ TM1 Objects, 'Permission Level' ),
+            0,
+            1
+        )
+    )
+);
+
+# Validation: general case NONE access can be blank or NONE
+[ '}APQ Security Permission Index':'All Permissions', '}APQ Security Manage Object Access Measure':'Current Permission Validation' ] = N:
+IF( DimIx( AttrS( '}APQ TM1 Object Type', !}APQ TM1 Object Type, 'SysObjNm' ), !}APQ TM1 Objects ) = 0,
+    0,
+    IF( DB( AttrS( '}APQ TM1 Object Type', !}APQ TM1 Object Type, 'SysSecObjNm' ), !}APQ TM1 Objects, !}APQ Groups ) @= DB( '}APQ Security Manage Object Access', !}APQ Groups, !}APQ TM1 Object Type, !}APQ Security Permission Index, !}APQ TM1 Objects, 'Permission Level' ),
+        0,
+        IF( DB( '}APQ Security Manage Object Access', !}APQ Groups, !}APQ TM1 Object Type, !}APQ Security Permission Index, !}APQ TM1 Objects, 'Permission Level' ) @= 'NONE' & DB( AttrS( '}APQ TM1 Object Type', !}APQ TM1 Object Type, 'SysSecObjNm' ), !}APQ TM1 Objects, !}APQ Groups ) @= '',
+            0,
+            1
+        )
+    )
+);
+
+[ '}APQ Security Manage Object Access Measure':'Current Permission Validation' ] = N:
+IF( DimIx( AttrS( '}APQ TM1 Object Type', !}APQ TM1 Object Type, 'SysObjNm' ), !}APQ TM1 Objects ) = 0,
+    0,
+    IF( Long( DB( '}APQ Security Manage Object Access', !}APQ Groups, !}APQ TM1 Object Type, !}APQ Security Permission Index, !}APQ TM1 Objects, 'Permission Level' ) ) + Long( DB( '}APQ Security Manage Object Access', !}APQ Groups, !}APQ TM1 Object Type, !}APQ Security Permission Index, !}APQ TM1 Objects, 'Current Permission Level' ) ) = 0,
+        0,
+        IF( DB( AttrS( '}APQ TM1 Object Type', !}APQ TM1 Object Type, 'SysSecObjNm' ), !}APQ TM1 Objects, !}APQ Groups ) @= DB( '}APQ Security Manage Object Access', !}APQ Groups, !}APQ TM1 Object Type, !}APQ Security Permission Index, !}APQ TM1 Objects, 'Permission Level' ),
+            0,
+            IF( DB( '}APQ Security Manage Object Access', !}APQ Groups, !}APQ TM1 Object Type, !}APQ Security Permission Index, !}APQ TM1 Objects, 'Permission Level' ) @= 'NONE' & DB( AttrS( '}APQ TM1 Object Type', !}APQ TM1 Object Type, 'SysSecObjNm' ), !}APQ TM1 Objects, !}APQ Groups ) @= '',
+                0,
+                1
+            )
+        )
+    )
+);
+
+# Make wildcard text entry field available if that is the selected type
+[ '}APQ Security Manage Object Access Measure':'Wildcard Entry' ] = S:
+If( DB( '}APQ Security Manage Object Access', !}APQ Groups, !}APQ TM1 Object Type, !}APQ Security Permission Index, !}APQ TM1 Objects, 'Permission Type' ) @= 'WILDCARD'
+  % DB( '}APQ Security Manage Object Access', !}APQ Groups, !}APQ TM1 Object Type, !}APQ Security Permission Index, !}APQ TM1 Objects, 'Permission Type' ) @= 'ATTRIBUTE',
+   STET,
+   ''
+);
+
+# Make attribute text entry field available if that is the selected type
+[ '}APQ Security Manage Object Access Measure':'Attribute Name' ] = S:
+If( DB( '}APQ Security Manage Object Access', !}APQ Groups, !}APQ TM1 Object Type, !}APQ Security Permission Index, !}APQ TM1 Objects, 'Permission Type' ) @= 'ATTRIBUTE',
+   STET,
+   ''
+);
+
+# Permission Level for All Permissions
+[ '}APQ TM1 Object Type':'Application', '}APQ Security Permission Index':'All Permissions', '}APQ Security Manage Object Access Measure':'Permission Level' ] = S:
+IF( IsLeaf = 0 % [ '}APQ Security Manage Object Access Measure':'IsObject' ] = 0,
+    '',
+    AttrS( '}APQ Security Level',  Str( [ '}APQ Security Manage Object Access Measure':'Permission Numeric' ], 1, 0 ), 'Caption_Default' )
+);
+
+[ '}APQ Security Permission Index':'All Permissions', '}APQ Security Manage Object Access Measure':'Permission Level' ] = S:
+IF( IsLeaf = 0 % [ '}APQ Security Manage Object Access Measure':'IsObject' ] = 0,
+    '',
+    If( [ '}APQ Security Manage Object Access Measure':'Permission Numeric' ] = 0,
+        '',
+        AttrS( '}APQ Security Level',  Str( [ '}APQ Security Manage Object Access Measure':'Permission Numeric' ], 1, 0 ), 'Caption_Default' )
+    )
+);
+
+# Permission Level data entry open for Total Objects Placeholder
+[ '}APQ TM1 Objects':'Total APQ TM1 Objects', '}APQ Security Manage Object Access Measure':{'Permission Type','Permission Level'} ] = S: STET;
+
+# General case : only allow data entry for leaf elements
+[ '}APQ Security Manage Object Access Measure':'Permission Level' ] = S:
+IF( IsLeaf = 0,
+    '',
+    Continue
+);
+
+# For applications we need to both allow for inheritance and allow the inheritance to be overwritten (e.g. set NONE access for a file or sub-folder within a folder where READ is otherwise inherited)
+[ '}APQ TM1 Object Type':'Application', '}APQ Security Manage Object Access Measure':'Permission Level' ] = S:
+IF( DimIx( AttrS( '}APQ TM1 Object Type', !}APQ TM1 Object Type, 'SysObjNm' ), !}APQ TM1 Objects ) = 0,
+    '',
+    IF( DB( '}APQ Security Manage Object Access', !}APQ Groups, !}APQ TM1 Object Type, !}APQ Security Permission Index, !}APQ TM1 Objects, 'Permission Level Override' ) @<> '',
+        DB( '}APQ Security Manage Object Access', !}APQ Groups, !}APQ TM1 Object Type, !}APQ Security Permission Index, !}APQ TM1 Objects, 'Permission Level Override' ),
+        IF( DB( '}APQ Security Manage Object Access', !}APQ Groups, !}APQ TM1 Object Type, !}APQ Security Permission Index, ElPar( '}ApplicationEntries', !}APQ TM1 Objects, 1 ), !}APQ Security Manage Object Access Measure ) @= '',
+            Continue,
+            DB( '}APQ Security Manage Object Access', !}APQ Groups, !}APQ TM1 Object Type, !}APQ Security Permission Index, ElPar( '}ApplicationEntries', !}APQ TM1 Objects, 1 ), !}APQ Security Manage Object Access Measure )
+        )
+    )
+);
+
+[ '}APQ Security Manage Object Access Measure':'Permission Level' ] = S:
+IF( DimIx( AttrS( '}APQ TM1 Object Type', !}APQ TM1 Object Type, 'SysObjNm' ), !}APQ TM1 Objects ) = 0,
+    '',
+    Continue
+);
+
+# Flow APQ Framework permissions through from User & PUser attributes (only for permission 001)
+[ '}APQ Security Permission Index':'001', '}APQ Security Manage Object Access Measure':'Permission Level' ] = S:
+IF( !}APQ Groups @= DB( '}APQ Settings', 'Security Group: End User', 'String' ),
+    AttrS( AttrS( '}APQ TM1 Object Type', !}APQ TM1 Object Type, 'APQObjNm' ), !}APQ TM1 Objects, 'APQ User' ),
+    IF( !}APQ Groups @= DB( '}APQ Settings', 'Security Group: Power User', 'String' ),
+        AttrS( AttrS( '}APQ TM1 Object Type', !}APQ TM1 Object Type, 'APQObjNm' ), !}APQ TM1 Objects, 'APQ PUser' ),
+        IF( !}APQ Groups @= DB( '}APQ Settings', 'Security Group: Admin  User', 'String' ),
+            AttrS( AttrS( '}APQ TM1 Object Type', !}APQ TM1 Object Type, 'APQObjNm' ), !}APQ TM1 Objects, 'APQ Admin' ),
+            STET
+        )
+    )
+);
+
+# Permission Level Override. NA if not application. If application and the parent is NONE then should not be writeable.
+[ '}APQ TM1 Object Type':'Application', '}APQ Security Manage Object Access Measure':'Permission Level Override' ] = S:
+IF( DB( '}APQ Security Manage Object Access', !}APQ Groups, !}APQ TM1 Object Type, !}APQ Security Permission Index, ElPar( '}ApplicationEntries', !}APQ TM1 Objects, 1 ), 'Permission Level' ) @= 'NONE',
+    '',
+    IF( DimIx( AttrS( '}APQ TM1 Object Type', !}APQ TM1 Object Type, 'SysObjNm' ), !}APQ TM1 Objects ) > 0,
+        STET,
+        ''
+    )
+);
+
+[ '}APQ Security Manage Object Access Measure':'Permission Level Override' ] = S: '';
+
+[ '}APQ Security Permission Index':'All Permissions', '}APQ Security Manage Object Access Measure':'Inactive' ] = N:
+ConsolidatedMax( 0, '', !}APQ Groups, !}APQ TM1 Object Type, 'Total Permissions', !}APQ TM1 Objects, !}APQ Security Manage Object Access Measure );
+
+[ '}APQ TM1 Objects':'Total APQ TM1 Objects', '}APQ Security Manage Object Access Measure':'Permission Numeric' ] = C:
+IF( DB( '}APQ Security Manage Object Access', !}APQ Groups, !}APQ TM1 Object Type, !}APQ Security Permission Index, !}APQ TM1 Objects, 'Permission Level' ) @= '',
+    0,
+    DimIx( '}APQ Security Level', DB( '}APQ Security Manage Object Access', !}APQ Groups, !}APQ TM1 Object Type, !}APQ Security Permission Index, !}APQ TM1 Objects, 'Permission Level' ) ) -1
+);
+
+[ '}APQ Security Permission Index':'All Permissions', '}APQ Security Manage Object Access Measure':'Permission Numeric' ] = N: [ '}APQ Security Permission Index':'Total Permissions' ];
+C:
+ConsolidatedMax( 0, '', !}APQ Groups, !}APQ TM1 Object Type, !}APQ Security Permission Index, !}APQ TM1 Objects, !}APQ Security Manage Object Access Measure );
+
+[ '}APQ Security Manage Object Access Measure':'Permission Numeric' ] = N:
+IF( DB( '}APQ Security Manage Object Access', !}APQ Groups, !}APQ TM1 Object Type, !}APQ Security Permission Index, !}APQ TM1 Objects, 'Permission Level' ) @= '',
+    0,
+    DimIx( '}APQ Security Level', DB( '}APQ Security Manage Object Access', !}APQ Groups, !}APQ TM1 Object Type, !}APQ Security Permission Index, !}APQ TM1 Objects, 'Permission Level' ) ) -1
+);
+C:
+ConsolidatedMax( 0, '', !}APQ Groups, !}APQ TM1 Object Type, !}APQ Security Permission Index, !}APQ TM1 Objects, !}APQ Security Manage Object Access Measure );
+
+
+#############################
+FEEDERS;
+#############################
+
+### Internal Feeders
+
+# String measure feeds numeric reporting measure
+[ '}APQ Security Manage Object Access Measure':'Permission Level' ] => [ '}APQ Security Manage Object Access Measure':'Permission Numeric' ],
+[ '}APQ Security Permission Index':'All Permissions', '}APQ Security Manage Object Access Measure':'Permission Numeric' ],
+[ '}APQ Security Manage Object Access Measure':'Current Permission Level' ],
+[ '}APQ Security Manage Object Access Measure':'Current Permission Validation' ],
+[ '}APQ Security Permission Index':'All Permissions', '}APQ Security Manage Object Access Measure':'Current Permission Validation' ];
+
+# For "All Permissions" reporting Placeholder need to feed the strings as they are rule calc not data entry
+[ '}APQ Security Permission Index':'All Permissions', '}APQ Security Manage Object Access Measure':'Permission Numeric' ] => [ '}APQ Security Manage Object Access Measure':'Permission Level' ],
+[ '}APQ Security Manage Object Access Measure':'Current Permission Level' ];
+
+[ '}APQ Security Manage Object Access Measure':'Permission Level Override' ] => [ '}APQ Security Manage Object Access Measure':'Permission Level' ];
+
+# Applications take feeder from applications feeder cube and pass back to Permission Level
+[ '}APQ TM1 Object Type':'Application', '}APQ Security Manage Object Access Measure':'Permission Numeric' ] => [ '}APQ Security Manage Object Access Measure':'Permission Level' ],
+DB( '}APQ Security Manage Object Access', !}APQ Groups, !}APQ TM1 Object Type, !}APQ Security Permission Index, ElPar( '}APQ Applications', !}APQ TM1 Objects, 1 ), 'Permission Level' );
+
+### External Feeders
+
+# As applications have a hierarchy and we need to deal with inheritance need an intermediate cube with dimension structure to handle feeding of leaves
+[ '}APQ TM1 Object Type':'Application', '}APQ Security Manage Object Access Measure':'Permission Numeric' ] =>
+DB( '}APQ Security Manage Application Feeder', !}APQ Groups, !}APQ Security Permission Index, !}APQ TM1 Objects, !}APQ Security Manage Object Access Measure );
+
+
+#############################
+### END
+#############################

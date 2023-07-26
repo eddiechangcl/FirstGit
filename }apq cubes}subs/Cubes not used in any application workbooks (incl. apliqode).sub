@@ -1,0 +1,10 @@
+﻿283,100
+284,"Cubes not used in any application workbooks (incl. apliqode)"
+11,00000000000000
+274,
+18,0
+275,302
+{FILTER( {UNION( {EXCEPT( {[}APQ Cubes].[All N Elements]}, {TM1FILTERBYPATTERN( {TM1SUBSETALL( [}APQ Cubes] )}, "}*")} )}, {[}APQ Cubes].[Apliqode cubes]} )}, [}APQ Application to Cube Reference].([}APQ Applications].[}Applications],[}APQ Application to Cube Reference Measure].[WorkbookIsUsed]) = 0 )}
+278,0
+281,0
+270,0

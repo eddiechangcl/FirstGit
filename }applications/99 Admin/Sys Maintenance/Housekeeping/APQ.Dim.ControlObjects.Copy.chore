@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=APQ.Dim.ControlObjects.Copy
+ENTRYTYPE=chore
+ENTRYREFERENCE=TM1:///CHORE/PUBLIC/APQ.Dim.ControlObjects.Copy

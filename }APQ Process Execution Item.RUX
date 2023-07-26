@@ -1,0 +1,211 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+#SKIPCHECK;
+#FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Process Execution Item** needs to be manually entered by the system administrator/developer as part of the setup of process
+# orchestration which can be either serialized or parallelized performed by the process **}APQ.Process.Item.Run**.  This setup can be used
+# either for complex process scheduling or as an almost complete replacement of TM1 chores.
+#
+# A scheduled chore needs to contain only one process **}APQ.Process.Item.Run** which via parameter instructions is determined which "list"
+# of "execution items" to run.  This enables processes to be added or removed from a schedule or the order of execution to be changed very
+# flexibly just be writing into the **}APQ Process Execution Item** cube.
+#
+# Note:
+# This is a lookup cube with limited dimensionality and so does not require SkipCheck or Feeders.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+###############
+# Define Input Area
+
+[ '}APQ Item Index':'Total Items', '}APQ Process Parameters':'Total APQ Process Parameters', '}APQ Execution Item Measure':{'nFinishTime' , 'nStartTime', 'ElapsedTime', 'StartTime', 'FinishTime', 'IsDisabled', 'RunSerial'} ] = STET;
+
+[ '}APQ Item Index':'Total Items', '}APQ Process Parameters':'Total APQ Process Parameters', '}APQ Execution Item Measure':'ExitOnError' ] = S: 
+IF( DB( '}APQ Process Execution Item', !}APQ Execution Item, !}APQ Item Index, !}APQ Process Parameters, 'RunSerial' ) @= 'YES',
+    STET,
+    ''
+);
+
+[ '}APQ Item Index':'Total Items', '}APQ Process Parameters':'Total APQ Process Parameters', '}APQ Execution Item Measure':'ParamValue' ] = S: '';
+
+[ '}APQ Execution Item Measure':'RunSerial' ] = S: '';
+
+[ '}APQ Execution Item Measure':'IsDisabled' ] = S:
+IF( !}APQ Process Parameters @<> 'Total APQ Process Parameters' % DB( '}APQ Process Execution Item', !}APQ Execution Item, !}APQ Item Index, 'Total APQ Process Parameters', 'ProcessName' ) @= '',
+   '',
+   IF( DB( '}APQ Process Execution Item', !}APQ Execution Item, 'Total Items', !}APQ Process Parameters, !}APQ Execution Item Measure ) @= 'YES',
+      'YES',
+      STET
+   )
+);
+
+[ '}APQ Execution Item Measure':'ExitOnError' ] = S:
+IF( !}APQ Process Parameters @<> 'Total APQ Process Parameters' % DB( '}APQ Process Execution Item', !}APQ Execution Item, 'Total Items', 'Total APQ Process Parameters', 'RunSerial' ) @<> 'YES' % DB( '}APQ Process Execution Item', !}APQ Execution Item, !}APQ Item Index, 'Total APQ Process Parameters', 'ProcessName' ) @= '',
+   '',
+   IF( DB( '}APQ Process Execution Item', !}APQ Execution Item, 'Total Items', !}APQ Process Parameters, !}APQ Execution Item Measure ) @= 'YES',
+      'YES',
+      IF( DB( '}APQ Process Execution Item', !}APQ Execution Item, DimNm('}APQ Item Index', DimIx('}APQ Item Index',!}APQ Item Index)-1), !}APQ Process Parameters, !}APQ Execution Item Measure ) @= 'YES',
+        'YES',
+        STET
+      )
+   )
+);
+
+# Count processes to execute
+[ '}APQ Process Parameters':'P1', '}APQ Execution Item Measure':'ProcessExecutionFlag' ] = N:
+IF( DB('}APQ Process Execution Item',!}APQ Execution Item,'Total Items',!}APQ Process Parameters,'IsDisabled') @<> 'YES'
+	& DB('}APQ Process Execution Item',!}APQ Execution Item,!}APQ Item Index,'Total APQ Process Parameters','ProcessName') @<> '',
+	1,0
+);
+[ '}APQ Execution Item Measure':'ProcessExecutionFlag' ] = N: 0;
+
+
+[ '}APQ Item Index':'Total Items', '}APQ Process Parameters':'Total APQ Process Parameters',  '}APQ Execution Item Measure':'ProcessName' ] = S: 'ProcessName';
+[ '}APQ Process Parameters':'Total APQ Process Parameters',  '}APQ Execution Item Measure':'ProcessName' ] = S: STET;
+[ '}APQ Execution Item Measure':'ProcessName' ] = S: '';
+
+[ '}APQ Item Index':'Total Items', '}APQ Execution Item Measure':'ParamValue' ] = S: IF ( [ '}APQ Execution Item Measure':'ParamValueCheck' ] <> 0, 'Param Value', '' );
+
+[ '}APQ Item Index':'Total Items' ] = S: '' ;
+
+[ '}APQ Process Parameters':'Total APQ Process Parameters', '}APQ Execution Item Measure':'RunSerial' ] = STET;
+
+[ '}APQ Process Parameters':'Total APQ Process Parameters', '}APQ Execution Item Measure':{'ParamName','ParamValue','ParamKey'} ] = S: '' ;
+
+######
+# Define Calculation Area only if ProcessName <> ''
+
+[ ] = S:
+IF( DB( '}APQ Process Execution Item', !}APQ Execution Item, !}APQ Item Index, 'Total APQ Process Parameters', 'ProcessName' ) @= '',
+   STET,
+   Continue
+);
+
+###############
+# Check if required input param value
+
+[ '}APQ Execution Item Measure':'ParamValueCheck' ] = N:
+IF( DB( '}APQ Process Execution Item', !}APQ Execution Item, !}APQ Item Index, !}APQ Process Parameters, 'ParamName' ) @<> '',
+   1,
+   0
+);
+
+
+###############
+# Get PArameters Name
+
+[ '}APQ Execution Item Measure':'ParamName' ] = S:
+DB( '}APQ Process Parameters Info',
+   DB( '}APQ Process Execution Item', !}APQ Execution Item, !}APQ Item Index, 'Total APQ Process Parameters', 'ProcessName' ),
+   !}APQ Process Parameters, 'Parameter'
+);
+
+###############
+# Param Value
+
+[ '}APQ Execution Item Measure':'ParamValue' ] =  S: IF( [ '}APQ Execution Item Measure':'ParamValueCheck' ] <> 0, STET, '' );
+
+
+###
+# Get Concatenate ParamName and PAramValue
+
+[ '}APQ Execution Item Measure':'ParamKey' ] = S:
+IF( DB( '}APQ Process Execution Item', !}APQ Execution Item, !}APQ Item Index, !}APQ Process Parameters, 'ParamName' ) @<> '',
+   DB( '}APQ Process Execution Item', !}APQ Execution Item, !}APQ Item Index, !}APQ Process Parameters, 'ParamName' )
+   | '="' |
+   DB( '}APQ Process Execution Item', !}APQ Execution Item, !}APQ Item Index, !}APQ Process Parameters, 'ParamValue' )
+   | '"',
+   ''
+);
+
+###
+# Get Concatenate ParamName and PAramValue
+
+[ '}APQ Execution Item Measure':'ProcessParameters', '}APQ Process Parameters':'Total APQ Process Parameters' ] = S:
+TRIM(
+DB( '}APQ Process Execution Item', !}APQ Execution Item, !}APQ Item Index, 'P1', 'ParamKey' )
+|' '|
+DB( '}APQ Process Execution Item', !}APQ Execution Item, !}APQ Item Index, 'P2', 'ParamKey' )
+|' '|
+DB( '}APQ Process Execution Item', !}APQ Execution Item, !}APQ Item Index, 'P3', 'ParamKey' )
+|' '|
+DB( '}APQ Process Execution Item', !}APQ Execution Item, !}APQ Item Index, 'P4', 'ParamKey' )
+|' '|
+DB( '}APQ Process Execution Item', !}APQ Execution Item, !}APQ Item Index, 'P5', 'ParamKey' )
+|' '|
+DB( '}APQ Process Execution Item', !}APQ Execution Item, !}APQ Item Index, 'P6', 'ParamKey' )
+|' '|
+DB( '}APQ Process Execution Item', !}APQ Execution Item, !}APQ Item Index, 'P7', 'ParamKey' )
+|' '|
+DB( '}APQ Process Execution Item', !}APQ Execution Item, !}APQ Item Index, 'P8', 'ParamKey' )
+|' '|
+DB( '}APQ Process Execution Item', !}APQ Execution Item, !}APQ Item Index, 'P9', 'ParamKey' )
+|' '|
+DB( '}APQ Process Execution Item', !}APQ Execution Item, !}APQ Item Index, 'P10', 'ParamKey' )
+|' '|
+DB( '}APQ Process Execution Item', !}APQ Execution Item, !}APQ Item Index, 'P11', 'ParamKey' )
+|' '|
+DB( '}APQ Process Execution Item', !}APQ Execution Item, !}APQ Item Index, 'P12', 'ParamKey' )
+|' '|
+DB( '}APQ Process Execution Item', !}APQ Execution Item, !}APQ Item Index, 'P13', 'ParamKey' )
+|' '|
+DB( '}APQ Process Execution Item', !}APQ Execution Item, !}APQ Item Index, 'P14', 'ParamKey' )
+|' '|
+DB( '}APQ Process Execution Item', !}APQ Execution Item, !}APQ Item Index, 'P15', 'ParamKey' )
+|' '|
+DB( '}APQ Process Execution Item', !}APQ Execution Item, !}APQ Item Index, 'P16', 'ParamKey' )
+|' '|
+DB( '}APQ Process Execution Item', !}APQ Execution Item, !}APQ Item Index, 'P17', 'ParamKey' )
+|' '|
+DB( '}APQ Process Execution Item', !}APQ Execution Item, !}APQ Item Index, 'P18', 'ParamKey' )
+|' '|
+DB( '}APQ Process Execution Item', !}APQ Execution Item, !}APQ Item Index, 'P19', 'ParamKey' )
+|' '|
+DB( '}APQ Process Execution Item', !}APQ Execution Item, !}APQ Item Index, 'P20', 'ParamKey' )
+|' '|
+DB( '}APQ Process Execution Item', !}APQ Execution Item, !}APQ Item Index, 'P21', 'ParamKey' )
+|' '|
+DB( '}APQ Process Execution Item', !}APQ Execution Item, !}APQ Item Index, 'P22', 'ParamKey' )
+|' '|
+DB( '}APQ Process Execution Item', !}APQ Execution Item, !}APQ Item Index, 'P23', 'ParamKey' )
+|' '|
+DB( '}APQ Process Execution Item', !}APQ Execution Item, !}APQ Item Index, 'P24', 'ParamKey' )
+|' '|
+DB( '}APQ Process Execution Item', !}APQ Execution Item, !}APQ Item Index, 'P25', 'ParamKey' )
+|' '|
+DB( '}APQ Process Execution Item', !}APQ Execution Item, !}APQ Item Index, 'P26', 'ParamKey' )
+|' '|
+DB( '}APQ Process Execution Item', !}APQ Execution Item, !}APQ Item Index, 'P27', 'ParamKey' )
+|' '|
+DB( '}APQ Process Execution Item', !}APQ Execution Item, !}APQ Item Index, 'P28', 'ParamKey' )
+|' '|
+DB( '}APQ Process Execution Item', !}APQ Execution Item, !}APQ Item Index, 'P29', 'ParamKey' )
+);
+
+
+#############################
+FEEDERS;
+#############################
+
+
+#############################
+##~~    End Rule File    ~~##
+#############################
+
+

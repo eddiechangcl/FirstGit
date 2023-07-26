@@ -1,0 +1,86 @@
+﻿283,100
+284,"}APQ Dimension Attribute Definition"
+11,20230515004909
+274,
+18,0
+275,
+278,0
+281,0
+270,77
+APQ.Demo Customer
+APQ.Demo Test
+APQ.Demo T Month
+APQ.Demo T Quarter
+Currency From
+Currency To
+Data Source GL
+Date
+Day in Month
+Day in Week
+Day in Year
+Demo Account GL
+Demo Account GL Plan
+Demo Customer
+Demo Entity
+Demo Product
+Demo Profit Center
+FX Rate Type
+Line Item
+M Currency
+M FX Rate
+M GL Plan
+M GL Reporting
+M Manpower Reporting
+Month
+M Reference
+M Sales Reporting
+M Sys Archive Parameter
+M Sys Archive Profile
+M Sys Menu
+M Sys Menu Application Entry
+M Sys Module Object
+M Sys Parameter
+M Sys Time Attribute
+M Sys Versioning Cube
+M Sys Versioning Log
+M Sys Workbench
+M Sys Workbench Task Dependency
+M Sys Workflow Cooling Period
+M UDC
+M Unit
+M Workflow
+Planning Year
+Product
+Product Category
+Quarter
+Scale
+Scenario
+Sys Archive ID
+Sys Archive Parameter
+Sys Menu Application Entry
+Sys Menu Link
+Sys Menu Page
+Sys Menu Page Column
+Sys Menu Page Row
+Sys Menu Parameter
+Sys Menu Profile
+Sys Module
+Sys Module Object Type
+Sys Parameter
+Sys Versioning Module
+Sys Workbench Group
+Sys Workbench Priority
+Sys Workbench Step
+Sys Workflow
+UDC
+Version
+Week
+Year
+Year Fiscal
+Year Month
+Year Week
+}APQ Applications
+}APQ Cubes
+}APQ Cube Views
+}APQ Dimensions
+}APQ Dimension Subsets

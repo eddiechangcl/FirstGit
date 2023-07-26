@@ -1,0 +1,5 @@
+﻿FORMAT==100
+FEEDSTRINGS;
+SKIPCHECK;
+
+['Language']=S:'static:en:zh-Hans:zh-Hant';

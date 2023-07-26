@@ -1,0 +1,10 @@
+﻿283,100
+284,"PickList Current Month"
+11,20190614193028
+274,
+18,0
+275,164
+{TM1FILTERBYPATTERN( {TM1SUBSETALL( [}APQ Time Date Lookup] )}, Left([}APQ Settings].([}APQ Parameters].[Current Day],[}APQ Settings Measure].[String]),7) + "*" )}}
+278,0
+281,0
+270,0

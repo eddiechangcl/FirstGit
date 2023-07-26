@@ -1,0 +1,85 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+#SKIPCHECK;
+#FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Reconciliation Setup** is part of the Apliqode Framework **Reconciliation** family of cubes which perform automated reconciliation
+# checks of inter- or intra- cube values.  An example of how to use and configure the **Reconciliation Module** is included in the Apliqode Framework 
+# Demo Applcation using the **Sales Cube** family as an example.
+#
+# }APQ Reconciliation Setup is the starting point for the automated reconciliation application. This is where is initial setup occurs for each reconciliation
+# item where a cube reference and description is entered.  For Reconciliation Items there is further setup in the **}APQ Reconciliation Setup Detail**
+# cube where any dimension elements where the **Default Member** defined in **}APQ Dimension Defaults** will not be used then these are defined 
+# (or the default overwritten).  For Comparison Check Pairs all necessary setup is performed in this cube only.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+# Is a reconciliation item static (i.e. external value loaded from source, or does it reference a cube value)
+[ '}APQ Reconciliation Setup Measure':'IsStatic' ] = N:
+IF( SUBST( !}APQ Reconciliation Item, 1, 1 ) @= 'R',
+    STET,
+    0
+);
+
+# No data entry for consolidated nodes
+[ '}APQ Reconciliation Item':{'Comparisons','Items'} ] = S: '';
+
+# Known Variance
+[ '}APQ Reconciliation Setup Measure':'Comparison Known Variance' ] = N: 
+IF( SUBST( !}APQ Reconciliation Item, 1, 1 ) @= 'C',
+    STET,
+    0
+);
+
+# Long description: if no reference entered then item not used, set to blank
+[ '}APQ Reconciliation Setup Measure':'Long Description' ] = S:
+IF( DB( '}APQ Reconciliation Setup', !}APQ Reconciliation Item, 'Reference' ) @= '',
+  '',
+  CONTINUE
+);
+
+# Long description for comparison
+[ '}APQ Reconciliation Setup Measure':'Long Description' ] = S:
+IF( SUBST( !}APQ Reconciliation Item, 1, 1 ) @= 'C',
+  !}APQ Reconciliation Item | ': ' |
+  IF( DB( '}APQ Reconciliation Setup', !}APQ Reconciliation Item, 'Reference' ) @<> '' & DB( '}APQ Reconciliation Setup', !}APQ Reconciliation Item, 'Comparison') @<> '',
+    DB( '}APQ Reconciliation Setup', !}APQ Reconciliation Item, 'Reference' ) | ' ' |
+    DB( '}APQ Reconciliation Setup', DB( '}APQ Reconciliation Setup', !}APQ Reconciliation Item, 'Reference' ), 'Reference' ) | ' vs. ' |
+    DB( '}APQ Reconciliation Setup', !}APQ Reconciliation Item, 'Comparison' ) | ' ' |
+    DB( '}APQ Reconciliation Setup', DB( '}APQ Reconciliation Setup', !}APQ Reconciliation Item, 'Comparison' ), 'Reference' ) | ' - ' |
+    DB( '}APQ Reconciliation Setup', DB( '}APQ Reconciliation Setup', !}APQ Reconciliation Item, 'Comparison' ), 'Item Description' ) ,
+    ''
+  ),
+  CONTINUE
+);
+
+# Long description for item
+[ '}APQ Reconciliation Setup Measure':'Long Description' ] = S:
+!}APQ Reconciliation Item | ': ' | DB( '}APQ Reconciliation Setup', !}APQ Reconciliation Item, 'Reference' ) | ' - ' |
+DB( '}APQ Reconciliation Setup', !}APQ Reconciliation Item, 'Item Description' );
+
+
+#############################
+FEEDERS;
+#############################
+
+[ '}APQ Reconciliation Setup Measure':'Comparison Known Variance' ] => DB( '}APQ Reconciliation Check', !}APQ Reconciliation Item, 'Known Variance' );
+
+#############################
+##~~    End Rule File    ~~##
+#############################

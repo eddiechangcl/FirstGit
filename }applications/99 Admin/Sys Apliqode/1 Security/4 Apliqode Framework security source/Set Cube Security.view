@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=Set Cube Security
+ENTRYTYPE=view
+ENTRYREFERENCE=TM1:///VIEW/PUBLIC/}APQ Security Manage Object Access/Set Cube Security

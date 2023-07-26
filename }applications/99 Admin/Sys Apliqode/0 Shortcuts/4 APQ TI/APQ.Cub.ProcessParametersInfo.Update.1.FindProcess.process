@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=APQ.Cub.ProcessParametersInfo.Update.1.FindProcess
+ENTRYTYPE=process
+ENTRYREFERENCE=TM1:///PROCESS/PUBLIC/}APQ.Cub.ProcessParametersInfo.Update.1.FindProcess

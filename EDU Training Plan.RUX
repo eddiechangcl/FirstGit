@@ -1,0 +1,28 @@
+﻿FORMAT==100
+#SkipCheck;
+
+# Calc Due Day Base on Plan
+['D01', 'On Board', 'Flag'] =N: 
+    DimIx( 'Training Day', !Training Day );
+
+['Flag'] =N:
+    If ( DB('EDU Training Plan', 'D00', !Employee, !Training Task, 'Need Due Day') = 0,
+        0,
+        Continue );
+        
+['Flag'] =N:
+    If ( DimIx( 'Training Day', !Training Day ) = DB( 'EDU Training Plan', 'All Days', !Employee, DB( 'EDU Training Plan', 'D00', !Employee, !Training Task, 'Previous Task' ), 'Flag' )
+     + DB( 'EDU Training Plan', 'D00', !Employee, !Training Task, 'Days' ),
+      DimIx( 'Training Day', !Training Day ),
+      0 );
+      
+      
+# Put Due Day
+['D00', 'Due Day'] =S:
+    If ( ['All Days', 'Flag'] <> 0,
+        DB('EDU Training Plan', DimNm( 'Training Day', DB( 'EDU Training Plan', 'All Days', !Employee, !Training Task, 'Flag' ) ), !Employee, 'Task Input', 'Date By Employee' ),
+        Continue );
+    
+
+
+#Feeders;

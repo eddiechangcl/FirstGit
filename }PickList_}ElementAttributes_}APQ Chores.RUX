@@ -1,0 +1,21 @@
+FORMAT==100
+##############################################################################################################################
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+SKIPCHECK;
+#############################
+
+[ ] = S:
+IF( !}ElementAttributes_}APQ Chores @= 'APQ User' % !}ElementAttributes_}APQ Chores @= 'APQ PUser' % !}ElementAttributes_}APQ Chores @= 'APQ Admin',
+    'Subset:}APQ Security Level:PickList Chore Security',
+   												 ''
+);
+
+#############################
+##~~    End Rule File    ~~##
+#############################

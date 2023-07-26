@@ -1,0 +1,136 @@
+﻿283,100
+284,"}APQ Dimensions"
+11,20230515004909
+274,
+18,0
+275,
+278,0
+281,0
+270,127
+}APQ Dimensions:}APQ Dimensions:All APQ Dimensions
+}APQ Dimensions:}APQ Dimensions:All C Elements
+}APQ Dimensions:}APQ Dimensions:All Elements
+}APQ Dimensions:}APQ Dimensions:All end user dimensions
+}APQ Dimensions:}APQ Dimensions:All N Elements
+}APQ Dimensions:}APQ Dimensions:All N Elements code
+}APQ Dimensions:}APQ Dimensions:All Real Dimensions
+}APQ Dimensions:}APQ Dimensions:All Real Dimensions (excl. APQ)
+}APQ Dimensions:}APQ Dimensions:ALTERNATE HIERARCHIES
+}APQ Dimensions:}APQ Dimensions:Default
+}APQ Dimensions:}APQ Dimensions:Default Member
+}APQ Dimensions:}APQ Dimensions:Dimensions without cubes
+}APQ Dimensions:}APQ Dimensions:Dimensions without cubes (excl. control obj.)
+}APQ Dimensions:}APQ Dimensions:ELEMENT SECURITY
+}APQ Dimensions:}APQ Dimensions:Top Elements
+}APQ Dimensions:}APQ Dimensions:}Cube_APQ.Demo Sales Cube
+}APQ Dimensions:}APQ Dimensions:}Cube_APQ.Demo Sales Cube 2
+}APQ Dimensions:}APQ Dimensions:}Cube_APQ.Demo Sales Reconciliation Check Extended
+}APQ Dimensions:}APQ Dimensions:}Cube_APQ.Demo Sales Summary
+}APQ Dimensions:}APQ Dimensions:}Cube_Demo GL Plan
+}APQ Dimensions:}APQ Dimensions:}Cube_Demo GL Reporting
+}APQ Dimensions:}APQ Dimensions:}Cube_Demo Manpower Reporting
+}APQ Dimensions:}APQ Dimensions:}Cube_Demo Sales Reporting
+}APQ Dimensions:}APQ Dimensions:}Cube_Demo Sales Reporting by Date
+}APQ Dimensions:}APQ Dimensions:}Cube_Demo Sales Reporting by Week
+}APQ Dimensions:}APQ Dimensions:}Cube_EDU Employee Profile
+}APQ Dimensions:}APQ Dimensions:}Cube_EDU Training Plan
+}APQ Dimensions:}APQ Dimensions:}Cube_Employee Schedule
+}APQ Dimensions:}APQ Dimensions:}Cube_Exchange Rate
+}APQ Dimensions:}APQ Dimensions:}Cube_FX Rate
+}APQ Dimensions:}APQ Dimensions:}Cube_Public Holiday Reference
+}APQ Dimensions:}APQ Dimensions:}Cube_Sys Archive Parameter
+}APQ Dimensions:}APQ Dimensions:}Cube_Sys Archive Profile
+}APQ Dimensions:}APQ Dimensions:}Cube_Sys Definition Day Attribute
+}APQ Dimensions:}APQ Dimensions:}Cube_Sys Definition Month Attribute
+}APQ Dimensions:}APQ Dimensions:}Cube_Sys Definition UDC
+}APQ Dimensions:}APQ Dimensions:}Cube_Sys Definition Week Attribute
+}APQ Dimensions:}APQ Dimensions:}Cube_Sys Dimension UDC
+}APQ Dimensions:}APQ Dimensions:}Cube_Sys Lookup Date
+}APQ Dimensions:}APQ Dimensions:}Cube_Sys Lookup Year Month
+}APQ Dimensions:}APQ Dimensions:}Cube_Sys Lookup Year Week
+}APQ Dimensions:}APQ Dimensions:}Cube_Sys Menu
+}APQ Dimensions:}APQ Dimensions:}Cube_Sys Menu Application Entry
+}APQ Dimensions:}APQ Dimensions:}Cube_Sys Menu Link
+}APQ Dimensions:}APQ Dimensions:}Cube_Sys Menu Parameter
+}APQ Dimensions:}APQ Dimensions:}Cube_Sys Module Object
+}APQ Dimensions:}APQ Dimensions:}Cube_Sys Parameter
+}APQ Dimensions:}APQ Dimensions:}Cube_Sys Time Attribute
+}APQ Dimensions:}APQ Dimensions:}Cube_Sys Versioning Cube
+}APQ Dimensions:}APQ Dimensions:}Cube_Sys Versioning Log
+}APQ Dimensions:}APQ Dimensions:}Cube_Sys Workbench
+}APQ Dimensions:}APQ Dimensions:}Cube_Sys Workbench Task Dependency
+}APQ Dimensions:}APQ Dimensions:}Cube_Sys Workflow Cooling Period
+}APQ Dimensions:}APQ Dimensions:}Cube_Sys Workflow Demo Annual Budget
+}APQ Dimensions:}APQ Dimensions:}Cube_Sys Workflow Sales Forecast
+}APQ Dimensions:}APQ Dimensions:}Cube_test
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Application Activity Back
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Application Activity Log
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Application Entries
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Application to Cube Reference
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Chore Info
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Cube Data Archive
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Cube Dependency
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Cube Dimension Dependency
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Cube Last Updated by Process
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Cube View Cache Control
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Cube Views
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Cube Views Management
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Dimension Attribute Definition
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Dimension Attribute Matrix
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Dimension Attributes
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Dimension Defaults
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Dimension Definition
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Dimension Definition Source
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Dimension Elements
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Dimension Element Search
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Dimension Hierarchies
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Dimension SemiDynamic Subsets
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Dimension Static Subsets And UDC
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Dimension Subsets
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Dimension Subset Use
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Dimension Use
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Glossary
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Menu
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Menu Link
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Menu User Preference
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Picklist Dimension
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Picklist General
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Process Execution Item
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Process Execution Log
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Process Execution Tree
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Process Parallelization Control
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Process Parameter Matrix
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Process Parameters Info
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Process Response Message
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Process to Object Reference
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Pulse User Login
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Pulse Workbook Tracker
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Reconciliation Cell Value Change
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Reconciliation Check
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Reconciliation Setup
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Reconciliation Setup Detail
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Security Effective Client Application Folder Permissions
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Security Effective Client Element Permissions
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Security Effective Client Object Permissions
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Security Manage Application Feeder
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Security Manage Client Groups
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Security Manage Element Access
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Security Manage Element Security Groups
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Security Manage Object Access
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Server Message Log Info
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Settings
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Staging
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Staging Control
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Staging Dimension Mapping
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Time Date Lookup
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Time Month Conversion
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Time Relative Time Lookup
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ TM1 Transaction Log Analysis
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Universal View Calculation
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Universal View Data
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Universal View Dimension Mapping
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Universal View Filter
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Universal View Format
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ Universal View Source Mapping
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ User Activity Log
+}APQ Dimensions:}APQ Dimensions:}Cube_}APQ User Last Active

@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=Sys Versioning Module
+ENTRYTYPE=dimension
+ENTRYREFERENCE=TM1:///DIMENSION/PUBLIC/Sys Versioning Module

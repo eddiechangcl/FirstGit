@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=Sys.Dim.Hierarchies.Sort.From Another Dimension Order
+ENTRYTYPE=process
+ENTRYREFERENCE=TM1:///PROCESS/PUBLIC/Sys.Dim.Hierarchies.Sort.From Another Dimension Order

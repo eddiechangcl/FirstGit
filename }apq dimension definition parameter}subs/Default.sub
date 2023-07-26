@@ -1,0 +1,47 @@
+﻿283,100
+284,"Default"
+11,20190628092555
+274,
+18,0
+275,
+278,0
+281,0
+270,38
+All Dimension Build Parameters
+Global Dimension Parameter
+Group
+Dimension To Build
+Amend Dimension To build
+Comment
+Dimension Sort Order
+Component Sort Type
+Component Sort Sense
+Element Sort Type
+Element Sort Sense
+Dimension Cleaning
+Dimension Delete All Elements
+Delete And Recreate All Attributes
+Dimension Unwind
+Dimension Maintenance Options
+Allow N to C element type conversion
+Automatically Create Top Node
+Automatically create NA Element
+Automatically Create Dummy N Elements
+Group Orphan N Elements
+Delete Orphan C Elements
+Launch Standard Subset Updates
+Launch Subset Framework Updates
+Launch Attribute Framework updates
+Launch a custom process BEFORE step 1
+Launch a custom process AFTER final step
+Launch another dimension
+Detail Dimension Parameter
+Source Type
+Attributes
+Dimension Update Information
+Last Update Start Time
+Last Update End Time
+Last Update Duration
+Last Update Record Count
+User
+Error File

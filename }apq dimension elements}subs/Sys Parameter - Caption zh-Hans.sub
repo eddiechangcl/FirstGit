@@ -1,0 +1,69 @@
+﻿283,100
+284,"Sys Parameter - Caption zh-Hans"
+11,20201005064154
+274,
+18,0
+275,
+278,0
+281,0
+270,60
+>>>> 系统设定
+Admin Host
+Windows Server Name
+TM1 Server Name
+Port Number
+HTTP Port Number
+HTTP Use SSL
+TM1Web URL
+Use CAM
+CAM Namespace
+CAM Server URI
+CAM Client URI
+Primary Language
+Export Folder
+tm1s.cfg Location
+TM1 Data Directory
+TM1 Logging Directory
+TM1 Source Data Directory
+TM1 Master Data Directory
+>>>> 时间期间设定
+实际数 报表年
+实际数 报表月
+实际数 报表日
+实际数 报表周
+预测数 年
+预测数 月
+计划预算 年度
+预算 CY+1
+预算 CY+2
+预算 CY+3
+系统日期
+每周第一天
+系统 起始年
+系统 起始月
+>>>> 外部应用程序 设定
+TM1RunTI.exe Path
+7zip.exe Path
+Restart Services Script Path
+curl.exe Path
+>>>> 备份设定
+TM1 模型备份路径
+TM1 备份文件名 前缀
+Cognos BI 部署路径
+Cognos BI 备份路径
+Cognos BI 备份文件名 前缀
+Backup Retention Days
+>>>> 多线程数据处理 设定
+Hustle.exe Path
+Maximum Hustle Threads
+>>>> 外发电子邮件设定
+SMTP Server
+SMTP Port
+Mail Credential Username
+Mail Credential Password
+Default E-mail Sender
+Mail Require SSL
+>>>> 账号设定
+Administrator Username
+Administrator Password
+Administrator Basic Authentication Header

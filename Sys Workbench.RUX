@@ -1,0 +1,205 @@
+﻿FORMAT==100
+FEEDSTRINGS;
+SKIPCHECK;
+
+##############################################################################################################
+### CWA Std. Model  version 3.00
+### Copyright © 2012~2020, Cubewise (Hong Kong) Ltd. All rights reserved.
+### This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+### and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+### you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+### or display any part, in any form, or by any means.
+##############################################################################################################
+
+##############################################################################################################
+###~~~    Start Rule File    ~~~###
+
+###########################################
+#All Sys Workbench Priorities
+[ 'All Sys Workbench Priorities'] = S: '' ;
+[ 'All Sys Workbench Priorities'] = C: 0 ;
+
+###########################################
+#Page Jump Type
+###########################################
+[ 'Page Jump Type' ] = S:
+  IF(
+        ISLEAF = 1 & [ 'Effective Task Flag' ] > 0,
+        STET,
+        ''
+  );
+
+###########################################
+#Hyperlink
+###########################################
+[ 'Hyperlink' ] = S:
+  IF(
+       ISLEAF = 1 & [ 'Effective Task Flag' ] > 0 &
+       DB('Sys Workbench',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,'Page Jump Type') @= 'Hyperlink',
+       STET,
+       ''
+  );
+
+###########################################
+#Applications & Parameters for WEB URL
+###########################################
+[ { 'Applications', 'Parameters for WEB URL' } ] = S:
+  IF(
+       ISLEAF = 1 & [ 'Effective Task Flag' ] > 0 &
+       DB('Sys Workbench',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,'Page Jump Type') @= 'Application',
+       STET,
+       ''
+  );
+
+###########################################
+#Page Final Link
+###########################################
+[ 'Page Final Link' ] = S:
+  IF(
+       ISLEAF = 1 & [ 'Effective Task Flag' ] > 0,
+       IF(
+            DB('Sys Workbench',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,'Page Jump Type') @= 'Hyperlink',
+            DB('Sys Workbench',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,'Hyperlink'),
+            IF(
+                  DB('Sys Workbench',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,'Page Jump Type') @= 'Application',
+                  DB('Sys Menu Application Entry',DB('Sys Workbench',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,'Applications'),'Entry URL Websheet API') |
+                  DB('Sys Menu Application Entry',DB('Sys Workbench',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,'Applications'),'Entry URL View API') |
+                  '&Title_Scenario=' | (!Scenario) | '&Title_Year=' | (!Year)  |
+                  IF(
+                        LONG( DB('Sys Workbench',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,'Parameters for WEB URL') ) > 0,
+                        IF(
+                             SUBST( DB('Sys Workbench',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,'Parameters for WEB URL'), 1, 1 ) @= '&',
+                             DB('Sys Workbench',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,'Parameters for WEB URL'),
+                             '&' | DB('Sys Workbench',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,'Parameters for WEB URL')
+                        ),
+                        ''
+                  ),
+                  ''
+            )
+       ),
+       ''
+  );
+
+
+###########################################
+#Comment
+###########################################
+[ 'Comment' ] = S:
+    IF(
+          DB('Sys Workbench',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,'Task Start Status') @= 'Wait to Start',
+          'Waiting for preorder tasks completing',
+          ''
+    );
+
+###########################################
+#Validation Flag
+###########################################
+[ 'Validation Flag' ] = N:
+    IF(
+         DB('Sys Workbench',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,'TASK LATEST UPDATED STATUS') @= 'Completed' & [ 'Effective Task Flag' ] > 0 &
+         DB('Sys Workbench',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,'Task Start Status') @= 'Starting',
+         1,
+         0
+    );
+
+###########################################
+#TASK COMPLETE SELECTION
+###########################################
+[ 'TASK COMPLETE SELECTION' ] = S:
+  IF(
+        ISLEAF = 1,
+        CONTINUE,
+        IF( [ 'Effective Task Flag' ] = [ 'Validation Flag' ] & [ 'Effective Task Flag' ] > 0, '✓', '' )
+  );
+
+[ 'TASK COMPLETE SELECTION' ] = S:
+    IF(
+          DB('Sys Workbench',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,'Task Start Status') @= 'Starting',
+          STET,
+          ''
+    );
+
+###########################################
+#Effective Task Flag
+###########################################
+[ 'Effective Task Flag' ] = N:
+    IF(
+          LONG( DB('Sys Workbench',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,'Task Description') ) > 0 %
+          LONG( DB('Sys Workbench',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,'Task Name') ) > 0 ,
+          1,
+          0
+    );
+
+###########################################
+#Priority of Step
+#
+###########################################
+[ 'Priority of Step' ] = S:
+    IF(
+          ISLEAF = 1,
+          IF( [ 'Effective Task Flag' ] = 1, !Sys Workbench Priority, ''),
+          ''
+    );
+
+###########################################
+#Task Start Status
+#Starting
+#Wait to Start
+###########################################
+[ 'Task Start Status', 'All Sys Workbench Steps' ] = S:
+    IF(
+          [ 'Effective Task Flag' ] > 0,
+          IF(
+                DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,'INPUT LINE','Task Start Status') @= '',
+                'Starting',
+                DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,'INPUT LINE','Task Start Status')
+          ),
+          ''
+    );
+
+[ 'Task Start Status' ] = S:
+    IF(
+          [ 'Effective Task Flag' ] > 0,
+          IF(
+                DB('Sys Workbench',!Scenario,!Year,!Sys Workbench Group,DB('Sys Workbench',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,'Priority of Step'),'All Sys Workbench Steps','Task Start Status') @= 'Starting',
+                IF(
+                     DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,'INPUT LINE','Task Start Status') @= '',
+                     'Starting',
+                     DB('Sys Workbench Task Dependency',!Scenario,!Year,!Sys Workbench Group,!Sys Workbench Priority,!Sys Workbench Step,'INPUT LINE','Task Start Status')
+                ),
+                'Wait to Start'
+          ),
+          ''
+    );
+
+
+###########################################
+#Validation Status
+#Completed
+#Un Completed
+###########################################
+[ 'Validation Status' ] = S:
+  IF(
+       [ 'Effective Task Flag' ] > 0,
+       IF( [ 'Effective Task Flag' ] = [ 'Validation Flag' ], 'Completed', 'Un-Completed' ),
+       ''
+  );
+
+
+##############################################################################################################
+FEEDERS;
+##############################################################################################################
+
+#########################################################
+###  Internal Cube Feeders
+
+[ { 'Task Description', 'Task Name' } ] => [ 'Effective Task Flag' ],  [ 'Validation Status' ], [ 'Priority of Step' ],
+                                                             [ 'Task Start Status' ], [ 'Validation Flag' ], [ 'Comment' ],
+                                                             [ 'TASK COMPLETE SELECTION' ], [ 'Page Final Link' ];
+                                                             
+                                                             
+                                                             
+
+
+##############################################################################################################
+###    End Rule File    ~~##

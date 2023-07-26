@@ -1,0 +1,69 @@
+﻿283,100
+284,"Sys Parameter - Caption zh-Hant"
+11,20201005064154
+274,
+18,0
+275,
+278,0
+281,0
+270,60
+>>>> 系統設定
+Admin Host
+Windows Server Name
+TM1 Server Name
+Port Number
+HTTP Port Number
+HTTP Use SSL
+TM1Web URL
+Use CAM
+CAM Namespace
+CAM Server URI
+CAM Client URI
+Primary Language
+Export Folder
+tm1s.cfg Location
+TM1 Data Directory
+TM1 Logging Directory
+TM1 Source Data Directory
+TM1 Master Data Directory
+>>>> 時間期間設定
+實際數 報表年
+實際數 報表月
+實際數 報表日
+實際數 報表周
+預測數 年
+預測數 月
+計劃預算 年度
+預算 CY+1
+預算 CY+2
+預算 CY+3
+系統日期
+每周第一天
+系統 起始年
+系统 起始月
+>>>> 外部應用程序 設定
+TM1RunTI.exe Path
+7zip.exe Path
+Restart Services Script Path
+curl.exe Path
+>>>> 備份設定
+TM1 模型備份路徑
+TM1 備份文件名 前綴
+Cognos BI 部署路徑
+Cognos BI 備份路徑
+Cognos BI 備份文件名 前綴
+備份文件保留天數
+>>>> 多綫程數據處理 設定
+Hustle.exe Path
+Maximum Hustle Threads
+>>>> 外發電子郵件設定
+SMTP Server
+SMTP Port
+Mail Credential Username
+Mail Credential Password
+Default E-mail Sender
+Mail Require SSL
+>>>> 賬號設定
+Administrator Username
+Administrator Password
+Administrator Basic Authentication Header

@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=}bedrock.hier.sub.create.attribute.leaf
+ENTRYTYPE=process
+ENTRYREFERENCE=TM1:///PROCESS/PUBLIC/}bedrock.hier.sub.create.attribute.leaf

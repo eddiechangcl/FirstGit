@@ -1,0 +1,1774 @@
+﻿283,100
+284,"Demo Account GL - Code and Description"
+11,20201005064153
+274,
+18,0
+275,
+278,0
+281,0
+270,1765
+All Accounts
+1011001 - Software
+1011002 - Acc.depn-Software
+1012001 - Goodwill
+1012002 - Acc.depn-Goodwill
+1013001 - Franchise / Usage Right
+1013002 - Acc.depn-Franchise / Usage Right
+1014001 - On-account payments on intangible assets
+1019901 - Other Intangible Asset
+1019902 - Amortization/ Other Intangible Asset
+1019999 - SUM:Intangible Assets
+1101001 - Land offices
+1101002 - Acc.depn-Land offices
+1101101 - Land homes
+1101102 - Acc.depn-Land homes
+1101999 - SUM:Land
+1102001 - Building offices
+1102002 - Acc.depn-Building offices
+1102101 - Building homes
+1102102 - Acc.depn-Building homes
+1102999 - SUM:Building
+1109999 - SUM:Land and Building
+1110001 - Lease. Improvements offices
+1110002 - Acc.depn-Lease. Improvements offices
+1110099 - SUM:Lease. Improvements offices
+1110101 - Lease. Improvements homes
+1110102 - Acc.depn-Lease. Improvements homes
+1110199 - SUM:Lease. Improvements homes
+1119999 - SUM:Leasehold Improvements
+1121001 - Furniture offices
+1121002 - Acc.depn-Furniture offices
+1121003 - Acc.depn ( Accelerated) -Furniture offices
+1121101 - Furniture homes
+1121102 - Acc.depn-Furniture homes
+1129999 - SUM:Furniture
+1131001 - EDP Equipment
+1131002 - Acc.depn-EDP Equipment
+1131003 - Acc.depn ( Accelerated) -EDP Equipment
+1131101 - Telecommunication
+1131102 - Acc.depn-Telecommunication
+1131103 - Acc.depn ( Accelerated) - Telecommunication
+1131201 - QC Equipment
+1131202 - Acc.depn-QC Equipment
+1131301 - Other Office Equipment
+1131302 - Acc.depn-Other Office Equipment
+1131303 - Acc.depn ( Accelerated) - Other Office Equipment
+1131401 - Copying machine
+1131402 - Acc.depn-Copying machine
+1131499 - SUM:Copying machine
+1131501 - Operational Equipment
+1131502 - Acc.depn-Operational equipment
+1139999 - SUM:Office Equipment
+1141001 - Motor Vehicles
+1141002 - Acc.depn-Motor Vehicles
+1149999 - SUM:Motor Vehicles
+1259000 - Tangible Assets In Progress-Building
+1350110 - Merchandise warehouse stock - regular merchandise
+1350120 - Warehouse stock for disposal
+1350130 - Sample stock
+1350140 - Other merchandise stocks (goods from 3rd party)
+1350150 - Provision for allowances for return
+1350160 - Goods expected to be returned
+1350170 - Inventory - goods held for disposal
+1350210 - Merchandise stored at third party
+1350220 - Merchandise for disposal at third party
+1350310 - Clearing account
+1350311 - Clearing account for IVA Balance
+1350320 - Invoice without merchandise
+1350330 - Merchandise in transit
+1350331 - Merchandise in transit - Post Service Russia
+1350340 - Blocked merchandise
+1350410 - Deduction of purchasing costs
+1350420 - Correction value in goods mgt to measurement
+1350430 - Allowances on regular merchandise
+1350440 - Accumulated depreciation on goods for disposal
+1351110 - Inventory - Office supplies
+1351120 - Inventory - Materials for sales promotion
+1351130 - Inventory - Other raw materials, supplies
+1351131 - Inventory - Other raw materials,supplies InTransit
+1351140 - Inventory - Allowance on raw materials, supplies
+1351141 - Inventory - Fuel
+1351142 - Inventory - spare parts
+1352110 - Finished goods: catalogues
+1352120 - Other finished goods
+1352130 - Allowances on finished goods
+1359999 - SUM:Inventory
+1400010 - Investment in Otto Korea
+1400020 - Investment in EBI HK
+1400030 - Investment in OAGN
+1400040 - Investment in EOS-OIA
+1400050 - Investment in SHA IC
+1400060 - Investment in QD IC
+1400070 - Investment in DG IC
+1400080 - Investment in Melcosa
+1400090 - Investment in ISL Group
+1400100 - Investment in OI SGP
+1400110 - Investment in EBI India
+1400120 - Investment in OI Bangladesh
+1400130 - Investment in Astra HK
+1400140 - Investment in Astra Bangladesh
+1400200 - Investment in OI USA Holding Corp
+1400210 - Investment in OI USA LLC
+1400215 - Investment in Hermes NexTec US
+1400220 - Investment in OI FS LLC
+1400221 - Investment in OIHK
+1400222 - Investment in OI Italy
+1400223 - Investment in Twenty1
+1400230 - Investments in CBIS TWN
+1400240 - Investment in Musterbrand
+1400250 - Investment in SHPC
+1400260 - Investment in CBIS India
+1400497 - Allowances on investments in CAC (Associates)
+1400498 - Investment written down - CAC
+1400501 - Investment in NCAC - Brazil #1918
+1400502 - Investment in NCAC - Mercator #1876
+1400503 - Investment in OTTO Shanghai
+1400504 - Investment in Hermes Shanghai
+1400510 - Investment in NCAC
+1400511 - Allowance on investments in NCAC
+1400515 - Non-quoted other investments - Romania #1922
+1400516 - Non-quoted other investments - Scan Thor Hold#1982
+1400517 - Non-quoted other investments - Bulgaria #2091
+1400520 - Non-quoted other investments
+1400521 - Impair gains/losses non-quoted other invest
+1400598 - Investment written down - 3rd party
+1400810 - Securities
+1400899 - SUM:Securities
+1400998 - Investment in disposed investment
+1400999 - SUM:Investments
+1405010 - Loans to OVH
+1405020 - Loans to SHA IC
+1405030 - Loans to QD IC
+1405040 - Loans to EBI HK
+1405050 - Loans to OI SGP
+1405060 - Loans to TL
+1405070 - Loans to OAGN
+1405080 - Loans to Asian Outsource & Design Group Ltd
+1405090 - Loans to OIHK
+1405100 - Loans to Melcosa
+1405101 - Loans to Bulgaria
+1405102 - Loans to Romania
+1405103 - Loans to Twenty1
+1405110 - Loan to OIHH (<1 yr)
+1405115 - Loan to OIHH (1 - 5 yrs)
+1405120 - Loan with Related Parties (< 1 yr)
+1405125 - Loan with Related Parties (1 - 5 yrs)
+1405130 - Loans to OI USA LLC
+1405131 - Clearing account - Loan to OI USA LLC
+1405140 - Loans to OI FS LLC
+1405150 - Loans to CBIS
+1405510 - Loan to 3rd party
+1405998 - Loans - fully repaid
+1405999 - SUM:Loans
+1406100 - Deposit - American Club
+1406300 - Debenture - GSIS
+1406998 - Disposed long term deposits
+1406999 - SUM:Long Term Deposits
+1500000 - Cash and Banks
+1501100 - Cash on hand, local
+1501101 - Cash on hand, Verona
+1501110 - Cash on hand local, IST
+1501120 - Cash on hand local, IZM
+1501200 - Cash on hand, foreign
+1501210 - Cash on hand foreign, IST
+1501220 - Cash on hand foreign, IZM
+1502101 - ABN HKD CA 008-784-6747442
+1502102 - ABN HKD SA 008-784-6747450
+1502103 - ABN USD SA 008-784-6747450
+1502104 - ABN EUR SA 008-784-6747450
+1502105 - ABN GBP SA 008-784-6747450
+1502201 - BOC HKD SA 012-875-11099411
+1502301 - DB HKD CA 054-895-0054411000
+1502302 - DB USD CA 054-895-0054411050
+1502303 - DB EUR CA 054-895-0054411018
+1502304 - DB GBP CA 054-895-0054411060
+1502305 - DB SGD CA 054-895-0054411070
+1502306 - DB INR 1545169000
+1502307 - DB HKD CA 054-895-0026294000
+1502308 - DB HKD CA 054-895-0026294001
+1502309 - DB USD CA 054-895-0026294050
+1502401 - HSBC HKD CA 004-600-860399-001
+1502402 - HSBC USD CA 004-600-860399-201
+1502403 - HSBC MULTI USD 004-600-860399-274
+1502404 - HSBC MULTI EUR 004-600-860399-275
+1502501 - SCB HKD SA 003-447-16611964
+1502502 - SCB HKD SA 003-447-06670658
+1502503 - SCB HKD CA 003-447-06605643
+1502504 - SCB USD SA 003-447-16612030
+1502505 - SCB EUR SA 003-447-16612073
+1502506 - SCB HKD CAS Angela Swimwear 57218520864
+1502507 - SCB HKD CAS Kai Yip HK Ind 57218535780
+1502508 - SCB USD CAS Angela Swimwear 57218535799
+1502509 - SCB USD CAS Kai Yip HK Ind 57218535802
+1502510 - SCB S/A RMB - 44717769650
+1502521 - SCB HKD C/A 447-0-777803-7
+1502522 - SCB HKD S/A 447-1-775735-0
+1502523 - SCB USD S/A 447-1-775739-3
+1502531 - SCB TWD C/A 01800124128
+1502532 - SCB TWD S/A 01810935676
+1502533 - SCB USD S/A 01810935714
+1502541 - SCB EUR SA 003-447-1-120819-3
+1502542 - SCB USD SA 003-447-1-120823-1
+1502543 - SCB HKD SA 003-447-1-120828-2
+1502551 - SCB IDR 306-0860112-5
+1502552 - SCB IDR 306-0860113-3
+1502553 - SCB USD 306-0860114-1
+1502601 - China Merchants Bank 10988
+1502701 - Bank Asia BDT CA #00233011763
+1503300 - SCB HKD CA #44707749096
+1503301 - SCB HKD SA #44717744305
+1503302 - SCB USD SA #44717744356
+1503303 - SCB EUR SA #44717744399
+1503304 - SCB HKD CA #44707749142
+1504001 - Bank of China 91001
+1504002 - Bank of China 93013
+1504003 - Bank of China 14812000063
+1504201 - Bank of China HKD 802859110308092013
+1504251 - CMB RMB 769902464610988
+1504252 - CMB HKD 769902464621062
+1504253 - CMB USD 769902464632808
+1504254 - CMB RMB 769902464610688
+1504255 - CMB USD 769902464632708
+1504256 - CMB HKD 769902464621208
+1504257 - SCB RMB 000000501510704561
+1504401 - Deutsche RS 5007216-00-0
+1504451 - Deutsche HKD
+1504452 - Deutsche USD
+1504453 - Deutsche EURO
+1504601 - HSBC HKD CA 004-600-735856-001
+1504602 - HSBC USD CA 004-600-735856-201
+1504603 - HSBC USD CA 004-600-735856-274
+1504604 - HSBC EUR CA 004-600-735856-275
+1504651 - Deutsche HKD CA
+1504652 - Deutsche USD CA
+1504801 - DB HKD C/A 0008763000
+1504802 - DB USD C/A 0008763050
+1504803 - DB EUR C/A 0008763018
+1504851 - Standard Chartered HKD S/A 44716732788
+1504852 - Standard Chartered USD S/A 44716732818
+1504853 - Standard Chartered EUR S/A 44716732826
+1504854 - SCB HKD S/A 57211511517 for Angela
+1504855 - SCB USD S/A 57211511533 for Angela
+1504856 - Standard Chartered C/A HKD 44706749866
+1505001 - SCB HKD 447067-65977
+1505002 - SCB USD 447067-66051
+1505003 - SCB EUR 447067-66019
+1505201 - Deutsche ND RS 1006196-00-0
+1505221 - Deutsche BB RS 0043471-00-9
+1505222 - Deutsche BA RS 2031045-00-0
+1505251 - Deutsche HKD
+1505252 - Deutsche USD
+1505253 - Deutsche EURO
+1505401 - HSBC THB CA 001-079540-001
+1505451 - SCB BDT 01-9785566-01
+1505452 - SCB USD 01-9785566-02
+1505501 - Deutsche Bank
+1505502 - Hanseatic Bank #0010 104 920
+1505503 - Deutsche Bank (USD)
+1505504 - Deutsche Bank (non KeenOn)
+1505511 - The Royal Bank of Scotland (GBP)
+1505601 - HSBC KRW CA 002-018190-021
+1505602 - HSBC USD CA 002-018190-031
+1505603 - HSBC EUR CA 002-018190-033
+1505651 - WOORI KRW SA 187-178864-13-001
+1505652 - WOORI USD SA 187-178864-41-014
+1505653 - WOORI EUR SA 187-178864-41-068
+1505801 - Deutsche SGD CA 2525384-00-0
+1505802 - Deutsche USD CA 2525384-05-5
+1505803 - Deutsche MYR CA 0069823-00-2
+1505851 - HSBC SGD CA 004-141-165951-001
+1505852 - HSBC USD CA 260-088299-178
+1505853 - HSBC USD CA 500-442389-201
+1506001 - Bank of Comm RMB SA 372005590018010002910
+1506002 - Bank of Comm USD SA 372005581146150001178
+1506003 - BOC RMB 215604391727
+1506004 - BOC USD 216904391729
+1506005 - SCB CNY 000000501510916237
+1506170 - BMO Bank of Montreal CAD 0021926726
+1506171 - BMO Bank of Montreal USD 0024695280
+1506201 - BOC RMB 450759217638
+1506202 - BOC USD 454659238347
+1506203 - BOC USD 44556511583-8
+1506204 - BOC USD 45336511470-8
+1506251 - China Construction Bank A/C 9349 (Xiangcheng)
+1506271 - SCB RMB 000000501510729012
+1506401 - BOC RMB 218200406809
+1506601 - BOC RMB 454659215579
+1506700 - Deutsche Bank  USD CA 00-464-112
+1506750 - DEUTSCHE BANK  USD CA 00-464-091
+1506801 - HSBC LKR CA 001-014760-001
+1506802 - HSBC LKR CA 001-014760-002
+1506803 - HSBC USD CA 011-007036-101
+1506900 - Deutsche Bank  USD CA 00-464-104
+1507001 - ICBC RMB 4100029509200002733
+1507002 - ICBC USD 4100021209814100548
+1507003 - ICBC USD 4100029509814101355
+1507004 - ICBC USD 4100020009814101981
+1507101 - SCB RMB 000000501510348169
+1507102 - SCB RMB 000000501510481264
+1507103 - SCB USD 000000501510482726
+1507104 - SCB USD 000000501510476651 (Capital)
+1507200 - BOC RMB 448160501126
+1507401 - HSBC USD SA 002-5-654963
+1507601 - HSBC USD SA 102-2-640290
+1507651 - BOC HKD SA 012-700-92005994
+1507701 - SCB USD SA 433-1-010889-0
+1507710 - TW1 - DK1030004440149588
+1507720 - TW1 - DK7471180009401038
+1507730 - TW1 - DK5930004440147348
+1508001 - VOLKSBANK (RON)
+1508002 - VOLKSBANK (EUR)
+1508003 - VOLKSBANK-card-RO acc 5124,07 (EUR)
+1508004 - VOLKSBANK-card-RO acc 5121,07 (RON)
+1508005 - RO acc 5121,08 (RON)
+1508006 - RO acc 5124,08 (EUR)
+1508007 - Volksbank RO17 (RON)
+1508008 - Volksbank RO52 (EUR)
+1508101 - TEB TL
+1508102 - TEB EURO
+1508103 - TEB USD
+1508104 - AKBANK TL
+1508105 - Calyon Hochiminh
+1508106 - ZIRAAT TL
+1508109 - TEB KREDI KARTi
+1508110 - TEB KREDI KARTi USD
+1508112 - Calyon Hong Kong
+1508113 - Akbank EURO
+1508114 - Akbank USD
+1508125 - HSBC-AUD-500-496-625
+1508133 - HSBC-EU-500-496-625
+1508142 - HSBC-USD-500-496-625-274
+1508162 - Vietcombank HCMC USD
+1508182 - Vietcombank Hanoi USD
+1508213 - Akbank EURO, IST
+1508214 - Akbank TL, IST
+1508223 - Akbank EURO, IZM
+1508224 - Akbank TL, IZM
+1509101 - Detusche Bank Euro - ( Italy)
+1510101 - Raiffeizenbank (Bulgaria) EAD - BGN 1060452916
+1510102 - Raiffeizenbank (Bulgaria) EAD - EUR 1460452905
+1510103 - Raiffeizenbank (Bulgaria) EAD - EUR 6460452904
+1510104 - Raiffeizenbank (Bulgaria) EAD - EUR 2460452907
+1510105 - Vladimir  Vankov (Bulgaria)
+1510201 - Nordea bank current account(LVL)
+1510202 - Nordea bank current account(EUR)
+1510203 - Swedbank current account(LVL)
+1510204 - Swedbank current account (EUR)
+1510205 - Currency convesion in transit - For Baltic
+1510301 - Unicredit Tiriac 5121.01 - Romania ( RON)
+1510302 - Trezoreria Ilfov 5121.02 - Romania ( RON)
+1510303 - Unicredit 6320 5124.01 - Romania  (EUR)
+1510304 -  Unicredit 6329 5124.03 - Romania ( EUR)
+1510305 -  Unicredit card 6000 5124.04 - Romania ( EUR)
+1510306 -  Unicredit 6001 5124.05- Romania ( EUR)
+1510400 - First Bank TWD S/A 145-10-060487
+1511001 - SCB a/c# 30608222191 IDR
+1511002 - SCB a/c# 30608222213 IDR
+1511003 - SCB a/c# 30608222205 USD
+1512001 - HDFC INR 50200005243222
+1520001 - EUR - DK4440149588 (Denmark)
+1520002 - DKK - 4440147348 (Denmark)
+1530101 - Deutsche Bank Trust Company Americas 00463013 USD
+1559995 - Valuation Bank Account Foreign Currency
+1559996 - Amount under settlement
+1559997 - Cash in transit
+1559998 - Closed Bank Accounts
+1561001 - FD ABN HKD
+1561002 - FD ABN USD
+1561003 - FD ABN EUR
+1561004 - FD ABN GBP
+1561101 - FD DB HKD
+1561102 - FD DB USD
+1561103 - FD DB EUR
+1561104 - FD DB GBP
+1561109 - FD DB Multiple
+1561201 - FD SCB HKD
+1561202 - FD SCB USD
+1561203 - FD SCB EUR
+1561302 - HSBC - USD Fixed Deposit
+1569998 - Closed Fixed Deposit
+1601100 - Accounts Receivable - 3rd party
+1601101 - Accounts Receivable - 3rd party ( internal)
+1601200 - Bill receivable - 3rd party
+1601300 - Valuation Trade Receivables 3rd party-foreign curr
+1601999 - SUM:AR Customers - 3rd party
+1602100 - AR staff - Travel advance
+1602200 - AR staff - Others
+1603100 - Accounts Receivable - rc
+1603200 - Bill receivable - rc
+1603300 - Allowances for receivables related parties
+1603999 - SUM:AR Customers - rc
+1605100 - Accounts Receivable - CAC
+1605101 - Accounts Receivable - Shareholder
+1605102 - Accounts Receivable-Shareholder(relate to capital)
+1605200 - Valuation Trade Receivables CAC - Foreign Currency
+1606100 - Advance Payment to Supplier-Purchase of Services
+1606101 - Receivable from INAIL
+1606102 - Customers - Invoices to be Issued
+1606200 - Bills of Exchange Receivable
+1690000 - Provision for bad debt
+1690010 - Reclassification-debtors (cred) w/ Cr (Dr) bal-CAC
+1690020 - Reclassification-debtors w/ credit bal-3rd Party
+1699999 - SUM:Accounts Receivable
+1701100 - Short term deposits - Rental
+1701200 - Short term deposits - Staff
+1701300 - Short term deposits - Other
+1702000 - Prepayment
+1702100 - Prepayment - WAN cost
+1702110 - Prepayment - Royalty
+1702120 - Prepayment - Provider and Supplier
+1702130 - Prepayment - Insurance
+1702140 - Prepayment - Office Lease
+1702200 - Dividend receivable - CAC
+1702300 - Misc. other account receivable
+1702301 - Misc.other acc.receivable-clearing(freight)
+1702302 - Misc.other acc.receivable-clearing(labels)
+1702400 - Exchange diff - AR
+1702500 - Exchange diff - AP
+1702600 - Miscellaneous financial assets, RT < 1 year (LAR)
+1702601 - Allowance Misc financial assets, RT<1yr (LAR)
+1702620 - Receive/Overpay to supplier-merchandise-RT<1yr(LAR
+1702621 - Receive/Overpay to supplier-other goods-RT<1yr(LAR
+1702800 - Claim to gds from expected future returns, RT <1yr
+1703100 - Def.exp: Other prepayment
+1703200 - Other prepayment - staff
+1703300 - Miscellaneous financial assets, RT < 1 year
+1703301 - Allow. Miscel financial assets, RT < 1 year
+1703310 - Prepaid expenses and deferred charges, RT < 1year
+1703311 - Prepaid expenses and deferred charges, RT > 1 year
+1703410 - Positive FV of forward FX contracts
+1703411 - Positive FV of forward FX contracts 1-5 yrs
+1703420 - Positive FV of currency options
+1703421 - Positive FV of currency options 1-5 yrs
+1703510 - CFH - positive fair value of FX contracts, RT<1y
+1703511 - CFH - positive fair value of FX contracts, RT1-5ys
+1703999 - SUM: Other Prepayment & financial asset
+1704001 - Tax receivable
+1704002 - Deferred tax assets
+1704010 - VAT Tax Receivable 19%
+1704011 - Over paid VAT (value added tax)
+1704012 - VAT for good received from EU
+1704013 - VAT for service received from EU
+1704014 - Input VAT
+1704015 - Output VAT (Not in use)
+1704016 - VAT for goods ( foreign)
+1704017 - VAT for service( foreign)
+1704018 - VAT Tax Receivable 7%
+1704019 - Import VAT
+1704020 - VAT tax Receivable
+1704021 - VAT Receivable Reverse Charge (EU)
+1704100 - Income taxes receivable, RT < 1 year
+1704101 - Income taxes receivable, RT 1-5 years (LAR)
+1704102 - Income taxes receivable, RT > 5 years
+1704103 - Other taxes receivable, RT < 1 year
+1704200 - DTA on tax loss carryforwards
+1704201 - DTA on intangible assets
+1704202 - DTA on property, plant and equipment
+1704203 - DTA on inventories
+1704204 - DTA receivables and other assets
+1704205 - DTA on investments in affiliated co & assoc
+1704206 - DTA on other non-current financial assets
+1704207 - DTA on provisions
+1704208 - DTA on trade and other pay(excl. oth liabilities)
+1704209 - DTA on other liabilities
+1704210 - DTA on consolidation adjustments
+1704211 - DTA netted against DTL
+2001000 - Subscribed capital
+2001001 - Subscribed capital - captial contribution
+2001002 - Current account wuth Scan-Thor Group
+2001003 - Current account with Scan-Thor Holding
+2001004 - Share Money Deposit
+2002000 - Other revenue reserve
+2002100 - Reserves Local GAAP
+2002101 - Legal reserves (Romania)
+2002102 - Profit Distribution (Romania)
+2003000 - Retained P&L b/f
+2003001 - Retained P & L - current year
+2003002 - Defined benefit scheme actual gain/loss
+2003010 - Retained P&L due to the correction acc error
+2004010 - OIBKK Retained P&L b/f
+2004020 - OIKOR Retained P&L b/f
+2004030 - OIDG Retained P&L b/f
+2004040 - OISHA Retained P&L b/f
+2004050 - OIQD Retained P&L b/f
+2004060 - OIXMN Retained P&L b/f
+2004070 - OITWN Retained P&L b/f
+2004080 - OIND Retained P&L b/f
+2004090 - OISGP Retained P&L b/f
+2004100 - OIJKT Retained P&L b/f
+2004110 - MAU Retained P&L b/f
+2004120 - SRK LANKA Retained P&L b/f
+2004130 - Turkey Profit/ Loss Transfer
+2004140 - Italy Profit/ Loss Transfer
+2004150 - Profit/ Loss Transfer to Otto Group
+2004160 - OI Bangladesh Retained P&L b/f
+2004170 - Shanghai Hong Kong HKD Retained P&L b/f
+2004180 - Qingdao Hong Kong HKD Retained P&L b/f
+2004190 - Xiamen Hong Kong HKD Retained P&L b/f
+2004200 - CBIS IND Com HKD Retained P/L b/f
+2004210 - CBIS IND RO Retained P/L b/f
+2004220 - OI INDO RO Retained P&L b/f
+2004230 - OI INDO HKD Retained P&L b/f
+2004240 - Dongguan Hong Kong HKD Retained P&L b/f
+2004250 - CBIS TWN Retained P/L b/f
+2004260 - CBIS India Comm Retained P/L b/f
+2004500 - Revaluation Reserve
+2007000 - Net income / (loss) for the year
+2008010 - Remeasurement effect CFH - effect. FVchanges (AFV)
+2008020 - Remeasurement effects CFH - recycling (AFV)
+2008030 - Remeasurement effects CFH - carry forward (AFV)
+2008110 - Def. taxes on remeas.eff. CF Hedges (IAS 39) AFV
+2301100 - Acc.for income taxes
+2301200 - Acc.for deferred taxes
+2301300 - VAT tax payable
+2301301 - VAT paid to the State
+2301302 - VAT on a board (custom)
+2301303 - VAT corrections
+2301304 - returned overpaid VAT
+2301305 - VAT Balance Payable to Fiscal Authority
+2301306 - Output VAT
+2301307 - VAT Liability Reverse Charge (EU)
+2301400 - Acc.for other taxes
+2301401 - Acc.for property tax
+2301402 - Acc.for residence income tax
+2301403 - Acc.for natural resources tax
+2301404 - Acc.for Corporate risk duty
+2301405 - Acc.for tax on Representative cost
+2301500 - Provision for risk from tax audit
+2302100 - Acc.for homeleaves - Expatriates
+2302200 - Acc.for bonus - Expatriates
+2302300 - Acc.for bonus - Local
+2302310 - Acc.for 13th month
+2302311 - Acc.for 13th month  - Verona
+2302320 - Acc.for 14th month
+2302321 - Acc.for 14th month - Verona
+2302322 - Accrual for INAIL Contributions
+2302400 - Acc.for severance payment - local
+2302401 - Acc.for severance payment - local - Verona
+2302402 - Provision for costs of admin employee benefits
+2302403 - Provision for anniversary obligations
+2302404 - Provision for con't payment of salary after death
+2302405 - Provision for partial retirement/ early retirement
+2302406 - Provision for retirement benefits - Long Term
+2302500 - Acc.for MPF
+2302600 - Acc.for Pension
+2302610 - AccAgainstPensionBenefitGuarantyAssociation,RT<1yr
+2302700 - Acc.for anniversary obligations, RT<=1year
+2302800 - Acc.for anniversary obligations, RT>=1year
+2302900 - Acc.for leave travel allowance
+2302901 - Acc.for paid annual leave
+2302902 - Acc.for paid annual leave - Verona
+2303000 - Acc.for audit fees
+2303001 - Acc. for risks and future costs
+2303002 - Acc for consulting / professional fees
+2304000 - Pro for TradeAP o/s invoice-merchandise,RT<1yr(OL)
+2304001 - Pro for TradeAP o/s a/c-non merchandise,RT<1yr(OL)
+2305000 - Other accruals
+2305001 - Supsense accounts
+2305002 - Provisions for doubtful customer
+2306000 - Contributn to ind acc ins associatn payable,RT<1yr
+2306100 - Compensatn-equalisatn severely handicapped,RT<1yr
+2309000 - Provision for goods return - Revenues
+2309010 - Provision for goods return - COGS
+2309100 - Provision for stock Obsolescence
+2309200 - Provision for corporate service fee
+2401000 - Accounts Payable - Supplier
+2401001 - Accounts Payable - Supplier ( cac)
+2401002 - Accounts Payable - Consultant
+2401003 - Accounts Payable- invoice to be paid
+2401004 - Account payable - Supplier ( external)
+2401005 - Account payable - invoice to be paid- foreign cur.
+2401006 - Account payable - Vendor Claim Deduction
+2401007 - Suppliers - Invoices to be received
+2401100 - Reclassification-creditors (deb) w/ Dr(Cr) bal-CAC
+2401200 - Valuation Trade Payables - Foreign Currency
+2401201 - Valuation Trade Payables CAC - Foreign Currency
+2402000 - Accounts Payable - Non VPS & Non Trading Suppliers
+2402001 - Accounts Payable - Non VPS invoice to be paid
+2403000 - Accounts Payable - Staff
+2403001 - Accounts Payable - Staff ( Verona)
+2403002 - Accounts Payable - Expatriate
+2403003 - Accounts Payable - Staff (Non Vendor Card)
+2404001 - Account payable - social contribution
+2404002 - Account payable - social contribution ( Verona)
+2404003 - Acc.payable - social contribution (Temp contract)
+2404004 - Account payable - social contribution ( Manager)
+2404005 - Acc.payable - social contribution on paid leave
+2404006 - AP - contribution to health insurance ( Employer)
+2404007 - AP - contribution to health insurance ( Employee)
+2404008 - AP - accident Fund
+2404009 - AP - health contribution for illness
+2404010 - AP - contribution to unemployment ( Employer)
+2404011 - AP - contribution to unemployment ( Employee)
+2404012 - Account payable -  Quas Quadrifor
+2404013 - ENTE EST supplementary welfare fund
+2405000 - Bills of Exchange Payable
+2501100 - Staff cost due
+2501101 - Payables from wages, > 5 yrs
+2501102 - Liab to health insurance
+2501103 - Payables to deferred compensation
+2501104 - Payable from capital buliding saving scheme
+2501105 - Payables from wages and salaries RT< 1 year
+2501106 - Payables from deferred compensation (DV)
+2501107 - Other employee-related debts
+2501200 - Withhold tax from wage and salaries
+2501201 - Withhold tax from wage and salaries - Verona
+2501202 - Withhold tax from wage and salaries - 3rd parties
+2501203 - Withhold tax from wage and salary - temp.contract
+2501204 - Withhold tax fm Emloyee's contribution to pension
+2501209 - Withhold tax others
+2501211 - Withhold tax on  the bank interest
+2501300 - Interest due
+2501301 - Interest due - CAC
+2501400 - Income taxes payable, RT < 1 year
+2501500 - Income taxes payable, RT 1-5 years (LAR)
+2501600 - Income taxes payable, RT > 5 years
+2501700 - Other taxes payable, RT < 1 year
+2501701 - Other TP - tax non -resident physical persons
+2501702 - Other TP - tax convention
+2501703 - Other TP - tax non-resident juridical persons
+2501704 - Other TP - car and building
+2501705 - Other TP - Special fund ( work authority)
+2501706 - Other TP-Special fund(Guarantee fund for employee)
+2501707 - Other debts and claims with the Treasury
+2501900 - DTL on tax loss carryforwards
+2501901 - DTL on intangible assets
+2501902 - DTL on property, plant and equipment
+2501903 - DTL on inventories
+2501904 - DTL receivables and other assets
+2501905 - DTL on investments in affiliated co & asso
+2501906 - DTL on other non-current financial assets
+2501907 - DTL on provisions
+2501908 - DTL on trade and other pay(excl. oth liabilities)
+2501909 - DTL on other liabilities
+2501910 - DTL on consolidation adjustments
+2501911 - DTA netted against DTL
+2502000 - Other short term liabilities
+2502100 - Debtors with credit balances-3rd Party
+2502200 - Advance payments Keenon customers
+2502410 - Negative FV of forward FX contracts
+2502411 - Negative FV of forward FX contracts 1-5 yrs
+2502420 - Negative FV of currency options
+2502421 - Negative FV of currency options 1-5 yrs
+2502510 - CFH - negative FV of FX contracts, RT<1y
+2502511 - CFH - negative FV of FX contracts, RT1-5ys
+2502600 - Payables for security deposit < 1 year
+2502601 - Payables for security deposit > 1 year
+2503000 - Other long term liabilities
+2503001 - Other long term liabilities - cac
+2504000 - Dividend payable
+2505000 - Deferred Income, RT < 1year
+2505001 - Deferred Income RT > 1 year
+2505002 - Deferred Income from CAC
+2505003 - Deferred Income from 3rd Party
+2505004 - Deferred Income from 3rd Party - RO
+2505005 - Deferred Income from compliance audit cac
+2505006 - Deferred Income from compliance audit 3rd party
+2506000 - Tax Fund
+2600000 - Loan
+2601000 - Bank Loans
+2602000 - Loan from Scan Thor (Not in use)
+2602100 - Loan from EBI HK
+2602200 - Loan from OI Singapore
+2602300 - Loan from OVH
+2602301 - Clearing Account Otto Loan
+2602302 - Clearing account - Loan to OI USA LLC
+2602400 - Loan from OIHK
+2602500 - Loan from OI GmbH
+2602600 - Loan from Luxemburg
+2602700 - Loan from Otto/AGN Int'l Ltd
+2603100 - Loan from Scan Thor
+2609998 - Loan - fully paid
+3010001 - Commission income-cac
+3010002 - Commission income-rc
+3010003 - Commission income-3rd party
+3010004 - Commission inc. cac 19%
+3010011 - Commission income-cac VAT
+3015001 - Commission income-cac HK Direct
+3015002 - Commission income-cac HK Indirect
+3015003 - Commission income-cac Offshore Indirect
+3015004 - Commission income-cac Offshore Direct
+3015101 - Commission income-rc HK Direct
+3015102 - Commission income-rc HK Indirect
+3015103 - Commission income-rc Offshore Indirect
+3015104 - Commission income-rc Offshore Direct
+3015201 - Commission income-3rd party HK Direct
+3015202 - Commission income-3rd party HK Indirect
+3015203 - Commission income-3rd party Offshore Indirect
+3015204 - Commission income-3rd party Offshore Direct
+3020001 - Trading Sales turnover-cac
+3020002 - Trading Sales turnover-rc
+3020003 - Trading Sales turnover-3rd party
+3020004 - Trading Sales turnover cac 19%
+3020005 - Trading Sales turnover - EU
+3020006 - Trading Sales turnover - Non EU
+3020011 - Estimate sales return-cac
+3020012 - Estimate sales return-rc
+3020013 - Estimate sales return-3rd party
+3020020 - Revenue deductions to cac
+3020021 - Revenue deductions to rc
+3020022 - Revenue deductions to 3rd party
+3020023 - Revenue deductions - EU
+3020024 - Revenue deductions Non-EU
+3020025 - Rev. deduc. to 3rd part-Rabatt
+3020026 - Rev.deduc.EU-Rabatt
+3020027 - Rev. deduc.-NON EU-Rabatt
+3029999 - SUM:Trading Sales turnover
+3030000 - QC income
+3030001 - QC income-cac
+3030002 - QC income-rc
+3030003 - QC income-3rd party
+3030004 - Service fee- - cac (transport business)
+3030005 - Service fee- - 3rd party (transport business)
+3030006 - QC income - inspection failed
+3030007 - QC income - goods no show
+3030008 - QC income - unauthorized factory
+3030011 - QC Income-cac VAT
+3030013 - QC income-3rd party VAT
+3039999 - SUM:QC income
+3040000 - Labtest income
+3040001 - Labtest income-cac
+3040002 - Labtest income-rc
+3040003 - Labtest income-3rd party
+3049999 - SUM:Labtest income
+3080001 - Sales Incentive Received
+3100001 - Operational Service Fee income-cac
+3100002 - Operational Service Fee income-rc
+3100003 - Operational Service Fee income-3rd party
+3100004 - Operational Service Fee income-Asia
+3100101 - Management Service Fee income-cac
+3100102 - Management Service Fee income-rc
+3100103 - Management Service Fee income-3rd party
+3100104 - MSF income-3rd party (staff cost)
+3101010 - VPS income-3 Suisses
+3101095 - VPS income-APA
+3101105 - VPS income-Baur
+3101115 - VPS income-UVD
+3101125 - VPS income-Becquet
+3101155 - VPS income-Bon Prix
+3101175 - VPS income-Cidal S.N.C
+3101295 - VPS income-Euronova
+3101355 - VPS income-Heine
+3101505 - VPS income-La Blanche Porte
+3101509 - VPS income-OI USA LLC VPS
+3101510 - VPS income-OI FS LLC
+3101520 - VPS Income - OTTO International GMBH
+3101530 - VPS income - OIG JAG
+3101540 - VPS income - Musterbrand LLC
+3101550 - VPS Income û OIG Olsen
+3101620 - VPS Income û OIG Shell
+3101630 - VPS Income - OIG TOM
+3101640 - VPS income-Otto UK
+3101650 - VPS income-Together
+3101660 - VPS income-AGN
+3101680 - VPS income-OVH
+3101805 - VPS income-Senior Et Cie
+3101850 - VPS income-Sport Scheck
+3101904 - VPS Income-VNF
+3101905 - VPS income-Venca
+3101906 - VPS Income û OIG ARAL
+3101907 - VPS income- Schwab Versand
+3101908 - VPS income-CLN
+3101909 - VPS income-AYG
+3101910 - VPS income-Alba Moda
+3101915 - VPS income- Twenty1 APS
+3101998 - VPS income-Discontinued CAC
+3102005 - VPS income-Bernd Hummel GmbH
+3102100 - VPS income-Bonita
+3102105 - VPS income-Cintas
+3102204 - VPS income-Eddie Bauer Germany
+3102205 - VPS income-Eddie Bauer US
+3102305 - VPS income-Glac Trading
+3102350 - VPS income-Granita GLM
+3102505 - VPS income-Kiabi
+3102520 - VPS income-Klingel
+3102630 - VPS income-Merison Retail BV
+3102635 - VPS income-Newport News
+3102705 - VPS income-Pabo
+3102706 - VPS income-Pronamo
+3102720 - VPS income-PersonalizationMall
+3102805 - VPS income-Spiegel
+3102810 - VPS income-TSA
+3102820 - VPS income-EYB
+3102830 - VPS income-STU
+3102840 - VPS income-HSE
+3102850 - VPS income-(not used)
+3102998 - VPS income-Discontinued 3rd party
+3103250 - VPS income-Baumarkt Direkt
+3103251 - VPS Income-Post Service LLC (PSL-Nadom)
+3103252 - VPS income-(unused)
+3103702 - VPS income-Bonita (Trading)
+3103703 - VPS Income-C.I. Netcap
+3103705 - VPS income-Sears
+3103706 - VPS Income - OIT LC related
+3104998 - Factoring income
+3104999 - SUM:VPS income
+3106001 - Income from other services-cac
+3106002 - Income from other services-rc
+3106003 - Income from other services-3rd party
+3106004 - Income fr. other services EU
+3106005 - Income fr. other services Non-EU
+3106010 - Income f.Technology-KeenON-19%
+3106011 - Income f.Technology-KeenON-EU
+3106012 - Income f.Technology-KeenON-NON-EU
+3106020 - Income Marketing serv.KeenON-19%
+3106021 - Income Marketing serv.KeenON-EU
+3106022 - Income Marketing serv.KeenON-NON-EU
+3106030 - Income f.Sales serv-KeenON-19%
+3106031 - Income f.Sales serv-KeenON-EU
+3106032 - Income f.Sales serv-KeenON-NON-EU
+3106040 - Income f.Logistic serv-KeenON-19%
+3106041 - Income f.Logistic serv-KeenON-EU
+3106042 - Income f.Logistic serv-KeenON-NON-EU
+3108010 - B2B income-cac
+3108020 - B2B income-rc
+3108030 - B2B income-3rd party
+3108999 - SUM:B2B income
+3109100 - Compensation Income from Third Party
+3200101 - Rental income-office cac
+3200102 - Rental income-office rc
+3200103 - Rental income-office 3rd party
+3200199 - SUM:Rental income-office
+3200201 - Rental income-car park cac
+3200202 - Rental income-car park rc
+3200203 - Rental income-car park 3rd party
+3200299 - SUM:Rental income-car park
+3209999 - SUM:Rental income
+3300001 - Investment income-cac
+3300002 - Investment income-rc
+3300003 - Investment income-3rd party
+3301000 - Income from securities
+3302001 - Dividend Income from OIHK
+3302002 - Dividend Income from Italy
+3302003 - Dividend Income from Turkey
+3302004 - Dividend Income from Scan Thor Holding ApS
+3302005 - Dividend Income from OI Bulgaria
+3309999 - SUM:Investment income
+3400101 - Interest income from savings
+3400102 - Interest income from fixed deposit
+3400199 - SUM:Interest income from bank
+3400201 - Interest income (loan)-cac
+3400202 - Interest income (loan)-rc
+3400203 - Interest income (loan)-3rd party
+3400299 - SUM:Interest income (loan)
+3400301 - Other interest income-cac
+3400302 - Other interest income-rc
+3400303 - Other interest income-3rd party
+3400399 - SUM:Other interest income
+3400401 - Interest income from factoring-cac
+3400402 - Interest income from factoring-rc
+3400403 - Interest income from factoring-3rd party
+3400499 - SUM:Interest income from factoring
+3400501 - Interest income (c/a)-cac
+3400502 - Interest income (c/a)-rc
+3400503 - Interest income (c/a)-3rd party
+3400504 - Interest income 3rd party EU
+3400505 - Interest income 3rd party Non-EU
+3400599 - SUM:Interest income (c/a)
+3500000 - Other income
+3500101 - Profits disposals non-current asset (software)
+3500102 - Profits on disposals of non-current asset (PPE)
+3500103 - Profits disposals non-current asset (intangible)
+3500201 - Misc. other income - cac
+3500202 - Misc. other income - ncac
+3500203 - Income from the reversal of provisions
+3500204 - Inc reduc in allow on receiv, gen. specific allow
+3500205 - Income from receivables written off
+3500206 - Other prior period inc from consolid affiliate co
+3500207 - Other prior period income from related parties
+3500208 - Other prior period income from third parties
+3500209 - Income from car leasing (payroll)
+3500210 - Income-reversal of cost of admin employee benefits
+3500211 - Inc fm reduction in allow on loan to investee
+3500212 - Income from debt waiver of financing receivables
+3500213 - Misc.other inc. 3rd p.Non-EU
+3500214 - Misc.other inc. EU Reverse Ch
+3500215 - Income fm transfer oth pers & material costs - CAC
+3500216 - Misc. other income - non-operating (PRC)
+3500300 - DHL income-shipping box
+3500400 - Factory Assessment Income - 3rd Party
+3500410 - Factory Assessment Income - CAC
+3500500 - COD income
+3500501 - Income from Logistics by Supplier - 3rd part
+3500502 - Income from Logistics by Supplier - EU
+3500503 - Income from Logistics by Supplier - NON EU
+3500510 - Income fm customs DutyFee by Supplier-3rd part
+3500511 - Income fm customs DutyFee by Supplier-EU
+3500512 - Income fm customs DutyFee by Supplier-NON EU
+3500550 - Other Income,Fair,Marketing..by Supplier-3rd part
+3500551 - Other Income,Fair,Marketing..by Supplier-EU
+3500552 - Other Income,Fair,Marketing..by Supplier-NON EU
+3500600 - Claims received
+3500601 - Return Fee-Supplier - 3rd part
+3500602 - Return Fee-Supplier - EU
+3500603 - Return Fee-Supplier - NON EU
+3500700 - Trade discount received
+3500701 - Trade discount received EU
+3500702 - Trade discount received Non-EU
+3500800 - Canteen Revenues
+3500810 - Subsidy to advertising costs from cac
+3500820 - Subsidy to advertising costs from third parties
+3500821 - Other income - VAT 21%
+3500822 - Subsidy to advertising costs EU
+3500823 - Subsidy to advertising costs Non-EU
+3500830 - Income fm oncharge Fotocost by Supplier-3rd part
+3500831 - Income fm oncharge Fotocost by Supplier-EU
+3500832 - Income fm oncharge Fotocost by Supplier-NON EU
+3500901 - Revenue from Logistic - cac
+3500902 - Revenue from Logistic - rc
+3500903 - Revenue from Logistic - 3rd party
+3500904 - Revenue from Logistic EU
+3500905 - Revenue from Logistic Non-EU
+3500990 - Other Rev. Fm collection-KeenON
+3509999 - SUM:Other income
+3600100 - Exchange gain - comm
+3600200 - Exchange gain - staff
+3600300 - Exchange gain - other
+3600350 - Exchange gain - MAE
+3600400 - Exchange gain - unrealized
+3600500 - FX gain - forward FX contracts
+3600600 - Unrealized FX gain  - forward FX contracts
+3600700 - FX gain - currency options
+3600800 - Unrealized FX gain - currency options
+3700000 - Income from financing
+3700103 - Income from receivables mgt- 3rd party
+3700199 - SUM:Income from receivables mgt
+3700201 - Income from real factoring- cac
+3700202 - Income from real factoring- rc
+3700203 - Income from real factoring- 3rd party
+3700299 - SUM:Income from real factoring
+3700301 - Income from credit assessments- cac
+3700302 - Income from credit assessments- rc
+3700303 - Income from credit assessments- 3rd party
+3700399 - SUM:Income from credit assessments
+3709999 - SUM:Income from financing
+4000000 - EXPENSES
+4001100 - Inventories
+4001210 - Goods for mktg own customers - std value
+4001211 - Goods for own customers EU
+4001212 - Goods for own customers Non-EU
+4001213 - Goods for own customers cac
+4001220 - Goods for mktg customers -drop ship/ transit
+4001230 - Goods for mktg customers - disposal-stock
+4001299 - SUM:Goods purchased from third parties
+4001310 - Returns direct mktg own customers - std value
+4001320 - Returns mktg own customers - drop ship/transit
+4001330 - Returns direct mktg own customer -disposal-stock
+4001399 - SUM:Returns of goods employed for direct mktg
+4001410 - Goods employed for interco sell - std value
+4001420 - Returns from intercompany selling - standard value
+4001499 - SUM:Goods employed for cross selling
+4001510 - Goods for own stock sold to group companies
+4001520 - Goods of stock disposal sold to group companies
+4001530 - Goods employed for transfer of disposal stock
+4001599 - SUM:Goods sold / contributions to group company
+4001610 - Acquisition costs of expected returns
+4001620 - Handling costs of goods expected to be returned
+4001699 - SUM:Cost and handling goods to be returned
+4001710 - Goods - wholesale - disposal-stock - std. value
+4001799 - SUM:Goods third parties - disposal stock
+4001810 - Goods employed - store selling - standard value
+4001820 - Goods - store selling - disposal-stock - std value
+4001899 - SUM:Goods third parties - store selling
+4001910 - Goods for merchd by related parties - std value
+4001920 - Materials for disposal stock from related parties
+4001999 - SUM:Goods employed from related parties
+4002010 - Goods by consolidated affiliated co. - std value
+4002020 - Goods for disposal stock from affiliated co.
+4002099 - SUM:Goods from consolidated affiliated co.
+4002110 - Goods employed  - co-op busines - std value
+4002120 - Returns goods - co-op business - std value
+4002130 - Goods - total write-offs / scrap of goods
+4002140 - Goods employed - sample goods
+4002150 - Goods- other sales to third parties - std value
+4002151 - Purchase extra CEE
+4002160 - Goods- disposal- other sales to 3rd parties
+4002170 - Inventory provision for loss on disposal
+4002199 - SUM:Goods purchased from third parties - other
+4002210 - Translation differences HKD
+4002220 - Translation differences USD
+4002230 - Other translation differences
+4002299 - SUM:Price variance - additional costs
+4002310 - Adj standard values of goods employed - inland
+4002320 - Adj std values of goods  - foreign countries
+4002330 - Adj std values of goods employed - others
+4002331 - Inventory differences - warehouse stock
+4002399 - SUM:Adj (revaluate inventory at standard costs)
+4002400 - Corrections in carrying amounts, inventory mgt
+4002500 - Changes in the adjustment of the costs of purchase
+4004010 - Freight charges and transportation
+4004011 - Freight and transportation cac
+4004012 - Freight and transportation EU
+4004013 - Freight and transportation Non-EU
+4004020 - Packaging Charges
+4004030 - Declaration Fee and customs duties
+4004031 - Declaration fee and customs cac
+4004040 - Tooling & Moulding Charges
+4004050 - High Security Bolt Seal
+4004061 - Subcontractors-cac
+4004062 - Subcontractors-rc
+4004063 - Subcontractors-3rd party
+4004071 - Assembly and reworking costs-cac
+4004072 - Assembly and reworking costs-rc
+4004073 - Assembly+reworking, labelling Supplier - 3rd Part
+4004074 - Assembly+reworking, labelling Supplier- EU
+4004075 - Assembly+reworking, labelling Supplier- NON EU
+4004080 - Insurance
+4004090 - Costs of quality assurance
+4004091 - Cost of quality insurance cac
+4004100 - Expenses for other services - CAC
+4004103 - Miscellaneous services 3rd party (SCS)
+4004104 - Misc. services 3rd party EU
+4004105 - Misc. services 3rd party Non-EU
+4004140 - Other costs from Supplier- 3rd Part
+4004141 - Other costs from Supplier- EU
+4004142 - Other costs from Supplier- NON EU
+4009999 - SUM:Cost of Sales
+4011001 - Salaries - Local
+4011002 - Salaries - Expatriates
+4011003 - Salaries - Others
+4011011 - Salaries QC contractor - Local
+4011012 - Salaries QC contractor - Expatriates
+4011013 - Salaries QC contractor - Others
+4011014 - Additional assistance fund
+4011015 - INAIL Employee Milan
+4011016 - INAIL Employee Verona
+4011017 - Salary - Meal allowance (Non taxable)
+4011018 - Capital-building saving schemes
+4011021 - Overtime Salaries - Local
+4011022 - Overtime Salaries - Expatriates
+4011023 - Overtime Salaries - Others
+4011029 - SUM:Overtime Salaries
+4011031 - 13th Salaries - Local
+4011032 - 13th Salaries - Expatriates
+4011033 - 13th Salaries - Others
+4011039 - SUM:13th Salaries
+4011041 - 14th Salaries - Local
+4011042 - 14th Salaries - Expatriates
+4011043 - 14th Salaries - Others
+4011049 - SUM:14th Salaries
+4011051 - Housing - Local
+4011052 - Housing - Expatriates
+4011053 - Housing - Others
+4011059 - SUM:Housing
+4011061 - Temporary/Contract Staff - Local
+4011062 - Temporary/Contract Staff - Expatriates
+4011063 - Temporary/Contract Staff - Others
+4011069 - SUM:Temporary/Contract Staff
+4011071 - Severance Payment - Local
+4011072 - Severance Payment - Expatriates
+4011073 - Severance Payment - Others
+4011079 - SUM:Severance Payment
+4011081 - Salaries - Consultant Fee Local
+4011082 - Salaries - Consultant Fee Expatriates
+4011083 - Salaries - Consultant Fee Other
+4011084 - Cost for granting participation rights
+4011085 - Expense from allocation to anniversary obligations
+4011086 - Cost of pre-retirement PT work/early retirement
+4011087 - Misc. wages and salaries
+4011198 - Personnel expenses ã effects from Cash Flow Hedge
+4011199 - SUM:Salaries and wages
+4011201 - Misc. Bonuses - Local
+4011202 - Misc. Bonuses - Expatriates
+4011203 - Misc. Bonuses - Others
+4011209 - SUM:Misc. Bonuses
+4011301 - Additional Housing Allowance - Local
+4011302 - Additional Housing Allowance - Expatriates
+4011303 - Additional Housing Allowance - Others
+4011309 - SUM:Additional Housing Allowance
+4011311 - Contract & Agency Fees - Local
+4011312 - Contract & Agency Fees - Expatriates
+4011313 - Contract & Agency Fees - Others
+4011319 - SUM:Contract & Agency Fees
+4011331 - Misc. Moving Costs - Local
+4011332 - Misc. Moving Costs - Expatriates
+4011333 - Misc. Moving Costs - Others
+4011339 - SUM:Misc. Moving Costs
+4011341 - Utility Expenses - Local
+4011342 - Utility Expenses - Expatriates
+4011343 - Utility Expenses - Others
+4011344 - Home Maintenance - Refund to Expatriates
+4011349 - SUM:Utility Expenses
+4011351 - Rental Reimbursement - Local
+4011352 - Rental Reimbursement - Expatriates
+4011353 - Rental Reimbursement - Others
+4011359 - SUM:Rental Reimbursement
+4011401 - Accident Insurance - Local
+4011402 - Accident Insurance - Expatriates
+4011403 - Accident Insurance - Others
+4011409 - SUM:Accident Insurance
+4011411 - Clubmembership - Local
+4011412 - Clubmembership - Expatriates
+4011413 - Clubmembership - Others
+4011419 - SUM:Clubmembership
+4011421 - Employees Compensation - Local
+4011422 - Employees Compensation - Expatriates
+4011423 - Employees Compensation - Others
+4011429 - SUM:Employees Compensation
+4011431 - Homeleave - Local
+4011432 - Homeleave - Expatriates
+4011433 - Homeleave - Others
+4011439 - SUM:Homeleave
+4011441 - Medical Expenses - Local
+4011442 - Medical Expenses - Expatriates
+4011443 - Medical Expenses - Others
+4011449 - SUM:Medical Expenses
+4011451 - Misc. Benefits - Local
+4011452 - Misc. Benefits - Expatriates
+4011453 - Misc. Benefits - Others
+4011454 - Misc. Benefits - Other social expenses
+4011459 - SUM:Misc. Benefits
+4011461 - Misc. Insurance Premium - Local
+4011462 - Misc. Insurance Premium - Expatriates
+4011463 - Misc. Insurance Premium - Others
+4011469 - SUM:Misc. Insurance Premium
+4011471 - Misc. Kid Expenses - Local
+4011472 - Misc. Kid Expenses - Expatriates
+4011473 - Misc. Kid Expenses - Others
+4011479 - SUM:Misc. Kid Expenses - Others
+4011481 - Tax Refund - Local
+4011482 - Tax Refund - Expatriates
+4011483 - Tax Refund - Others
+4011487 - Employer Tax
+4011489 - SUM:Tax Refund
+4011491 - Travel Allowance - Local
+4011492 - Travel Allowance - Expatriates
+4011493 - Travel Allowance - Others
+4011499 - SUM:Travel Allowance
+4011501 - Visa Fees - Local
+4011502 - Visa Fees - Expatriates
+4011503 - Visa Fees - Others
+4011509 - SUM:Visa Fees
+4011511 - Paid Holiday - Local
+4011512 - Paid Holiday - Expatriates
+4011513 - Paid Holiday - Others
+4011519 - SUM: Paid Holiday
+4011601 - Misc. Pension Expenses - Local
+4011602 - Misc. Pension Expenses - Expatriates
+4011603 - Misc. Pension Expenses - Others
+4011604 - Employer's share - P.F.
+4011605 - Employer's share -E. P.F.
+4011606 - Admn. Charges on P.F.
+4011607 - Contn to DLIS
+4011608 - Admin. Charges on DLIS
+4011609 - SUM:Misc. Pension Expenses
+4011610 - Quas Quadrifor
+4011611 - Social Security - Local
+4011612 - Social Security - Expatriates
+4011613 - Social Security - Others
+4011614 - Social Security - paid annual leave
+4011615 - Social Security - Consultant
+4011616 - Social Security - Bonus
+4011617 - Social Security - Manager
+4011620 - Direct insurance (e.g. life insurance)
+4011621 - Premiums to pension institutions
+4011622 - Premiums to state pension plans
+4011623 - Current service cost (pensions)
+4011624 - Amortisation of actuarial gain/loss (pension)
+4011625 - Past service cost (pensions)
+4011626 - Effects from plan curtail & settle (pensions)
+4011627 - Effects from limit in IAS 19.58 (b) (pensions)
+4011628 - Exp from alloc to provision  pensions - local GAAP
+4011629 - Inc from reversal of pension provision -local GAAP
+4011630 - Clearing account advances INPS
+4011631 - Clearing account advances INPS  Verona
+4011632 - Retirement incentive
+4011633 - Labor insurance contribution
+4011634 - Welfare Costs
+4011635 - Expense for continued salary payments after death
+4011636 - Costs of administering employee benefits
+4011699 - SUM:Social security & Pension
+4011999 - SUM:Staff Costs
+4012100 - FT Air tickets
+4012110 - FT Hotel
+4012120 - FT Allowances
+4012130 - FT Transportation
+4012140 - FT Others
+4012510 - FT QC Cambodia
+4012520 - FT QC Vietnam
+4012530 - FT QC Mauritius
+4012999 - SUM:Foreign Traveling Total
+4013100 - DT Air tickets
+4013110 - DT Hotel
+4013120 - DT Allowances
+4013130 - DT Transportation
+4013140 - DT Others
+4013150 - DT OT Taxi
+4013999 - SUM:Domestic Traveling Total
+4014100 - Telephone - local
+4014110 - Telephone - overseas
+4014115 - Telephone - mobile
+4014200 - Fax
+4014300 - VPN/Internet
+4014400 - WAN
+4014500 - Others
+4014999 - SUM:Communication
+4015110 - QC inspection fee-CAC
+4015120 - QC inspection fee-3rd party
+4015210 - QC models
+4015310 - QC-Labtest charges
+4015320 - QC-Drop test
+4015330 - QC-Calibration test
+4015410 - Sample cost
+4015415 - Sample cost - CAC
+4015420 - Sample declaration cost
+4015430 - Film development
+4015999 - SUM:Samples, Labtest & QC Expenses
+4016100 - Postage
+4016110 - Courier
+4016150 - Entertainment-customer
+4016160 - Gift-customer
+4016200 - Entertainment-employee
+4016210 - Welfare/ Gift to Employee
+4016211 - EBI performance award
+4016212 - Bauer award
+4016220 - Pantry expenses
+4016250 - Printing
+4016260 - Stationery
+4016270 - Books and magazines
+4016300 - Equipment rent/lease-copying machine
+4016310 - Equipment rent/lease-telephone
+4016315 - Equipment rent/lease-EDP
+4016320 - Equipment rent/lease-Other office equipment
+4016340 - Plant rental
+4016350 - Repairs and maintenance-fax
+4016355 - Repairs and maintenance-telephone
+4016360 - Repairs and maintenance-copying machine
+4016365 - Repairs and maintenance-EDP
+4016370 - Repairs and maintenance-Leasehold improvement
+4016375 - Repairs and maintenance-Furniture
+4016380 - Repairs and maintenance-Other office equipment
+4016385 - Repairs and maintenance-building home
+4016390 - Repairs and maintenance-air-conditioning
+4016395 - Repairs and maintenance-QC equipment
+4016396 - Repairs and maintenance - spare part
+4016400 - Fuel
+4016401 - Fuel ( non deductible) - Romania
+4016410 - Repairs and maintenance-motor vehicle
+4016420 - Car hiring expenses
+4016421 - Car hiring expenses - (Romania transport business)
+4016422 - Leasing Cars
+4016430 - Tunnel toll, vehicle tax, licence
+4016440 - Car expenses
+4016450 - Claim settlement - Trading -cac
+4016455 - Claim settlement - Vendors (Trading-cac)
+4016458 - Claim settlement - Trading - 3rd party
+4016459 - Claim settlement - Vendors (Trading-3rd party)
+4016460 - Claim settlement - Sourcing (cac & 3rd party)
+4016465 - Claim settlement-Vendors(Sourcing cac & 3rd party)
+4016470 - Commission reimbursement
+4016480 - Small claim
+4016500 - Staff recruitment
+4016550 - Management training-in-house
+4016555 - Management training-external
+4016558 - Management trainee - overseas
+4016560 - Training-in-house
+4016565 - Training-external
+4016570 - Trainee-in-house
+4016575 - Training material-in-house
+4016580 - Training material-external
+4016600 - Bank charges
+4016610 - Card membership fee
+4016650 - Mis. General Business Expenses
+4016651 - Mis. Gen. Bus. Exp -(Baltic-non operation (OA))
+4016652 - Fees and contributions
+4016653 - Other period expenses 3rd party
+4016655 - Other Gen.Exp.(Collection)-KeenON
+4016656 - Misc. other expense - non-operating (PRC)
+4016660 - Donation
+4016661 - Archiving costs
+4016665 - Other operating exp - effect from Cash Flow Hedges
+4016670 - Small value items
+4016671 - Small value items (Baltic non - operating (VAT))
+4016672 - IT costs - small value purchases
+4016673 - Expenses for tools
+4016680 - Advisory and supervisory board fees
+4016690 - Staff messing for Union
+4016700 - Loss disposal of non-current assets (software)
+4016703 - Loss disposal of non-current assets (intangible)
+4016710 - Loss on disposal of non-current assets (PPE)
+4016720 - Factory Assessment Expenses - CAC
+4016730 - Write Down of Current Assets
+4016800 - Bad debt written off
+4016801 - Write-off of receivables and minor debit balances
+4016802 - Inc in allow for receive, general specific allow
+4016803 - Non deductible expenses
+4016900 - Exp cost allocation oth personnel & material - cac
+4016901 - Expense from the transfer of IT costs - cac
+4016902 - Expenses for recylce package material
+4016903 - Written off labels
+4016904 - Material not stored
+4016905 - Contingency liabilities
+4016906 - Shipping costs charged by CAC
+4016907 - Expen. Int. Alloc. Other pers./material costs CAC
+4017101 - Rent-office
+4017102 - Rent-home
+4017103 - Rent-office carpark
+4017104 - Rent-Warehouse
+4017111 - Rent cac-office
+4017112 - Rent cac-home
+4017113 - Rent cac-office carpark
+4017114 - Fixed lease payments  to third parties
+4017151 - Rates-office
+4017152 - Rates-home
+4017153 - Rates-office carpark
+4017201 - Power cost-office
+4017202 - Power cost-home
+4017211 - Air-conditioner fee-office
+4017221 - Water charge-office
+4017222 - Water charge-home
+4017231 - Building management fee-office
+4017232 - Building management fee-home
+4017233 - Building management fee-car park
+4017241 - Cleaning-office
+4017242 - Cleaning-home
+4017251 - Security-office
+4017999 - SUM:Rent & Utilities
+4018110 - Public liabilities insurance
+4018120 - Property all risk insurance
+4018130 - Money all risk insurance
+4018140 - Computer all risk insurance
+4018150 - Employees insurance
+4018160 - Motor vehicles insurance
+4018170 - Other insurance
+4018175 - Other Insurance û CAC
+4018180 - Fire insurance
+4018200 - Credit Insurance exp - 3rd party
+4018510 - Audit fee
+4018520 - Legal and professional fee
+4018521 - Legal and professional fee, non recurring
+4018522 - Legal and professional fee, recurring
+4018530 - Consulting fee
+4018531 - Business consulting costs
+4018532 - IT consulting costs
+4018533 - Tax consulting costs, non-recurring
+4018534 - Tax consulting costs, recurring
+4018535 - Consulting costs for M&A
+4018536 - Actuarial services from third parties
+4018537 - Work performance from 3rd parties/temp employment
+4018538 - Consultancy costs for process and org optimization
+4018539 - Consultancy costs for strategy
+4018540 - Consulting costs related to marketing
+4018541 - Consultancy costs for IT-projects
+4018542 - Consultancy costs for regular IT-product support
+4018580 - Professional fee - CAC
+4018999 - SUM:Insurance, Professional Fees
+4019000 - Interest Expenses
+4019100 - Bank overdraft interest
+4019200 - Bank loan interest (long term)
+4019250 - Bank loan interest (short term)
+4019300 - Loan interest -CAC loan
+4019301 - Loan interest -CAC- Equity HNT-US
+4019350 - Loan interest -CAC current account
+4019400 - Other interest
+4019401 - Int. exp. for anniversary obligations (personnel)
+4019402 - Interest cost (pensions)
+4019403 - Int.exp.chg in PV of liab.;provisions to cac
+4019404 - Int.exp.chg in PV of liab.;provisions to 3rd
+4301000 - Credit risks, provisions and refinancing
+4301001 - Credit insurance exp-cac
+4301002 - Credit insurance exp-rc
+4301003 - Credit insurance exp-3rd party
+4301099 - SUM:Credit insurance exp
+4301101 - Provision for receivable mgt-cac
+4301102 - Provision for receivable mgt-rc
+4301103 - Provision for receivable mgt-3rd party
+4301199 - SUM:Provision for receivable mgt
+4301201 - Refinancing interest paid-cac
+4301202 - Refinancing interest paid-rc
+4301203 - Refinancing interest paid-3rd party
+4301299 - SUM:Refinancing interest paid
+4301301 - Exp. for Info. about customers-cac
+4301302 - Exp. for Info. about customers-rc
+4301303 - Exp. for Info. about customers-3rd party
+4301399 - SUM:Exp. for Info. about customers
+4301999 - SUM:Credit risks, provisions and refinancing
+4311000 - Marketing & Trading expenses
+4311010 - Promotional materials
+4311020 - Workshop
+4311030 - Advertising
+4311031 - Advertising Royalty (OI)
+4311032 - Advertising Payment to Licencor
+4311033 - Advertising costs charged by cac
+4311040 - Trade fair
+4311050 - Other marketing expenses
+4311051 - Discount for claims-KeenON
+4311060 - Brochure & Catalog
+4311070 - Showroom Rent
+4311080 - Subsidy Advertising cost-KeenON
+4311201 - License fee
+4311202 - Royalty
+4311203 - After sale service
+4311204 - Trading Costs - Call Center
+4311205 - Delivery Costs -Third Party
+4311206 - Warehouse Rent
+4311207 - Sales Incentives Paid
+4311208 - Costs for Electronics Payments
+4311209 - Other trading cost
+4311210 - Delivery Costs -CAC
+4311211 - Delivery Costs -rp
+4311212 - Commissions and Compensations 3rd party
+4311213 - shipp./handl. costs custom nat
+4311214 - shipp./handl. costs custom EU
+4311215 - shipp./handl. costs custom Non-EU
+4311999 - SUM:Marketing & Trading expenses
+4401000 - Commission paid
+4401100 - Commission paid-cac
+4401101 - Direct commission paid-cac Singapore
+4401102 - Direct commission paid-cac Sri Lanka
+4401103 - Direct commission paid-cac Thailand
+4401104 - Direct commission paid-cac Korea
+4401105 - Direct commission paid-cac Shanghai
+4401106 - Direct commission paid-cac Xiamen
+4401107 - Direct commission paid-cac EBI Ltd
+4401108 - Direct commission paid-cac Turkey
+4401109 - Direct commission paid-cac Bangladesh
+4401110 - Direct commission paid-cac Melcosa Vietnam
+4401111 - Direct commission paid-cac OAGN Mumbai
+4401131 - Indirect commission paid-cac Singapore
+4401132 - Indirect commission paid-cac Sri Lanka
+4401133 - Indirect commission paid-cac Thailand
+4401134 - Indirect commission paid-cac Korea
+4401135 - Indirect commission paid-cac Shanghai
+4401136 - Indirect commission paid-cac Shanghai IC
+4401137 - Indirect commission paid-cac Xiamen
+4401138 - Indirect commission paid-cac Qingdao IC
+4401139 - Indirect commission paid-cac Dongguan IC
+4401140 - Indirect commission paid-cac EBI Ltd
+4401141 - Indirect commission paid-cac Turkey
+4401142 - Indirect commission paid-cac Bangladesh
+4401143 - Indirect commission paid-cac Melcosa Vietnam
+4401144 - Indirect commission paid-cac OI Qingdao
+4401190 - Commission paid-cac Trading Purchase
+4401198 - Unused commission paid-cac
+4401199 - SUM:Commission paid-cac
+4401200 - Commission paid-rc
+4401300 - Commission paid-3rd party
+4401310 - Commission paid-3rd party-Trading purchase
+4401351 - Commission paid-3rd party Aliaco
+4401352 - Commission paid-3rd party Kasatex Mauritius
+4401353 - Commission paid-3rd party Matrix
+4401354 - Commission paid-3rd party Melcosa Philippines
+4401355 - Commission paid-3rd party Melcosa Vietnam
+4401356 - Commission paid-3rd party Pakistan
+4451000 - Service Fee expenses
+4451110 - Operational Service Fee-cac
+4451120 - Operational Service Fee-rc
+4451130 - Operational Service Fee-3rd party
+4451210 - Management Service Fee-cac
+4451220 - Management Service Fee-rc
+4451230 - Management Service Fee-3rd party
+4451999 - SUM:Service Fee expenses
+4501110 - Depreciation-Software
+4501120 - Depreciation-Goodwill
+4501130 - Depreciation-Franchises
+4501135 - Depreciation-Other Intangible asset
+4501140 - Depreciation-Land offices
+4501150 - Depreciation-Land homes
+4501160 - Depreciation-Building offices
+4501170 - Depreciation-Building homes
+4501180 - Depreciation-Lease. Improvements offices
+4501190 - Depreciation-Lease. Improvements homes
+4501200 - Depreciation-Furniture offices
+4501201 - Accelerated  Depreciation-Furniture offices
+4501210 - Depreciation-Furniture homes
+4501220 - Depreciation-EDP Equipment
+4501221 - Accelerated Depreciation-EDP Equipment
+4501230 - Depreciation-Telecommunication
+4501231 - Accelerated Depreciation-Telecommunication
+4501240 - Depreciation-QC Equipment
+4501250 - Depreciation-Other Office Equipment
+4501251 - Accelerated Depreciation-Other office equipment
+4501260 - Depreciation-Copying machine
+4501270 - Depreciation-Motor Vehicles
+4501280 - Depreciation-Operational Equipment
+4501899 - SUM:Depreciation
+4501910 - Amortisation of non-current assets
+4501998 - SUM:Amortisation
+4501999 - SUM:Depreciation & Amortization
+4506000 - Gain/(loss) on company investment
+4506110 - Gain/ (Loss) on disposal of CAC
+4506120 - Gain/ (Loss) on disposal of non CAC
+4506999 - SUM: Gain/(loss) on company investment
+4601000 - Exchange loss
+4601100 - Exchange loss - comm
+4601200 - Exchange loss - staff
+4601300 - Exchange loss - other
+4601350 - Exchange loss - MAE
+4601400 - Exchange loss - unrealized
+4601500 - FX loss - forward FX contracts
+4601600 - Unrealized FX loss - forward FX contracts
+4601700 - FX loss - currency options
+4601800 - Unrealized FX loss - currency options
+4701100 - IT development costs
+4701200 - Design House costs
+4701300 - Re-organization costs
+4701400 - Non-operating expenses (entertainmentt)
+4701401 - Non operating expense (other administration costs)
+4701402 - Non operating expense (VAT)
+4701403 - Impairment losses on investments in CAC
+4701404 - Impairment Losses on Non-Current Assets
+4701405 - Expenses from waiving financial receivables - cac
+4701499 - SUM: Non-operating expense - others
+4701999 - SUM:Non-operating expenses
+4801000 - Taxes
+4801100 - Income tax
+4801150 - Corp tax contine operation, current yr
+4801151 - Corp tax continue operation, prior yr
+4801152 - Inc reversal of provision corp tax - continue op
+4801200 - Other local tax
+4801201 - Other inc taxes continue operation, current yr
+4801202 - Other inc taxes continue operation, prior yr
+4801203 - Inc reversal of provisions(other inc tax) prior yr
+4801204 - Trade tax continue operation, current yr
+4801205 - Trade tax continue operation, prior yr
+4801206 - Inc reversal of provisions (trade tax), prior yr
+4801207 - Property tax
+4801208 - Natural resources tax
+4801209 - Land tax
+4801210 - Corporate risk duty
+4801211 - Added value tax
+4801212 - Tax of representative costs
+4801213 - Social tax
+4801214 - VAT for sales
+4801215 - VAT for purchase
+4801216 - Non-resident tax
+4801217 - VAT paid in Europe
+4801218 - Other local tax - PRC
+4801300 - Deferred tax
+4801301 - Deferred taxes continue operation, current yr
+4801302 - Deferred taxes continue operation, prior yr
+4901100 - Interim dividend
+4901200 - Final dividend
+4901300 - Special Dividend
+4901999 - SUM:Dividend payment
+4999997 - Discontinued expenses
+4999998 - SUM:Expenses
+4999999 - SUM:All income and expenses
+5999999 - Discontinued items
+6201000 - Turnover
+6201100 - Counter Account:Turnover
+6201101 - Counter Account:Turnover - cac
+6201102 - Counter Account:Turnover - ncac
+6205100 - Turnover HK Direct
+6205200 - Turnover HK Based Off-Shore (Indirect)
+6205300 - Turnover Off-Shore Direct
+6205400 - Turnover Off-Shore Indirect
+6301001 - Debt collection volume-cac
+6301002 - Debt collection volume-rc
+6301003 - Debt collection volume-3rd party
+6302001 - Factoring volume-cac
+6302002 - Factoring volume-rc
+6302003 - Factoring volume-3rd party
+6308000 - OHC Business Volume
+6309999 - Counter Business Volume
+6599999 - Sourcing Volume
+6600001 - Closing B/S
+6600002 - Opening B/S
+6999999 - Discontinued items
+7999999 - Discontinued items
+8000000 - MR Account
+8180100 - Counter Account: OSF & MSF
+8365101 - OSF income - CAC (Corp Service Fee)
+8365102 - MSF income - CAC
+8365103 - OfficeSF income - CAC
+8445101 - OSF expense - CAC (Corp Service Fee)
+8445102 - MSF expense - CAC
+8445103 - OfficeSF expense - CAC
+8499999 - SUM:MR Account: OSF & MSF
+8500001 - Salary MR Only
+8501000 - Severance Payment - Local (P&L item)
+8501100 - Acc. for severance payment - Local (B/S item)
+8601000 - Internal QC Inspection
+8601100 - Counter Internal QC Inspection
+8999999 - SUM:MR Account
+9999999 - Dummy
+Check Balance
+[Account].[4599999]
+All Account Types
+AT00 - Posting
+AT01 - Heading
+AT02 - Total
+AT03 - Begin-Total
+AT04 - End-Total
+All Descriptive Accounts
+Cost of Sales
+Service Income
+Special
+Income Statement
+6200000 - Sourcing Volume
+Net Profit / (Loss)
+EBT (MR)
+Operating Income (MR)
+Gross Profit
+Revenues (MR)
+3000000 - INCOME
+3106000 - Income From Services
+3108000 - B2B income
+3200000 - Rental income
+3010000 - Commission income
+3019999 - SUM:Commission income
+4401999 - SUM:Commission paid
+3020000 - Trading Sales turnover
+3101000 - VPS income
+3101999 - SUM:VPS income from agency-CAC
+3102999 - SUM:VPS income from agency-3rd party
+3103499 - SUM:VPS income from trading-CAC
+3103999 - SUM:VPS income from trading-3rd party
+Cost of Goods Sold (MR)
+4001000 - Cost of Sales
+Operating expenses
+4599999 - SUM: Operating Expenses
+8999998 - Discontinued items
+4311199 - Sum: Marketing Expense
+4311299 - Sum: Trading Cost
+4011000 - Staff Costs
+4011997 - SUM: Staff Costs - Expatriates
+4011020 - SUM: Salaries - Expatriates
+4011398 - SUM:Staff - Rent and utilities - Expat
+4011598 - SUM:Benefit - Expatriates
+4011618 - SUM:Social security - Expatriates
+4011998 - SUM: Staff Costs - Local
+4011019 - SUM:Salaries
+4011299 - SUM:Bonus
+4011399 - SUM:Staff - Rent and utilities
+4011599 - SUM:Benefit
+4011619 - SUM:Social security
+4012000 - Foreign Traveling
+4013000 - Domestic Traveling
+4014000 - Communication
+4015000 - Samples, Labtest & QC Expenses
+4015199 - SUM:QC inspection fee
+4015299 - SUM:QC models
+4015399 - SUM:Labtest charges
+4015499 - SUM:Sample cost / Film development
+4016000 - Other General Expenses
+4016149 - SUM:Postage and courier
+4016199 - SUM:Entertainment-customer
+4016249 - SUM:Entertainment-employee
+4016299 - SUM:Printing and stationery
+4016349 - SUM:Equipment rent/lease
+4016399 - SUM:Repairs and maintenance
+4016449 - SUM:Car expenses
+4016499 - Claim settlement/Comm. Deduction
+4016549 - SUM:Staff recruitment
+4016599 - SUM:Staff training/development
+4016649 - SUM:Bank charges
+4016699 - SUM:Other General Business Expenses
+4016749 - SUM:Other expenses
+4016999 - SUM:Other General Expenses
+4017000 - Rent & Utilities
+4017149 - Office Rent
+4017599 - Office Utilities
+4018000 - Insurance, Professional Fees
+4018499 - SUM:Insurance
+4018599 - SUM:Professional Fees
+4501000 - Depreciation & Amortization
+3400000 - Interest income
+3409999 - SUM:Interest income
+4019999 - SUM:Interest Expenses
+3600000 - Exchange gain
+3609999 - SUM:Exchange gain
+4601999 - SUM:Exchange loss
+4701000 - Non-operating expenses
+3100199 - SUM:Management Service Fee income
+4451299 - SUM:Management Service Fee
+3100999 - SUM:Service Fee income
+4701199 - SUM:IT development costs
+4701299 - SUM:Design House costs
+4701399 - SUM:Re-organization costs
+3100000 - Service Fee income
+3100099 - SUM:Operational Service Fee income
+4451199 - SUM:Operational Service Fee
+Income Statement codes not in MR
+Income Statement codes not used
+4801999 - SUM:Taxes
+4901000 - Dividend payment
+B/S
+ASSETS
+Fixed Assets
+1259999 - SUM:Fixed Assets
+1010000 - Intangible Assets
+1011999 - SUM:Software
+1012999 - SUM:Goodwill
+1013999 - SUM:Franchise / Usage Right
+1019909 - SUM: Other Intangible Asset
+1100000 - Land and Building
+1101099 - SUM:Land offices
+1101199 - SUM:Land homes
+1102099 - SUM:Building offices
+1102199 - SUM:Building homes
+1110000 - Leasehold Improvements
+1120000 - Furniture
+1130000 - Office Equipment
+1131099 - SUM:EDP Equipment
+1131199 - SUM:Telecommunication
+1131299 - SUM:QC Equipment
+1131399 - SUM:Other Office Equipment
+1131599 - SUM:Operational Equipment
+1140000 - Motor Vehicles
+Investments
+1400000 - Investments
+1400499 - SUM:Investments-CAC
+1400599 - SUM:Investments-3rd party
+Loans - CAC
+1405499 - SUM:Loans-CAC
+2602999 - SUM:Loans from CAC
+1405000 - Loans
+Long Term Deposits
+1406000 - Long Term Deposits
+Accounts Receivables
+1600000 - Accounts Receivable
+1605999 - SUM: AR Customers - CAC
+Provision for bad debt
+Liquid Assets
+1599999 - SUM:Liquid Assets
+1501999 - SUM:Cash on hand
+1559999 - SUM:Bank Balance
+1502199 - SUM:ABN AMRO (ABN)
+1502299 - SUM:Bank of China (BOC)
+1502399 - SUM:Deutsche Bank (DB)
+1502499 - SUM:HSBC
+1502599 - SUM:Standard Chartered Bank (SCB)
+1569999 - SUM:Bank Deposits
+1561099 - SUM:Fixed deposits - ABN AMRO
+1561199 - SUM:Fixed deposits - Deutsche Bank
+1561299 - SUM:Fixed deposits - Standard Chartered Bank
+Other Assets
+1799999 - SUM:Other Assets
+1602999 - SUM: Acc. Rec. for personnel
+1701999 - SUM:Short term deposits
+1702999 - SUM:Prepayments
+1704999 - SUM: Tax and deferred tax
+1700000 - Deposits and Prepayments
+Inventory
+1350000 - Inventory
+1350199 - SUM:Inventory - Merchandise
+1350299 - SUM:Inventory - Merchandise at third party
+1350399 - SUM:Inventory - Interim account
+1350499 - SUM:Inventory - Correction value
+1351999 - SUM:Raw materials, consumables and supplies
+1352999 - SUM:Finished goods and services
+EQUITY & LIABILITIES
+EQUITY
+2099999 - SUM:Equity and Profit / Loss
+2004999 - SUM:Retained P&L b/f
+Subscribed Capital
+2000100 - Equity and Profit / Loss
+Retained Earnings/Loss b/f
+Other Reserves
+2008999 - SUM:Accumulated income/expense not affecting P&L
+LIABILITIES
+2000000 - LIABILITIES
+2601999 - SUM:Loan from banks
+2300000 - Accruals
+2399999 - SUM:Accruals
+2400000 - Accounts Payable
+2499999 - SUM:Accounts Payable
+2500000 - Other liabilities
+2603999 - SUM:Loans from 3rd party
+2599999 - SUM:Other liabilities
+Balance Sheet codes not used
+1000000 - ASSETS
+3300000 - Investment income
+2999999 - Check Balance

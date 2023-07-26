@@ -1,0 +1,234 @@
+﻿283,100
+284,"Sys Menu Application Entry - Caption"
+11,20201005064154
+274,
+18,0
+275,
+278,0
+281,0
+270,225
+}Applications
+00 Menu
+00 Menu\Menu.blob
+99 Admin
+99 Admin\Admin Dimension
+99 Admin\Admin Menu
+99 Admin\Admin Security
+99 Admin\Admin Workbench
+99 Admin\Admin Workflow
+99 Admin\Sys Apliqode
+99 Admin\Sys Environment
+99 Admin\Sys Maintenance
+99 Admin\Admin Dimension\UDC
+99 Admin\Admin Dimension\UDC\Dim UDC Setting.blob
+99 Admin\Admin Menu\Cubes
+99 Admin\Admin Menu\Menu Setting.blob
+99 Admin\Admin Menu\Sys Menu - Button.view
+99 Admin\Admin Menu\Sys Menu - Favorite Page.view
+99 Admin\Admin Menu\Sys Menu - Page.view
+99 Admin\Admin Menu\Sys Menu - Para.view
+99 Admin\Admin Menu\Cubes\Sys Menu - Favorite Page.view
+99 Admin\Admin Security\Data Security
+99 Admin\Admin Security\Functional Security
+99 Admin\Admin Security\User Group Assignment
+99 Admin\Admin Security\Data Security\Data Security Assignment.xlsx.blob
+99 Admin\Admin Security\Functional Security\Functional Security Object Assignment.xlsx.blob
+99 Admin\Admin Security\User Group Assignment\User Group Assignment.xlsx.blob
+99 Admin\Admin Workbench\Workbench Setting.blob
+99 Admin\Admin Workbench\Workbench.blob
+99 Admin\Admin Workflow\Workflow Setting.blob
+99 Admin\Admin Workflow\Workflow Status.blob
+99 Admin\Sys Apliqode\0 Shortcuts
+99 Admin\Sys Apliqode\1 Security
+99 Admin\Sys Apliqode\2 Housekeeping
+99 Admin\Sys Apliqode\3 Catalog Reference
+99 Admin\Sys Apliqode\4 TM1 Control Cubes
+99 Admin\Sys Apliqode\5 Reconciliation
+99 Admin\Sys Apliqode\6 Process Execution Item
+99 Admin\Sys Apliqode\7 Copy Views
+99 Admin\Sys Apliqode\8 Dimension Management
+99 Admin\Sys Apliqode\APQ Menu.blob
+99 Admin\Sys Apliqode\APQ WEB MENU.blob
+99 Admin\Sys Apliqode\0 Shortcuts\1 Bedrock TI
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes
+99 Admin\Sys Apliqode\0 Shortcuts\ProcessExecute.blob
+99 Admin\Sys Apliqode\0 Shortcuts\1 Bedrock TI\Help
+99 Admin\Sys Apliqode\0 Shortcuts\1 Bedrock TI\Help\Online Documentation.extr
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Application Activity Back.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Application Activity Log.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Application Entries.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Application to Cube Reference.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Chore Info.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Cube Dependency.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Cube Dimension Dependency.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Cube Last Updated by Process.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Cube View Cache Control.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Cube Views Management.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Cube Views.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Dimension Attribute Matrix.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Dimension Attributes.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Dimension Defaults.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Dimension Definition.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Dimension Elements.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Dimension SemiDynamic Subsets.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Dimension Static Subsets And UDC.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Dimension Subsets.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Dimension Use.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Glossary.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Picklist Dimension.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Picklist General.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Process Execution Item.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Process Execution Log.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Process Execution Tree.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Process Parallelization Control.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Process Parameters Info.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Process Response Message.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Process to Object Reference.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Reconciliation Check.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Reconciliation Setup Detail.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Reconciliation Setup.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Security Effective Client Application Folder Permissions.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Security Effective Client Element Permissions.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Security Effective Client Object Permissions.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Server Message Log Info.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Settings.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Time Analysis Control.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Time Info.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ Time Relative Time Lookup.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ TM1 Transaction Log Analysis.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ User Activity Log.view
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes\APQ User Last Active.view
+99 Admin\Sys Apliqode\1 Security\1 General
+99 Admin\Sys Apliqode\1 Security\2 Element Security
+99 Admin\Sys Apliqode\1 Security\3 Cell Security
+99 Admin\Sys Apliqode\1 Security\4 Apliqode Framework security source
+99 Admin\Sys Apliqode\1 Security\1 General\01 Assign Client to Group.view
+99 Admin\Sys Apliqode\1 Security\1 General\01 User Group Membership.view
+99 Admin\Sys Apliqode\1 Security\1 General\02 Application Security.view
+99 Admin\Sys Apliqode\1 Security\1 General\02 Effective Application Permissions.view
+99 Admin\Sys Apliqode\1 Security\1 General\02 Set Application Security.view
+99 Admin\Sys Apliqode\1 Security\1 General\03 Cube Security.view
+99 Admin\Sys Apliqode\1 Security\1 General\03 Effective Cube Permissions.view
+99 Admin\Sys Apliqode\1 Security\1 General\03 Set Cube Security.view
+99 Admin\Sys Apliqode\1 Security\1 General\04 Dimension Security.view
+99 Admin\Sys Apliqode\1 Security\1 General\04 Effective Dimension Permissions.view
+99 Admin\Sys Apliqode\1 Security\1 General\04 Set Dimension Security.view
+99 Admin\Sys Apliqode\1 Security\1 General\05 Chore Security.view
+99 Admin\Sys Apliqode\1 Security\1 General\05 Effective Chore Permissions.view
+99 Admin\Sys Apliqode\1 Security\1 General\05 Set Chore Security.view
+99 Admin\Sys Apliqode\1 Security\1 General\06 Effective Process Permissions.view
+99 Admin\Sys Apliqode\1 Security\1 General\06 Process Security.view
+99 Admin\Sys Apliqode\1 Security\1 General\06 Set Process Security.view
+99 Admin\Sys Apliqode\1 Security\1 General\Effective Application Security.blob
+99 Admin\Sys Apliqode\1 Security\1 General\Effective Object Security.blob
+99 Admin\Sys Apliqode\1 Security\1 General\Maintain Application Security.blob
+99 Admin\Sys Apliqode\1 Security\1 General\Maintain Object Security.blob
+99 Admin\Sys Apliqode\1 Security\2 Element Security\01 Effective Dimension Element Permissions.view
+99 Admin\Sys Apliqode\1 Security\2 Element Security\APQ Applications.view
+99 Admin\Sys Apliqode\1 Security\2 Element Security\APQ Cube Views.view
+99 Admin\Sys Apliqode\1 Security\2 Element Security\APQ Cubes.view
+99 Admin\Sys Apliqode\1 Security\2 Element Security\APQ Dimension Subsets.view
+99 Admin\Sys Apliqode\1 Security\2 Element Security\APQ Dimensions.view
+99 Admin\Sys Apliqode\1 Security\2 Element Security\Demo App Check Security - APQ.Demo Customer.view
+99 Admin\Sys Apliqode\1 Security\2 Element Security\Demo App Set Security - APQ.Demo Customer.view
+99 Admin\Sys Apliqode\1 Security\2 Element Security\Effective Dimension Element Security.blob
+99 Admin\Sys Apliqode\1 Security\2 Element Security\Maintain Dimension Element Security.blob
+99 Admin\Sys Apliqode\1 Security\3 Cell Security\APQ Application Activity Back.view
+99 Admin\Sys Apliqode\1 Security\3 Cell Security\APQ Application Activity Log.view
+99 Admin\Sys Apliqode\1 Security\3 Cell Security\APQ Picklist Dimension.view
+99 Admin\Sys Apliqode\1 Security\3 Cell Security\APQ Picklist General.view
+99 Admin\Sys Apliqode\1 Security\3 Cell Security\APQ Process Response Message.view
+99 Admin\Sys Apliqode\1 Security\4 Apliqode Framework security source\Assign Client to Group.view
+99 Admin\Sys Apliqode\1 Security\4 Apliqode Framework security source\Set Application Apliqode Framework Securiity.view
+99 Admin\Sys Apliqode\1 Security\4 Apliqode Framework security source\Set Application Security.view
+99 Admin\Sys Apliqode\1 Security\4 Apliqode Framework security source\Set Chore Apliqode Framework Securiity.view
+99 Admin\Sys Apliqode\1 Security\4 Apliqode Framework security source\Set Chore Security.view
+99 Admin\Sys Apliqode\1 Security\4 Apliqode Framework security source\Set Cube Apliqode Framework Securiity.view
+99 Admin\Sys Apliqode\1 Security\4 Apliqode Framework security source\Set Cube Security.view
+99 Admin\Sys Apliqode\1 Security\4 Apliqode Framework security source\Set Dimension Apliqode Framework Securiity.view
+99 Admin\Sys Apliqode\1 Security\4 Apliqode Framework security source\Set Dimension Security.view
+99 Admin\Sys Apliqode\1 Security\4 Apliqode Framework security source\Set Process Apliqode Framework Securiity.view
+99 Admin\Sys Apliqode\1 Security\4 Apliqode Framework security source\Set Process Security.view
+99 Admin\Sys Apliqode\2 Housekeeping\1 Apliqode Settings.view
+99 Admin\Sys Apliqode\2 Housekeeping\2 Relative Time Lookup.view
+99 Admin\Sys Apliqode\2 Housekeeping\3 Semi-Dynamic Subset Definition.view
+99 Admin\Sys Apliqode\2 Housekeeping\4 Views to Cache Definition.view
+99 Admin\Sys Apliqode\2 Housekeeping\APQ MENU SETTINGS.blob
+99 Admin\Sys Apliqode\2 Housekeeping\Attribute Maintenance.blob
+99 Admin\Sys Apliqode\2 Housekeeping\Semi Dynamic Subset Maintenance.blob
+99 Admin\Sys Apliqode\2 Housekeeping\Static Subsets And UDC Maintenance.blob
+99 Admin\Sys Apliqode\3 Catalog Reference\0 APQ Glossary
+99 Admin\Sys Apliqode\3 Catalog Reference\1 User Info
+99 Admin\Sys Apliqode\3 Catalog Reference\2 Cube Info
+99 Admin\Sys Apliqode\3 Catalog Reference\3 Dimension Info
+99 Admin\Sys Apliqode\3 Catalog Reference\4 Process Info
+99 Admin\Sys Apliqode\3 Catalog Reference\5 Chore Info
+99 Admin\Sys Apliqode\3 Catalog Reference\6 Application Info
+99 Admin\Sys Apliqode\3 Catalog Reference\0 APQ Glossary\Applications.view
+99 Admin\Sys Apliqode\3 Catalog Reference\0 APQ Glossary\APQ Functionality Glossary.blob
+99 Admin\Sys Apliqode\3 Catalog Reference\0 APQ Glossary\Chores.view
+99 Admin\Sys Apliqode\3 Catalog Reference\0 APQ Glossary\Cubes.view
+99 Admin\Sys Apliqode\3 Catalog Reference\0 APQ Glossary\Dimensions.view
+99 Admin\Sys Apliqode\3 Catalog Reference\0 APQ Glossary\Processes.view
+99 Admin\Sys Apliqode\3 Catalog Reference\1 User Info\Application Usage Tracker.blob
+99 Admin\Sys Apliqode\3 Catalog Reference\1 User Info\User Last Login by Day.view
+99 Admin\Sys Apliqode\3 Catalog Reference\1 User Info\User Logins by Time Bucket.blob
+99 Admin\Sys Apliqode\3 Catalog Reference\1 User Info\User Session Analysis.view
+99 Admin\Sys Apliqode\3 Catalog Reference\2 Cube Info\Cube Dependency Map.view
+99 Admin\Sys Apliqode\3 Catalog Reference\2 Cube Info\Cube Dimension Map.view
+99 Admin\Sys Apliqode\3 Catalog Reference\2 Cube Info\Cube to Process Map.view
+99 Admin\Sys Apliqode\3 Catalog Reference\2 Cube Info\Cube use in application entries map.view
+99 Admin\Sys Apliqode\3 Catalog Reference\2 Cube Info\Process updates to cubes.view
+99 Admin\Sys Apliqode\3 Catalog Reference\2 Cube Info\Public Cube Views.view
+99 Admin\Sys Apliqode\3 Catalog Reference\2 Cube Info\Scheduled cached views.view
+99 Admin\Sys Apliqode\3 Catalog Reference\3 Dimension Info\Dimension Attribute Catalog.view
+99 Admin\Sys Apliqode\3 Catalog Reference\3 Dimension Info\Dimension Hierarchy Check.blob
+99 Admin\Sys Apliqode\3 Catalog Reference\3 Dimension Info\Dimension to Process Map.view
+99 Admin\Sys Apliqode\3 Catalog Reference\3 Dimension Info\Find Cubes where Dim is used.view
+99 Admin\Sys Apliqode\3 Catalog Reference\3 Dimension Info\Public Dimension subsets.view
+99 Admin\Sys Apliqode\3 Catalog Reference\4 Process Info\Apliqode dependencies on Bedrock TI.view
+99 Admin\Sys Apliqode\3 Catalog Reference\4 Process Info\Apliqode inter-process dependencies.view
+99 Admin\Sys Apliqode\3 Catalog Reference\4 Process Info\APQ Chore and Process Logging.blob
+99 Admin\Sys Apliqode\3 Catalog Reference\4 Process Info\APQ Process to Object Reference.blob
+99 Admin\Sys Apliqode\3 Catalog Reference\4 Process Info\Process Execution Log.view
+99 Admin\Sys Apliqode\3 Catalog Reference\4 Process Info\Process Parameters Catalog.view
+99 Admin\Sys Apliqode\3 Catalog Reference\4 Process Info\Process to Chore Map.view
+99 Admin\Sys Apliqode\3 Catalog Reference\4 Process Info\Process to Cube Map.view
+99 Admin\Sys Apliqode\3 Catalog Reference\4 Process Info\Process to Dimension Map.view
+99 Admin\Sys Apliqode\3 Catalog Reference\4 Process Info\Process to Process Map.view
+99 Admin\Sys Apliqode\3 Catalog Reference\5 Chore Info\Chore Info with Process Parameters.view
+99 Admin\Sys Apliqode\3 Catalog Reference\5 Chore Info\Chore Schedule Order.view
+99 Admin\Sys Apliqode\3 Catalog Reference\5 Chore Info\Chore to Process Map.view
+99 Admin\Sys Apliqode\3 Catalog Reference\5 Chore Info\Processes in Chore.view
+99 Admin\Sys Apliqode\3 Catalog Reference\6 Application Info\Application Entry Mapping.view
+99 Admin\Sys Apliqode\3 Catalog Reference\6 Application Info\Cube use in application entries map.view
+99 Admin\Sys Apliqode\4 TM1 Control Cubes\1 TM1 PerfMon
+99 Admin\Sys Apliqode\4 TM1 Control Cubes\2 Properties Cubes
+99 Admin\Sys Apliqode\4 TM1 Control Cubes\1 TM1 PerfMon\Server Memory by Cube.view
+99 Admin\Sys Apliqode\4 TM1 Control Cubes\1 TM1 PerfMon\Server Memory.view
+99 Admin\Sys Apliqode\4 TM1 Control Cubes\2 Properties Cubes\ClientAttributes.view
+99 Admin\Sys Apliqode\4 TM1 Control Cubes\2 Properties Cubes\ClientProperties.view
+99 Admin\Sys Apliqode\4 TM1 Control Cubes\2 Properties Cubes\ClientSettings.view
+99 Admin\Sys Apliqode\4 TM1 Control Cubes\2 Properties Cubes\CubeProperties.view
+99 Admin\Sys Apliqode\4 TM1 Control Cubes\2 Properties Cubes\DimensionAttributes.view
+99 Admin\Sys Apliqode\4 TM1 Control Cubes\2 Properties Cubes\DimensionHierarchyProperties.view
+99 Admin\Sys Apliqode\4 TM1 Control Cubes\2 Properties Cubes\DimensionProperties.view
+99 Admin\Sys Apliqode\5 Reconciliation\Automated Reconciliation Checks.blob
+99 Admin\Sys Apliqode\5 Reconciliation\Dimension Hierarchy Check.blob
+99 Admin\Sys Apliqode\6 Process Execution Item\Define Process Lists.view
+99 Admin\Sys Apliqode\6 Process Execution Item\Manage Process Execution List.blob
+99 Admin\Sys Apliqode\6 Process Execution Item\Update Execution Item Description.view
+99 Admin\Sys Apliqode\7 Copy Views\CopyPrivateViewSubset.blob
+99 Admin\Sys Apliqode\8 Dimension Management\Create DimensionSource.sql.blob
+99 Admin\Sys Apliqode\8 Dimension Management\Dimension Management.blob
+99 Admin\Sys Apliqode\8 Dimension Management\SQL Query Template.sql.blob
+99 Admin\Sys Environment\Sys Parameter.view
+99 Admin\Sys Maintenance\Development
+99 Admin\Sys Maintenance\Email
+99 Admin\Sys Maintenance\Localization
+99 Admin\Sys Maintenance\Development\Snippets.xlsx.blob
+99 Admin\Sys Maintenance\Development\Sys Stats Cube.view
+99 Admin\Sys Maintenance\Development\Theme_Cubewise.xlsx.blob
+99 Admin\Sys Maintenance\Email\Email Setting.xlsx.blob
+99 Admin\Sys Maintenance\Localization\Cube Name.view
+99 Admin\Sys Maintenance\Localization\Dimension Name.view

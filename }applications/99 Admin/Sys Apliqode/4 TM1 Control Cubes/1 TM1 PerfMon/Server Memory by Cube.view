@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=Server Memory by Cube
+ENTRYTYPE=view
+ENTRYREFERENCE=TM1:///VIEW/PUBLIC/}StatsByCube/Memory by Cube

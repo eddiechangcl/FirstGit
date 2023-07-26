@@ -1,0 +1,249 @@
+﻿283,100
+284,"All Real Dimensions and Hierarchies"
+11,20230512024332
+274,
+18,0
+275,413
+{TM1SORT( {EXCEPT( {EXCEPT( {EXCEPT( {EXCEPT( {TM1FILTERBYLEVEL( {TM1SUBSETALL( [}Dimensions] )}, 0 )}, {TM1FILTERBYPATTERN( {TM1SUBSETALL( [}Dimensions] )}, "}ElementAttributes_*")} )}, {TM1FILTERBYPATTERN( {TM1SUBSETALL( [}Dimensions] )}, "}Hierarchies_*")} )}, {TM1FILTERBYPATTERN( {TM1SUBSETALL( [}Dimensions] )}, "}Subsets_*")} )}, {TM1FILTERBYPATTERN( {TM1SUBSETALL( [}Dimensions] )}, "}Views_*")} )}, ASC)}
+278,0
+281,0
+270,239
+}TimeIntervals
+}StatsStatsForServer
+}StatsStatsByCubeByClient
+}StatsStatsByCube
+}StatsStatsByClient
+}StatsByProcess
+}SecurityOverlay
+}RuleStats
+}Processes
+}PickList
+}Permissions
+}PerfCubes
+}PerfClients
+}LineNumber
+}Hold
+}HierarchyProperties
+}Hierarchies
+}Groups
+}Features
+}ElementProperties
+}Dimensions
+}DimensionProperties
+}DimensionFormatItems
+}DimensionFormatAttributes
+}DimensionAttributes
+}DeployedLinkRecord
+}Cultures
+}CubeSecurityProperties
+}Cubes
+}CubeProperties
+}CubeDrillString
+}CubeAttributes
+}Cube Functions
+}Connections
+}ConnectionProperties
+}ClientSettings
+}Clients
+}ClientProperties
+}Chores
+}CAMAssociatedGroups
+}APQ Views
+}APQ Version
+}APQ User Last Active Measure
+}APQ User Activity Log Measure
+}APQ Update Frequency
+}APQ Universal View
+}APQ Universal View Source Mapping Measure
+}APQ Universal View Row
+}APQ Universal View Measure
+}APQ Universal View Format Measure
+}APQ Universal View Filter Measure
+}APQ Universal View Dimension
+}APQ Universal View Dimension Mapping Measure
+}APQ Universal View Data Measure
+}APQ Universal View Column
+}APQ Universal View Calculation Measure
+}APQ TM1 Transaction Logs
+}APQ TM1 Transaction Log Analysis Measure
+}APQ TM1 Objects
+}APQ TM1 Object Type
+}APQ Time Year
+}APQ Time Year-Week Lookup
+}APQ Time Year-Month
+}APQ Time Year-Month Lookup
+}APQ Time Second
+}APQ Time Relative Time Periods
+}APQ Time Relative Time Lookup Measure
+}APQ Time Quarter
+}APQ Time Month
+}APQ Time Month Simple
+}APQ Time Month Conversion Measure
+}APQ Time Minute
+}APQ Time Dimensions
+}APQ Time Day in Year
+}APQ Time Date
+}APQ Time Date Lookup
+}APQ Time Date Lookup Measure
+}APQ Subsets
+}APQ Staging Variable Name
+}APQ Staging Measure
+}APQ Staging Dimension
+}APQ Staging Dimension Mapping Measure
+}APQ Staging Data Source
+}APQ Staging Control Parameter
+}APQ Staging Control Measure
+}APQ Settings Measure
+}APQ Server Message Log Info Measure
+}APQ Security Permission Index
+}APQ Security Manage Object Access Measure
+}APQ Security Manage Element Security Groups Measure
+}APQ Security Manage Element Access Measure
+}APQ Security Manage Client Groups Measure
+}APQ Security Manage Application Feeder Measure
+}APQ Security Level
+}APQ Security Effective Permission Measure
+}APQ Reconciliation Setup Measure
+}APQ Reconciliation Setup Detail Measure
+}APQ Reconciliation Item
+}APQ Reconciliation Check Measure
+}APQ Reconciliation Check Extended Measure
+}APQ Reconciliation Cell Value Change Profile
+}APQ Reconciliation Cell Value Change Measure
+}APQ Pulse Workbook
+}APQ Pulse Workbook Tracker Measure
+}APQ Pulse Workbook Path
+}APQ Pulse Workbook Clients
+}APQ Pulse User login Measure
+}APQ Pulse Service Name
+}APQ Pulse ServerName
+}APQ ProcessExit Code
+}APQ Processes
+}APQ Process to Object Reference Measure
+}APQ Process Response Message Measure
+}APQ Process Parameters
+}APQ Process Parameters Info Measure
+}APQ Process Parallelization Control Measure
+}APQ Process Execution Tree
+}APQ Process Execution Log Measure
+}APQ PickList Validations
+}APQ PickList Item
+}APQ Picklist General Measure
+}APQ Picklist Dimension Measure
+}APQ Parameters
+}APQ Number Format
+}APQ Item Index
+}APQ HTML Character Entity
+}APQ Groups
+}APQ Glossary Measure
+}APQ Execution Item
+}APQ Execution Item Measure
+}APQ Escape Characters
+}APQ Dimensions
+}APQ Dimension Use Measure
+}APQ Dimension Use Index
+}APQ Dimension Subsets
+}APQ Dimension Subsets Measure
+}APQ Dimension Subset Use Measure
+}APQ Dimension Static Subsets And UDC Measure
+}APQ Dimension Source
+}APQ Dimension SemiDynamic Subsets Measure
+}APQ Dimension Node Type
+}APQ Dimension Hierarchies
+}APQ Dimension Hierarchies Measure
+}APQ Dimension Elements
+}APQ Dimension Elements Measure
+}APQ Dimension Element Search Measure
+}APQ Dimension Definition Source Measure
+}APQ Dimension Definition Parameter
+}APQ Dimension Definition Measure
+}APQ Dimension Defaults Measure
+}APQ Dimension Defaults Measure Type
+}APQ Dimension Attributes
+}APQ Dimension Attributes Measure
+}APQ Dimension Attribute Matrix Measure
+}APQ Dimension Attribute Definition Measure
+}APQ Data Source Row
+}APQ Cubes
+}APQ Cubes Dependent
+}APQ Cube Views
+}APQ Cube Views Measure
+}APQ Cube Views Management Measure
+}APQ Cube View Cache Control Measure
+}APQ Cube Last Updated by Process Measure
+}APQ Cube Dependency Measure
+}APQ Cube Data Archive Measure
+}APQ Clients
+}APQ Clients Consol
+}APQ Chores
+}APQ Chore Info Parameter
+}APQ Chore Info Measure
+}APQ Cell Comment Measure
+}APQ Cell Comment Index
+}APQ CAM NamespaceID
+}APQ Calculation Type
+}APQ Applications
+}ApplicationParameters
+}ApplicationEntries
+}Annotation_ApplicationID
+}AnnotationMeasures
+}AnnotationAppContextFacets
+}APQ Time Date:ByWeek
+}APQ Time Date:DayInYear
+}APQ Time Date:Leaves
+}APQ Time Date:LTD Year
+}APQ Time Date:LTD
+}APQ Time Date:LTG Year
+}APQ Time Date:LTG
+}APQ Time Date:M3M
+}APQ Time Date:M6M
+}APQ Time Date:MAT
+}APQ Time Date:MonthInYear
+}APQ Time Date:MTD
+}APQ Time Date:MTG
+}APQ Time Date:WeekInYear
+}APQ Time Date:Year
+}APQ Time Date:YTD ByDay
+}APQ Time Date:YTD
+}APQ Time Day in Year:Leaves
+}APQ Time Day in Year:MTD
+}APQ Time Day in Year:MTG
+}APQ Time Day in Year:YTD ByDay
+}APQ Time Day in Year:YTD
+}APQ Time Day in Year:YTG ByDay
+}APQ Time Day in Year:YTG
+}APQ Time Month:Leaves
+}APQ Time Month:QTD
+}APQ Time Month:QTG
+}APQ Time Month:YTD
+}APQ Time Month:YTG
+}APQ Time Quarter:Leaves
+}APQ Time Quarter:YTD
+}APQ Time Quarter:YTG
+}APQ Time Year-Month:AVG
+}APQ Time Year-Month:Delta PY
+}APQ Time Year-Month:Delta
+}APQ Time Year-Month:Leaves
+}APQ Time Year-Month:LTD Quarter
+}APQ Time Year-Month:LTD Year
+}APQ Time Year-Month:LTD
+}APQ Time Year-Month:LTG Quarter
+}APQ Time Year-Month:LTG Year
+}APQ Time Year-Month:LTG
+}APQ Time Year-Month:M3M
+}APQ Time Year-Month:M6M
+}APQ Time Year-Month:MAT
+}APQ Time Year-Month:Month YTD
+}APQ Time Year-Month:Month
+}APQ Time Year-Month:Quarter YTD
+}APQ Time Year-Month:Quarter
+}APQ Time Year-Month:Year Last X
+}APQ Time Year-Month:Year
+}APQ Time Year-Month:YTD Quarter
+}APQ Time Year-Month:YTD
+}APQ Time Year-Month:YTG Quarter
+}APQ Time Year-Month:YTG
+}APQ Time Year:Last X
+}APQ Time Year:Leaves
+}APQ Time Year:LTD
+}APQ Time Year:LTG

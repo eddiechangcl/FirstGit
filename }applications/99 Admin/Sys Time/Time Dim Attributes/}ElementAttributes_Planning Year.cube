@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=}ElementAttributes_Planning Year
+ENTRYTYPE=cube
+ENTRYREFERENCE=TM1:///CUBE/PUBLIC/}ElementAttributes_Planning Year

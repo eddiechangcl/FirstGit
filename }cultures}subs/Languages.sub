@@ -1,0 +1,10 @@
+﻿283,100
+284,"Languages"
+11,20230512024332
+274,
+18,0
+275,103
+{ EXCEPT( {TM1SUBSETALL( [}Cultures] )}, {TM1FILTERBYPATTERN( {TM1SUBSETALL( [}Cultures] )}, "*-*")}) }
+278,0
+281,0
+270,0

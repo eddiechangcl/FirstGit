@@ -1,0 +1,79 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+#SKIPCHECK;
+#FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Dimension Elements** is a companion to the dimension of the same name.  The cube is _entirely rule driven_ and so always as 
+# up-to-date as the dimension **}APQ Dimension Elements**. The cube allows a cross reference to see element overlaps between dimensions both on 
+# principal element names and alias names and perform an analysis of the number of dimensions & hierarchies in which an element is used.
+#
+# Note:
+# As this is a small lookup cube of limited dimensionality there is no requirement for SkipCheck or Feeders.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+[ '}APQ Dimension Elements Measure':'Element Count' ] = N:
+IF(  !}APQ Dimension Elements @= DimNm( !}APQ Dimension Hierarchies, DimIx( !}APQ Dimension Hierarchies, !}APQ Dimension Elements ) ),
+  1,
+  0
+);
+
+[ '}APQ Dimension Elements Measure':'Element Index' ] = N:
+IF(  !}APQ Dimension Elements @= DimNm( !}APQ Dimension Hierarchies, DimIx( !}APQ Dimension Hierarchies, !}APQ Dimension Elements ) ),
+  DimIx( !}APQ Dimension Hierarchies, !}APQ Dimension Elements ),
+  0
+);
+C:
+ConsolidatedMin( 2, '', !}APQ Dimension Hierarchies, !}APQ Dimension Elements, !}APQ Dimension Elements Measure );
+
+[ '}APQ Dimension Elements Measure':'Alias Count' ] = N:
+IF(  [ '}APQ Dimension Elements Measure':'Element Count' ] = 1,
+  0,
+  IF(  DimIx( !}APQ Dimension Hierarchies, !}APQ Dimension Elements ) > 0,
+    1,
+    0
+  )
+);
+
+[ '}APQ Dimension Elements Measure':'Alias Principal Index' ] = N:
+IF(  [ '}APQ Dimension Elements Measure':'Element Count' ] = 1,
+  0,
+  DimIx( !}APQ Dimension Hierarchies, !}APQ Dimension Elements )
+);
+C:
+ConsolidatedMin( 2, '', !}APQ Dimension Hierarchies, !}APQ Dimension Elements, !}APQ Dimension Elements Measure );
+
+[ '}APQ Dimension Elements Measure':'ElementPrincipalName' ] = S:
+IF( [ '}APQ Dimension Elements Measure':'Element Count' ] = 1,
+  !}APQ Dimension Elements,
+  IF( [ '}APQ Dimension Elements Measure':'Alias Count' ] = 1,
+    DimNm( !}APQ Dimension Hierarchies, DimIx( !}APQ Dimension Hierarchies, !}APQ Dimension Elements ) ),
+    ''
+  )
+);
+
+#############################
+FEEDERS;
+#############################
+
+
+#############################
+##~~   End  Rule File   ~~##
+#############################
+
+

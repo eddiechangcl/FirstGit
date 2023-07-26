@@ -1,0 +1,5 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=User Logins by Time Bucket
+ENTRYTYPE=blob
+ENTRYREFERENCE=TM1:///blob/PUBLIC/.\}Externals\User Logins by Time Bucket.xlsx_20160909152207.xlsx
+REMOVEBLOBONDELETE=Yes

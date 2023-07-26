@@ -1,0 +1,27 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+SKIPCHECK;
+FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Server Message Log Info** is automatically maintained by the processes **}APQ.Server.MessageLog.Process** and **}APQ.Cub.ServerMessageLogInfo.Update**.
+# The process reads the tm1server.log file scanning for process and chore info messages and keeps track of various measures such as run by, run time and average duration.
+#
+# Note:
+# This cube does not have rules.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################

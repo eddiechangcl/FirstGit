@@ -1,0 +1,33 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+SKIPCHECK;
+FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# The **}APQ Pulse Workbook Tracker** cube reads data from the Pulse user activity table and loads itvia the process **}APQ.Cub.PulseWorkbookTracker.Update** 
+# to this cube where usage statistics of all websheets and Excel files can be reported and analysed. In order to function correctly some "standard folder locations"
+# need to be defined in **}APQ Settings** (if application files are defined by linked reference as opposed to being loaded to the server.)
+#
+# Note: 
+# This cube has no rules.
+# For this cube to function the following conditions need to be met.
+# 1. Pulse must be installed and running. Pulse should have tm1web monitoring enabled
+# 2. Pulse configuration must have tcp console connections enabled
+# 3. In Data sources on the server where TM1 is running an ODBC data source for Pulse must be set up
+# 4. In the **}APQ Settings"" cube the connection parameters for the Pulse ODBC connection must be entered
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################

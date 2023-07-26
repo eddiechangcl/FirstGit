@@ -1,0 +1,10 @@
+﻿283,100
+284,"APQ Processes"
+11,20230512024331
+274,
+18,0
+275,121
+{TM1FILTERBYPATTERN( {FILTER( {TM1SUBSETALL( [}APQ TM1 Objects] )}, [}APQ TM1 Objects].[IsProcess] = "TRUE")}, "*APQ.*")}
+278,0
+281,0
+270,0

@@ -1,0 +1,23 @@
+FORMAT==100
+##############################################################################################################################
+# APLIQODE FRAMEWORK VERSION 3.03
+# Copyright Apliqo AG. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+SKIPCHECK;
+#############################
+
+[ '}APQ Dimension Definition Parameter':'SQL Query', '}APQ Dimension Definition Measure':'String' ] = S:
+IF( DB( '}APQ Dimension Definition', !}APQ Dimension Hierarchies, !}APQ Item Index, !}APQ Dimension Definition Parameter, !}APQ Dimension Definition Measure ) @= '' % DB( '}APQ Dimension Definition', !}APQ Dimension Hierarchies					, !}APQ Item Index, 'ODBC Source', !}APQ Dimension Definition Measure ) @= '',
+   '',
+   ' drill to dimension source query (preview), drill to dimension source query (full), drill to dimension preview in staging cube'
+);
+
+[ '}APQ Dimension Definition Parameter':{'CSV File Name','Source Cube'}, '}APQ Dimension Definition Measure':'String' ] = S:
+IF( DB( '}APQ Dimension Definition', !}APQ Dimension Hierarchies, !}APQ Item Index, !}APQ Dimension Definition Parameter, !}APQ Dimension Definition Measure ) @= '',
+   '',
+   'drill to dimension preview in staging cube'
+);

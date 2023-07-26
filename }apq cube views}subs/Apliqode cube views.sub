@@ -1,0 +1,48 @@
+﻿283,100
+284,"Apliqode cube views"
+11,00000000000000
+274,Caption_Default
+18,0
+275,149
+{ HIERARCHIZE( {[}APQ Cube Views].[Total APQ Cubes], {TM1FILTERBYLEVEL( {TM1FILTERBYPATTERN( {TM1SUBSETALL( [}APQ Cube Views] )}, "}APQ*")}, 1)} } )}
+278,0
+281,0
+270,38
+}APQ Chore Info
+}APQ Cube Dependency
+}APQ Cube Dimension Dependency
+}APQ Cube Last Updated by Process
+}APQ Cube View Cache Control
+}APQ Cube Views
+}APQ Cube Views Management
+}APQ Dimension Attribute Matrix
+}APQ Dimension Attributes
+}APQ Dimension Defaults
+}APQ Dimension Definition
+}APQ Dimension Elements
+}APQ Dimension SemiDynamic Subsets
+}APQ Dimension Static Subsets And UDC
+}APQ Dimension Subsets
+}APQ Dimension Use
+}APQ Glossary
+}APQ Picklist Dimension
+}APQ Picklist General
+}APQ Process Execution Item
+}APQ Process Execution Log
+}APQ Process Execution Tree
+}APQ Process Parallelization Control
+}APQ Process Parameters Info
+}APQ Process Response Message
+}APQ Process to Object Reference
+}APQ Reconciliation Check
+}APQ Reconciliation Setup
+}APQ Reconciliation Setup Detail
+}APQ Security Effective Client Application Folder Permissions
+}APQ Security Effective Client Element Permissions
+}APQ Security Effective Client Object Permissions
+}APQ Server Message Log Info
+}APQ Settings
+}APQ Time Relative Time Lookup
+}APQ TM1 Transaction Log Analysis
+}APQ User Activity Log
+}APQ User Last Active

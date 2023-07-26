@@ -1,0 +1,10 @@
+﻿283,100
+284,"Items Used"
+11,20230512024331
+274,Code and Description
+18,0
+275,158
+{FILTER( {TM1FILTERBYLEVEL( {TM1SUBSETALL( [}APQ Execution Item] )}, 0)}, LEN( [}APQ Execution Item].CurrentMember.Properties("Code and Description") ) > 2 )}
+278,0
+281,0
+270,0

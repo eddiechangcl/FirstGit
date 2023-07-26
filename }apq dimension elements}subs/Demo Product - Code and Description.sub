@@ -1,0 +1,468 @@
+﻿283,100
+284,"Demo Product - Code and Description"
+11,20201005064153
+274,
+18,0
+275,
+278,0
+281,0
+270,459
+All Products
+P0000 Default
+P1101
+P1102
+P1110 Cubewise Desktop Commercial
+P1111 Cubewise Desktop Commercial bundle
+P1112 Cubewise Desktop Commercial all in one
+P1120 Cubewise Desktop Consumer
+P1121 Cubewise Desktop Consumer bundle
+P1122 Cubewise Desktop Consumer all in one
+P1123 Cubewise Desktop Consumer Storage
+P1124 Cubewise Desktop Consumer Digital Home
+P1180 Cubewise Desktop option
+P1210 Cubewise Notebook Commercial
+P1220 Cubewise Notebook Consumer
+P1230 Cubewise Handheld
+P1240 Cubewise Ultra Mobile Consumer
+P1250 Cubewise Ultra Mobile Commercial
+P1260 Cubewise NB Windows Tablet PC Consumer
+P1280 Cubewise Notebook option
+P1300 Cubewise Server
+P1410 Cubewise Display Commercial
+P1411
+P1412 Cubewise Display Commercial All in one
+P1420 Cubewise Display Consumer
+P1430 Cubewise Projector
+P1440 Cubewise Communication
+P1450 Cubewise LCD TV
+P1460 Cubewise Peripherals
+P1490 Cubewise Display and Others
+P1520 Cubewise Smart Handheld
+P1560 Cubewise Android Tablet
+P1900 Cubewise Service Common
+P1901 Cubewise Service Desktop Commercial
+P1902 Cubewise Service Desktop Consumer
+P1903 Cubewise Service NB
+P1904 Cubewise Service Server
+P1905 Cubewise Service Display
+P1906 Cubewise Service LCD TV
+P1907 Cubewise Service Projector
+P1908 Cubewise Service Handheld
+P1909 Cubewise Service Others
+P1910 Cubewise Advantage
+P1911 Cubewise Service Desktop Commercial
+P1912 Cubewise Service Desktop Consumer
+P1921 Cubewise Service Notebook Commercial
+P1922 Cubewise Service Notebook Consumer
+P1924 Cubewise Service Netbook Consumer
+P1925 Cubewise Service Netbook Commercial
+P1926 Cubewise Service Tablet PC
+P1930 Cubewise Service Server
+P1941 Cubewise service Display Commercial
+P1942 Cubewise service Display Consumer
+P1943 Cubewise service Projector
+P1944 Cubewise service Communication
+P1945 Cubewise service LCD TV
+P1952 Cubewise service Smart Handheld
+P1956 Cubewise Service  Smart Handheld Tablet PC
+P2120 eMachine Desktop Consumer
+P2121 eMachine Desktop Consumer bundle
+P2122 eMachines Desktop Consumer all in one
+P2180 eMachine Desktop option
+P2210 eMachine Notebook Commercial
+P2220 eMachine Notebook Consumer
+P2230 eMachine Handheld
+P2240 eMachines Ultra Mobile Consumer
+P2280 eMachine Notebook option
+P2300 eMachine Server
+P2410 eMachine Display Commercial
+P2420 eMachine Display Consumer
+P2430 eMachine Projector
+P2440 eMachine Communication
+P2450 eMachine LCD TV
+P2460 eMachines Peripherals
+P2900 eMachine Service Common
+P2901 eMachines Service Desktop Commercial
+P2902 eMachines Service Desktop Consumer
+P2903 eMachines Service NB
+P2904 eMachines Service Server
+P2905 eMachines Service Display
+P2906 eMachines Service LCD TV
+P2907 eMachines Service Projector
+P2908 eMachines Service Handheld
+P2909 eMachines Service Others
+P2910 eMachine Advantage
+P2911 eMachines Service Desktop Commercial
+P2912 eMachines Service Desktop Consumer
+P2921 eMachines Service Notebook Commercial
+P2922 eMachines Service Notebook Consumer
+P2924 eMachines Service Netbook Consumer
+P2925 eMachines Service Netbook Commercial
+P2930 eMachines Service Server
+P2941 eMachines service Display Commercial
+P2942 eMachines service Display Consumer
+P2943 eMachines service Projector
+P2944 eMachines service Communication
+P2945 eMachines service LCD TV
+P2952 eMachines service Smart Handheld
+P3110 Apliqo Desktop Commercial
+P3111 Apliqo Desktop Commercial bundle
+P3112 Apliqo Desktop Commercial all in one
+P3120 Apliqo Desktop Consumer
+P3121 Apliqo Desktop Consumer bundle
+P3122 Apliqo Desktop Consumer all in one
+P3180 Apliqo Desktop option
+P3210 Apliqo Notebook Commercial
+P3220 Apliqo Notebook Consumer
+P3230 Apliqo Handheld
+P3240 Apliqo Ultra Mobile Consumer
+P3250 Apliqo Ultra Mobile Commercial
+P3280 Apliqo Notebook option
+P3300 Apliqo Server
+P3410 Apliqo Display Commercial
+P3420 Apliqo Display Consumer
+P3430 Apliqo Projector
+P3450 Apliqo LCD TV
+P3460 Apliqo Peripherals
+P3560 Apliqo Smart Handheld Tablet PC
+P3900 Apliqo Service Common
+P3901 Apliqo Service Desktop Commercial
+P3902 Apliqo Service Desktop Consumer
+P3903 Apliqo Service NB
+P3904 Apliqo Service Server
+P3905 Apliqo Service Display
+P3906 Apliqo Service LCD TV
+P3907 Apliqo Service Projector
+P3908 Apliqo Service Handheld
+P3909 Apliqo Service Others
+P3910 Apliqo PLUS
+P3911 Apliqo Service Desktop Commercial
+P3912 Apliqo Service Desktop Consumer
+P3921 Apliqo Service Notebook Commercial
+P3922 Apliqo Service Notebook Consumer
+P3924 Apliqo Service Netbook Consumer
+P3925 Apliqo Service Netbook Commercial
+P3930 Apliqo Service Server
+P3941 Apliqo service Display Commercial
+P3942 Apliqo service Display Consumer
+P3943 Apliqo service Projector
+P3944 Apliqo service Communication
+P3945 Apliqo service LCD TV
+P3952 Apliqo service Smart Handheld
+P3956 Apliqo Service Tablet PC
+P4120 IBM Desktop Consumer
+P4121 IBM Desktop Consumer bundle
+P4122 IBM Desktop Consumer all in one
+P4123 IBM Desktop Consumer Storage
+P4124 IBM Digital Home products
+P4210 IBM Notebook Commercial
+P4220 IBM Notebook Consumer
+P4240 IBM Ultra Mobile Consumer
+P4250 IBM Ultra Mobile Commercial
+P4280 IBM Notebook option
+P4410 IBM Display Commercial
+P4420 IBM Display Consumer
+P4460 IBM Peripherals
+P4560 IBM Tablet PC
+P4900 IBM Service Common
+P4902 IBM Service Desktop Consumer
+P4903 IBM Service NB
+P4909 IBM Service Others
+P4910 IBM Advantage
+P4911 IBM Service Desktop Commercial
+P4912 IBM Service Desktop Consumer
+P4921 IBM Service Notebook Commercial
+P4922 IBM Service Notebook Consumer
+P4924 IBM Service Netbook Consumer
+P4925 IBM Service Netbook Commercial
+P4930 IBM Service Server
+P4941 IBM service Display Commercial
+P4942 IBM service Display Consumer
+P4943 IBM service Projector
+P4944 IBM service Communication
+P4945 IBM service LCD TV
+P4952 IBM service Smart Handheld
+P5001 Non ITGO Desktop Option
+P5002 Non ITGO NB Option
+P5003 Non ITGO Printer Scanner Digital Camera
+P5004 Non ITGO Communication
+P5005 Non ITGO Software
+P5006 Non ITGO Media Player
+P5007 Non ITGO Others
+P5008 Non ITGO Memory
+P5011 Non ITGO Desktop Commercial
+P5012 Non ITGO Desktop Consumer
+P5021 Non ITGO Notebook Commercial
+P5022 Non ITGO Notebook Consumer
+P5023 Non ITGO Handheld
+P5024 Non ITGO Ultra Mobile
+P5026 Non ITGO Tablet PC
+P5030 Non ITGO Server
+P5038 Non ITGO CPU
+P5041 Non ITGO Display Commercial
+P5042 Non ITGO Display Consumer
+P5043 Non ITGO Projector
+P5045 Non ITGO PDP LCD TV
+P5046 Non ITGO Peripherals
+P5052 Non ITGO Smart Handheld
+P5056 Non ITGO Smart Handheld Tablet PC
+P5099 Non ITGO Common
+P5110 CPU Desktop
+P5120 CPU NB
+P5130 CPU Server
+P5170 CPU Handheld
+P5210 Optical Desktop
+P5220 Optical NB
+P5310 HDD Desktop
+P5320 HDD NB
+P5321 HDD NB Flash module
+P5330 HDD Server
+P5400 Memory
+P5401 Memory SSD
+P5402 Memory VRAM
+P5410 Memory DT
+P5411 SSD DT
+P5420 Memory NB + On board memory
+P5421 SSD NB
+P5430 Memory SVR
+P5431 SSD SVR
+P5510 LCD Panel AIO
+P5520 LCD Panel Notebook
+P5521 LCD Panel Notebook Glass
+P5540 LCD Panel Display
+P5541 LCD Panel Display Glass
+P5550 LCD Panel TV
+P5570 LCD Panel Handheld
+P5620 Battery NB
+P5700 Adapter
+P5800 COA
+P5910 PC KC GPU DT
+P5920 PC KC GPU NB
+P6100 Market revenue from Symantec
+P6110 Revenue share Antivirus Symantec
+P6120 Revenue share Antivirus McAfee
+P6200 Market revenue from Yahoo
+P6210 Revenue share Toolbar Yahoo
+P6900 Upsell Revenue   others
+P7000 Smart HH Others
+P7100 CPU Smart HH
+P7200 Camera Module   Smart HH
+P7300 Touch Lens  Smart HH
+P7400 IC  Smart HH
+P7500 LCD Smart HH
+P7600 Battery Smart HH
+P7700 Adapter Smart HH
+P7800 MS COA+APM
+P7900 Wifi Module Smart HH
+P8110 HP Desktop Commercial
+P8111 HP Desktop Commercial  bundle Monitor
+P8112 HP Desktop Commercial  all in one
+P8120 HP Desktop Consumer
+P8121 HP Desktop  Consumer bundle Monitor
+P8122 HP Desktop Consumer all in one
+P8180 HP Desktop option
+P8210 HP Notebook Commercial
+P8220 HP Notebook Consumer
+P8240 HP Ultra Mobile Consumer
+P8250 HP Ultra Mobile Commercial
+P8280 HP Notebook option
+P8300 HP Server
+P8410 HP Display Commercial
+P8420 HP Display Consumer
+P9999 Common Allocation
+PEA00 Data Center Hotel
+PEA01 Co location
+PEA02 Web hosting
+PEA03 異地備援服務
+PEA05 災難備援服務
+PEA06 磁帶配送服務
+PEA07 資料備份服務
+PEA08 顧問與專業服務
+PEA09 其他專案服務
+PEA10 資訊安全
+PEA11 資料即時備援服務
+PEB01 訊框傳輸
+PEB02 X.25傳輸
+PEB03 網際固接專線
+PEB04 固定ADSL
+PEB05 主機代管
+PEC05 ICT硬體租用
+PEF01 NAC安裝維護
+PEF05 作業系統維護
+PEF09 INFORMIX維護
+PEF12 行政OA維護
+PEF13 司法院維護
+PEF14 公文管理維護
+PEF16 ICT硬體維護
+PEJ01 e ticketing
+PEJ02 電子筆錄
+PEK02 數位交易平台服務 出版
+PNA
+P1946 Cubewise Service Peripherals
+P4901 IBM Service Desktop Commercial
+P4904 IBM Service Server
+P4905 IBM Service Display
+P4906 IBM Service LCD TV
+P4907 IBM Service Projector
+P4908 IBM Service Handheld
+P5560 LCD Panel Tablet
+P5720 Adapter NB
+P7310 Touch AIO
+P7320 Touch NB
+P7360 Touch Tablet
+P5460 Memory eMMC Flash Card eMCP
+P5760 Adapter Tablet
+P5660 Battery Tablet
+P7340 Touch Monitor
+P1261 Cubewise NB Windows Tablet PC Commercial
+P1990 Cubewise SP Common
+P1422 Cubewise Display Consumer All in one
+P1949 Cubewise Service Others
+P5561 LCD Panel Tablet Glass
+P5940 G Sync
+P1999
+P9998
+P2560
+P4450
+P1241 Cubewise Chromebook Commercial
+P1242 Cubewise Chromebook Consumer
+P1529 Cubewise Smart Handheld wearable band
+P5080 Non ITGO Service solution (incl. HW)
+P5090 Non ITGO Service solution
+P5A20 Camera NB
+PALL All allocation
+PEK03 Cubewise store
+PTA EMEA Allocation non 0000
+PZ303 EMEA PB total
+PZ3A1 EMEA A1
+PZ3AA EMEA AA
+PZ3CM EMEA CM
+PZ3CN EMEA CN
+PZ3CO EMEA CO
+PZ3CV EMEA CV
+PZ3DO EMEA DO
+PZ3HH EMEA HH
+PZ3MC EMEA MC
+PZ3MO EMEA MO
+PZ3NB EMEA NB
+PZ3NC EMEA NC
+PZ3NT EMEA NT
+PZ3OP EMEA OP
+PZ3OT EMEA Cubewise, eMachine..total
+PZ3PJ EMEA PJ
+PZ3SC EMEA SC
+PZ3ZZ EMEA OTHERS
+P5082 Non ITGO Service solution   Repair
+P5A10 Camera DT
+P5B10 Wireless LAN DT
+P5B20 Wireless LAN NB
+P1125 Cubewise Desktop Gaming
+P1225 Cubewise Notebook Gaming
+P5091 Accidental Damage
+P1265 Cubewise NB Windows Tablet PC Gaming
+P1425 Cubewise Display Consumer Gaming
+P1525 Cubewise Smart Handheld Gaming
+P1565 Cubewise Android Tablet Gaming
+PNP10 abPBX plus   C&C License
+PNP20 abPBX plus  C&C Apliqo
+PNP30 abPBX plus  C&C Hardware
+PNP40 abPBX plus  C&C Sin Phone
+PNP50 abPBX plus  C&C Technology Service
+PFoxt Foxtel
+P1435 Cubewise Projector Gaming
+P5930 KC GPU SVR
+P0006
+P1270 Cubewise NB Creator
+PJC00 I0T module
+PJH10 CPF
+PV000 VR
+P1810 Cubewise StarVR
+P1820 Cubewise VR Consumer
+P1830 Cubewise Backpack PC
+PE9P0 E Business Service Xplova
+PE9X0 E Business Service Pawbo
+PJ9G0 BYOC Service GrandPad
+PJ9H1 BYOC Service CPF
+P3260 Apliqo  NB Windows Tablet PC Consumer
+P3960 Apliqo Service NB Windows Tablet PC Consumer
+P1226 Cubewise Notebook Slim NB
+P1227 Cubewise Notebook Gaming Nitro
+P1228 Cubewise Notebook Gaming VNitro
+P1126 Cubewise Desktop Gaming Predator
+P1127 Cubewise Desktop Gaming Nitro
+P1128 Cubewise Desktop Gaming GX
+PZPA1 PA Others
+PZPA2 PA Desktop
+PZPA3 PA Notebook
+PZPA4 PA Chromebook
+PZPA5 PA Tablet
+PZPA6 PA Display
+PZPA7 PA Projector
+PZPA8 PA Handheld
+PZPA9 PA Server
+P1981 Cubewise Service StarVR
+P1982 Cubewise Service VR Consumer
+PZZ60 Altos
+PZZS0 Star VR
+P6410 TM1 Display Commercial
+P6420 TM1 Display Consumer
+P6425 TM1 Display Consumer Gaming
+P6430 TM1 Projector
+P9110 Altos Server
+PZZGA Gadget PL parent
+P1170 Cubewise Desktop Creator
+P1470 Cubewise Monitor Creator
+P6241 TM1 Chromebook
+P1913 Cubewise Service AIO
+P1917 Cubewise Service Desktop Creator
+P1918 Cubewise Service Desktop Gaming
+P1927 Cubewise Service NB Creator
+P1928 Cubewise Service NB Gaming
+P1947 Cubewise Service Display Creator
+P1948 Cubewise Service Display Gaming
+P1961 Cubewise Service Rugged NB
+P1962 Cubewise Service Rugged Tablet PC
+All Product Groups
+Desktop
+Desktop Commercial
+Desktop Consumer
+Notebook
+Notebook Commercial
+Notebook Consumer
+Tablet
+Tablet Win
+TP-Consumer
+TP-Commercial
+Tablet Android
+Tablet Gaming
+Server
+Monitor
+Monitor (excl. Gaming)
+Monitor Gaming
+Monitor Creator
+Projector
+Projector (excl. Gaming)
+Projector Gaming
+Services
+SERVICE
+Ext Warranty
+Service New Business
+VR
+VR Commercial
+VR Consumer
+Gadget
+Desktop Accessory
+Notebook Accessory
+Peripheral
+Wearable
+Smart Phone
+All UDCs
+#99 Not Used C
+#99 Not Used N
+#01
+#01..Commercial
+#01.All Products by Type
+#01..Consumer
+#01...Commercial
+#01..All Products by Type
+#01.Test Group

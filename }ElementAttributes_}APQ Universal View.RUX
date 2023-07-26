@@ -1,0 +1,45 @@
+FORMAT==100
+##############################################################################################################################
+# APLIQO C3 FRAMEWORK version 2.02
+# Copyright  2017, Apliqo AG. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+#############################
+#Region : Header
+#SKIPCHECK;
+#FEEDSTRINGS;
+#############################
+# DEVELOPER: 	Apliqo AG
+# CREATED ON: 	2017-10-19
+#############################
+#EndRegion
+
+[ '}ElementAttributes_}APQ Universal View':'Caption' ] = S: DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'Caption' );
+
+[ '}APQ Universal View':'All Views', '}ElementAttributes_}APQ Universal View':'Code and Description' ] = S:
+IF( !}APQ Universal View @<> DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'Caption' ),
+   !}APQ Universal View |' '| DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'Caption' ),
+   !}APQ Universal View
+);
+
+[ '}ElementAttributes_}APQ Universal View':'Code and Description' ] = S: !}APQ Universal View |' '| DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'Caption' );
+
+[ '}ElementAttributes_}APQ Universal View':'Source' ] = S:
+IF( DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'Cube' ) @= '',
+   '',
+   DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'Cube' ) |
+   ' (R:' | DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'RowDimName' ) |
+   ', C:' | DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'ColumnDimName' ) |
+   ', M:' | DB( '}APQ Universal View Source Mapping', !}APQ Universal View, 'MeasureDimName' ) |
+   ')'
+);
+
+
+#############################
+##~~    End Rule File    ~~##
+#############################
+

@@ -1,0 +1,61 @@
+﻿FORMAT==100
+FEEDSTRINGS;
+SKIPCHECK;
+
+##############################################################################################################
+### CWA Std. Model  version 3.00
+### Copyright © 2020, Cubewise (Hong Kong) Ltd. All rights reserved.
+### This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+### and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+### you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+### or display any part, in any form, or by any means.
+##############################################################################################################
+
+
+##############################################################################################################
+###~~~    Start Rule File    ~~~###
+
+['Caption',{'en','zh-Hant','zh-Hans'}]=S:
+
+### Using Current User Specific Language
+IF (ATTRS('}Clients', TM1USER(), 'Language') @='en'
+    , ''
+, IF (ATTRS('}Clients', TM1USER(), 'Language') @<>''
+    , DB('}CubeAttributes', !}Cubes, 'Caption ' | ATTRS('}Clients', TM1USER(), 'Language'))
+
+        ### Using UI Settings
+        , DB('}CubeAttributes', !}Cubes, 'Caption ' | !}Cultures)
+));
+
+
+### Copy Languages
+['Caption', 'zh']=S:DB('}LocalizedCubeAttributes', !}Cubes, 'zh-Hans', !}CubeAttributes);
+
+['Caption', 'zh-CN']=S:DB('}LocalizedCubeAttributes', !}Cubes, 'zh-Hans', !}CubeAttributes);
+['Caption', 'zh-SG']=S:DB('}LocalizedCubeAttributes', !}Cubes, 'zh-Hans', !}CubeAttributes);
+
+['Caption', 'zh-HK']=S:DB('}LocalizedCubeAttributes', !}Cubes, 'zh-Hant', !}CubeAttributes);
+['Caption', 'zh-TW']=S:DB('}LocalizedCubeAttributes', !}Cubes, 'zh-Hant', !}CubeAttributes);
+['Caption', 'zh-MO']=S:DB('}LocalizedCubeAttributes', !}Cubes, 'zh-Hant', !}CubeAttributes);
+
+
+
+##############################################################################################################
+FEEDERS;
+##############################################################################################################
+
+#############################
+###  Internal Cube Feeders
+
+
+
+
+#############################
+###  External Cube Feeders
+
+
+
+
+##############################################################################################################
+###    End Rule File    ~~##
+

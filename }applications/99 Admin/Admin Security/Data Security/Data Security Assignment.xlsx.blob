@@ -1,0 +1,5 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=Data Security Assignment.xlsx
+ENTRYTYPE=blob
+ENTRYREFERENCE=TM1:///blob/PUBLIC/.\}Externals\sys_security_data_assignment_v2.1.xlsx
+REMOVEBLOBONDELETE=Yes

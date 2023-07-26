@@ -1,0 +1,69 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+SKIPCHECK;
+FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Security Manage Client Groups** allows user group memberships to be managed within the apliqode framework. 
+#
+# A useful feature of managing users & groups via this cube is that both users and groups can be selectively deactivated. 
+# That is all associations are kept but not applied when setting up the security model. This is useful for example to inactivate a 
+# user which will keep all defined group memberships in the **}APQ Security Manage Client Groups** cube but clear all links within
+# **}ClientGroups**. This allows the user to be cloned to another user or to be reactivated at a later date. Similarly deactivating 
+# a group can be useful when trouble-shooting the effect of the group on cummulative security access.
+#
+# The memberships entered in this cube are applied by running the **}APQ.Security.AssignClientGroups** process. 
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+[ '}APQ Security Manage Client Groups Measure':'Assignment' ] = N: STET;
+
+#Region - Make Client or Group Inactive
+[ '}APQ Clients':'Total APQ Clients', '}APQ Security Manage Client Groups Measure':'Inactive' ] = S: STET;
+
+[ '}APQ Groups':'Total APQ Groups', '}APQ Security Manage Client Groups Measure':'Inactive' ] = S: STET;
+
+[ '}APQ Security Manage Client Groups Measure':'Inactive' ] = S: 
+IF( DB( '}APQ Security Manage Client Groups', 'Total APQ Clients', !}APQ Groups, 'Inactive' ) @= '1' 
+    % DB( '}APQ Security Manage Client Groups', !}APQ Clients, 'Total APQ Groups', 'Inactive' ) @= '1',
+    '1',
+    ''
+);
+#EndREgion
+
+[ '}APQ Security Manage Client Groups Measure':'Current Assignment' ] = N: 
+IF( DB( '}ClientGroups', !}APQ Clients, !}APQ Groups ) @= !}APQ Groups,
+    1,
+    0 
+);
+
+[ '}APQ Security Manage Client Groups Measure':'Current Assignment Validation' ] = N: 
+ABS( SIGN( 
+    [ '}APQ Security Manage Client Groups Measure':'Current Assignment' ] - 
+    IF( DB( '}APQ Security Manage Client Groups', !}APQ Clients, 'Total APQ Groups', 'Inactive' ) @= '1', 0, [ '}APQ Security Manage Client Groups Measure':'Assignment' ] ) 
+) );
+
+#############################
+FEEDERS;
+#############################
+
+# String measure feeds numeric reporting measure
+[ '}APQ Security Manage Client Groups Measure':'Assignment' ] => [ '}APQ Security Manage Client Groups Measure':'Current Assignment' ], [ '}APQ Security Manage Client Groups Measure':'Current Assignment Validation' ];
+
+#############################
+### END
+#############################

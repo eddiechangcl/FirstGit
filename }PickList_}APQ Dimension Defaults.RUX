@@ -1,0 +1,54 @@
+FORMAT==100
+##############################################################################################################################
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+SKIPCHECK;
+#############################
+
+[ '}APQ Dimension Defaults Measure':'Alias Override' ] = S: 'Subset:' | '}ElementAttributes_' | !}APQ Dimension Hierarchies | ':Alias Attributes';
+
+[ '}APQ Dimension Defaults Measure':'Default Override' ] = S:
+IF(  DB( '}APQ Dimension Subsets', !}APQ Dimension Hierarchies |'\'| DB( '}APQ Settings', 'Std All Elements', 'String' ), 'Element Count' ) <= DB( '}APQ Settings', 'Max subset size for PickList entry', 'Numeric' ),
+    IF( Scan( ':', !}APQ Dimension Hierarchies ) = 0,
+        'Dimension:' | !}APQ Dimension Hierarchies,
+        'Dimension:' | SubSt( !}APQ Dimension Hierarchies, 1, Scan( ':', !}APQ Dimension Hierarchies ) -1 ) |
+        '\' | Trim( SubSt( !}APQ Dimension Hierarchies, Scan( ':', !}APQ Dimension Hierarchies ), 100 ) ) 
+    ),
+    ''
+);
+
+[ '}APQ Dimension Defaults Measure':'Total Override' ] = S:
+IF(  DB( '}APQ Dimension Subsets', !}APQ Dimension Hierarchies |'\'| DB( '}APQ Settings', 'Std All C Elements', 'String' ), 'Element Count' ) <= DB( '}APQ Settings', 'Max subset size for PickList entry', 'Numeric' ),
+    IF( Scan( ':', !}APQ Dimension Hierarchies ) = 0,
+        'Subset:' | !}APQ Dimension Hierarchies | ':' | DB( '}APQ Settings', 'Std All C Elements', 'String' ),
+        'Subset:' | SubSt( !}APQ Dimension Hierarchies, 1, Scan( ':', !}APQ Dimension Hierarchies ) -1 ) |
+        '\' | Trim( SubSt( !}APQ Dimension Hierarchies, Scan( ':', !}APQ Dimension Hierarchies ), 100 ) ) |
+        ':' | DB( '}APQ Settings', 'Std All C Elements', 'String' )
+    ),
+    ''
+);
+
+[ '}APQ Dimension Defaults Measure':'Caption AutoFill' ] = S: 'Static::1:0';
+
+[ '}APQ Dimension Defaults Measure':'Caption Name' ] = S: 'Static::Caption:Member_Caption:Caption_Default';
+
+[ '}APQ Dimension Defaults Measure':'Caption Type' ] = S: 'Static::A:S';
+
+[ '}APQ Dimension Defaults Measure':'Caption Source' ] = S: 'Subset:}ElementAttributes_' | !}APQ Dimension Hierarchies | ':' |
+IF( DB( '}APQ Dimension Defaults', !}APQ Dimension Hierarchies, 'Caption Type', 'String' ) @= 'A',
+    'Alias Attributes',
+    'String & Alias Attributes'
+);
+
+# For Boolean True/False (represented as 1/0)
+[ '}APQ Dimension Defaults Measure':{'Std All Elements','Std All N Elements','Std All N Elements Principal','Std All C Elements','Std Top Elements','Std Default Member Subset'}, '}PickList':'Value' ] = S: 
+'Static::1:0';
+
+#############################
+##~~   End  Rule File   ~~##
+#############################

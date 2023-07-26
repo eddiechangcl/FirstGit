@@ -1,0 +1,46 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+SKIPCHECK;
+FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Dimension Use** is maintained by the process **}APQ.Dim.ControlDimensionCopies.Update** and records which dimensions are
+# used in which cubes. It can be used for automated reporting to determine which dimensions are used in which cubes and vice versa and also
+# to report on dimensions which are not used in any cubes. 
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+# Position: STET
+[ '}APQ Dimension Use Measure':'Position' ] = N: STET;
+
+# Specific override for dimensions in cube
+[ '}APQ Dimensions':'Total APQ Dimensions', '}APQ Dimension Use Measure':'IsUsed' ] = C:
+ConsolidatedMax( 1, '', !}APQ Cubes, !}APQ Dimensions, 'Position' );
+
+# IsUsed is simple true/false based on position > 0
+[ '}APQ Dimension Use Measure':'IsUsed' ] = C:
+IF( ElLev( '}APQ Cubes', !}APQ Cubes ) > 0,
+    ConsolidateChildren( '}APQ Cubes' ),
+    IF( [ '}APQ Dimension Use Measure':'Position' ] > 0,
+        1,
+        0
+    )
+);
+
+#############################
+##~~    End Rule File    ~~##
+#############################

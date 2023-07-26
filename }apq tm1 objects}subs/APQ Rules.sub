@@ -1,0 +1,57 @@
+﻿283,100
+284,"APQ Rules"
+11,20230512024332
+274,
+18,0
+275,134
+{TM1SORT( {TM1FILTERBYPATTERN( {FILTER( {TM1SUBSETALL( [}APQ TM1 Objects] )}, [}APQ TM1 Objects].[IsRule] = "TRUE")}, "}APQ*")}, ASC)}
+278,0
+281,0
+270,47
+}APQ Chore Info
+}APQ Cube Data Archive
+}APQ Cube Dependency
+}APQ Cube Dimension Dependency
+}APQ Cube Last Updated by Process
+}APQ Cube View Cache Control
+}APQ Cube Views
+}APQ Cube Views Management
+}APQ Dimension Attribute Definition
+}APQ Dimension Attributes
+}APQ Dimension Defaults
+}APQ Dimension Definition
+}APQ Dimension Definition Source
+}APQ Dimension Elements
+}APQ Dimension Element Search
+}APQ Dimension Hierarchies
+}APQ Dimension SemiDynamic Subsets
+}APQ Dimension Static Subsets And UDC
+}APQ Dimension Subsets
+}APQ Dimension Subset Use
+}APQ Dimension Use
+}APQ Glossary
+}APQ Picklist Dimension
+}APQ Picklist General
+}APQ Process Execution Item
+}APQ Process Execution Log
+}APQ Process Execution Tree
+}APQ Process Parallelization Control
+}APQ Process Parameters Info
+}APQ Process Response Message
+}APQ Process to Object Reference
+}APQ Pulse User Login
+}APQ Reconciliation Cell Value Change
+}APQ Reconciliation Check
+}APQ Reconciliation Setup
+}APQ Reconciliation Setup Detail
+}APQ Security Effective Client Application Folder Permissions
+}APQ Security Effective Client Element Permissions
+}APQ Security Effective Client Object Permissions
+}APQ Security Manage Client Groups
+}APQ Security Manage Element Access
+}APQ Security Manage Object Access
+}APQ Settings
+}APQ Time Date Lookup
+}APQ Time Relative Time Lookup
+}APQ User Activity Log
+}APQ User Last Active

@@ -1,0 +1,82 @@
+﻿389,100
+390,"Default"
+370,0
+361,1
+362,1
+363,0
+364,0
+365,
+366,
+367,0
+376,1
+375,b:0.#########G|0|
+374,1
+7,}APQ Execution Item
+270,1
+01
+274,Code and Description
+275,
+281,0
+282,
+360,1
+7,}APQ Execution Item Measure
+270,11
+RunSerial
+ExitOnError
+ProcessName
+ProcessParameters
+ParamName
+ParamValue
+ParamKey
+StartTime
+FinishTime
+ElapsedTime
+IsDisabled
+274,
+275,
+281,0
+282,
+371,2
+7,}APQ Item Index
+270,4
+Total Items
+0001
+0002
+0003
+274,
+275,
+281,0
+282,
+7,}APQ Process Parameters
+270,6
+All zSYS Process Parameters
+P1
+P2
+P3
+P4
+P5
+274,
+275,
+281,0
+282,
+373,1
+1,01
+372,0
+372,00
+384,0
+385,0
+377,4
+43
+305
+2104
+1732
+378,0
+382,255
+379,4
+0
+0
+0
+0
+11,20190605152415
+381,0
+32,"null\n"

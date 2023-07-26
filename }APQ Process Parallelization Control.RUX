@@ -1,0 +1,53 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+#SKIPCHECK;
+#FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Process Parallelization Control** needs to be manually entered by the system administrator/developer as part of the setup
+# for Process Parallelization performed by the process **}APQ.Server.ProcessParallelization.Run** which writes out the tm1runti.exe and hustle.exe
+# command files.  This allows for parallel loading to be set up in a very quick and seamless way with little development overhead.  The other cube
+# critical in the parallelization is **}APQ Process Parameters Info** which is automatically compiled and only requires manual entry if a 
+# static value should override the default parameter value when writing out the command scripts. For a process to be parallelized the data 
+# entry in the cube should be as follows:
+# * Cube (optional) the cube that the process loads to.
+# * Dimension (mandatory) the dimension on which parallelization will be calrried out.  (Picklist of dimension to select is refined if optional cube parameter is entered).
+# * Hierarchy (mandatory) the consolidated node under which the parallelization will be carried out
+# * Level (mandatory) the level of the selected dimension which the hierarchy will be "chunked" into
+# * ParameterDim (mandatory) the name of the parameter in the process which identifies the dimension selection entry where the entry for Dimension will be entered as the parameter value
+# * ParameterEle (mandatory) the name of the parameter in the process which identified dimension element identifying the "chunk" or slice of the parallelized process where the combination of hierarchy and level will ultimatelly drive the parameter value.
+#
+# E.g. how this works: 
+# Dimension to parellalize on selected as Month, hierarchy selected is Total Year (should normally be a hierarchy containing all elements), 
+# Level selected is 1.  This will result in a maximum parelallization of 4x since this will resolve to Q1,Q2,Q3,Q4 as the level 1 elements under 
+# Total Year.  If Level = 0 was entered this would result in 12x parallelization.
+#
+# Note:
+# This is a lookup cube with limited dimensionality and so does not require SkipCheck or Feeders.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+[ '}APQ Process Parallelization Control Measure':'}APQ.Process.Execute Disabled' ]  = N:
+IF( SubSt( !}APQ Processes, 1, 6 ) @= '}Drill',
+   1,
+   STET
+);
+
+#############################
+##~~   End  Rule File   ~~##
+#############################
+

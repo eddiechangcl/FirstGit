@@ -1,0 +1,10 @@
+﻿283,100
+284,"}UX Subset Analysis"
+11,20230512024331
+274,
+18,0
+275,216
+{EXCEPT(TM1SubsetAll([}APQ Dimension Subsets Measure]),{[}APQ Dimension Subsets Measure].[}APQ Dimension Subsets Measure].[IsDefaultSubset],[}APQ Dimension Subsets Measure].[}APQ Dimension Subsets Measure].[Count]})}
+278,0
+281,0
+270,0

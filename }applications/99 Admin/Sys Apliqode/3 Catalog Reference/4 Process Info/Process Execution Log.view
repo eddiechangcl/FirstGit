@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=Process Execution Log
+ENTRYTYPE=view
+ENTRYREFERENCE=TM1:///VIEW/PUBLIC/}APQ Process Execution Log/Default

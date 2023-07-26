@@ -1,0 +1,10 @@
+﻿283,100
+284,"ADMINS"
+11,20230515004915
+274,}TM1_DefaultDisplayValue
+18,0
+275,123
+{TM1SORT( {FILTER( {TM1SUBSETALL( [}APQ Clients].[}APQ Clients] )}, [}APQ Clients].[}APQ Clients].[Admin User] = 1)}, ASC)}
+278,0
+281,0
+270,0

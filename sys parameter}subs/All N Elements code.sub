@@ -1,0 +1,63 @@
+﻿283,100
+284,"All N Elements code"
+11,20230515004921
+274,
+18,0
+275,
+278,0
+281,0
+270,54
+Admin Host
+Windows Server Name
+TM1 Server Name
+Port Number
+HTTP Port Number
+HTTP Use SSL
+TM1 Web URL
+Use CAM
+CAM Namespace
+CAM Server URI
+CAM Client URI
+Export Folder
+tm1s.cfg Location
+TM1 Data Directory
+TM1 Logging Directory
+TM1 Source Data Directory
+TM1 Master Data Directory
+Current Actual Year
+Current Actual Month
+Current Actual Day in Month
+Current Actual Week
+Current Forecast Year
+Current Forecast Month
+Current Budget Year
+Current CY+1
+Current CY+2
+Current CY+3
+System Date
+First Weekday
+System Start Year
+System Start Month
+TM1RunTI.exe Path
+7zip.exe Path
+Restart Services Script Path
+curl.exe Path
+TM1 Model Backup Directory
+TM1 Backup File Name Prefix
+Cognos BI Deployment Directory
+Cognos BI Backup Directory
+Cognos BI Backup File Name Prefix
+Backup Retention Days
+Hustle.exe Path
+Maximum Hustle Threads
+SMTP Server
+SMTP Port
+Mail Credential Username
+Mail Credential Password
+Default E-mail Sender
+Mail Require SSL
+Administrator Username
+Administrator Password
+Administrator Basic Authentication Header
+Current User
+TM1 Instance Directory

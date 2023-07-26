@@ -1,0 +1,5 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=Snippets.xlsx
+ENTRYTYPE=blob
+ENTRYREFERENCE=TM1:///blob/PUBLIC/.\}Externals\sys_development_snippets_v1.xlsx
+REMOVEBLOBONDELETE=Yes

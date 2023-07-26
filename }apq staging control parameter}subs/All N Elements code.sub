@@ -1,0 +1,56 @@
+﻿283,100
+284,"All N Elements code"
+11,20230515004924
+274,
+18,0
+275,
+278,0
+281,0
+270,47
+Load Staging cube
+Load Target cube
+Load From Staging
+Type Source
+Name Source
+Export before load
+Status Target Comment
+Staging Last Update Start Time
+Staging Last Update End Time
+Staging Last Update Duration
+Staging Last Update Record Count
+Staging User
+Staging Error File
+Target Last Update Start Time
+Target Last Update End Time
+Target Last Update Duration
+Target Last Update Record Count
+Target User
+Target Error File
+Status Staging Comment
+Value Iteration
+Target cube
+User Source
+Password Source
+Table Source
+Query
+Path Source
+HeaderRec
+DelimiterASCII
+DecimalSep
+ThousandSep
+FilterTgt
+DelimiterDimTgt
+DelimiterElemTgt
+DelimiterFirstElemTgt
+Filter
+DelimiterDim
+DelimiterElem
+DelimiterFirstElem
+Skip0
+SkipCons
+SkipRule
+Process Name
+Parameter Array
+Parameter Delimiter
+Parameter Start Value
+Number of Row

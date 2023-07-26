@@ -1,0 +1,29 @@
+FORMAT==100
+##############################################################################################################################
+# APLIQODE FRAMEWORK
+# Copyright  2017, Apliqo AG. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+
+[ '}APQ Universal View Dimension Mapping Measure':{'FunctionEntry','FunctionOverride'} ] = S: 'Static::Fixed:Filter:Row:Column:Measure';
+
+[ '}APQ Universal View Dimension Mapping Measure':{'SubsetEntry','SubsetOverride'} ] = S: 
+IF( ElCompN( '}APQ Dimension Subsets', DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'Dimension' ) ) > DB( '}APQ Settings', 'Max subset size for PickList entry', 'Numeric' ),
+    '',
+    'Subset:' | '}APQ Subsets' | ':' | DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'Dimension' )
+);
+
+[ '}APQ Universal View Dimension Mapping Measure':{'ElementEntry','ElementOverride'} ] = S: 
+IF( DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'Subset' ) @= '',
+    IF( DimSiz( DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'Dimension' ) ) > DB( '}APQ Settings', 'Max subset size for PickList entry', 'Numeric' ),
+        '',
+        'Dimension:' | DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'Dimension' )
+    ),
+    IF( DB('}APQ Dimension Subsets', DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'Dimension' ) |':'| DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'Subset' ), 'Element Count' ) > DB( '}APQ Settings', 'Max subset size for PickList entry', 'Numeric' ),
+        '',
+        'Subset:' | DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'Dimension' ) | ':' | DB( '}APQ Universal View Dimension Mapping', !}APQ Universal View, !}APQ Universal View Dimension, 'Subset' )
+    )
+);

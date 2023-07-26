@@ -1,0 +1,10 @@
+﻿283,100
+284,"PickList Last-Current-Next Year"
+11,20190614193027
+274,
+18,0
+275,752
+{TM1FILTERBYPATTERN( {TM1SUBSETALL( [}APQ Time Date Lookup] )}, [}APQ Time Relative Time Lookup]. ([}APQ Time Dimensions].[YearMonth], [}APQ Time Relative Time Periods].[Last Year] ,[}APQ Time Relative Time Lookup Measure].[Lookup Value] ) + "*"), {TM1FILTERBYPATTERN( {TM1SUBSETALL( [}APQ Time Date Lookup] )}, [}APQ Time Relative Time Lookup]. ([}APQ Time Dimensions].[YearMonth], [}APQ Time Relative Time Periods].[Current Year] ,[}APQ Time Relative Time Lookup Measure].[Lookup Value] ) + "*" )}, {TM1FILTERBYPATTERN( {TM1SUBSETALL( [}APQ Time Date Lookup] )}, [}APQ Time Relative Time Lookup]. ([}APQ Time Dimensions].[YearMonth], [}APQ Time Relative Time Periods].[Next Year] ,[}APQ Time Relative Time Lookup Measure].[Lookup Value] ) + "*" )}}
+278,0
+281,0
+270,0

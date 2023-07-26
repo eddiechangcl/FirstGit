@@ -1,0 +1,16 @@
+﻿283,100
+284,"PickList - Framework Dimensions"
+11,20180925193026
+274,
+18,0
+275,118
+{TM1SORT( {TM1FILTERBYLEVEL( {TM1FILTERBYPATTERN( {TM1SUBSETALL( [}APQ Time Dimensions] )}, "}APQ Time*")}, 1)}, ASC)}
+278,0
+281,0
+270,6
+}APQ Time Date
+}APQ Time Day in Year
+}APQ Time Month
+}APQ Time Quarter
+}APQ Time Year
+}APQ Time Year-Month

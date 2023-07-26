@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=}bedrock.hier.sub.exclude
+ENTRYTYPE=process
+ENTRYREFERENCE=TM1:///PROCESS/PUBLIC/}bedrock.hier.sub.exclude

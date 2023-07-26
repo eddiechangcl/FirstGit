@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=Process updates to cubes
+ENTRYTYPE=view
+ENTRYREFERENCE=TM1:///VIEW/PUBLIC/}APQ Cube Last Updated by Process/Default

@@ -1,0 +1,5 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=Maintain Object Security
+ENTRYTYPE=blob
+ENTRYREFERENCE=TM1:///blob/PUBLIC/.\}Externals\Maintain Object Security.xlsx_20180313201400.xlsx
+REMOVEBLOBONDELETE=Yes

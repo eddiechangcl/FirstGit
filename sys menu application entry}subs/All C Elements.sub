@@ -1,0 +1,53 @@
+﻿283,100
+284,"All C Elements"
+11,20230515004921
+274,
+18,0
+275,
+278,0
+281,0
+270,44
+}Applications
+00 Menu
+99 Admin
+99 Admin\Admin Dimension
+99 Admin\Admin Dimension\UDC
+99 Admin\Admin Menu
+99 Admin\Admin Menu\Cubes
+99 Admin\Admin Security
+99 Admin\Admin Security\Data Security
+99 Admin\Admin Security\Functional Security
+99 Admin\Admin Security\User Group Assignment
+99 Admin\Admin Workbench
+99 Admin\Admin Workflow
+99 Admin\Sys Apliqode
+99 Admin\Sys Apliqode\0 Shortcuts
+99 Admin\Sys Apliqode\0 Shortcuts\1 Bedrock TI
+99 Admin\Sys Apliqode\0 Shortcuts\1 Bedrock TI\Help
+99 Admin\Sys Apliqode\0 Shortcuts\2 APQ Cubes
+99 Admin\Sys Apliqode\1 Security
+99 Admin\Sys Apliqode\1 Security\1 General
+99 Admin\Sys Apliqode\1 Security\2 Element Security
+99 Admin\Sys Apliqode\1 Security\3 Cell Security
+99 Admin\Sys Apliqode\1 Security\4 Apliqode Framework security source
+99 Admin\Sys Apliqode\2 Housekeeping
+99 Admin\Sys Apliqode\3 Catalog Reference
+99 Admin\Sys Apliqode\3 Catalog Reference\0 APQ Glossary
+99 Admin\Sys Apliqode\3 Catalog Reference\1 User Info
+99 Admin\Sys Apliqode\3 Catalog Reference\2 Cube Info
+99 Admin\Sys Apliqode\3 Catalog Reference\3 Dimension Info
+99 Admin\Sys Apliqode\3 Catalog Reference\4 Process Info
+99 Admin\Sys Apliqode\3 Catalog Reference\5 Chore Info
+99 Admin\Sys Apliqode\3 Catalog Reference\6 Application Info
+99 Admin\Sys Apliqode\4 TM1 Control Cubes
+99 Admin\Sys Apliqode\4 TM1 Control Cubes\1 TM1 PerfMon
+99 Admin\Sys Apliqode\4 TM1 Control Cubes\2 Properties Cubes
+99 Admin\Sys Apliqode\5 Reconciliation
+99 Admin\Sys Apliqode\6 Process Execution Item
+99 Admin\Sys Apliqode\7 Copy Views
+99 Admin\Sys Apliqode\8 Dimension Management
+99 Admin\Sys Environment
+99 Admin\Sys Maintenance
+99 Admin\Sys Maintenance\Development
+99 Admin\Sys Maintenance\Email
+99 Admin\Sys Maintenance\Localization

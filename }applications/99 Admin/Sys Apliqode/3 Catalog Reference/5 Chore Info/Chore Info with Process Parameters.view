@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=Chore Info with Process Parameters
+ENTRYTYPE=view
+ENTRYREFERENCE=TM1:///VIEW/PUBLIC/}APQ Chore Info/Default

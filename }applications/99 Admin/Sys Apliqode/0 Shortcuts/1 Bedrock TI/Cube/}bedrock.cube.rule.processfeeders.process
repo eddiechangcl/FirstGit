@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=}bedrock.cube.rule.processfeeders
+ENTRYTYPE=process
+ENTRYREFERENCE=TM1:///PROCESS/PUBLIC/}bedrock.cube.rule.processfeeders

@@ -1,0 +1,32 @@
+﻿283,100
+284,"Default"
+11,00000000000000
+274,Caption
+18,0
+275,
+278,0
+281,0
+270,23
+>>>>General System Config
+Admin Host
+Windows Server Name
+TM1 Server Name
+HTTP Port Number
+HTTP Use SSL
+TM1 Web URL
+Use CAM
+CAM Namespace
+CAM Server URI
+CAM Client URI
+Export Folder
+tm1s.cfg Location
+TM1 Data Directory
+TM1 Logging Directory
+TM1 Source Data Directory
+TM1 Master Data Directory
+>>>>Current Period Config
+>>>>External Application Path
+>>>>Backup Config
+>>>>General Hustle Config
+>>>>Mail Config
+>>>>Credentials

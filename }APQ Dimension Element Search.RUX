@@ -1,0 +1,86 @@
+FORMAT==100
+#############################################################################################################################
+#Region : Rule Header
+# CUBEWISE APLIQODE FRAMEWORK VERSION 3.05
+# Copyright Apliqo AG, a Cubewise Company. All rights reserved.
+# This software and related documentation are provided under a license agreement containing restrictions on use and disclosure
+# and are protected by intellectual property laws. Except as expressly permitted in your license agreement or allowed by law,
+# you may not use, copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+# or display any part, in any form, or by any means.
+##############################################################################################################################
+##~~   Start Rule File   ~~##
+##############################################################################################################################
+#SKIPCHECK;
+#FEEDSTRINGS;
+##############################################################################################################################
+# DEVELOPER: 	Apliqo AG
+# LAST UPDATE:  2019-03-28 convert header comments to docstring
+##############################################################################################################################
+#Region @DOC
+# The cube **}APQ Dimension Element Search** allows for a string to be searched for a match to an element name or alias in any dimension added 
+# to the **}APQ Dimensions** calalog dimension.  The cube is entirely rule based and so is always up-to-date to respond to on-demand requests. 
+# Measures return whether the strig matched a principal or alias name and the corresponding element type and index.
+#
+# This cube can be used to solve questions such as "how many dimensions contain an element called X?". This can be useful for situations such as ...
+# * investigating why an element insertion has failed due to pre-existing alias
+# * rule save fails due to element name ambiguity
+#
+# Note:
+# As this is a small lookup cube of limited dimensionality there is no requirement for SkipCheck or Feeders.
+#EndRegion @DOC
+#EndRegion Header
+##############################################################################################################################
+
+# Open the data entry for the search
+[ '}APQ Dimension Hierarchies':'Total APQ Dimensions', '}APQ Dimension Element Search Measure':'SearchedName' ] = S: STET;
+
+# Get the element index to see in which dimensions the element exists
+[ '}APQ Dimension Element Search Measure':'ElementIndex' ] = N: 
+DimIx( !}APQ Dimension Hierarchies, DB( '}APQ Dimension Element Search', 'Total APQ Dimensions', 'SearchedName' ) );
+C: 
+ConsolidatedMin( 2, '', !}APQ Dimension Hierarchies, !}APQ Dimension Element Search Measure );
+
+# If the element exists returm search name
+[ '}APQ Dimension Element Search Measure':'SearchedName' ] = S:
+IF( [ '}APQ Dimension Element Search Measure':'ElementIndex' ] > 0,
+  DB( '}APQ Dimension Element Search', 'Total APQ Dimensions', 'SearchedName' ),
+  ''
+);
+
+# If the element exists determine if the searched name is the same as the principal name
+[ '}APQ Dimension Element Search Measure':'PrincipalName' ] = S:
+DimNm( !}APQ Dimension Hierarchies, DimIx( !}APQ Dimension Hierarchies, DB( '}APQ Dimension Element Search', 'Total APQ Dimensions', 'SearchedName' ) ) );
+
+# Counter for true/false ExistsAsPrincipal
+[ '}APQ Dimension Element Search Measure':'ExistsAsPrincipal' ] = N:
+IF( [ '}APQ Dimension Element Search Measure':'ElementIndex' ] = 0,
+  0,
+  IF( DB( '}APQ Dimension Element Search', 'Total APQ Dimensions', 'SearchedName' ) @= DB( '}APQ Dimension Element Search', !}APQ Dimension Hierarchies, 'PrincipalName' ),
+    1,
+    0
+  )
+);
+
+# Counter for true/false ExistsAsAlias
+[ '}APQ Dimension Element Search Measure':'ExistsAsAlias' ] = N:
+IF( [ '}APQ Dimension Element Search Measure':'ElementIndex' ] = 0,
+  0,
+  IF( DB( '}APQ Dimension Element Search', 'Total APQ Dimensions', 'SearchedName' ) @= DB( '}APQ Dimension Element Search', !}APQ Dimension Hierarchies, 'PrincipalName' ),
+    0,
+    1
+  )
+);
+
+# Get Element Type
+[ '}APQ Dimension Element Search Measure':'ElementType' ] = S: DType( !}APQ Dimension Hierarchies, DB( '}APQ Dimension Element Search', !}APQ Dimension Hierarchies, 'PrincipalName' ) );
+
+
+#############################
+#FEEDERS;
+#############################
+
+
+#############################
+##~~   End  Rule File   ~~##
+#############################
+

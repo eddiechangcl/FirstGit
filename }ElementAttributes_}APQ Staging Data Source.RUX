@@ -1,0 +1,3 @@
+FORMAT==100
+[{'Target cube','Name Source','Status Staging','Staging Last Update End Time','Status Staging Comment'}] =
+S: DB('}APQ Staging Control',!}APQ Staging Data Source,!}ElementAttributes_}APQ Staging Data Source,'String');

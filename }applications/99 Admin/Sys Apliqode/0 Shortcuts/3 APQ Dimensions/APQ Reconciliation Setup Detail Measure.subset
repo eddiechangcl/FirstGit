@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=APQ Reconciliation Setup Detail Measure
+ENTRYTYPE=subset
+ENTRYREFERENCE=TM1:///SUBSET/PUBLIC/}APQ Reconciliation Setup Detail Measure/Default

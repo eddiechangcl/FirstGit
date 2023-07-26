@@ -1,0 +1,4 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=Dimension Attribute Catalog
+ENTRYTYPE=view
+ENTRYREFERENCE=TM1:///VIEW/PUBLIC/}APQ Dimension Attributes/Default
